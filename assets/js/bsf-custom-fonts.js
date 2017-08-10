@@ -6,7 +6,6 @@
 	 * @class BsfCustomFonts
 	 * @since 1.0.0
 	 */
-	var frame;
 
 	BsfCustomFonts = {
 		
@@ -18,8 +17,8 @@
 		 */ 
 		init: function()
 		{
-			// Init backgrounds.
-			$( '.bsf-custom-fonts-upload' ).on( 'click', this._fileUploads );
+			// Init.
+			this._fileUploads();
 		},
 		/**
 		 * Font File Uploads
@@ -31,33 +30,37 @@
 		 */ 
 		_fileUploads: function()
 		{	
-			
+			var file_frame;
+			window.inputWrapper = '';
+			$( document.body ).on('click', '.bsf-custom-fonts-upload', function(e) {
 				event.preventDefault();
 				var button = $(this),
     				button_type = button.data('upload-type');
+    				window.inputWrapper = $(this).closest('.bsf-custom-fonts-file-wrap');
+
 			    // If the media frame already exists, reopen it.
-			    if ( frame ) {
-			      frame.open();
+			    if ( file_frame ) {
+			      file_frame.open();
 			      return;
 			    }
 
 			     // Create a new media frame
-			    frame = wp.media.frames.file_frame = wp.media({
-			    	library: { 
-				      type: 'woff, ttf, eot, svg' // limits the frame to show only images
-				   },
+			    file_frame = wp.media.frames.file_frame = wp.media({
 			     	multiple: false  // Set to true to allow multiple files to be selected
 			    });
 
 			     // When an image is selected in the media frame...
-    			frame.on( 'select', function() {
+    			file_frame.on( 'select', function() {
     				
     				 // Get media attachment details from the frame state
-      				var attachment = frame.state().get('selection').first().toJSON();
-      					button.prev('.bsf-custom-fonts-link.'+ button_type).val(attachment.url);
+      				var attachment = file_frame.state().get('selection').first().toJSON();
+      					window.inputWrapper.find( '.bsf-custom-fonts-link' ).val(attachment.url);
       			});
-      			    // Finally, open the modal on click
-    				frame.open();
+      			// Finally, open the modal
+				file_frame.open();
+			});
+			var file_frame;
+			window.inputWrapper = '';
 		},
 	}
 

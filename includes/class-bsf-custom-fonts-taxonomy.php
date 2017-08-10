@@ -47,7 +47,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		public static $register_taxonomy_slug = 'bsf_custom_fonts';
 
 		/**
-		 * Instance of Bsf_Custom_Fonts_Admin_Ui.
+		 * Instance of Bsf_Custom_Fonts_Admin.
 		 *
 		 * @since  1.0.0
 		 *
@@ -119,6 +119,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 			return wp_parse_args(
 				$fonts,
 				array(
+					'font_woff_2'=> '',
 					'font_woff' => '',
 					'font_ttf' => '',
 					'font_svg' => '',
@@ -144,15 +145,35 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 					)
 				);
 
-
 				if ( ! empty( $terms ) ) {
 					foreach ( $terms as $term ) {
-						$this->fonts[ $term->name ] = $term->name;
 						$this->fonts[ $term->name ] = $this->get_font_links( $term->term_id );
 					}
 				}
 			}
 			return $this->fonts;
+		}
+
+
+		public function get_links_by_name( $name ){
+			$terms = get_terms(
+					self::$register_taxonomy_slug,
+					array(
+						'hide_empty' => false,
+					)
+				);
+			$font_links = array();
+			if ( ! empty( $terms ) ) {
+
+					foreach ( $terms as $term ) {
+						if ( $term->name == $name ) {
+							$font_links[ $term->name ] = $this->get_font_links( $term->term_id );
+						}
+					}
+				}
+		
+		return $font_links;
+
 		}
 
 		public function has_fonts() {
