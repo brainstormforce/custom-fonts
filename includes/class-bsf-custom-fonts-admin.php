@@ -100,7 +100,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			?><style>#addtag div.form-field.term-slug-wrap, #edittag tr.form-field.term-slug-wrap { display: none; }
 				#addtag div.form-field.term-description-wrap, #edittag tr.form-field.term-description-wrap { display: none; }</style><script>jQuery( document ).ready( function( $ ) {
 					var $wrapper = $( '#addtag, #edittag' );
-					$wrapper.find( 'tr.form-field.term-name-wrap p, div.form-field.term-name-wrap > p' ).text( '<?php _e( 'The name of the font as it appears in the attached CSS file.', 'bsf-custom-fonts' ); ?>' );
+					$wrapper.find( 'tr.form-field.term-name-wrap p, div.form-field.term-name-wrap > p' ).text( '<?php esc_html_e( 'The name of the font as it appears in the attached CSS file.', 'bsf-custom-fonts' ); ?>' );
 				} );</script><?php
 		}
 

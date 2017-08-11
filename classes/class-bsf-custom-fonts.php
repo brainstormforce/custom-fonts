@@ -59,11 +59,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 			add_action( 'init', array( $this, 'init_loader' ) );
 			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts') );
 
+			add_action( 'admin_notices', array( $this , 'theme_update_notice' ) );
+
 			// Enqueue the custom fonts
 			add_action( 'astra_render_fonts', array( $this, 'render_fonts' ) );
 
 			// Delete custom fonts action
 			add_action( 'delete_term', array($this , 'delete_custom_fonts_fallback_astra' ), 10, 5);
+
+			add_action( 'plugins_loaded',                                   array( $this, 'load_textdomain' ) );
 		}
 
 		/**
@@ -170,7 +174,40 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 				// update astra options.
 				update_option( ASTRA_THEME_SETTINGS, $options );
 			}
+		}
 
+		/**
+		 * Theme update notice.
+		 *
+		 * @since 1.0.0
+		 */
+		function theme_update_notice() {
+			if ( defined('ASTRA_THEME_VERSION')) {
+				if ( version_compare( ASTRA_THEME_VERSION, '1.0.14', '<') ) {
+				?>
+				<div class="notice notice-error is-dismissible">
+					<p>
+					<?php
+					printf(
+							/* translators: 1: Astra theme from wordpress.org*/
+							__( '"BSF Custom Fonts" requires the latest Astra Theme. Please delete the older version of Astra Theme and download latest <a href="%1$s">Astra Theme</a>. (Note: Theme update from dashboard will be fix soon... )', 'bsf-custom-fonts' ),
+							esc_url( 'https://downloads.wordpress.org/theme/astra.zip' )
+						);
+					?>
+					</p>
+				</div>
+			<?php
+				}
+			}
+		}
+
+		/**
+		 * Loads textdomain for the plugin.
+		 *
+		 * @since 1.0.0
+		 */
+		function load_textdomain() {
+			load_plugin_textdomain( 'bsf-custom-fonts' );
 		}
 	}
 

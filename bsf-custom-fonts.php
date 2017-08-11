@@ -31,13 +31,3 @@ define( 'BSF_CUSTOM_FONTS_VER', '1.0.0' );
  * BSF Custom Fonts
  */
 require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts.php';
-
-
-
-
-function vl( $value )
-{
-	echo "<pre>";
-	print_r( $value );
-	echo "</pre>";
-}
