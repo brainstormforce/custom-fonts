@@ -38,7 +38,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 *
 		 * @return object Class object.
 		 */
-		public static function set_instance() {
+		public static function get_instance() {
 			if ( ! isset( self::$_instance ) ) {
 				self::$_instance = new self;
 			}
@@ -140,7 +140,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since 1.0.0
 		 */
 		public function edit_taxonomy_data( $term ) {
-			$data = Bsf_Custom_Fonts::get_instance()->taxonomy->get_font_links( $term->term_id );
+			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'bsf-custom-fonts' ), $data['font_woff_2']  );
 			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'bsf-custom-fonts' ), $data['font_woff'] );
 			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'bsf-custom-fonts' ), $data['font_ttf'] );
@@ -189,7 +189,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
 				$value = array_map( 'esc_attr', $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] );
-				Bsf_Custom_Fonts::get_instance()->taxonomy->update_font_links( $value, $term_id );
+				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
 			}
 		}
 
@@ -210,5 +210,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		}
 
 	}
+
+
+
+	/**
+	 *  Kicking this off by calling 'get_instance()' method
+	 */
+	Bsf_Custom_Fonts_Admin::get_instance();
 
 endif;

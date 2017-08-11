@@ -28,7 +28,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since  1.0.0
 		 * @var (string) $fonts
 		 */
-		protected $fonts = null;
+		public static $fonts = null;
 
 		/**
 		 * Capability required for this menu to be displayed
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 *
 		 * @return object Class object.
 		 */
-		public static function set_instance() {
+		public static function get_instance() {
 			if ( ! isset( self::$_instance ) ) {
 				self::$_instance = new self;
 			}
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			$this->create_custom_fonts_taxonomies();
+			add_action( 'init', array( $this, 'create_custom_fonts_taxonomies' ) );
 		}
 
 		/**
@@ -78,9 +78,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		public function create_custom_fonts_taxonomies() {
 			// Taxonomy: bsf_custom_fonts.
 			$labels = array(
-				'name' => __( 'Bsf Custom Fonts', 'bsf-custom-fonts' ),
+				'name' => __( 'BSF Custom Fonts', 'bsf-custom-fonts' ),
 				'singular_name' => __( 'Font', 'bsf-custom-fonts' ),
-				'menu_name' => _x( 'Bsf Custom Fonts', 'Admin menu name', 'bsf-custom-fonts' ),
+				'menu_name' => _x( 'BSF Custom Fonts', 'Admin menu name', 'bsf-custom-fonts' ),
 				'search_items' => __( 'Search Fonts', 'bsf-custom-fonts' ),
 				'all_items' => __( 'All Fonts', 'bsf-custom-fonts' ),
 				'parent_item' => __( 'Parent Font', 'bsf-custom-fonts' ),
@@ -115,7 +115,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since 1.0.0
 		 * @param array fonts array of fonts.
 		 */
-		protected function default_args( $fonts ) {
+		protected static function default_args( $fonts ) {
 			return wp_parse_args(
 				$fonts,
 				array(
@@ -134,9 +134,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since 1.0.0
 		 * @return array fonts array of fonts.
 		 */
-		public function get_fonts() {
-			if ( is_null( $this->fonts ) ) {
-				$this->fonts = array();
+		public static function get_fonts() {
+
+			if ( is_null( self::$fonts ) ) {
+				self::$fonts = array();
 
 				$terms = get_terms(
 					self::$register_taxonomy_slug,
@@ -147,15 +148,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 
 				if ( ! empty( $terms ) ) {
 					foreach ( $terms as $term ) {
-						$this->fonts[ $term->name ] = $this->get_font_links( $term->term_id );
+						self::$fonts[ $term->name ] = self::get_font_links( $term->term_id );
 					}
 				}
 			}
-			return $this->fonts;
+			return self::$fonts;
 		}
 
 
-		public function get_links_by_name( $name ){
+		public static function get_links_by_name( $name ){
 
 			$terms = get_terms(
 					self::$register_taxonomy_slug,
@@ -168,7 +169,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 
 					foreach ( $terms as $term ) {
 						if ( $term->name == $name ) {
-							$font_links[ $term->name ] = $this->get_font_links( $term->term_id );
+							$font_links[ $term->name ] = self::get_font_links( $term->term_id );
 						}
 					}
 				}
@@ -177,19 +178,19 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 
 		}
 
-		public function has_fonts() {
-			$fonts = $this->get_fonts();
+		public static function has_fonts() {
+			$fonts = self::get_fonts();
 			return ! empty( $fonts );
 		}
 
-		public function get_font_links( $term_id ) {
+		public static function get_font_links( $term_id ) {
 			$links = get_option( "taxonomy_" . self::$register_taxonomy_slug . "_{$term_id}", array() );
-			return $this->default_args( $links );
+			return self::default_args( $links );
 		}
 
-		public function update_font_links( $posted, $term_id ) {
+		public static function update_font_links( $posted, $term_id ) {
 
-			$links = $this->get_font_links( $term_id );
+			$links = self::get_font_links( $term_id );
 			foreach ( array_keys( $links ) as $key ) {
 				if ( isset( $posted[ $key ] ) ) {
 					$links[ $key ] = $posted[ $key ];
@@ -201,5 +202,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		}
 
 	}
+
+
+
+	/**
+	 *  Kicking this off by calling 'get_instance()' method
+	 */
+	Bsf_Custom_Fonts_Taxonomy::get_instance();
 
 endif;
