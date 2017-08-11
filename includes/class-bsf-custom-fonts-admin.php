@@ -201,11 +201,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @return array $mimes Updated array of mime types.
 		 */
 		public function add_fonts_to_allowed_mimes( $mimes ) {
-			$mimes['otf'] = 'application/x-font-otf';
-			$mimes['woff'] = 'application/x-font-woff';
-			$mimes['ttf'] = 'application/x-font-ttf';
-			$mimes['svg'] = 'image/svg+xml';
-			$mimes['eot'] = 'application/vnd.ms-fontobject';
+			$mimes['woff']  = 'application/x-font-woff';
+			$mimes['woff2'] = 'application/x-font-woff2';
+			$mimes['ttf']   = 'application/x-font-ttf';
+			$mimes['svg']   = 'image/svg+xml';
+			$mimes['eot']   = 'application/vnd.ms-fontobject';
 			return $mimes;
 		}
 

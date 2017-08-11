@@ -156,6 +156,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 
 
 		public function get_links_by_name( $name ){
+
 			$terms = get_terms(
 					self::$register_taxonomy_slug,
 					array(
