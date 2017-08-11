@@ -191,7 +191,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					<?php
 					printf(
 							/* translators: 1: Astra theme from wordpress.org*/
-							__( '"BSF Custom Fonts" requires the latest Astra Theme. Please delete the older version of Astra Theme and download latest <a href="%1$s">Astra Theme</a>. (Note: Theme update from dashboard will be fix soon... )', 'bsf-custom-fonts' ),
+							__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'bsf-custom-fonts' ),
 							esc_url( 'https://downloads.wordpress.org/theme/astra.zip' )
 						);
 					?>
