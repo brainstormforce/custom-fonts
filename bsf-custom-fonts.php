@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:     Bsf Custom Fonts
+ * Plugin Name:     Custom Fonts
  * Plugin URI:      http://www.wpastra.com/
- * Description:     Bsf Custom Fonts allows you to add as many custom fonts to extends the font support in your theme.
+ * Description:     Custom Fonts allows you to add more fonts that extend formatting options in your site.
  * Author:          Brainstorm Force
  * Author URI:      http://www.brainstormforce.com
  * Text Domain:     bsf-custom-fonts
