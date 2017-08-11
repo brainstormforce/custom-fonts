@@ -142,7 +142,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 					$arr[] = "url(" . esc_url( $links['font_ttf'] ) . ") format('truetype')";
 				}
 				if ( $links['font_svg'] ) {
-					$arr[] = "url(" . esc_url( $links['font_svg'] ) . "#". esc_attr( $font ) .") format('svg')";
+					$arr[] = "url(" . esc_url( $links['font_svg'] ) . "#". esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) .") format('svg')";
 				}
 				$css .= join( ', ', $arr );
 				$css  .= ';}' ;
