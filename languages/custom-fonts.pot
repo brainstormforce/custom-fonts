@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Custom Fonts 1.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-fonts\n"
-"POT-Creation-Date: 2017-08-16 05:37:55+00:00\n"
+"POT-Creation-Date: 2017-08-16 08:50:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,58 +37,58 @@ msgstr ""
 msgid "The name of the font as it appears in the customizer options."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:136
-#: includes/class-bsf-custom-fonts-admin.php:150
+#: includes/class-bsf-custom-fonts-admin.php:137
+#: includes/class-bsf-custom-fonts-admin.php:152
 msgid "Font .woff2"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:136
-#: includes/class-bsf-custom-fonts-admin.php:150
+#: includes/class-bsf-custom-fonts-admin.php:137
+#: includes/class-bsf-custom-fonts-admin.php:152
 msgid "Upload the font's woff2 file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:137
-#: includes/class-bsf-custom-fonts-admin.php:151
+#: includes/class-bsf-custom-fonts-admin.php:138
+#: includes/class-bsf-custom-fonts-admin.php:153
 msgid "Font .woff"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:137
-#: includes/class-bsf-custom-fonts-admin.php:151
+#: includes/class-bsf-custom-fonts-admin.php:138
+#: includes/class-bsf-custom-fonts-admin.php:153
 msgid "Upload the font's woff file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:138
-#: includes/class-bsf-custom-fonts-admin.php:152
+#: includes/class-bsf-custom-fonts-admin.php:139
+#: includes/class-bsf-custom-fonts-admin.php:154
 msgid "Font .ttf"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:138
-#: includes/class-bsf-custom-fonts-admin.php:152
+#: includes/class-bsf-custom-fonts-admin.php:139
+#: includes/class-bsf-custom-fonts-admin.php:154
 msgid "Upload the font's ttf file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:139
-#: includes/class-bsf-custom-fonts-admin.php:153
+#: includes/class-bsf-custom-fonts-admin.php:140
+#: includes/class-bsf-custom-fonts-admin.php:155
 msgid "Font .eot"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:139
-#: includes/class-bsf-custom-fonts-admin.php:153
+#: includes/class-bsf-custom-fonts-admin.php:140
+#: includes/class-bsf-custom-fonts-admin.php:155
 msgid "Upload the font's eot file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:140
-#: includes/class-bsf-custom-fonts-admin.php:154
+#: includes/class-bsf-custom-fonts-admin.php:141
+#: includes/class-bsf-custom-fonts-admin.php:156
 msgid "Font .svg"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:140
-#: includes/class-bsf-custom-fonts-admin.php:154
+#: includes/class-bsf-custom-fonts-admin.php:141
+#: includes/class-bsf-custom-fonts-admin.php:156
 msgid "Upload the font's svg file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:168
-#: includes/class-bsf-custom-fonts-admin.php:189
+#: includes/class-bsf-custom-fonts-admin.php:174
+#: includes/class-bsf-custom-fonts-admin.php:199
 msgid "Upload"
 msgstr ""
 
