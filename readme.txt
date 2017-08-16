@@ -42,6 +42,7 @@ This plugin is compatible with the [Astra](https://wpastra.com/) theme only.
 
 v1.0.1
 1. Improved the design of the Admin UI.
+2. Changed the plugin name to be Custom Fonts instead of BSF Custom Fonts.
 
 v1.0.0
 1. Initial release.
