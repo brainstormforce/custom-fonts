@@ -49,4 +49,4 @@ PHPLint:PHPCS:PHP7.1:MySQL:
   - ln -sf $HOME/.composer/vendor/squizlabs/php_codesniffer/scripts/phpcs /usr/local/bin/phpcs
   - phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
   - if find . -name "*.php" ! -path "./vendor/*" ! -path "./admin/bsf-core/*" -exec php -l {} \; | grep "Errors parsing"; then exit 1; fi
-  - phpcs --standard=phpcs.ruleset.xml $(find . -name '*.php')
+  - phpcs
