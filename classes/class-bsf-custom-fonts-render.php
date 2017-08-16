@@ -191,7 +191,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					<?php
 					printf(
 							/* translators: 1: Astra theme from wordpress.org*/
-							__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'bsf-custom-fonts' ),
+							__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'custom-fonts' ),
 							esc_url( 'https://downloads.wordpress.org/theme/astra.zip' )
 						);
 					?>
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.0
 		 */
 		function load_textdomain() {
-			load_plugin_textdomain( 'bsf-custom-fonts' );
+			load_plugin_textdomain( 'custom-fonts' );
 		}
 	}
 

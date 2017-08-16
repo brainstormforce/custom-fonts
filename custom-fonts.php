@@ -5,7 +5,7 @@
  * Description:     Custom Fonts allows you to add more fonts that extend formatting options in your site.
  * Author:          Brainstorm Force
  * Author URI:      http://www.brainstormforce.com
- * Text Domain:     bsf-custom-fonts
+ * Text Domain:     custom-fonts
  * Version:         1.0.1
  *
  * @package         Bsf_Custom_Fonts

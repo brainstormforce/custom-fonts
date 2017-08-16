@@ -25,11 +25,22 @@ The font’s file types you can add:
 
 You can directly select the font from the customizer under typography section.
 
+This plugin is compatible with the [Astra](https://wpastra.com/) theme only.
+
 ## Installation ##
 
 1. Upload the plugin files to the `/wp-content/plugins/custom-fonts` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Use the Appearance->BSF Custom Fonts -> Add Custom Fonts name, woff2, woff, ttf, eot and svg files.
+
+## Screenshots ##
+
+### 1. Add new custom font ###
+![Add new custom font](http://ps.w.org/custom-fonts/assets/screenshot-1.png)
+
+### 2. Select your any custom font into the Customizer ###
+![Select your any custom font into the Customizer](http://ps.w.org/custom-fonts/assets/screenshot-2.png)
+
 
 ## Changelog ##
 
