@@ -52,20 +52,20 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		public function __construct() {
 
-			add_action( 'admin_enqueue_scripts', array( $this , 'enqueue_scripts') );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 
-			add_action( 'admin_notices', array( $this , 'theme_update_notice' ) );
+			add_action( 'admin_notices', array( $this, 'theme_update_notice' ) );
 
-			// Enqueue the custom fonts
+			// Enqueue the custom fonts.
 			add_action( 'astra_render_fonts', array( $this, 'render_fonts' ) );
 
-			// Delete custom fonts action
-			add_action( 'delete_term', array($this , 'delete_custom_fonts_fallback_astra' ), 10, 5);
+			// Delete custom fonts action.
+			add_action( 'delete_term', array( $this, 'delete_custom_fonts_fallback_astra' ), 10, 5 );
 
 			add_action( 'plugins_loaded',                                   array( $this, 'load_textdomain' ) );
 
 			// add Custom Font list into Astra customizer.
-			add_action( 'astra_customizer_font_list', array( $this, 'add_customizer_font_list') );
+			add_action( 'astra_customizer_font_list', array( $this, 'add_customizer_font_list' ) );
 		}
 
 		/**
@@ -80,9 +80,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 				echo '<optgroup label="Custom">';
 
-				foreach ( $fonts as $font => $links ) {
-					echo '<option value="' . esc_attr( $font ) . '" ' . selected( $font, $value , false ) . '>' . esc_attr( $font ) . '</option>';
-				}
+			foreach ( $fonts as $font => $links ) {
+				echo '<option value="' . esc_attr( $font ) . '" ' . selected( $font, $value , false ) . '>' . esc_attr( $font ) . '</option>';
+			}
 		}
 
 		/**
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * @since 1.0.0
 		 */
-		public function enqueue_scripts(){
+		public function enqueue_scripts() {
 
 			wp_enqueue_style( 'bsf-custom-fonts-css', BSF_CUSTOM_FONTS_URI . 'assets/css/bsf-custom-fonts.css', array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_media();
@@ -129,20 +129,20 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
 
 			foreach ( $fonts as $font => $links ) :
-				$css  = '@font-face { font-family:' . esc_attr( $font ) .';';
+				$css  = '@font-face { font-family:' . esc_attr( $font ) . ';';
 				$css .= 'src:';
 				$arr = array();
 				if ( $links['font_woff_2'] ) {
-					$arr[] = "url(" . esc_url( $links['font_woff_2'] ) . ") format('woff2')";
+					$arr[] = 'url(' . esc_url( $links['font_woff_2'] ) . ") format('woff2')";
 				}
 				if ( $links['font_woff'] ) {
-					$arr[] = "url(" . esc_url( $links['font_woff'] ) . ") format('woff')";
+					$arr[] = 'url(' . esc_url( $links['font_woff'] ) . ") format('woff')";
 				}
 				if ( $links['font_ttf'] ) {
-					$arr[] = "url(" . esc_url( $links['font_ttf'] ) . ") format('truetype')";
+					$arr[] = 'url(' . esc_url( $links['font_ttf'] ) . ") format('truetype')";
 				}
 				if ( $links['font_svg'] ) {
-					$arr[] = "url(" . esc_url( $links['font_svg'] ) . "#". esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) .") format('svg')";
+					$arr[] = 'url(' . esc_url( $links['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
 				}
 				$css .= join( ', ', $arr );
 				$css  .= ';}' ;
@@ -155,10 +155,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * Set default 'inherit' if custom font is selected in customizer if this is deleted.
 		 *
 		 * @since 1.0.0
-		 * @param int $term Term ID.
-		 * @param int $tt_id Term taxonomy ID.
+		 * @param int    $term Term ID.
+		 * @param int    $tt_id Term taxonomy ID.
 		 * @param string $taxonomy Taxonomy slug.
-		 * @param mixed $deleted_term deleted term.
+		 * @param mixed  $deleted_term deleted term.
 		 * @param object $object_ids objects ids.
 		 */
 		function delete_custom_fonts_fallback_astra( $term, $tt_id, $taxonomy, $deleted_term, $object_ids ) {
@@ -169,7 +169,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				foreach ( $options as $key => $value ) {
 					if ( $value == $deleted_term->name ) {
 						// set default inherit if custom font is deleted.
-						$options[$key] = 'inherit';
+						$options[ $key ] = 'inherit';
 					}
 				}
 				// update astra options.
@@ -183,17 +183,17 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.0
 		 */
 		function theme_update_notice() {
-			if ( defined('ASTRA_THEME_VERSION')) {
-				if ( version_compare( ASTRA_THEME_VERSION, '1.0.16', '<') ) {
+			if ( defined( 'ASTRA_THEME_VERSION' ) ) {
+				if ( version_compare( ASTRA_THEME_VERSION, '1.0.16', '<' ) ) {
 				?>
 				<div class="notice notice-error is-dismissible">
 					<p>
 					<?php
 					printf(
-							/* translators: 1: Astra theme from wordpress.org*/
-							__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'bsf-custom-fonts' ),
-							esc_url( 'https://downloads.wordpress.org/theme/astra.zip' )
-						);
+						/* translators: 1: Astra theme from wordpress.org*/
+							__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'custom-fonts' ),
+						esc_url( 'https://downloads.wordpress.org/theme/astra.zip' )
+					);
 					?>
 					</p>
 				</div>
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.0
 		 */
 		function load_textdomain() {
-			load_plugin_textdomain( 'bsf-custom-fonts' );
+			load_plugin_textdomain( 'custom-fonts' );
 		}
 	}
 
