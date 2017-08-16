@@ -9,7 +9,7 @@ module.exports = function( grunt ) {
 
 		addtextdomain: {
 			options: {
-				textdomain: 'bsf-custom-fonts',
+				textdomain: 'custom-fonts',
 			},
 			update_all_domains: {
 				options: {
@@ -31,8 +31,8 @@ module.exports = function( grunt ) {
 			target: {
 				options: {
 					domainPath: '/languages',
-					mainFile: 'bsf-custom-fonts.php',
-					potFilename: 'bsf-custom-fonts.pot',
+					mainFile: 'custom-fonts.php',
+					potFilename: 'custom-fonts.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true

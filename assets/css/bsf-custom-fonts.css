@@ -1,6 +1,9 @@
-.bsf-custom-fonts-upload.button {
-    position:absolute
+.bsf-custom-fonts-file-wrap.form-field{
+	position: relative;
+	margin: 1.5em 0;
 }
-.bsf-custom-fonts-link{
-    padding-left:80px;
+.bsf-custom-fonts-upload.button {
+    float: right;
+    margin-right: 5%;
+    margin-top: 2px;
 }

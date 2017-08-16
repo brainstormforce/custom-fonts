@@ -78,17 +78,18 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		public function create_custom_fonts_taxonomies() {
 			// Taxonomy: bsf_custom_fonts.
 			$labels = array(
-				'name' => __( 'BSF Custom Fonts', 'bsf-custom-fonts' ),
-				'singular_name' => __( 'Font', 'bsf-custom-fonts' ),
-				'menu_name' => _x( 'BSF Custom Fonts', 'Admin menu name', 'bsf-custom-fonts' ),
-				'search_items' => __( 'Search Fonts', 'bsf-custom-fonts' ),
-				'all_items' => __( 'All Fonts', 'bsf-custom-fonts' ),
-				'parent_item' => __( 'Parent Font', 'bsf-custom-fonts' ),
-				'parent_item_colon' => __( 'Parent Font:', 'bsf-custom-fonts' ),
-				'edit_item' => __( 'Edit Font', 'bsf-custom-fonts' ),
-				'update_item' => __( 'Update Font', 'bsf-custom-fonts' ),
-				'add_new_item' => __( 'Add New Font', 'bsf-custom-fonts' ),
-				'new_item_name' => __( 'New Font Name', 'bsf-custom-fonts' ),
+				'name' => __( 'Custom Fonts', 'custom-fonts' ),
+				'singular_name' => __( 'Font', 'custom-fonts' ),
+				'menu_name' => _x( 'Custom Fonts', 'Admin menu name', 'custom-fonts' ),
+				'search_items' => __( 'Search Fonts', 'custom-fonts' ),
+				'all_items' => __( 'All Fonts', 'custom-fonts' ),
+				'parent_item' => __( 'Parent Font', 'custom-fonts' ),
+				'parent_item_colon' => __( 'Parent Font:', 'custom-fonts' ),
+				'edit_item' => __( 'Edit Font', 'custom-fonts' ),
+				'update_item' => __( 'Update Font', 'custom-fonts' ),
+				'add_new_item' => __( 'Add New Font', 'custom-fonts' ),
+				'new_item_name' => __( 'New Font Name', 'custom-fonts' ),
+				'not_found' => __( 'No fonts found', 'custom-fonts' ),
 			);
 
 			$args = array(
@@ -113,13 +114,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * Default fonts
 		 *
 		 * @since 1.0.0
-		 * @param array fonts array of fonts.
+		 * @param array $fonts fonts array of fonts.
 		 */
 		protected static function default_args( $fonts ) {
 			return wp_parse_args(
 				$fonts,
 				array(
-					'font_woff_2'=> '',
+					'font_woff_2' => '',
 					'font_woff' => '',
 					'font_ttf' => '',
 					'font_svg' => '',
@@ -132,7 +133,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * Get fonts
 		 *
 		 * @since 1.0.0
-		 * @return array fonts array of fonts.
+		 * @return array $fonts fonts array of fonts.
 		 */
 		public static function get_fonts() {
 
@@ -155,39 +156,54 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 			return self::$fonts;
 		}
 
-
-		public static function get_links_by_name( $name ){
+		/**
+		 * Get font data from name
+		 *
+		 * @since 1.0.0
+		 * @param string $name custom font name.
+		 * @return array $font_links custom font data.
+		 */
+		public static function get_links_by_name( $name ) {
 
 			$terms = get_terms(
-					self::$register_taxonomy_slug,
-					array(
-						'hide_empty' => false,
-					)
-				);
+				self::$register_taxonomy_slug,
+				array(
+					'hide_empty' => false,
+				)
+			);
 			$font_links = array();
 			if ( ! empty( $terms ) ) {
 
-					foreach ( $terms as $term ) {
-						if ( $term->name == $name ) {
-							$font_links[ $term->name ] = self::get_font_links( $term->term_id );
-						}
+				foreach ( $terms as $term ) {
+					if ( $term->name == $name ) {
+						$font_links[ $term->name ] = self::get_font_links( $term->term_id );
 					}
 				}
-		
-		return $font_links;
+			}
+
+			return $font_links;
 
 		}
 
-		public static function has_fonts() {
-			$fonts = self::get_fonts();
-			return ! empty( $fonts );
-		}
-
+		/**
+		 * Get font links
+		 *
+		 * @since 1.0.0
+		 * @param int $term_id custom font term id.
+		 * @return array $links custom font data links.
+		 */
 		public static function get_font_links( $term_id ) {
-			$links = get_option( "taxonomy_" . self::$register_taxonomy_slug . "_{$term_id}", array() );
+			$links = get_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", array() );
 			return self::default_args( $links );
 		}
 
+		/**
+		 * Update font data from name
+		 *
+		 * @since 1.0.0
+		 * @param array $posted custom font data.
+		 * @param int   $term_id custom font term id.
+		 */
 		public static function update_font_links( $posted, $term_id ) {
 
 			$links = self::get_font_links( $term_id );
@@ -198,7 +214,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 					$links[ $key ] = '';
 				}
 			}
-			update_option( "taxonomy_" . self::$register_taxonomy_slug . "_{$term_id}", $links );
+			update_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", $links );
 		}
 
 	}
