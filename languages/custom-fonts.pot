@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Fonts package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Fonts 1.0.1\n"
+"Project-Id-Version: Custom Fonts 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-fonts\n"
-"POT-Creation-Date: 2017-08-16 08:50:20+00:00\n"
+"POT-Creation-Date: 2017-09-28 05:54:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -130,6 +130,18 @@ msgstr ""
 
 #: includes/class-bsf-custom-fonts-taxonomy.php:92
 msgid "No fonts found"
+msgstr ""
+
+#: includes/white-label.php:12 includes/white-label.php:17
+msgid "Custom Fonts Branding"
+msgstr ""
+
+#: includes/white-label.php:23
+msgid "Plugin Name:"
+msgstr ""
+
+#: includes/white-label.php:28
+msgid "Plugin Description:"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
