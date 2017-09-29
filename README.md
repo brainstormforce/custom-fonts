@@ -4,7 +4,7 @@
 **Tags:** custom fonts, theme custom fonts, unlimited custom fonts, typography  
 **Requires at least:** 4.4  
 **Tested up to:** 4.8.1  
-**Stable tag:** 1.0.1  
+**Stable tag:** 1.0.2  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -43,6 +43,9 @@ This plugin is compatible with the [Astra](https://wpastra.com/) theme only.
 
 
 ## Changelog ##
+
+v1.0.2
+* White Label support added from the [Astra Pro](https://wpastra.com/pro/) plugin.
 
 v1.0.1
 1. Improved the design of the Admin UI.
