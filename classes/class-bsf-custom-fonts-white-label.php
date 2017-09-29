@@ -113,7 +113,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 *
 		 * @since 1.0.2
 		 * @param string $title  custom fonts menu title.
-		 * @return string $title updated custom fonts menu bsf_custom_fonts_menu_title.
+		 * @return string $title updated custom fonts menu title.
 		 */
 		function white_label_custom_fonts_title( $title ) {
 
