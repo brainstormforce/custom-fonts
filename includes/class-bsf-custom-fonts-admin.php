@@ -73,10 +73,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since 1.0.0
 		 */
 		public function register_custom_fonts_menu() {
+
+			$title = __( 'Custom Fonts', 'custom-fonts' );
 			add_submenu_page(
 				$this->parent_menu_slug,
-				__( 'Custom Fonts', 'custom-fonts' ),
-				__( 'Custom Fonts', 'custom-fonts' ),
+				apply_filters( 'bsf_custom_fonts_menu_title', $title ),
+				apply_filters( 'bsf_custom_fonts_menu_title', $title ),
 				Bsf_Custom_Fonts_Taxonomy::$capability,
 				'edit-tags.php?taxonomy=' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug
 			);
