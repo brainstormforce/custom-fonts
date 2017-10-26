@@ -28,7 +28,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * @var string $font_css
 		 */
-		protected $font_css;
+		protected $font_css = '';
 
 		/**
 		 * Instance of Bsf_Custom_Fonts_Admin.
@@ -148,7 +148,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				$css  .= ';}' ;
 			 endforeach;
 
-			$this->font_css = $css;
+			$this->font_css .= $css;
 		}
 
 		/**
