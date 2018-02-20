@@ -25,7 +25,7 @@ The font’s file types you can add:
 
 You can directly select the font from the customizer under typography section.
 
-This plugin is compatible with the [Astra](https://wpastra.com/) theme only.
+This plugin is compatible with the [Astra](https://wpastra.com/) Theme, Beaver Builder Theme, Beaver Builder Plugin and Elementor.
 
 ## Installation ##
 
@@ -38,11 +38,15 @@ This plugin is compatible with the [Astra](https://wpastra.com/) theme only.
 ### 1. Add new custom font ###
 ![Add new custom font](http://ps.w.org/custom-fonts/assets/screenshot-1.png)
 
-### 2. Select your any custom font into the Customizer ###
-![Select your any custom font into the Customizer](http://ps.w.org/custom-fonts/assets/screenshot-2.png)
+### 2. Select your any custom font into the Customizer of Astra Theme ###
+![Select your any custom font into the Customizer of Astra Theme](http://ps.w.org/custom-fonts/assets/screenshot-2.png)
+
 
 
 ## Changelog ##
+
+v1.0.4
+* New: Added compatibility with Beaver Builder Theme, Beaver Builder Plugin and Elementor.
 
 v1.0.3
 * Fix: When two custom fonts are loaded on a site, only one of the fonts will be actually enqueued.
