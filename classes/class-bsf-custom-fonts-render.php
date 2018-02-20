@@ -75,7 +75,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_action( 'elementor/controls/controls_registered', array( $this, 'elementor_custom_fonts' ), 10, 1 );
 
 			// Add font files style.
-			add_action( 'wp_enqueue_scripts', array( $this, 'add_style' ) );
+			add_action( 'wp_head', array( $this, 'add_style' ) );
 		}
 
 
@@ -132,8 +132,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				foreach ( $fonts  as $load_font_name => $load_font ) {
 					$this->render_font_css( $load_font_name );
 				}
-				wp_enqueue_style( 'bsf-custom-fonts-front', BSF_CUSTOM_FONTS_URI . 'assets/css/bsf-custom-fonts-front.css', array(), BSF_CUSTOM_FONTS_VER );
-				wp_add_inline_style( 'bsf-custom-fonts-front', $this->font_css );
+			?>
+				<style type="text/css">
+					<?php echo $this->font_css; ?>
+				</style>
+				<?php
 			}
 		}
 
