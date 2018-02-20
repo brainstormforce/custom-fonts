@@ -93,12 +93,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				foreach ( $fonts as $font_family_name => $fonts_url ) :
 					$custom_fonts[ $font_family_name ] = array(
 						'fallback' => 'Verdana, Arial, sans-serif',
-						'weights'  => array( '400' ),
+						'weights'  => array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
 					);
 				endforeach;
 			endif;
 
-			return array_merge( $custom_fonts, $bb_fonts );
+			return array_merge( $bb_fonts, $custom_fonts );
 		}
 
 		/**
@@ -117,7 +117,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			endif;
 
 			$fonts     = $controls_registry->get_control( 'font' )->get_settings( 'options' );
-			$new_fonts = array_merge( $fonts_elementor, $fonts );
+			$new_fonts = array_merge( $fonts, $fonts_elementor );
 			$controls_registry->get_control( 'font' )->set_settings( 'options', $new_fonts );
 		}
 
