@@ -121,8 +121,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			if ( 'edit-tags' == $screen->base ) {
 
 				$old_columns = $columns;
-				$columns = array(
-					'cb' => $old_columns['cb'],
+				$columns     = array(
+					'cb'   => $old_columns['cb'],
 					'name' => $old_columns['name'],
 				);
 

@@ -53,9 +53,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 */
 		public function __construct() {
 
-			add_filter( 'all_plugins'                               , array( $this, 'plugins_page' ) );
-			add_filter( 'astra_addon_branding_options'              , __CLASS__ . '::settings' );
-			add_action( 'astra_pro_white_label_add_form'            , __CLASS__ . '::add_white_lavel_form' );
+			add_filter( 'all_plugins', array( $this, 'plugins_page' ) );
+			add_filter( 'astra_addon_branding_options', __CLASS__ . '::settings' );
+			add_action( 'astra_pro_white_label_add_form', __CLASS__ . '::add_white_lavel_form' );
 
 			add_filter( 'bsf_custom_fonts_menu_title', array( $this, 'white_label_custom_fonts_title' ) );
 			if ( is_admin() ) {
@@ -118,7 +118,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		function white_label_custom_fonts_title( $title ) {
 
 			if ( is_callable( 'Astra_Ext_White_Label_Markup::get_white_label' ) ) {
-				$name        = Astra_Ext_White_Label_Markup::get_white_label( 'bsf-custom-fonts', 'name' );
+				$name = Astra_Ext_White_Label_Markup::get_white_label( 'bsf-custom-fonts', 'name' );
 				if ( ! empty( $name ) ) {
 					$title = $name;
 				}
@@ -164,8 +164,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		public static function settings( $settings = array() ) {
 
 			$settings['bsf-custom-fonts'] = array(
-				'name'          => '',
-				'description'   => '',
+				'name'        => '',
+				'description' => '',
 			);
 
 			return $settings;
