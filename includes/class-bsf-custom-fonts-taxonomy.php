@@ -78,29 +78,29 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		public function create_custom_fonts_taxonomies() {
 			// Taxonomy: bsf_custom_fonts.
 			$labels = array(
-				'name' => __( 'Custom Fonts', 'custom-fonts' ),
-				'singular_name' => __( 'Font', 'custom-fonts' ),
-				'menu_name' => _x( 'Custom Fonts', 'Admin menu name', 'custom-fonts' ),
-				'search_items' => __( 'Search Fonts', 'custom-fonts' ),
-				'all_items' => __( 'All Fonts', 'custom-fonts' ),
-				'parent_item' => __( 'Parent Font', 'custom-fonts' ),
+				'name'              => __( 'Custom Fonts', 'custom-fonts' ),
+				'singular_name'     => __( 'Font', 'custom-fonts' ),
+				'menu_name'         => _x( 'Custom Fonts', 'Admin menu name', 'custom-fonts' ),
+				'search_items'      => __( 'Search Fonts', 'custom-fonts' ),
+				'all_items'         => __( 'All Fonts', 'custom-fonts' ),
+				'parent_item'       => __( 'Parent Font', 'custom-fonts' ),
 				'parent_item_colon' => __( 'Parent Font:', 'custom-fonts' ),
-				'edit_item' => __( 'Edit Font', 'custom-fonts' ),
-				'update_item' => __( 'Update Font', 'custom-fonts' ),
-				'add_new_item' => __( 'Add New Font', 'custom-fonts' ),
-				'new_item_name' => __( 'New Font Name', 'custom-fonts' ),
-				'not_found' => __( 'No fonts found', 'custom-fonts' ),
+				'edit_item'         => __( 'Edit Font', 'custom-fonts' ),
+				'update_item'       => __( 'Update Font', 'custom-fonts' ),
+				'add_new_item'      => __( 'Add New Font', 'custom-fonts' ),
+				'new_item_name'     => __( 'New Font Name', 'custom-fonts' ),
+				'not_found'         => __( 'No fonts found', 'custom-fonts' ),
 			);
 
 			$args = array(
-				'hierarchical' => false,
-				'labels' => $labels,
-				'public' => false,
+				'hierarchical'      => false,
+				'labels'            => $labels,
+				'public'            => false,
 				'show_in_nav_menus' => false,
-				'show_ui' => true,
-				'capabilities' => array( self::$capability ),
-				'query_var' => false,
-				'rewrite' => false,
+				'show_ui'           => true,
+				'capabilities'      => array( self::$capability ),
+				'query_var'         => false,
+				'rewrite'           => false,
 			);
 
 			register_taxonomy(
@@ -121,10 +121,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 				$fonts,
 				array(
 					'font_woff_2' => '',
-					'font_woff' => '',
-					'font_ttf' => '',
-					'font_svg' => '',
-					'font_eot' => '',
+					'font_woff'   => '',
+					'font_ttf'    => '',
+					'font_svg'    => '',
+					'font_eot'    => '',
 				)
 			);
 		}
@@ -165,7 +165,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 */
 		public static function get_links_by_name( $name ) {
 
-			$terms = get_terms(
+			$terms      = get_terms(
 				self::$register_taxonomy_slug,
 				array(
 					'hide_empty' => false,
