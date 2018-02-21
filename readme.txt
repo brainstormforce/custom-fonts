@@ -1,9 +1,9 @@
 === Custom Fonts ===
 Contributors: brainstormforce
 Donate link: https://wpastra.com/
-Tags: custom fonts, theme custom fonts, unlimited custom fonts, typography
+Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, Custom Fonts, Font, Typography
 Requires at least: 4.4
-Tested up to: 4.8.1
+Tested up to: 4.9.4
 Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,20 +12,22 @@ Custom Fonts allows you to add more fonts that extend formatting options in your
 
 == Description ==
 
-Custom Fonts allows you to add more fonts that extend formatting options in your site.
+This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eot) easily in your WordPress website. 
 
-Upload your desired fonts and start using it without knowing any CSS.
+Currently, it works with:
 
-The font’s file types you can add:
-*   woff2
-*   woff
-*   ttf
-*   svg
-*   eot
+* <a href="https://wpastra.com/?utm_source=wp-repo&utm_campaign=custom-fonts&utm_medium=description">Astra Theme</a>
+* <a href="https://www.wpbeaverbuilder.com/?fla=713">Beaver Builder Theme</a>
+* <a href="https://www.wpbeaverbuilder.com/?fla=713">Beaver Builder Plugin</a>
+* <a href="https://elementor.com/?ref=1352">Elementor Page Builder</a>
 
-You can directly select the font from the customizer under typography section.
+How does it work?
 
-This plugin is compatible with the [Astra](https://wpastra.com/) Theme, Beaver Builder Theme, Beaver Builder Plugin and Elementor.
+1. Install the plugin
+2. Upload the font files in as many formats as possible for best browser compatibility.
+3. And done. You will be able to see the fonts added in the settings of Astra / Beaver Builder / Elementor. Please refer screenshots.
+
+If you're not using any of the supported plugins and theme, you can write the custom CSS to apply the fonts.
 
 == Installation ==
 
