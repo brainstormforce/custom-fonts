@@ -4,7 +4,7 @@ Donate link: https://wpastra.com/
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, Custom Fonts, Font, Typography
 Requires at least: 4.4
 Tested up to: 4.9.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
