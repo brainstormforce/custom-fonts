@@ -24,6 +24,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		private static $_instance = null;
 
 		/**
+		 * Font base.
+		 *
+		 * This is used in case of Elementor's Font param
+		 *
+		 * @since  1.0.5
+		 * @var string
+		 */
+		private static $font_base = 'bsf-custom-fonts';
+
+		/**
 		 * Member Varible
 		 *
 		 * @var string $font_css
@@ -71,11 +81,46 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'fl_theme_system_fonts', array( $this, 'bb_custom_fonts' ) );
 			add_filter( 'fl_builder_font_families_system', array( $this, 'bb_custom_fonts' ) );
 
-			// Elementor page builder.
-			add_action( 'elementor/controls/controls_registered', array( $this, 'elementor_custom_fonts' ), 10, 1 );
-
 			// Add font files style.
 			add_action( 'wp_head', array( $this, 'add_style' ) );
+
+			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
+			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
+		}
+
+		/**
+		 * Add Custom Font group to elementor font list.
+		 *
+		 * Group name "Custom" is added as the first element in the array.
+		 *
+		 * @since  1.0.5
+		 * @param  Array $font_groups default font groups in elementor.
+		 * @return Array              Modified font groups with newly added font group.
+		 */
+		public function elementor_group( $font_groups ) {
+			$new_group[ self::$font_base ] = __( 'Custom', 'custom-fonts' );
+			$font_groups                   = $new_group + $font_groups;
+
+			return $font_groups;
+		}
+
+		/**
+		 * Add Custom Fonts to the Elementor Page builder's font param.
+		 *
+		 * @since  1.0.5
+		 * @param Array $fonts Custom Font's array.
+		 */
+		public function add_elementor_fonts( $fonts ) {
+
+			$all_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+
+			if ( ! empty( $all_fonts ) ) {
+				foreach ( $all_fonts as $font_family_name => $fonts_url ) {
+					$fonts[ $font_family_name ] = self::$font_base;
+				}
+			}
+
+			return $fonts;
 		}
 
 
@@ -89,36 +134,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			$fonts        = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 			$custom_fonts = array();
-			if ( ! empty( $fonts ) ) :
-				foreach ( $fonts as $font_family_name => $fonts_url ) :
+			if ( ! empty( $fonts ) ) {
+				foreach ( $fonts as $font_family_name => $fonts_url ) {
 					$custom_fonts[ $font_family_name ] = array(
 						'fallback' => 'Verdana, Arial, sans-serif',
 						'weights'  => array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
 					);
-				endforeach;
-			endif;
+				}
+			}
 
 			return array_merge( $bb_fonts, $custom_fonts );
-		}
-
-		/**
-		 * Add Custom Font list to Elementor Page Builder
-		 *
-		 * @since  1.0.4
-		 * @param array $controls_registry font families added by elementor.
-		 */
-		function elementor_custom_fonts( $controls_registry ) {
-			$fonts           = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-			$fonts_elementor = array( 'Use Any Fonts' => array() );
-			if ( ! empty( $fonts ) ) :
-				foreach ( $fonts as $font_family_name => $fonts_url ) :
-					$fonts_elementor[ $font_family_name ] = 'system';
-				endforeach;
-			endif;
-
-			$fonts     = $controls_registry->get_control( 'font' )->get_settings( 'options' );
-			$new_fonts = array_merge( $fonts, $fonts_elementor );
-			$controls_registry->get_control( 'font' )->set_settings( 'options', $new_fonts );
 		}
 
 		/**
