@@ -32,7 +32,7 @@
 		{	
 			var file_frame;
 			window.inputWrapper = '';
-			$( document.body ).on('click', '.bsf-custom-fonts-upload', function(e) {
+			$( document.body ).on('click', '.bsf-custom-fonts-upload', function(event) {
 				event.preventDefault();
 				var button = $(this),
     				button_type = button.data('upload-type');
