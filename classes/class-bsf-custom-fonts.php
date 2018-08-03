@@ -47,4 +47,4 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 	 *  Kicking this off by calling 'get_instance()' method
 	 */
 	Bsf_Custom_Fonts::get_instance();
-}// End if().
+}
