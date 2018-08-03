@@ -157,7 +157,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				foreach ( $fonts  as $load_font_name => $load_font ) {
 					$this->render_font_css( $load_font_name );
 				}
-			?>
+				?>
 				<style type="text/css">
 					<?php echo $this->font_css; ?>
 				</style>
@@ -279,7 +279,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		function theme_update_notice() {
 			if ( defined( 'ASTRA_THEME_VERSION' ) ) {
 				if ( version_compare( ASTRA_THEME_VERSION, '1.0.16', '<' ) ) {
-				?>
+					?>
 				<div class="notice notice-error is-dismissible">
 					<p>
 					<?php
@@ -291,7 +291,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					?>
 					</p>
 				</div>
-			<?php
+					<?php
 				}
 			}
 		}
