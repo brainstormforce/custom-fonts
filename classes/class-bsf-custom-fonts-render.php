@@ -49,7 +49,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self;
+				self::$_instance = new self();
 			}
 
 			return self::$_instance;
@@ -83,6 +83,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			// Add font files style.
 			add_action( 'wp_head', array( $this, 'add_style' ) );
+			add_action( 'enqueue_block_editor_assets', array( $this, 'add_style' ) );
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
