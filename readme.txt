@@ -3,8 +3,8 @@ Contributors: brainstormforce
 Donate link: https://wpastra.com/
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, Custom Fonts, Font, Typography
 Requires at least: 4.4
-Tested up to: 4.9.8
-Stable tag: 1.0.5
+Tested up to: 5.0
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 == Changelog ==
+
+v1.0.6
+* Improvement: Enqueue the custom fonts in the Blocck Editor to correctly prefiew the custom fonts.
 
 v1.0.5
 * Fix: JavaScript error in the Firefox browser not allowing to upload any fonts.
