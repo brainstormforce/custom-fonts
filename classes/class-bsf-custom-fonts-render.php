@@ -162,7 +162,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 				?>
 				<style type="text/css">
-					<?php echo $this->font_css; ?>
+					<?php echo strip_tags( $this->font_css ); ?>
 				</style>
 				<?php
 			}
