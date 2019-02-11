@@ -83,8 +83,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			// Add font files style.
 			add_action( 'wp_head', array( $this, 'add_style' ) );
-			if( is_admin( ) ){
-			add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
+			if ( is_admin() ) {
+				add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
 			}
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
