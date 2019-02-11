@@ -175,12 +175,22 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		public function add_customizer_font_list( $value ) {
 
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-
 				echo '<optgroup label="Custom">';
 
 			foreach ( $fonts as $font => $links ) {
-				echo '<option value="' . esc_attr( $font ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+				echo '<option value="'.get_font_values( $font, $links['font_fallback']).'" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
 			}
+		}
+
+		/**
+		 * Enqueue Admin Scripts
+		 *
+		 * @since 1.0.0
+		 */
+		public function get_font_values( $font, $font_fallback) {
+			$font .= ', '. $font_fallback;
+
+			return $font;
 		}
 
 		/**

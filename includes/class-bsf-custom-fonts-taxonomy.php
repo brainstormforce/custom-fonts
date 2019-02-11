@@ -120,6 +120,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 			return wp_parse_args(
 				$fonts,
 				array(
+					'font_fallback' => '',
 					'font_woff_2' => '',
 					'font_woff'   => '',
 					'font_ttf'    => '',
