@@ -189,7 +189,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		}
 
 		/**
-		 * Enqueue Admin Scripts
+		 * Get fonts
 		 *
 		 * @since 1.0.0
 		 * @param array $font font.

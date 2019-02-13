@@ -162,7 +162,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		}
 
 		/**
-		 * Add Taxonomy data field
+		 * Add font fallback field
 		 *
 		 * @since 1.0.0
 		 * @param int    $id current term id.
@@ -203,7 +203,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		}
 
 		/**
-		 * Add Taxonomy data field
+		 * Edit font fallback field
 		 *
 		 * @since 1.0.0
 		 * @param int    $id current term id.
