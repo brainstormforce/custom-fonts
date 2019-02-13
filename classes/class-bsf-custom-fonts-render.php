@@ -197,7 +197,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		public static function get_font_values( $font, $font_fallback ) {
 
-			$font .= ( isset( $font_fallback ) ) ? ', ' . $font_fallback : '';
+			$font .= ( isset( $font_fallback ) ) ? ', ' . trim( $font_fallback ) : '';
 			return $font;
 		}
 

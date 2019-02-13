@@ -137,7 +137,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since 1.0.0
 		 */
 		public function add_new_taxonomy_data() {
-			$this->font_new_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), __( 'Add the font\'s fallback names with comma(,) seprator.', 'custom-fonts' ) );
+			$this->font_new_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), __( 'Add the font\'s fallback names with comma(,) seprator.  eg. Arial, Serif', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
@@ -153,7 +153,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function edit_taxonomy_data( $term ) {
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-			$this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), $data['font_fallback'], __( 'Add the font\'s fallback names with comma(,) seprator.', 'custom-fonts' ) );
+			$this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), $data['font_fallback'], __( 'Add the font\'s fallback names with comma(,) seprator.  eg. Arial, Serif', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), $data['font_woff_2'], __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), $data['font_woff'], __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), $data['font_ttf'], __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
