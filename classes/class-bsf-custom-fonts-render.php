@@ -178,7 +178,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				echo '<optgroup label="Custom">';
 
 			foreach ( $fonts as $font => $links ) {
-				echo '<option value="'.get_font_values( $font, $links['font_fallback']).'" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+
+				if ( ! isset( $links['font_fallback'] ) ) {
+
+					echo '<option value="' . self::get_font_values( $font, $links['font_fallbackt'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+				} else {
+					echo '<option value="' . self::get_font_values( $font, $links['font_fallback'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+				}
 			}
 		}
 
@@ -186,10 +192,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * Enqueue Admin Scripts
 		 *
 		 * @since 1.0.0
+		 * @param array $font font.
+		 * @param array $font_fallback fallback fonts.
 		 */
-		public function get_font_values( $font, $font_fallback) {
-			$font .= ', '. $font_fallback;
+		public static function get_font_values( $font, $font_fallback ) {
 
+			$font .= ( isset( $font_fallback ) ) ? ', ' . $font_fallback : '';
 			return $font;
 		}
 
