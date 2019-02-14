@@ -125,6 +125,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 					'font_ttf'    => '',
 					'font_svg'    => '',
 					'font_eot'    => '',
+					'font_otf'    => '',
 				)
 			);
 		}

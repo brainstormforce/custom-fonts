@@ -141,6 +141,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->font_file_new_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
 		}
 
 		/**
@@ -156,6 +157,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), $data['font_ttf'], __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), $data['font_eot'], __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), $data['font_svg'], __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), $data['font_otf'], __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
 		}
 
 		/**
@@ -232,6 +234,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$mimes['ttf']   = 'application/x-font-ttf';
 			$mimes['svg']   = 'image/svg+xml';
 			$mimes['eot']   = 'application/vnd.ms-fontobject';
+			$mimes['otf']   = 'application/x-font-otf';
 			return $mimes;
 		}
 
