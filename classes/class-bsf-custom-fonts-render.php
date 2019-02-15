@@ -87,6 +87,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
+			// Astra filter before creating google fonts URL.
+			add_filter( 'astra_google_fonts', array( $this, 'remove_custom_font_google_url' ) );
 		}
 
 		/**
@@ -103,6 +105,22 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$font_groups                   = $new_group + $font_groups;
 
 			return $font_groups;
+		}
+
+		/**
+		 * Remove Custom Font from Google Font URL.
+		 *
+		 * @since  1.1.0
+		 */
+		function remove_custom_font_google_url() {
+			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+			if ( $fonts ) {
+				foreach ( $fonts as $key => $value ) {
+					unset( $fonts[ $key ] );
+				}
+			}
+
+			return $fonts;
 		}
 
 		/**
@@ -181,7 +199,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 				if ( empty( $links['font_fallback'] ) && '' == $links['font_fallback'] ) {
 
-					echo '<option value="' . self::get_font_values( $font, $links['font_fallbackt'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+					echo '<option value="' . self::get_font_values( $font, $links['font_fallback'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
 				} else {
 					echo '<option value="' . self::get_font_values( $font, $links['font_fallback'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
 				}
