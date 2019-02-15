@@ -234,7 +234,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$mimes['ttf']   = 'application/x-font-ttf';
 			$mimes['svg']   = 'image/svg+xml';
 			$mimes['eot']   = 'application/vnd.ms-fontobject';
-			$mimes['otf']   = 'application/x-font-otf';
+			$mimes['otf']   = 'font/otf';
 			return $mimes;
 		}
 
