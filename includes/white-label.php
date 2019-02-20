@@ -8,7 +8,7 @@
 ?>
 <?php
 // Bail from displaying settings screen if Astra Pro is older version.
-if ( ! is_callable( 'Astra_Ext_White_Label_Markup::get_whitelabel_strings', true ) ) {
+if ( ! is_callable( 'Astra_Ext_White_Label_Markup::branding_key_to_constant' ) ) {
 	return;
 }
 ?>
