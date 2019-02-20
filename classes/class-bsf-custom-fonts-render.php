@@ -83,7 +83,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			// Add font files style.
 			add_action( 'wp_head', array( $this, 'add_style' ) );
-			add_action( 'enqueue_block_editor_assets', array( $this, 'add_style' ) );
+			if ( is_admin() ) {
+				add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
+			}
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
@@ -160,7 +162,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 				?>
 				<style type="text/css">
-					<?php echo $this->font_css; ?>
+					<?php echo strip_tags( $this->font_css ); ?>
 				</style>
 				<?php
 			}
