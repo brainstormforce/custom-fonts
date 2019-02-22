@@ -1,6 +1,6 @@
 === Custom Fonts ===
 Contributors: brainstormforce
-Donate link: https://wpastra.com/
+Donate link: https://www.paypal.me/BrainstormForce
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, Custom Fonts, Font, Typography
 Requires at least: 4.4
 Tested up to: 5.1
