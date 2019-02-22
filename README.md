@@ -44,7 +44,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 ## Changelog ##
 
 ### v1.0.7 ###
-- Fix: Custom Fonts loading the the Block Editor breaking styling of the editor.
+- Fix: Custom Fonts loading the Block Editor breaking styling of the editor.
 
 ### v1.0.6 ###
 - Improvement: Enqueue the custom fonts in the Blocck Editor to correctly prefiew the custom fonts.
