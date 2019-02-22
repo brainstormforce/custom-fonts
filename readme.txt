@@ -1,10 +1,10 @@
 === Custom Fonts ===
 Contributors: brainstormforce
-Donate link: https://wpastra.com/
+Donate link: https://www.paypal.me/BrainstormForce
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, Custom Fonts, Font, Typography
 Requires at least: 4.4
-Tested up to: 5.0
-Stable tag: 1.0.6
+Tested up to: 5.1
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,24 +43,27 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 == Changelog ==
 
-v1.0.6
-* Improvement: Enqueue the custom fonts in the Blocck Editor to correctly prefiew the custom fonts.
+= v1.0.7 =
+- Fix: Custom Fonts loading the the Block Editor breaking styling of the editor.
 
-v1.0.5
-* Fix: JavaScript error in the Firefox browser not allowing to upload any fonts.
+= v1.0.6 =
+- Improvement: Enqueue the custom fonts in the Blocck Editor to correctly prefiew the custom fonts.
 
-v1.0.4
-* New: Added compatibility with Beaver Builder Theme, Beaver Builder Plugin and Elementor.
+= v1.0.5 =
+- Fix: JavaScript error in the Firefox browser not allowing to upload any fonts.
 
-v1.0.3
-* Fix: When two custom fonts are loaded on a site, only one of the fonts will be actually enqueued.
+= v1.0.4 =
+- New: Added compatibility with Beaver Builder Theme, Beaver Builder Plugin and Elementor.
 
-v1.0.2
-* White Label support added from the [Astra Pro](https://wpastra.com/pro/) plugin.
+= v1.0.3 =
+- Fix: When two custom fonts are loaded on a site, only one of the fonts will be actually enqueued.
 
-v1.0.1
-1. Improved the design of the Admin UI.
-2. Changed the plugin name to be Custom Fonts instead of BSF Custom Fonts.
+= v1.0.2 =
+- White Label support added from the [Astra Pro](https://wpastra.com/pro/) plugin.
 
-v1.0.0
-1. Initial release.
+= v1.0.1 =
+- Improved the design of the Admin UI.
+- Changed the plugin name to be Custom Fonts instead of BSF Custom Fonts.
+
+= v1.0.0 =
+- Initial release.
