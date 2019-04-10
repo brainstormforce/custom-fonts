@@ -250,7 +250,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			if ( 'ttf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
 				$defaults['type'] = 'application/x-font-ttf';
 				$defaults['ext']  = 'ttf';
-
 			}
 
 			return $defaults;
