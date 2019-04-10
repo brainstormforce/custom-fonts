@@ -40,7 +40,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self;
+				self::$_instance = new self();
 			}
 
 			return self::$_instance;
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			add_action( 'create_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'save_metadata' ) );
 
 			add_filter( 'upload_mimes', array( $this, 'add_fonts_to_allowed_mimes' ) );
-
+			add_filter( 'wp_check_filetype_and_ext', array( $this, 'update_mime_types' ), 10, 3 );
 		}
 
 		/**
@@ -232,7 +232,28 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$mimes['ttf']   = 'application/x-font-ttf';
 			$mimes['svg']   = 'image/svg+xml';
 			$mimes['eot']   = 'application/vnd.ms-fontobject';
+
 			return $mimes;
+		}
+
+		/**
+		 * Correct the mome types and extension for the font types.
+		 *
+		 * @param array  $defaults File data array containing 'ext', 'type', and
+		 *                                          'proper_filename' keys.
+		 * @param string $file                      Full path to the file.
+		 * @param string $filename                  The name of the file (may differ from $file due to
+		 *                                          $file being in a tmp directory).
+		 * @return Array File data array containing 'ext', 'type', and
+		 */
+		public function update_mime_types( $defaults, $file, $filename ) {
+			if ( 'ttf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+				$defaults['type'] = 'application/x-font-ttf';
+				$defaults['ext']  = 'ttf';
+
+			}
+
+			return $defaults;
 		}
 
 	}
