@@ -181,7 +181,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			foreach ( $fonts as $font => $links ) {
 
-				$font_value = "'".$font."'";
+				$font_value = "'" . $font . "'";
 				if ( empty( $links['font_fallback'] ) && '' == $links['font_fallback'] ) {
 					echo '<option value="' . self::get_font_values( $font_value, $links['font_fallback'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
 				} else {
