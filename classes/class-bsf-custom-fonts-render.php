@@ -89,6 +89,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
+			// Astra filter before creating google fonts URL.
+			add_filter( 'astra_google_fonts', array( $this, 'remove_custom_font_google_url' ) );
 		}
 
 		/**
@@ -105,6 +107,24 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$font_groups                   = $new_group + $font_groups;
 
 			return $font_groups;
+		}
+
+		/**
+		 * Remove Custom Font from Google Font URL.
+		 *
+		 * @since  1.1.0
+		 */
+		function remove_custom_font_google_url( $fonts ) {
+			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+			if ( ! empty( $custom_fonts ) ) {
+				foreach ( $custom_fonts as $key => $value ) {
+					$font_key = "'" . $key . "'" . ', ' . $value['font_fallback'];
+					if ( array_key_exists( $font_key, $fonts ) ) {
+						unset( $fonts[ $font_key ] );
+					}
+				}
+			}
+			return $fonts;
 		}
 
 		/**
