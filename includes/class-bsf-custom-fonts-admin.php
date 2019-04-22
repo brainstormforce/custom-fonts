@@ -164,7 +164,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Add font fallback field
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 * @param int    $id current term id.
 		 * @param string $title font type title.
 		 * @param string $description title font type description.
@@ -230,7 +230,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Add Taxonomy data field
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 * @param int    $id current term id.
 		 * @param string $title font type title.
 		 * @param string $value title font type meta values.

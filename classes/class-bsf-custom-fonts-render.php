@@ -115,7 +115,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @param Array $fonts Selected Google Fonts in the Astra Customizer Settings.
 		 * @return Array Google fonts array which do not contain same fonts as the custom fonts.
 		 *
-		 * @since  1.1.0
+		 * @since  x.x.x
 		 */
 		function remove_custom_font_google_url( $fonts ) {
 			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
@@ -216,7 +216,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Get fonts
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 * @param array $font font.
 		 * @param array $font_fallback fallback fonts.
 		 */
