@@ -90,7 +90,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
 			// Astra filter before creating google fonts URL.
-			add_filter( 'astra_google_fonts', array( $this, 'remove_custom_font_google_url' ) );
+			add_filter( 'astra_google_fonts_selected', array( $this, 'remove_custom_font_google_url' ) );
 		}
 
 		/**
@@ -111,6 +111,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 		/**
 		 * Remove Custom Font from Google Font URL.
+		 *
+		 * @param Array $fonts Selected Google Fonts in the Astra Customizer Settings.
+		 * @return Array Google fonts array which do not contain same fonts as the custom fonts.
 		 *
 		 * @since  1.1.0
 		 */
