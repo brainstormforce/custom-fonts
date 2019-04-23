@@ -1,10 +1,10 @@
 === Custom Fonts ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
-Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, Custom Fonts, Font, Typography
+Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography
 Requires at least: 4.4
 Tested up to: 5.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Custom Fonts allows you to add more fonts that extend formatting options in your
 
 == Description ==
 
-This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eot) easily in your WordPress website. 
+This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eot, otf) easily in your WordPress website. 
 
 Currently, it works with:
 
@@ -33,7 +33,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 1. Upload the plugin files to the `/wp-content/plugins/custom-fonts` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Appearance -> Custom Fonts -> Add Custom Fonts name, woff2, woff, ttf, eot and svg files.
+3. Use the Appearance -> Custom Fonts -> Add Custom Fonts name, woff2, woff, ttf, eot, otf and svg files.
 
 == Screenshots ==
 
@@ -42,6 +42,10 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 == Changelog ==
+
+= v1.0.8 =
+- New: Now you can also upload otf fonts.
+- Fix: ttf fonts not being uploaded in WordPress media library.
 
 = v1.0.7 =
 - Fix: Custom Fonts loading the Block Editor breaking styling of the editor.
