@@ -246,7 +246,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 				$css .= join( ', ', $arr );
 				$css .= ';';
-				$css .= 'font-display: ' . esc_attr( $links['font-display'] );
+				$css .= 'font-display: ' . esc_attr( $links['font-display'] ) . ';';
 				$css .= '}';
 			endforeach;
 
