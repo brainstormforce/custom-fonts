@@ -118,7 +118,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 
 			$screen = get_current_screen();
 			// If current screen is add new custom fonts screen.
-			if ( 'edit-tags' == $screen->base ) {
+			if ( isset( $screen->base ) && 'edit-tags' == $screen->base ) {
 
 				$old_columns = $columns;
 				$columns     = array(
