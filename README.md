@@ -4,7 +4,7 @@
 **Tags:** Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography  
 **Requires at least:** 4.4  
 **Tested up to:** 5.1  
-**Stable tag:** 1.0.8  
+**Stable tag:** 1.1.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -42,6 +42,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 ## Changelog ##
+
+### 1.1.0 ###
+- New: Option to select font-display property.
 
 ### v1.0.8 ###
 - New: Now you can also upload otf fonts.
