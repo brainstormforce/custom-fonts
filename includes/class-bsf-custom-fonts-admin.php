@@ -214,7 +214,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param String $id Field ID.
 		 * @param String $title Field Title.
 		 * @param String $description Field Description.
-		 * @param Array $select_fields Select fields as Array.
+		 * @param Array  $select_fields Select fields as Array.
 		 * @return void
 		 */
 		protected function select_new_field( $id, $title, $description, $select_fields ) {
@@ -239,7 +239,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param String $title Field Title.
 		 * @param String $saved_val Field Value.
 		 * @param String $description Field Description.
-		 * @param Array $select_fields Select fields as Array.
+		 * @param Array  $select_fields Select fields as Array.
 		 * @return void
 		 */
 		private function select_edit_field( $id, $title, $saved_val = '', $description, $select_fields ) {
