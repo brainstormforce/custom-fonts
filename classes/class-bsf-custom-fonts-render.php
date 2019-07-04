@@ -245,7 +245,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					$arr[] = 'url(' . esc_url( $links['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
 				}
 				$css .= join( ', ', $arr );
-				$css .= ';}';
+				$css .= ';';
+				$css .= 'font-display: ' . esc_attr( $links['font-display'] );
+				$css .= '}';
 			endforeach;
 
 			$this->font_css .= $css;

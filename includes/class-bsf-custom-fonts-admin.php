@@ -142,6 +142,19 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->font_file_new_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
+
+			$this->select_new_field(
+				'font-display',
+				__( 'Font Display', 'custom-fonts' ),
+				__( 'Select font-display property for this font', 'custom-fonts' ),
+				array(
+					'auto'     => 'auto',
+					'block'    => 'block',
+					'swap'     => 'swap',
+					'fallback' => 'fallback',
+					'optional' => 'optional',
+				)
+			);
 		}
 
 		/**
@@ -158,6 +171,20 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), $data['font_eot'], __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), $data['font_svg'], __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), $data['font_otf'], __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
+
+			$this->select_edit_field(
+				'font-display',
+				__( 'Font Display', 'custom-fonts' ),
+				$data['font-display'],
+				__( 'Select font-display property for this font', 'custom-fonts' ),
+				array(
+					'auto'     => 'Auto',
+					'block'    => 'Block',
+					'swap'     => 'Swap',
+					'fallback' => 'Fallback',
+					'optional' => 'Optional',
+				)
+			);
 		}
 
 		/**
@@ -178,6 +205,62 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				<a href="#" class="bsf-custom-fonts-upload button" data-upload-type="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Upload', 'custom-fonts' ); ?></a>
 				<p><?php echo esc_html( $description ); ?></p>
 			</div>
+			<?php
+		}
+
+		/**
+		 * Render select field for the new font screen.
+		 *
+		 * @param String $id Field ID.
+		 * @param String $title Field Title.
+		 * @param String $description Field Description.
+		 * @param Array $select_fields Select fields as Array.
+		 * @return void
+		 */
+		protected function select_new_field( $id, $title, $description, $select_fields ) {
+			?>
+			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
+				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
+				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" />
+					<?php
+					foreach ( $select_fields as $key => $value ) {
+						?>
+						<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value ); ?></option>;
+					<?php } ?>
+				</select>
+			</div>
+			<?php
+		}
+
+		/**
+		 * Render select field for the edit font screen.
+		 *
+		 * @param String $id Field ID.
+		 * @param String $title Field Title.
+		 * @param String $saved_val Field Value.
+		 * @param String $description Field Description.
+		 * @param Array $select_fields Select fields as Array.
+		 * @return void
+		 */
+		private function select_edit_field( $id, $title, $saved_val = '', $description, $select_fields ) {
+			?>
+			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
+				<th scope="row">
+					<label for="metadata-<?php echo esc_attr( $id ); ?>">
+						<?php echo esc_html( $title ); ?>
+					</label>
+				</th>
+				<td>
+				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" />
+					<?php
+					foreach ( $select_fields as $key => $value ) {
+						?>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $saved_val ); ?>><?php echo esc_html( $value ); ?></option>;
+					<?php } ?>
+				</select>
+					<p><?php echo esc_html( $description ); ?></p>
+				</td>
+			</tr>
 			<?php
 		}
 
