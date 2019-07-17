@@ -52,7 +52,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			add_action( 'admin_menu', array( $this, 'register_custom_fonts_menu' ) );
+			add_action( 'admin_menu', array( $this, 'register_custom_fonts_menu' ), 101 );
 			add_action( 'admin_head', array( $this, 'custom_fonts_menu_highlight' ) );
 
 			add_filter( 'manage_edit-' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_columns', array( $this, 'manage_columns' ) );
