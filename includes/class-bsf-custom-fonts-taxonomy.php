@@ -55,7 +55,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self;
+				self::$_instance = new self();
 			}
 
 			return self::$_instance;
@@ -121,11 +121,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 				$fonts,
 				array(
 					'font_fallback' => '',
-					'font_woff_2'   => '',
-					'font_woff'     => '',
-					'font_ttf'      => '',
-					'font_svg'      => '',
-					'font_eot'      => '',
+					'font_woff_2'  => '',
+					'font_woff'    => '',
+					'font_ttf'     => '',
+					'font_svg'     => '',
+					'font_eot'     => '',
+					'font_otf'     => '',
+					'font-display' => 'swap',
 				)
 			);
 		}
