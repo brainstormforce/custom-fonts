@@ -121,7 +121,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 			if ( ! empty( $custom_fonts ) ) {
 				foreach ( $custom_fonts as $key => $value ) {
-					$font_key = "'" . $key . "'" . ', ' . $value['font_fallback'];
+					if( $value['font_fallback'] ) {
+						$font_key = "'" . $key . "'" . ', ' . $value['font_fallback'];
+					}
+					else {
+						$font_key = "'" . $key . "'";
+					}
 					if ( array_key_exists( $font_key, $fonts ) ) {
 						unset( $fonts[ $font_key ] );
 					}
@@ -265,7 +270,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		private function render_font_css( $font ) {
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
-
 			foreach ( $fonts as $font => $links ) :
 				$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
 				$css .= 'src:';
