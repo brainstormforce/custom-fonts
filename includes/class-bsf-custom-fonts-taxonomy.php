@@ -121,13 +121,17 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 				$fonts,
 				array(
 					'font_fallback' => '',
-					'font_woff_2'  => '',
-					'font_woff'    => '',
-					'font_ttf'     => '',
-					'font_svg'     => '',
-					'font_eot'     => '',
-					'font_otf'     => '',
 					'font-display' => 'swap',
+					'repeater_fields'   => array( 
+						'normal'	=> array(
+							'font_woff_2'  => '',
+							'font_woff'    => '',
+							'font_ttf'     => '',
+							'font_svg'     => '',
+							'font_eot'     => '',
+							'font_otf'     => '',
+						)	
+					)
 				)
 			);
 		}
@@ -208,8 +212,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @param int   $term_id custom font term id.
 		 */
 		public static function update_font_links( $posted, $term_id ) {
-
 			$links = self::get_font_links( $term_id );
+			// var_dump("here");
+			// var_dump($term_id);
+			// echo "<pre>";
+			// print_r( $posted );
+			// echo "</pre>";
+			// die();
 			foreach ( array_keys( $links ) as $key ) {
 				if ( isset( $posted[ $key ] ) ) {
 					$links[ $key ] = $posted[ $key ];
@@ -217,6 +226,31 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 					$links[ $key ] = '';
 				}
 			}
+
+			// $links = array(
+			// 	'font-fallback' => '',
+			// 	'font-display' => 'swap',
+			// 	'repeater_fields' => array(
+			// 		[100] => array (
+			// 			'font_woff_2'  => '',
+			// 			'font_woff'    => '',
+			// 			'font_ttf'     => '',
+			// 			'font_svg'     => '',
+			// 			'font_eot'     => '',
+			// 			'font_otf'     => '',
+			// 		),		
+			// 		[200] => array (
+			// 			'font_woff_2'  => '',
+			// 			'font_woff'    => '',
+			// 			'font_ttf'     => '',
+			// 			'font_svg'     => '',
+			// 			'font_eot'     => '',
+			// 			'font_otf'     => '',
+			// 		),
+			// 	),
+			// );
+			// $links = $posted;
+
 			update_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", $links );
 		}
 
