@@ -254,7 +254,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		public function render_fonts( $load_fonts ) {
 
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-			var_dump($fonts );
 
 			foreach ( $load_fonts  as $load_font_name => $load_font ) {
 				if ( array_key_exists( $load_font_name, $fonts ) ) {
@@ -272,7 +271,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		private function render_font_css( $font ) {
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
-			var_dump($fonts);
 			foreach ( $fonts as $font => $links ) :
 				$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
 				$css .= 'src:';

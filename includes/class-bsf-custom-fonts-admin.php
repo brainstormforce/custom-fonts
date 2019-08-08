@@ -253,7 +253,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function edit_new_taxonomy_default_data( $term ) {
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-			// var_dump($data)
 			$this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), $data['font_fallback'], __( 'Add the font\'s fallback names with comma(,) separator.  eg. Arial, Serif', 'custom-fonts' ) );
 
 			$this->select_default_new_field(
@@ -467,8 +466,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function save_metadata( $term_id ) {
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
-				// var_dump("here");
-				// var_dump($term_id);
 				$value = $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ];
 
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
@@ -518,8 +515,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		}
 
 	}
-
-
 
 	/**
 	 *  Kicking this off by calling 'get_instance()' method

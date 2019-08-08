@@ -213,43 +213,14 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 */
 		public static function update_font_links( $posted, $term_id ) {
 			$links = self::get_font_links( $term_id );
-			// var_dump("here");
-			// var_dump($term_id);
-			// echo "<pre>";
-			// print_r( $posted );
-			// echo "</pre>";
-			// die();
-			foreach ( array_keys( $links ) as $key ) {
-				if ( isset( $posted[ $key ] ) ) {
-					$links[ $key ] = $posted[ $key ];
-				} else {
-					$links[ $key ] = '';
-				}
-			}
-
-			// $links = array(
-			// 	'font-fallback' => '',
-			// 	'font-display' => 'swap',
-			// 	'repeater_fields' => array(
-			// 		[100] => array (
-			// 			'font_woff_2'  => '',
-			// 			'font_woff'    => '',
-			// 			'font_ttf'     => '',
-			// 			'font_svg'     => '',
-			// 			'font_eot'     => '',
-			// 			'font_otf'     => '',
-			// 		),		
-			// 		[200] => array (
-			// 			'font_woff_2'  => '',
-			// 			'font_woff'    => '',
-			// 			'font_ttf'     => '',
-			// 			'font_svg'     => '',
-			// 			'font_eot'     => '',
-			// 			'font_otf'     => '',
-			// 		),
-			// 	),
-			// );
-			// $links = $posted;
+			// foreach ( array_keys( $links ) as $key ) {
+			// 	if ( isset( $posted[ $key ] ) ) {
+			// 		$links[ $key ] = $posted[ $key ];
+			// 	} else {
+			// 		$links[ $key ] = '';
+			// 	}
+			// }
+			$links = $posted;
 
 			update_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", $links );
 		}
