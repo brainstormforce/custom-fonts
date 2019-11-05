@@ -40,7 +40,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self;
+				self::$_instance = new self();
 			}
 
 			return self::$_instance;
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			add_action( 'admin_menu', array( $this, 'register_custom_fonts_menu' ) );
+			add_action( 'admin_menu', array( $this, 'register_custom_fonts_menu' ), 101 );
 			add_action( 'admin_head', array( $this, 'custom_fonts_menu_highlight' ) );
 
 			add_filter( 'manage_edit-' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_columns', array( $this, 'manage_columns' ) );
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			add_action( 'create_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'save_metadata' ) );
 
 			add_filter( 'upload_mimes', array( $this, 'add_fonts_to_allowed_mimes' ) );
-
+			add_filter( 'wp_check_filetype_and_ext', array( $this, 'update_mime_types' ), 10, 3 );
 		}
 
 		/**
@@ -118,7 +118,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 
 			$screen = get_current_screen();
 			// If current screen is add new custom fonts screen.
-			if ( 'edit-tags' == $screen->base ) {
+			if ( isset( $screen->base ) && 'edit-tags' == $screen->base ) {
 
 				$old_columns = $columns;
 				$columns     = array(
@@ -141,6 +141,20 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->font_file_new_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_new_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
+
+			$this->select_new_field(
+				'font-display',
+				__( 'Font Display', 'custom-fonts' ),
+				__( 'Select font-display property for this font', 'custom-fonts' ),
+				array(
+					'auto'     => 'auto',
+					'block'    => 'block',
+					'swap'     => 'swap',
+					'fallback' => 'fallback',
+					'optional' => 'optional',
+				)
+			);
 		}
 
 		/**
@@ -156,6 +170,21 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), $data['font_ttf'], __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), $data['font_eot'], __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), $data['font_svg'], __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), $data['font_otf'], __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
+
+			$this->select_edit_field(
+				'font-display',
+				__( 'Font Display', 'custom-fonts' ),
+				$data['font-display'],
+				__( 'Select font-display property for this font', 'custom-fonts' ),
+				array(
+					'auto'     => 'Auto',
+					'block'    => 'Block',
+					'swap'     => 'Swap',
+					'fallback' => 'Fallback',
+					'optional' => 'Optional',
+				)
+			);
 		}
 
 		/**
@@ -176,6 +205,62 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				<a href="#" class="bsf-custom-fonts-upload button" data-upload-type="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Upload', 'custom-fonts' ); ?></a>
 				<p><?php echo esc_html( $description ); ?></p>
 			</div>
+			<?php
+		}
+
+		/**
+		 * Render select field for the new font screen.
+		 *
+		 * @param String $id Field ID.
+		 * @param String $title Field Title.
+		 * @param String $description Field Description.
+		 * @param Array  $select_fields Select fields as Array.
+		 * @return void
+		 */
+		protected function select_new_field( $id, $title, $description, $select_fields ) {
+			?>
+			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
+				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
+				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" />
+					<?php
+					foreach ( $select_fields as $key => $value ) {
+						?>
+						<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value ); ?></option>;
+					<?php } ?>
+				</select>
+			</div>
+			<?php
+		}
+
+		/**
+		 * Render select field for the edit font screen.
+		 *
+		 * @param String $id Field ID.
+		 * @param String $title Field Title.
+		 * @param String $saved_val Field Value.
+		 * @param String $description Field Description.
+		 * @param Array  $select_fields Select fields as Array.
+		 * @return void
+		 */
+		private function select_edit_field( $id, $title, $saved_val = '', $description, $select_fields ) {
+			?>
+			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
+				<th scope="row">
+					<label for="metadata-<?php echo esc_attr( $id ); ?>">
+						<?php echo esc_html( $title ); ?>
+					</label>
+				</th>
+				<td>
+				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" />
+					<?php
+					foreach ( $select_fields as $key => $value ) {
+						?>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $saved_val ); ?>><?php echo esc_html( $value ); ?></option>;
+					<?php } ?>
+				</select>
+					<p><?php echo esc_html( $description ); ?></p>
+				</td>
+			</tr>
 			<?php
 		}
 
@@ -232,7 +317,33 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$mimes['ttf']   = 'application/x-font-ttf';
 			$mimes['svg']   = 'image/svg+xml';
 			$mimes['eot']   = 'application/vnd.ms-fontobject';
+			$mimes['otf']   = 'font/otf';
+
 			return $mimes;
+		}
+
+		/**
+		 * Correct the mome types and extension for the font types.
+		 *
+		 * @param array  $defaults File data array containing 'ext', 'type', and
+		 *                                          'proper_filename' keys.
+		 * @param string $file                      Full path to the file.
+		 * @param string $filename                  The name of the file (may differ from $file due to
+		 *                                          $file being in a tmp directory).
+		 * @return Array File data array containing 'ext', 'type', and
+		 */
+		public function update_mime_types( $defaults, $file, $filename ) {
+			if ( 'ttf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+				$defaults['type'] = 'application/x-font-ttf';
+				$defaults['ext']  = 'ttf';
+			}
+
+			if ( 'otf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+				$defaults['type'] = 'application/x-font-otf';
+				$defaults['ext']  = 'otf';
+			}
+
+			return $defaults;
 		}
 
 	}

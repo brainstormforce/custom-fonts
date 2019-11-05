@@ -1,12 +1,17 @@
 .bsf-custom-fonts-file-wrap.form-field{
-	position: relative;
-	margin: 1.5em 0;
+    position: relative;
+    margin: 1.5em 0;
 }
 .bsf-custom-fonts-upload.button {
     float: right;
     margin-right: 5%;
     margin-top: 2px;
 }
+
+.bsf-custom-font-select-field {
+    width: 95%;
+}
+
 .astra-review-notice-container {
 	display: flex;
 	align-items: center;

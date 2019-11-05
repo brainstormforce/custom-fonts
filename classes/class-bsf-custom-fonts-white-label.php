@@ -72,7 +72,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 */
 		function plugins_page( $plugins ) {
 
-			if ( ! is_callable( 'Astra_Ext_White_Label_Markup::get_white_label' ) ) {
+			if ( ! is_callable( 'Astra_Ext_White_Label_Markup::get_whitelabel_string' ) ) {
 				return $plugins;
 			}
 
@@ -81,10 +81,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 			}
 
 			// Set White Labels.
-			$name        = Astra_Ext_White_Label_Markup::get_white_label( 'bsf-custom-fonts', 'name' );
-			$description = Astra_Ext_White_Label_Markup::get_white_label( 'bsf-custom-fonts', 'description' );
-			$author      = Astra_Ext_White_Label_Markup::get_white_label( 'astra-agency', 'author' );
-			$author_uri  = Astra_Ext_White_Label_Markup::get_white_label( 'astra-agency', 'author_url' );
+			$name        = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'bsf-custom-fonts', 'name' );
+			$description = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'bsf-custom-fonts', 'description' );
+			$author      = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'astra-agency', 'author' );
+			$author_uri  = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'astra-agency', 'author_url' );
 
 			if ( ! empty( $name ) ) {
 				$plugins[ BSF_CUSTOM_FONTS_BASE ]['Name'] = $name;
@@ -117,8 +117,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 */
 		function white_label_custom_fonts_title( $title ) {
 
-			if ( is_callable( 'Astra_Ext_White_Label_Markup::get_white_label' ) ) {
-				$name = Astra_Ext_White_Label_Markup::get_white_label( 'bsf-custom-fonts', 'name' );
+			if ( is_callable( 'Astra_Ext_White_Label_Markup::get_whitelabel_string' ) ) {
+				$name = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'bsf-custom-fonts', 'name' );
 				if ( ! empty( $name ) ) {
 					$title = $name;
 				}
@@ -138,11 +138,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 */
 		public function plugin_links( $plugin_meta, $plugin_file, $plugin_data ) {
 
-			if ( is_callable( 'Astra_Ext_White_Label_Markup::get_white_label' ) ) {
+			if ( is_callable( 'Astra_Ext_White_Label_Markup::get_whitelabel_string' ) ) {
 				if ( BSF_CUSTOM_FONTS_BASE == $plugin_file ) {
 					// Set White Labels.
-					$name        = Astra_Ext_White_Label_Markup::get_white_label( 'bsf-custom-fonts', 'name' );
-					$description = Astra_Ext_White_Label_Markup::get_white_label( 'bsf-custom-fonts', 'description' );
+					$name        = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'bsf-custom-fonts', 'name' );
+					$description = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'bsf-custom-fonts', 'description' );
 
 					if ( ! empty( $name ) ) {
 						// Remove Plugin URI if Agency White Label name is set.

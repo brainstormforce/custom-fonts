@@ -49,7 +49,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self;
+				self::$_instance = new self();
 			}
 
 			return self::$_instance;
@@ -83,6 +83,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			// Add font files style.
 			add_action( 'wp_head', array( $this, 'add_style' ) );
+			if ( is_admin() ) {
+				add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
+			}
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
@@ -159,7 +162,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 				?>
 				<style type="text/css">
-					<?php echo $this->font_css; ?>
+					<?php echo strip_tags( $this->font_css ); ?>
 				</style>
 				<?php
 			}
@@ -235,11 +238,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				if ( $links['font_ttf'] ) {
 					$arr[] = 'url(' . esc_url( $links['font_ttf'] ) . ") format('truetype')";
 				}
+				if ( $links['font_otf'] ) {
+					$arr[] = 'url(' . esc_url( $links['font_otf'] ) . ") format('opentype')";
+				}
 				if ( $links['font_svg'] ) {
 					$arr[] = 'url(' . esc_url( $links['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
 				}
 				$css .= join( ', ', $arr );
-				$css .= ';}';
+				$css .= ';';
+				$css .= 'font-display: ' . esc_attr( $links['font-display'] ) . ';';
+				$css .= '}';
 			endforeach;
 
 			$this->font_css .= $css;
