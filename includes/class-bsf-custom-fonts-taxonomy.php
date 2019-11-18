@@ -6,7 +6,9 @@
  * @package Bsf_Custom_Fonts
  */
 
-defined( 'ABSPATH' ) or exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 
@@ -20,7 +22,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since  1.0.0
 		 * @var (Object) Bsf_Custom_Fonts_Taxonomy
 		 */
-		private static $_instance = null;
+		private static $instance = null;
 
 		/**
 		 * Fonts
@@ -54,11 +56,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @return object Class object.
 		 */
 		public static function get_instance() {
-			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self();
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
 			}
 
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
