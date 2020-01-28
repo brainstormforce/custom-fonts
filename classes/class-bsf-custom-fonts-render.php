@@ -164,7 +164,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 				?>
 				<style type="text/css">
-					<?php echo esc_attr( wp_strip_all_tags( $this->font_css ) ); ?>
+					<?php echo wp_kses_post( wp_strip_all_tags( $this->font_css ) ); ?>
 				</style>
 				<?php
 			}
@@ -241,7 +241,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					$arr[] = 'url(' . esc_url( $links['font_ttf'] ) . ") format('truetype')";
 				}
 				if ( $links['font_otf'] ) {
-					$arr[] = 'url(' . esc_url( $links['font_otf'] ) . ") format('opentype')";
+					$arr[] = 'url(' . $links['font_otf'] . ") format('opentype')";
 				}
 				if ( $links['font_svg'] ) {
 					$arr[] = 'url(' . esc_url( $links['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
