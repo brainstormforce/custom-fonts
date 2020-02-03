@@ -295,7 +295,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					<?php
 					printf(
 						/* translators: 1: Astra theme from wordpress.org*/
-							esc_html__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'custom-fonts' ),
+						esc_html__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'custom-fonts' ),
 						esc_url( 'https://downloads.wordpress.org/theme/astra.zip' )
 					);
 					?>
