@@ -41,7 +41,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 */
 		public static function set_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -70,7 +70,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 * @param array $plugins Plugins Array.
 		 * @return array
 		 */
-		function plugins_page( $plugins ) {
+		public function plugins_page( $plugins ) {
 
 			if ( ! is_callable( 'Astra_Ext_White_Label_Markup::get_whitelabel_string' ) ) {
 				return $plugins;
@@ -115,7 +115,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 * @param string $title  custom fonts menu title.
 		 * @return string $title updated custom fonts menu title.
 		 */
-		function white_label_custom_fonts_title( $title ) {
+		public function white_label_custom_fonts_title( $title ) {
 
 			if ( is_callable( 'Astra_Ext_White_Label_Markup::get_whitelabel_string' ) ) {
 				$name = Astra_Ext_White_Label_Markup::get_whitelabel_string( 'bsf-custom-fonts', 'name' );

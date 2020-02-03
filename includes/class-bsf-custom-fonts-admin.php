@@ -6,7 +6,9 @@
  * @package Bsf_Custom_Fonts
  */
 
-defined( 'ABSPATH' ) or exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 
@@ -21,7 +23,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since  1.0.0
 		 * @var (Object) Bsf_Custom_Fonts_Admin
 		 */
-		private static $_instance = null;
+		private static $instance = null;
 
 		/**
 		 * Parent Menu Slug
@@ -39,11 +41,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @return object Class object.
 		 */
 		public static function get_instance() {
-			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self();
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
 			}
 
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
@@ -93,7 +95,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			global $parent_file, $submenu_file;
 
 			if ( 'edit-tags.php?taxonomy=' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug === $submenu_file ) {
-				$parent_file = $this->parent_menu_slug;
+				$parent_file = $this->parent_menu_slug; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 			}
 			if ( get_current_screen()->id != 'edit-' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ) {
 				return;
@@ -201,7 +203,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
 
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
-				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
+				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
 				<a href="#" class="bsf-custom-fonts-upload button" data-upload-type="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Upload', 'custom-fonts' ); ?></a>
 				<p><?php echo esc_html( $description ); ?></p>
 			</div>
@@ -221,7 +223,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			?>
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
-				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" />
+				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" />
 					<?php
 					foreach ( $select_fields as $key => $value ) {
 						?>
@@ -251,7 +253,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					</label>
 				</th>
 				<td>
-				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" />
+				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" />
 					<?php
 					foreach ( $select_fields as $key => $value ) {
 						?>
@@ -282,7 +284,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					</label>
 				</th>
 				<td>
-					<input id="metadata-<?php echo esc_attr( $id ); ?>" type="text" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
+					<input id="metadata-<?php echo esc_attr( $id ); ?>" type="text" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
 					<a href="#" class="bsf-custom-fonts-upload button" data-upload-type="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Upload', 'custom-fonts' ); ?></a>
 					<p><?php echo esc_html( $description ); ?></p>
 				</td>
@@ -297,9 +299,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param int $term_id current term id.
 		 */
 		public function save_metadata( $term_id ) {
-
-			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
-				$value = array_map( 'esc_attr', $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] );
+			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {// phpcs:ignore WordPress.Security.NonceVerification.Missing 
+				$value = array_map( 'esc_attr', $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
 			}
 		}

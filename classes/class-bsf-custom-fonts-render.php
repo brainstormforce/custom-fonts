@@ -6,7 +6,9 @@
  * @package Bsf_Custom_Fonts
  */
 
-defined( 'ABSPATH' ) or exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit();
+}
 
 if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
@@ -21,7 +23,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since  1.0.0
 		 * @var (Object) Bsf_Custom_Fonts_Render
 		 */
-		private static $_instance = null;
+		private static $instance = null;
 
 		/**
 		 * Font base.
@@ -48,11 +50,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @return object Class object.
 		 */
 		public static function get_instance() {
-			if ( ! isset( self::$_instance ) ) {
-				self::$_instance = new self();
+			if ( ! isset( self::$instance ) ) {
+				self::$instance = new self();
 			}
 
-			return self::$_instance;
+			return self::$instance;
 		}
 
 		/**
@@ -133,7 +135,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since  1.0.4
 		 * @param array $bb_fonts font families added by bb.
 		 */
-		function bb_custom_fonts( $bb_fonts ) {
+		public function bb_custom_fonts( $bb_fonts ) {
 
 			$fonts        = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 			$custom_fonts = array();
@@ -162,7 +164,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 				?>
 				<style type="text/css">
-					<?php echo strip_tags( $this->font_css ); ?>
+					<?php echo wp_strip_all_tags( $this->font_css ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</style>
 				<?php
 			}
@@ -194,7 +196,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			wp_enqueue_style( 'bsf-custom-fonts-css', BSF_CUSTOM_FONTS_URI . 'assets/css/bsf-custom-fonts.css', array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_media();
-			wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array(), BSF_CUSTOM_FONTS_VER );
+			wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array(), BSF_CUSTOM_FONTS_VER, false );
 
 		}
 
@@ -263,7 +265,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @param mixed  $deleted_term deleted term.
 		 * @param object $object_ids objects ids.
 		 */
-		function delete_custom_fonts_fallback_astra( $term, $tt_id, $taxonomy, $deleted_term, $object_ids ) {
+		public function delete_custom_fonts_fallback_astra( $term, $tt_id, $taxonomy, $deleted_term, $object_ids ) {
 
 			if ( defined( 'ASTRA_THEME_SETTINGS' ) ) {
 				// get astra options.
@@ -284,7 +286,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * @since 1.0.0
 		 */
-		function theme_update_notice() {
+		public function theme_update_notice() {
 			if ( defined( 'ASTRA_THEME_VERSION' ) ) {
 				if ( version_compare( ASTRA_THEME_VERSION, '1.0.16', '<' ) ) {
 					?>
@@ -293,7 +295,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					<?php
 					printf(
 						/* translators: 1: Astra theme from wordpress.org*/
-							__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'custom-fonts' ),
+						esc_html__( 'Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme.', 'custom-fonts' ),
 						esc_url( 'https://downloads.wordpress.org/theme/astra.zip' )
 					);
 					?>
@@ -309,7 +311,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * @since 1.0.0
 		 */
-		function load_textdomain() {
+		public function load_textdomain() {
 			load_plugin_textdomain( 'custom-fonts' );
 		}
 	}
