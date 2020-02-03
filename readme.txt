@@ -3,8 +3,8 @@ Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography
 Requires at least: 4.4
-Tested up to: 5.2
-Stable tag: 1.2.0
+Tested up to: 5.3.2
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,10 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 == Changelog ==
+
+= 1.2.1 =
+- Improvement: Hardened the security of plugin
+- Improvement: Compatibility with latest WordPress PHP_CodeSniffer rules
 
 = 1.2.0 = 
 - Improvement: Displaying Menu after Astra options Menu.  

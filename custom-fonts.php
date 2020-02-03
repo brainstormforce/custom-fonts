@@ -6,7 +6,7 @@
  * Author:          Brainstorm Force
  * Author URI:      http://www.brainstormforce.com
  * Text Domain:     custom-fonts
- * Version:         1.2.0
+ * Version:         1.2.1
  *
  * @package         Bsf_Custom_Fonts
  */
@@ -25,7 +25,7 @@ define( 'BSF_CUSTOM_FONTS_FILE', __FILE__ );
 define( 'BSF_CUSTOM_FONTS_BASE', plugin_basename( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_DIR', plugin_dir_path( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_URI', plugins_url( '/', BSF_CUSTOM_FONTS_FILE ) );
-define( 'BSF_CUSTOM_FONTS_VER', '1.2.0' );
+define( 'BSF_CUSTOM_FONTS_VER', '1.2.1' );
 
 /**
  * BSF Custom Fonts
