@@ -12,7 +12,7 @@
  * It close the notice for 30 days.
  *
  * @package Astra Sites
- * @since 1.4.0
+ * @since 1.2.2
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 	/**
 	 * Astra_Notices
 	 *
-	 * @since 1.4.0
+	 * @since 1.2.2
 	 */
 	class Astra_Notices {
 
@@ -33,7 +33,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var array Notices.
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 */
 		private static $version = '1.1.5';
 
@@ -42,7 +42,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var array Notices.
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 */
 		private static $notices = array();
 
@@ -51,14 +51,14 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var object Class object.
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 */
 		private static $instance;
 
 		/**
 		 * Initiator
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 * @return object initialized object of class.
 		 */
 		public static function get_instance() {
@@ -71,7 +71,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Constructor
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 */
 		public function __construct() {
 			add_action( 'admin_notices', array( $this, 'show_notices' ), 30 );
@@ -85,7 +85,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		 *
 		 * @param Array  $allowedposttags Array of allowed tags.
 		 * @param String $context Context type (explicit).
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 * @return Array
 		 */
 		public function add_data_attributes( $allowedposttags, $context ) {
@@ -97,7 +97,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Add Notice.
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 * @param array $args Notice arguments.
 		 * @return void
 		 */
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Dismiss Notice.
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 * @return void
 		 */
 		public function dismiss_notice() {
@@ -143,7 +143,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Enqueue Scripts.
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 * @return void
 		 */
 		public function enqueue_scripts() {
@@ -179,7 +179,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Notice Types
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 * @return void
 		 */
 		public function show_notices() {
@@ -232,7 +232,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Markup Notice.
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 * @param  array $notice Notice markup.
 		 * @return void
 		 */
@@ -262,7 +262,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Notice classes.
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @return array       Notice wrapper classes.
@@ -285,7 +285,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Get Notice ID.
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @param  int   $key     Notice array index.
@@ -302,7 +302,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		/**
 		 * Is notice expired?
 		 *
-		 * @since 1.4.0
+		 * @since 1.2.2
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @return boolean
