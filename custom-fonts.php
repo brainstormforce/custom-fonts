@@ -32,5 +32,13 @@ define( 'BSF_CUSTOM_FONTS_VER', '1.2.2' );
  */
 require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts.php';
 
+if ( is_admin() ) {
+
+	/**
+	 * Admin Notice Library Settings
+	 */
+	require_once BSF_CUSTOM_FONTS_DIR . 'lib/notices/class-astra-notices.php';
+}
+
 // BSF Analytics library.
 require_once BSF_CUSTOM_FONTS_DIR . 'admin/bsf-analytics/class-bsf-analytics.php';
