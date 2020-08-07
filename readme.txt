@@ -17,9 +17,9 @@ This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eo
 Currently, it works with:
 
 * <a href="https://wpastra.com/?utm_source=wp-repo&utm_campaign=custom-fonts&utm_medium=description">Astra Theme</a>
-* <a href="https://www.wpbeaverbuilder.com/?fla=713">Beaver Builder Theme</a>
-* <a href="https://www.wpbeaverbuilder.com/?fla=713">Beaver Builder Plugin</a>
-* <a href="https://elementor.com/?ref=1352">Elementor Page Builder</a>
+* <a href="https://www.wpbeaverbuilder.com/">Beaver Builder Theme</a>
+* <a href="https://www.wpbeaverbuilder.com/">Beaver Builder Plugin</a>
+* <a href="https://elementor.com/">Elementor Page Builder</a>
 
 How does it work?
 
