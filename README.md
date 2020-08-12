@@ -44,7 +44,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 ## Changelog ##
 
 ### 1.2.3 ###
-- Improvement: BSF Analytics notice compatibility.
+- Improvement: Non-personal usage multiple admin notice compatibility.
 
 
 ### 1.2.2 ###
