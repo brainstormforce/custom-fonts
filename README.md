@@ -4,7 +4,7 @@
 **Tags:** Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography  
 **Requires at least:** 4.4  
 **Tested up to:** 5.5  
-**Stable tag:** 1.2.2  
+**Stable tag:** 1.2.3  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -42,6 +42,10 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 ## Changelog ##
+
+### 1.2.3 ###
+- Improvement: BSF Analytics notice compatibility.
+
 
 ### 1.2.2 ###
 - New: Users can now share non-personal usage data to help us test and develop better products. ( https://store.brainstormforce.com/usage-tracking/?utm_source=wp_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking )
