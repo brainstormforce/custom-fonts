@@ -44,7 +44,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 == Changelog ==
 
 = 1.2.3 =
-- Improvement: Non-personal usage multiple admin notice compatibility.
+- Fix: Fixed compatibility with other plugins with respect to the admin notice.
 
 
 = 1.2.2 =
