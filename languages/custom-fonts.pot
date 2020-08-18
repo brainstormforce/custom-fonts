@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the Custom Fonts package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Fonts 1.2.2\n"
+"Project-Id-Version: Custom Fonts 1.2.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-fonts\n"
-"POT-Creation-Date: 2020-06-15 10:19:55+00:00\n"
+"POT-Creation-Date: 2020-08-18 09:16:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,47 +24,44 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: admin/bsf-analytics/class-bsf-analytics.php:183
+#: admin/bsf-analytics/class-bsf-analytics.php:216
 #. translators: %s product name
 msgid ""
 "Want to help make <strong>%1s</strong> even more awesome? Allow us to "
 "collect non-sensitive diagnostic data and usage information. "
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:186
+#: admin/bsf-analytics/class-bsf-analytics.php:219
 msgid "This will be applicable for all sites from the network."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:210
+#: admin/bsf-analytics/class-bsf-analytics.php:243
 #. translators: %s usage doc link
 msgid " Know More."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:217
+#: admin/bsf-analytics/class-bsf-analytics.php:251
 msgid "Yes! Allow it"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:225
+#: admin/bsf-analytics/class-bsf-analytics.php:260
 msgid "No Thanks"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:294
-msgid "Every two days"
-msgstr ""
-
-#: admin/bsf-analytics/class-bsf-analytics.php:348
+#: admin/bsf-analytics/class-bsf-analytics.php:364
 msgid "Usage Tracking"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:380
-msgid "Allow Brainstorm Force products to track non-sensitive usage tracking data."
+#: admin/bsf-analytics/class-bsf-analytics.php:408
+#. translators: %s Product title
+msgid "Allow %s products to track non-sensitive usage tracking data."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:383
+#: admin/bsf-analytics/class-bsf-analytics.php:411
 msgid " This will be applicable for all sites from the network."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:388
+#: admin/bsf-analytics/class-bsf-analytics.php:416
 msgid "Learn More."
 msgstr ""
 
