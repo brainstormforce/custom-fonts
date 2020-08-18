@@ -85,7 +85,12 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		 * @since 1.0.0
 		 */
 		public function get_analytics_url( $analytics_path ) {
-			return str_replace( WP_CONTENT_DIR, content_url(), $analytics_path );
+
+			$content_dir_path = wp_normalize_path( WP_CONTENT_DIR );
+
+			$analytics_path = wp_normalize_path( $analytics_path );
+
+			return str_replace( $content_dir_path, content_url(), $analytics_path );
 		}
 
 		/**
