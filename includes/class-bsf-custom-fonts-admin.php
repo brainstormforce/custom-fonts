@@ -76,16 +76,18 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function register_custom_fonts_menu() {
 
-			if ( current_user_can( 'manage_options' ) ) {
-					$title = apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) );
-				add_submenu_page(
-					$this->parent_menu_slug,
-					$title,
-					$title,
-					Bsf_Custom_Fonts_Taxonomy::$capability,
-					'edit-tags.php?taxonomy=' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug
-				);
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
 			}
+			$title = apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) );
+			add_submenu_page(
+				$this->parent_menu_slug,
+				$title,
+				$title,
+				Bsf_Custom_Fonts_Taxonomy::$capability,
+				'edit-tags.php?taxonomy=' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug
+			);
+
 		}
 
 		/**
@@ -301,6 +303,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param int $term_id current term id.
 		 */
 		public function save_metadata( $term_id ) {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {// phpcs:ignore WordPress.Security.NonceVerification.Missing 
 				$value = array_map( 'esc_url', $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
