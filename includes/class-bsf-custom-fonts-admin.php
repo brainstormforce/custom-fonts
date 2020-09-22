@@ -76,9 +76,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function register_custom_fonts_menu() {
 
-			if ( ! current_user_can( 'manage_options' ) ) {
-				return;
-			}
 			$title = apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) );
 			add_submenu_page(
 				$this->parent_menu_slug,
