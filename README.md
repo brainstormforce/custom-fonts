@@ -3,8 +3,8 @@
 **Donate link:** https://www.paypal.me/BrainstormForce  
 **Tags:** Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography  
 **Requires at least:** 4.4  
-**Tested up to:** 5.5  
-**Stable tag:** 1.2.3  
+**Tested up to:** 5.5.1  
+**Stable tag:** 1.2.4  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -17,9 +17,9 @@ This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eo
 Currently, it works with:
 
 * <a href="https://wpastra.com/?utm_source=wp-repo&utm_campaign=custom-fonts&utm_medium=description">Astra Theme</a>
-* <a href="https://www.wpbeaverbuilder.com/?fla=713">Beaver Builder Theme</a>
-* <a href="https://www.wpbeaverbuilder.com/?fla=713">Beaver Builder Plugin</a>
-* <a href="https://elementor.com/?ref=1352">Elementor Page Builder</a>
+* <a href="https://www.wpbeaverbuilder.com/">Beaver Builder Theme</a>
+* <a href="https://www.wpbeaverbuilder.com/">Beaver Builder Plugin</a>
+* <a href="https://elementor.com/">Elementor Page Builder</a>
 
 How does it work?
 
@@ -42,6 +42,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 ## Changelog ##
+
+### 1.2.4 ###
+- Improvement: Hardened the security of plugin
 
 ### 1.2.3 ###
 - Fix: Fixed compatibility with other plugins with respect to the admin notice.
