@@ -180,7 +180,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 
-				echo '<optgroup label="Custom">';
+			echo '<optgroup label="' . esc_attr( 'Custom' ) . '">';
 
 			foreach ( $fonts as $font => $links ) {
 				echo '<option value="' . esc_attr( $font ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
