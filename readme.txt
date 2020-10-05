@@ -43,6 +43,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 == Changelog ==
 
+= 1.2.5 =
+- Fix: Font fallback not added properly.
+
 = 1.2.4 =
 - Improvement: Hardened the security of plugin
 
