@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 /**
- * PPC_Update initial setup
+ * Custom_Fonts_Update initial setup
  *
  * @since 1.1.0
  */
@@ -77,28 +77,28 @@ class Custom_Fonts_Update {
 	}
 
 	/**
-	 * removes the http:// from the font display property.
+	 * Removes the http:// from the font display property.
 	 *
 	 * @since 1.1.0
 	 */
 	public function v_1_2_5() {
 
-        $terms = get_terms(
-            'bsf_custom_fonts',
-            array(
-                'hide_empty' => false,
-            )
-        );
-        $update_array = array();
+		$terms        = get_terms(
+			'bsf_custom_fonts',
+			array(
+				'hide_empty' => false,
+			)
+		);
+		$update_array = array();
 
-        if ( ! empty( $terms ) ) {
-            foreach ( $terms as $term ) {
-                $font_links = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-                $font_links['font-display'] = trim( $font_links['font-display'] , 'http://');
-                Bsf_Custom_Fonts_Taxonomy::update_font_links( $font_links, $term->term_id );
-            }
-        }
-        
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$font_links                 = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
+				$font_links['font-display'] = trim( $font_links['font-display'], 'http://' );
+				Bsf_Custom_Fonts_Taxonomy::update_font_links( $font_links, $term->term_id );
+			}
+		}
+
 	}
 
 	/**
@@ -124,7 +124,7 @@ class Custom_Fonts_Update {
 	 * @return void
 	 */
 	private function update_db_version() {
-		update_option( '_custom_fonts_db_version', PPC_VERSION );
+		update_option( '_custom_fonts_db_version', BSF_CUSTOM_FONTS_VER );
 	}
 
 }

@@ -36,7 +36,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 		 */
 		public function __construct() {
 
-			$this -> custom_fonts_update();
+			$this->custom_fonts_update();
 			require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-bsf-custom-fonts-taxonomy.php';
 			require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts-render.php';
 
@@ -48,7 +48,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 		}
 
 		/**
-		 * run the update functions.
+		 * Run the update functions.
 		 *
 		 * @since 1.2.5
 		 * @return void
