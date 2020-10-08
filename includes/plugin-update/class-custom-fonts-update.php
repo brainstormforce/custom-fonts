@@ -79,7 +79,7 @@ class Custom_Fonts_Update {
 	/**
 	 * Removes the http:// from the font display property.
 	 *
-	 * @since 1.1.0
+	 * @since 1.2.5
 	 */
 	public function v_1_2_5() {
 
@@ -110,7 +110,7 @@ class Custom_Fonts_Update {
 	private function needs_db_update() {
 		$db_version = get_option( $this->db_version_key, false );
 
-		if ( false === $db_version || version_compare( $db_version, BSF_CUSTOM_FONTS_VER ) ) {
+		if ( false === $db_version || version_compare( $db_version, BSF_CUSTOM_FONTS_VER, '!=' ) ) {
 			return true;
 		}
 
