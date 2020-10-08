@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Custom_Fonts_Update initial setup
  *
- * @since 1.1.0
+ * @since 1.2.5
  */
 class Custom_Fonts_Update {
 
@@ -56,7 +56,7 @@ class Custom_Fonts_Update {
 	/**
 	 * Implement plugin update logic.
 	 *
-	 * @since 1.1.0
+	 * @since 1.2.5
 	 */
 	public function init() {
 		do_action( 'custom_fonts_update_before' );
@@ -120,7 +120,7 @@ class Custom_Fonts_Update {
 	/**
 	 * Update DB version.
 	 *
-	 * @since 1.1.0
+	 * @since 1.2.5
 	 * @return void
 	 */
 	private function update_db_version() {
