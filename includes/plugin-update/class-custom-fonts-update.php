@@ -67,7 +67,7 @@ class Custom_Fonts_Update {
 
 		$db_version = get_option( $this->db_version_key, false );
 
-		if ( version_compare( $db_version, '1.2.4', '<' ) ) {
+		if ( version_compare( $db_version, '1.2.4', '<=' ) ) {
 			$this->v_1_2_5();
 		}
 
