@@ -97,7 +97,7 @@ class Custom_Fonts_Update {
 
 				$url_http = 'http://';
 
-				if ( strpos( $url_http, $font_links['font-display'] ) !== false ) {
+				if ( strpos( $font_links['font-display'], $url_http ) !== false ) {
 
 					$font_links['font-display'] = substr( $font_links['font-display'], 7 );
 
