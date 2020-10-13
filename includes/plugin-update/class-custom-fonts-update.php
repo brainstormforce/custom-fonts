@@ -93,8 +93,16 @@ class Custom_Fonts_Update {
 
 		if ( ! empty( $terms ) ) {
 			foreach ( $terms as $term ) {
-				$font_links                 = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-				$font_links['font-display'] = substr( $font_links['font-display'], 7 );
+				$font_links = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
+
+				$url_http = 'http://';
+
+				if ( strpos( $url_http, $font_links['font-display'] ) !== false ) {
+
+					$font_links['font-display'] = substr( $font_links['font-display'], 7 );
+
+				}
+
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $font_links, $term->term_id );
 			}
 		}
