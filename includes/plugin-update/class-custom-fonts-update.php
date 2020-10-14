@@ -83,13 +83,12 @@ class Custom_Fonts_Update {
 	 */
 	public function v_1_2_5() {
 
-		$terms        = get_terms(
+		$terms = get_terms(
 			'bsf_custom_fonts',
 			array(
 				'hide_empty' => false,
 			)
 		);
-		$update_array = array();
 
 		if ( ! empty( $terms ) ) {
 			foreach ( $terms as $term ) {
