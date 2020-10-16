@@ -35,6 +35,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 		 * Constructor function that initializes required actions and hooks
 		 */
 		public function __construct() {
+
+			$this->custom_fonts_update();
 			require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-bsf-custom-fonts-taxonomy.php';
 			require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts-render.php';
 
@@ -43,6 +45,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 				require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts-white-label.php';
 			}
 
+		}
+
+		/**
+		 * Run the update functions.
+		 *
+		 * @since 1.2.5
+		 * @return void
+		 */
+		public function custom_fonts_update() {
+			require_once BSF_CUSTOM_FONTS_DIR . 'includes/plugin-update/class-custom-fonts-update.php';
 		}
 	}
 

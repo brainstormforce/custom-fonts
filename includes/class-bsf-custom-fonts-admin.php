@@ -167,6 +167,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param object $term taxonomy terms.
 		 */
 		public function edit_taxonomy_data( $term ) {
+
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), $data['font_woff_2'], __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), $data['font_woff'], __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ) );
@@ -306,7 +307,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			}
 
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {// phpcs:ignore WordPress.Security.NonceVerification.Missing 
-				$value = array_map( 'esc_url', $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				$value = array_map( 'esc_attr', $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
 			}
 		}
