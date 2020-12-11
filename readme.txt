@@ -3,8 +3,8 @@ Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography
 Requires at least: 4.4
-Tested up to: 5.5.1
-Stable tag: 1.2.5
+Tested up to: 5.6
+Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 == Changelog ==
+
+= 1.2.6 =
+- Improvement: PHP8 compatibility.
 
 = 1.2.5 =
 - Fix: Font display not added properly.
