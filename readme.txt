@@ -44,7 +44,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 == Changelog ==
 
 = 1.2.6 =
-- Improvement: PHP8 compatibility.
+- Improvement: PHP 8.0 compatibility.
 
 = 1.2.5 =
 - Fix: Font display not added properly.

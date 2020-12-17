@@ -169,7 +169,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		public function edit_taxonomy_data( $term ) {
 
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-
 			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), $data['font_woff_2'], __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), $data['font_woff'], __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ) );
 			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), $data['font_ttf'], __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
