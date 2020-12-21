@@ -67,6 +67,9 @@
 	/* Initializes the Bsf Custom Fonts. */
 	$(function(){
 		BsfCustomFonts.init();
+		$("#repeater").createRepeater({
+            showFirstItemToDefault: true,
+        });
 	});
 
 })(jQuery);

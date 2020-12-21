@@ -91,6 +91,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
+			// Astra filter before creating google fonts URL.
+			add_filter( 'astra_google_fonts_selected', array( $this, 'remove_custom_font_google_url' ) );
 		}
 
 		/**
@@ -107,6 +109,32 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$font_groups                   = $new_group + $font_groups;
 
 			return $font_groups;
+		}
+
+		/**
+		 * Remove Custom Font from Google Font URL.
+		 *
+		 * @param Array $fonts Selected Google Fonts in the Astra Customizer Settings.
+		 * @return Array Google fonts array which do not contain same fonts as the custom fonts.
+		 *
+		 * @since  x.x.x
+		 */
+		function remove_custom_font_google_url( $fonts ) {
+			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+			if ( ! empty( $custom_fonts ) ) {
+				foreach ( $custom_fonts as $key => $value ) {
+					if( $value['font_fallback'] ) {
+						$font_key = "'" . $key . "'" . ', ' . $value['font_fallback'];
+					}
+					else {
+						$font_key = "'" . $key . "'";
+					}
+					if ( array_key_exists( $font_key, $fonts ) ) {
+						unset( $fonts[ $font_key ] );
+					}
+				}
+			}
+			return $fonts;
 		}
 
 		/**
@@ -157,9 +185,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.4
 		 */
 		public function add_style() {
+			// echo "<pre>";
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+			// echo '<pre>';
+			// var_export($fonts);
 			if ( ! empty( $fonts ) ) {
 				foreach ( $fonts  as $load_font_name => $load_font ) {
+					// var_dump($load_font_name);
 					$this->render_font_css( $load_font_name );
 				}
 				?>
@@ -179,12 +211,30 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		public function add_customizer_font_list( $value ) {
 
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-
-			echo '<optgroup label="' . esc_attr( 'Custom' ) . '">';
+				echo '<optgroup label="Custom">';
 
 			foreach ( $fonts as $font => $links ) {
-				echo '<option value="' . esc_attr( $font ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+
+				$font_value = "'" . $font . "'";
+				if ( empty( $links['font_fallback'] ) && '' == $links['font_fallback'] ) {
+					echo '<option value="' . $font_value . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+				} else {
+					echo '<option value="' . self::get_font_values( $font_value, $links['font_fallback'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+				}
 			}
+		}
+
+		/**
+		 * Get fonts
+		 *
+		 * @since x.x.x
+		 * @param array $font font.
+		 * @param array $font_fallback fallback fonts.
+		 */
+		public static function get_font_values( $font, $font_fallback ) {
+
+			$font .= ( isset( $font_fallback ) ) ? ', ' . trim( $font_fallback ) : '';
+			return $font;
 		}
 
 		/**
@@ -196,8 +246,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			wp_enqueue_style( 'bsf-custom-fonts-css', BSF_CUSTOM_FONTS_URI . 'assets/css/bsf-custom-fonts.css', array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_media();
-			wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array(), BSF_CUSTOM_FONTS_VER, false );
-
+			wp_enqueue_script( 'bsf-custom-font-repeater-js', BSF_CUSTOM_FONTS_URI . 'assets/js/repeater.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER );
+			wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER, true );
 		}
 
 		/**
@@ -226,29 +276,31 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		private function render_font_css( $font ) {
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
-
+			// var_export($fonts);
 			foreach ( $fonts as $font => $links ) :
-				$css  = '@font-face { font-family:' . esc_attr( $font ) . ';';
+				var_export($links);
+				$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
 				$css .= 'src:';
 				$arr  = array();
-				if ( $links['font_woff_2'] ) {
-					$arr[] = 'url(' . esc_url( $links['font_woff_2'] ) . ") format('woff2')";
+				if ( $links['repeater_fields']['normal']['font_woff_2'] ) {
+					$arr[] = 'url(' . esc_url( $links['repeater_fields']['normal']['font_woff_2'] ) . ") format('woff2')";
 				}
-				if ( $links['font_woff'] ) {
-					$arr[] = 'url(' . esc_url( $links['font_woff'] ) . ") format('woff')";
+				if ( $links['repeater_fields']['normal']['font_woff'] ) {
+					$arr[] = 'url(' . esc_url( $links['repeater_fields']['normal']['font_woff'] ) . ") format('woff')";
 				}
-				if ( $links['font_ttf'] ) {
-					$arr[] = 'url(' . esc_url( $links['font_ttf'] ) . ") format('truetype')";
+				if ( $links['repeater_fields']['normal']['font_ttf'] ) {
+					$arr[] = 'url(' . esc_url( $links['repeater_fields']['normal']['font_ttf'] ) . ") format('truetype')";
 				}
-				if ( $links['font_otf'] ) {
-					$arr[] = 'url(' . esc_url( $links['font_otf'] ) . ") format('opentype')";
+				if ( $links['repeater_fields']['normal']['font_otf'] ) {
+					$arr[] = 'url(' . esc_url( $links['repeater_fields']['normal']['font_otf'] ) . ") format('opentype')";
 				}
-				if ( $links['font_svg'] ) {
-					$arr[] = 'url(' . esc_url( $links['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
+				if ( $links['repeater_fields']['normal']['font_svg'] ) {
+					$arr[] = 'url(' . esc_url( $links['repeater_fields']['normal']['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
 				}
 				$css .= join( ', ', $arr );
 				$css .= ';';
 				$css .= 'font-display: ' . esc_attr( $links['font-display'] ) . ';';
+				$css .= 'font-weight: ' . esc_attr( $links['repeater_fields']['font-weight'] ). ';';
 				$css .= '}';
 			endforeach;
 
