@@ -64,6 +64,10 @@
 		},
 	}
 
+	$('#font-font-weight').on("change", function () {
+		console.log($('.bsf-custom-font-select-field'));
+	});
+
 	/* Initializes the Bsf Custom Fonts. */
 	$(function(){
 		BsfCustomFonts.init();

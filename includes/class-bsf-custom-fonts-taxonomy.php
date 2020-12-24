@@ -122,18 +122,18 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 			return wp_parse_args(
 				$fonts,
 				array(
-					'font_fallback' => '',
-					'font-display' => 'swap',
-					'repeater_fields'   => array( 
-						'normal'	=> array(
-							'font_woff_2'  => '',
-							'font_woff'    => '',
-							'font_ttf'     => '',
-							'font_svg'     => '',
-							'font_eot'     => '',
-							'font_otf'     => '',
-						)	
-					)
+					'font_fallback'   => '',
+					'font-display'    => 'swap',
+					'repeater_fields' => array(
+						'normal' => array(
+							'font_woff_2' => '',
+							'font_woff'   => '',
+							'font_ttf'    => '',
+							'font_svg'    => '',
+							'font_eot'    => '',
+							'font_otf'    => '',
+						),
+					),
 				)
 			);
 		}
@@ -215,12 +215,14 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 */
 		public static function update_font_links( $posted, $term_id ) {
 			$links = self::get_font_links( $term_id );
+
+			var_dump( $links );
 			// foreach ( array_keys( $links ) as $key ) {
-			// 	if ( isset( $posted[ $key ] ) ) {
-			// 		$links[ $key ] = $posted[ $key ];
-			// 	} else {
-			// 		$links[ $key ] = '';
-			// 	}
+			// if ( isset( $posted[ $key ] ) ) {
+			// $links[ $key ] = $posted[ $key ];
+			// } else {
+			// $links[ $key ] = '';
+			// }
 			// }
 			$links = $posted;
 

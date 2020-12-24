@@ -123,10 +123,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 			if ( ! empty( $custom_fonts ) ) {
 				foreach ( $custom_fonts as $key => $value ) {
-					if( $value['font_fallback'] ) {
+					if ( $value['font_fallback'] ) {
 						$font_key = "'" . $key . "'" . ', ' . $value['font_fallback'];
-					}
-					else {
+					} else {
 						$font_key = "'" . $key . "'";
 					}
 					if ( array_key_exists( $font_key, $fonts ) ) {
@@ -278,7 +277,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
 			// var_export($fonts);
 			foreach ( $fonts as $font => $links ) :
-				var_export($links);
+				var_export( $links );
 				$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
 				$css .= 'src:';
 				$arr  = array();
@@ -300,7 +299,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				$css .= join( ', ', $arr );
 				$css .= ';';
 				$css .= 'font-display: ' . esc_attr( $links['font-display'] ) . ';';
-				$css .= 'font-weight: ' . esc_attr( $links['repeater_fields']['font-weight'] ). ';';
+				$css .= 'font-weight: ' . esc_attr( $links['repeater_fields']['font-weight'] ) . ';';
 				$css .= '}';
 			endforeach;
 
