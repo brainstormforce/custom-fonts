@@ -160,9 +160,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                         <div class="button button-primary remove-btn">
                             Remove
 						</div>
-						<div class="button button-primary repeater-add-btn">
-                        Add +
-                    </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -328,7 +325,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
 
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
-				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" data-name="<?php echo '[' . esc_attr( $id ) . ']'; ?>" value="<?php echo esc_attr( $value ); ?>" />
 				<a href="#" class="bsf-custom-fonts-upload button" data-upload-type="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Upload', 'custom-fonts' ); ?></a>
 				<p><?php echo esc_html( $description ); ?></p>
 			</div>

@@ -4,10 +4,10 @@ $.fn.extend({
 
         var getFontWeight = function () {
             $value = 'normal';
-            // $('.bsf-custom-fonts-file-wrap .font-weight').on("change", function ( e ) {
-            //     $value =  $(this).val();
-            //     $(this).attr( 'value', $value );
-            // });
+            $('.bsf-custom-fonts-file-wrap .font-weight').on("change", function ( e ) {
+                $value =  $(this).val();
+                $(this).attr( 'value', $value );
+            });
             return $value;
         };
         var hasOption = function (optionKey) {
@@ -28,10 +28,10 @@ $.fn.extend({
                 // console.log( getFontWeight() );
                 if (skipName != true) {
                     if( attrName == '[font-weight]' ) {
-                        $(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ '['+ key+']' + attrName );
+                        $(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
                     }
                     else{
-                        $(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields]["+getFontWeight()+"]["+ key+"]" + attrName );
+                        $(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields]["+getFontWeight()+"][" + key +"]"+     attrName);
                     }
                 } else {
                     if (attrName != 'undefined') {
@@ -53,7 +53,7 @@ $.fn.extend({
                 removeButton.attr('disabled', false);
             }
 
-            removeButton.attr('onclick', 'jQuery(this).parents(\'.items\').remove()');
+            removeButton.attr('onclick', '$(this).parents(\'.items\').remove()');
 
             $("<div class='items'>" + itemClone.html() + "<div/>").appendTo(repeater);
         };
@@ -89,6 +89,7 @@ $.fn.extend({
             $( '.term-font_eot-wrap .font_eot' ).attr( 'name', $name );
             $( '.term-font_svg-wrap .font_svg' ).attr( 'name', $name );
             $( '.term-font_otf-wrap .font_otf' ).attr( 'name', $name );
+            
 
         }); 
 
