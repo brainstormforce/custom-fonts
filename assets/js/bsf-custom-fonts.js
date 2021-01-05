@@ -68,12 +68,70 @@
 		console.log($('.bsf-custom-font-select-field'));
 	});
 
-	/* Initializes the Bsf Custom Fonts. */
-	$(function(){
-		BsfCustomFonts.init();
-		$("#repeater").createRepeater({
-            showFirstItemToDefault: true,
-        });
+	var items = $("#repeater").find(".items");
+	var key = 0;
+	var addButton = $("#repeater").find('.repeater-add-btn');
+
+	var addItem = function (items, key, fresh = true) {
+		console.log('inn');
+		var itemContent = items;
+		var group = itemContent.data("group");
+		var item = itemContent;
+		var input = item.find('input,select');
+		input.each(function (index, el) {
+			var attrName = $(el).data('name');
+			var skipName = $(el).data('skip-name');
+			// console.log( $(el).val() );
+			// console.log( getFontWeight() );
+			if (skipName != true) {
+				if( attrName == '[font-weight]' ) {
+					$(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
+				}
+				else{
+					$(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
+				}
+			} else {
+				if (attrName != 'undefined') {
+					$(el).attr("name", attrName);
+				}
+			}
+			if (fresh == true) {
+				$(el).attr('value', '');
+			}
+		})
+		var itemClone = items;
+
+		/* Handling remove btn */
+		var removeButton = itemClone.find('.remove-btn');
+
+		if (key == 0) {
+			removeButton.attr('disabled', true);
+		} else {
+			removeButton.attr('disabled', false);
+		}
+
+		$("<div class='items'>" + itemClone.html() + "<div/>").insertBefore('.repeater-heading');
+
+		removeButton.attr('onclick', '(function($){ console.log($(this).before()); $(this).parents().remove()})(jQuery);');
+
+		
+		// var data_sbw = $("<div class='items'>" + itemClone.html() + "<div/>");
+
+		// repeater.html(data_sbw);
+
+	};
+
+	addButton.on("click", function () {
+		addItem($(items[0]), key);
+		key++;
 	});
+
+	/* Initializes the Bsf Custom Fonts. */
+		$(function(){
+			BsfCustomFonts.init();
+			$("#repeater").createRepeater({
+		        showFirstItemToDefault: true,
+		    });
+		});
 
 })(jQuery);

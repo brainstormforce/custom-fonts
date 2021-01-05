@@ -2,14 +2,14 @@
 $.fn.extend({
     createRepeater: function (options = {}) {
 
-        var getFontWeight = function () {
-            $value = 'normal';
-            $('.bsf-custom-fonts-file-wrap .font-weight').on("change", function ( e ) {
-                $value =  $(this).val();
-                $(this).attr( 'value', $value );
-            });
-            return $value;
-        };
+        // var getFontWeight = function () {
+        //     $value = 'normal';
+        //     $('.bsf-custom-fonts-file-wrap .font-weight').on("change", function ( e ) {
+        //         $value =  $(this).val();
+        //         $(this).attr( 'value', $value );
+        //     });
+        //     return $value;
+        // };
         var hasOption = function (optionKey) {
             return options.hasOwnProperty(optionKey);
         };
@@ -17,6 +17,7 @@ $.fn.extend({
             return options[optionKey];
         };
         var addItem = function (items, key, fresh = true) {
+            console.log('inn');
             var itemContent = items;
             var group = itemContent.data("group");
             var item = itemContent;
@@ -31,7 +32,7 @@ $.fn.extend({
                         $(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
                     }
                     else{
-                        $(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields]["+getFontWeight()+"][" + key +"]"+     attrName);
+                        $(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
                     }
                 } else {
                     if (attrName != 'undefined') {
@@ -53,9 +54,9 @@ $.fn.extend({
                 removeButton.attr('disabled', false);
             }
 
-            removeButton.attr('onclick', '$(this).parents(\'.items\').remove()');
+            removeButton.attr('onclick', '(function($){ $(this).parents(\'.items\').remove() })(jQuery);');
 
-            $("<div class='items'>" + itemClone.html() + "<div/>").appendTo(repeater);
+
         };
         /* find elements */
         var repeater = this;
@@ -83,12 +84,12 @@ $.fn.extend({
             $(this).attr( 'value', $value );
             $name = $( '.term-font_woff_2-wrap .font_woff_2' ).attr( 'name' );
             $name = $name.replace("normal", $value );
-            $( '.term-font_woff_2-wrap .font_woff_2' ).attr( 'name', $name );
-            $( '.term-font_woff-wrap .font_woff' ).attr( 'name', $name );
-            $( '.term-font_ttf-wrap .font_ttf' ).attr( 'name', $name );
-            $( '.term-font_eot-wrap .font_eot' ).attr( 'name', $name );
-            $( '.term-font_svg-wrap .font_svg' ).attr( 'name', $name );
-            $( '.term-font_otf-wrap .font_otf' ).attr( 'name', $name );
+            $('.term-font_woff_2-wrap .font_woff_2' ).attr( 'name', $name );
+            $('.term-font_woff-wrap .font_woff' ).attr( 'name', $name );
+            $('.term-font_ttf-wrap .font_ttf' ).attr( 'name', $name );
+            $('.term-font_eot-wrap .font_eot' ).attr( 'name', $name );
+            $('.term-font_svg-wrap .font_svg' ).attr( 'name', $name );
+            $('.term-font_otf-wrap .font_otf' ).attr( 'name', $name );
             
 
         }); 

@@ -141,7 +141,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                 <!-- Repeater Heading -->
                 <div class="repeater-heading">
                     <div class="button button-primary repeater-add-btn">
-                        Add +
+                        Add Font Variation 
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -227,7 +227,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                 <!-- Repeater Heading -->
                 <div class="repeater-heading">
                     <div class="button button-primary repeater-add-btn">
-                        Add +
+					Add Font Variation 
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -471,9 +471,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function save_metadata( $term_id ) {
 			echo '<pre>';
-
 			var_dump( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] );
 			wp_die();
+
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
 				$value = $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ];
 
