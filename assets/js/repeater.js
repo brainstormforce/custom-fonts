@@ -17,9 +17,8 @@ $.fn.extend({
             return options[optionKey];
         };
         var addItem = function (items, key, fresh = true) {
-            console.log('inn');
+            // console.log('inn');
             var itemContent = items;
-            var group = itemContent.data("group");
             var item = itemContent;
             var input = item.find('input,select');
             input.each(function (index, el) {

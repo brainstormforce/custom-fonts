@@ -64,10 +64,6 @@
 		},
 	}
 
-	$('#font-font-weight').on("change", function () {
-		console.log($('.bsf-custom-font-select-field'));
-	});
-
 	var items = $("#repeater").find(".items");
 	var key = 0;
 	var addButton = $("#repeater").find('.repeater-add-btn');
@@ -75,14 +71,11 @@
 	var addItem = function (items, key, fresh = true) {
 		console.log('inn');
 		var itemContent = items;
-		var group = itemContent.data("group");
 		var item = itemContent;
 		var input = item.find('input,select');
 		input.each(function (index, el) {
 			var attrName = $(el).data('name');
 			var skipName = $(el).data('skip-name');
-			// console.log( $(el).val() );
-			// console.log( getFontWeight() );
 			if (skipName != true) {
 				if( attrName == '[font-weight]' ) {
 					$(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
