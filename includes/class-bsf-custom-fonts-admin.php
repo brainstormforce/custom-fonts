@@ -246,7 +246,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param Array  $select_fields Select fields as Array.
 		 * @return void
 		 */
-		private function select_edit_field( $id, $title, $saved_val = '', $description, $select_fields ) {
+		private function select_edit_field( $id, $title, $saved_val, $description, $select_fields ) {
 			?>
 			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
 				<th scope="row">
@@ -277,7 +277,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param string $value title font type meta values.
 		 * @param string $description title font type description.
 		 */
-		protected function font_file_edit_field( $id, $title, $value = '', $description ) {
+		protected function font_file_edit_field( $id, $title, $value, $description ) {
 			?>
 			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
 				<th scope="row">
