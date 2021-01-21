@@ -141,7 +141,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                 <!-- Repeater Heading -->
                 <div class="repeater-heading">
                     <div class="button button-primary repeater-add-btn">
-                        Add Font Variation 
+                        Add Font Variation
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -230,7 +230,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					<!-- Repeater Heading -->
 					<div class="repeater-heading">
 						<div class="button button-primary repeater-add-btn">
-							Add Font Variation 
+							Add Font Variation
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -264,7 +264,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function edit_new_taxonomy_default_data( $term ) {
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-			$this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), $data['font_fallback'], __( 'Add the font\'s fallback names with comma(,) separator.  eg. Arial, Serif', 'custom-fonts' ) );
+			$this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), __( 'Add the font\'s fallback names with comma(,) separator.  eg. Arial, Serif', 'custom-fonts' ), $data['font_fallback'] );
 
 			$this->select_default_edit_field('font-display', __( 'Font Display', 'custom-fonts' ) ,__( 'Select font-display property for this font', 'custom-fonts' ),
 				array(
@@ -275,7 +275,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					'optional' => 'Optional',
 				) , $data['font-display']
 			);
-			// $this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), $data['font_fallback'], __( 'Add the font\'s fallback names with comma(,) separator.  eg. Arial, Serif', 'custom-fonts' ) );
+			// $this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), __( 'Add the font\'s fallback names with comma(,) separator.  eg. Arial, Serif', 'custom-fonts' ), $data['font_fallback'] );
 
 		}
 		/**
@@ -286,7 +286,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function edit_new_taxonomy_repeater_data( $data ) {
 
-			
+
 // var_dump($data);
 			$this->select_new_field(
 				'font-weight',
@@ -306,13 +306,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					'900'    => '900',
 				)
 			);
-			// $data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );	
-			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), $data['font_woff_2'], __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), $data['font_woff'], __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), $data['font_ttf'], __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), $data['font_eot'], __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), $data['font_svg'], __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), $data['font_otf'], __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
+			// $data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
+			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ), $data['font_woff_2'] );
+			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ), $data['font_woff'] );
+			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ), $data['font_ttf'] );
+			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ), $data['font_eot'] );
+			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ), $data['font_svg'] );
+			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ), $data['font_otf'] );
 
 		}
 
@@ -430,7 +430,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param Array  $select_fields Select fields as Array.
 		 * @return void
 		 */
-		private function select_edit_field( $id, $title, $saved_val = '', $description, $select_fields ) {
+		private function select_edit_field( $id, $title, $description, $select_fields, $saved_val = '' ) {
 			?>
 			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
 				<th scope="row">
@@ -461,7 +461,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param string $value title font type meta values.
 		 * @param string $description title font type description.
 		 */
-		protected function font_edit_field( $id, $title, $value = '', $description ) {
+		protected function font_edit_field( $id, $title, $description, $value = '' ) {
 			?>
 			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
 				<th scope="row">
@@ -486,7 +486,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param string $value title font type meta values.
 		 * @param string $description title font type description.
 		 */
-		protected function font_file_edit_field( $id, $title, $value = '', $description ) {
+		protected function font_file_edit_field( $id, $title, $description, $value = '' ) {
 			?>
 			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
 				<th scope="row">
