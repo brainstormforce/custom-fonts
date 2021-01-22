@@ -223,10 +223,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		public function edit_new_taxonomy_data( $term ) {
 			$this->edit_new_taxonomy_default_data( $term );
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-			echo "<pre>";
-			var_dump($data);
-			// print_r( $this->edit_new_taxonomy_repeater_data( $key ) );
-			echo '</pre>'; ?>
+			// echo "<pre>";
+			// var_dump($data);
+			// // print_r( $this->edit_new_taxonomy_repeater_data( $key ) );
+			// echo '</pre>'; ?>
 
 			<div id="repeater">
 				<!-- Repeater Heading -->

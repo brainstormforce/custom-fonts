@@ -1,20 +1,20 @@
 (function($){
 
 	/**
-	 * Bsf Custom Fonts 
+	 * Bsf Custom Fonts
 	 *
 	 * @class BsfCustomFonts
 	 * @since 1.0.0
 	 */
 
 	BsfCustomFonts = {
-		
+
 		/**
 		 * Initializes a Bsf Custom Fonts.
 		 *
 		 * @since 1.0
 		 * @method init
-		 */ 
+		 */
 		init: function()
 		{
 			// Init.
@@ -27,9 +27,9 @@
 		 * @since 1.0.0
 		 * @access private
 		 * @method _fileUploads
-		 */ 
+		 */
 		_fileUploads: function()
-		{	
+		{
 			var file_frame;
 			window.inputWrapper = '';
 			$( document.body ).on('click', '.bsf-custom-fonts-upload', function(event) {
@@ -51,7 +51,7 @@
 
 			     // When an image is selected in the media frame...
     			file_frame.on( 'select', function() {
-    				
+
     				 // Get media attachment details from the frame state
       				var attachment = file_frame.state().get('selection').first().toJSON();
       					window.inputWrapper.find( '.bsf-custom-fonts-link' ).val(attachment.url);
@@ -107,7 +107,7 @@
 
 		removeButton.attr('onclick', '(function($){ console.log($(this).before()); $(this).parents().remove()})(jQuery);');
 
-		
+
 		// var data_sbw = $("<div class='items'>" + itemClone.html() + "<div/>");
 
 		// repeater.html(data_sbw);
@@ -122,9 +122,12 @@
 	/* Initializes the Bsf Custom Fonts. */
 		$(function(){
 			BsfCustomFonts.init();
-			$("#repeater").createRepeater({
-		        showFirstItemToDefault: true,
-		    });
+			// $("#repeater").createRepeater({
+		    //     showFirstItemToDefault: true,
+			// });
+			// $( "#repeater" ).click(function() {
+			// 	alert( "Handler for .click() called." );
+			// });
 		});
 
 })(jQuery);
