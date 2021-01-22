@@ -114,8 +114,49 @@
 
 	};
 
+	var editItem = function (items, key, fresh = true) {
+		console.log('inn');
+		var itemContent = items;
+		var item = itemContent;
+		var input = item.find('input,select');
+		input.each(function (index, el) {
+			var attrName = $(el).data('name');
+			var skipName = $(el).data('skip-name');
+			if (skipName != true) {
+				if( attrName == '[font-weight]' ) {
+					$(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
+				}
+				else{
+					$(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
+				}
+			} else {
+				if (attrName != 'undefined') {
+					$(el).attr("name", attrName);
+				}
+			}
+			if (fresh == true) {
+				$(el).attr('value', '');
+			}
+		})
+		var itemClone = items;
+
+		/* Handling remove btn */
+		var removeButton = itemClone.find('.remove-btn');
+
+		$("<div class='items'>" + itemClone.html() + "<div/>").insertBefore('.repeater-heading');
+
+		removeButton.attr('onclick', '(function($){ console.log($(this).before()); $(this).parents().remove()})(jQuery);');
+
+
+		// var data_sbw = $("<div class='items'>" + itemClone.html() + "<div/>");
+
+		// repeater.html(data_sbw);
+
+	};
+
 	addButton.on("click", function () {
-		addItem($(items[0]), key);
+		// addItem($(items[0]), key);
+		editItem($(items[0]), key);
 		key++;
 	});
 
