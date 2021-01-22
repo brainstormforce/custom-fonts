@@ -77,7 +77,7 @@ $.fn.extend({
         });
 
         $('.bsf-custom-fonts-file-wrap .font-weight').on("change", function ( e ) {
-            
+
             $value =  $(this).val();
             console.log($(this).find(":selected").text());
             $(this).attr( 'value', $value );
@@ -89,9 +89,9 @@ $.fn.extend({
             $('.term-font_eot-wrap .font_eot' ).attr( 'name', $name );
             $('.term-font_svg-wrap .font_svg' ).attr( 'name', $name );
             $('.term-font_otf-wrap .font_otf' ).attr( 'name', $name );
-            
 
-        }); 
+
+        });
 
         /* handle click and add items */
         addButton.on("click", function () {
