@@ -411,9 +411,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
 				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" data-name="<?php echo '[' . esc_attr( $id ) . ']'; ?>" />
 					<?php
-					echo 'Working baba';
-					print_r( $selected_value );
-					print_r( $select_fields );
 					foreach ( $select_fields as $key => $value ) {
 						?>
 						<option value="<?php echo esc_attr( $key ); ?>" <?php echo $selected_value === $key ? 'selected' : '' ?>><?php echo esc_html( $value ); ?></option>
