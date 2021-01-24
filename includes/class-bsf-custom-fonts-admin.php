@@ -62,7 +62,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			add_action( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_add_form_fields', array( $this, 'add_new_taxonomy_data' ) );
 			add_action( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_edit_form_fields', array( $this, 'edit_new_taxonomy_data' ) );
 
-			add_action( 'edited_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'save_metadata' ) );
+			add_action( 'edited_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'edit_save_metadata' ) );
 			add_action( 'create_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'save_metadata' ) );
 
 			add_filter( 'upload_mimes', array( $this, 'add_fonts_to_allowed_mimes' ) );
@@ -195,7 +195,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		public function add_new_taxonomy_repeater_data() {
 			$this->select_new_field(
-				'font-weight',
+				'font-weight-0',
 				__( 'Font weight', 'custom-fonts' ),
 				__( 'Select font-weight property for this font', 'custom-fonts' ),
 				array(
@@ -212,12 +212,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					'900'    => '900',
 				)
 			);
-			$this->font_file_new_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_new_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_new_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_new_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_new_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
-			$this->font_file_new_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_woff_2-0', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_woff-0', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_ttf-0', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_eot-0', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_svg-0', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ) );
+			$this->font_file_new_field( 'font_otf-0', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
 		}
 
 		public function edit_new_taxonomy_data( $term ) {
@@ -237,12 +237,18 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				</div>
 				<div class="clearfix"></div>
 				<!-- Repeater Items -->
+			<?php $count = 0; ?>
+			<?php
+				echo '<pre>';
+				print_r( $data["repeater_fields"] );
+				echo '</pre>';
+			?>
 			<?php foreach($data["repeater_fields"] as $key ) { ?>
 					<div class="items" data-group="bsf_custom_fonts">
 						<!-- Repeater Content -->
 						<div class="item-content">
 							<div class="form-group">
-								<?php $this->edit_new_taxonomy_repeater_data( $key ); ?>
+								<?php $this->edit_new_taxonomy_repeater_data( $key, $count ); ?>
 							</div>
 						</div>
 						<!-- Repeater Remove Btn -->
@@ -253,6 +259,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 						</div>
 						<div class="clearfix"></div>
 					</div>
+			<?php ++$count; ?>
 			<?php	} 	?>
             </div><?php
 		}
@@ -285,10 +292,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since 1.0.0
 		 * @param object $term taxonomy terms.
 		 */
-		public function edit_new_taxonomy_repeater_data( $data ) {
-
+		public function edit_new_taxonomy_repeater_data( $data, $count = 0 ) {
+			echo '<pre>';
+			print_r($data);
+			echo '</pre>';
 			$this->select_new_field(
-				'font-weight',
+				'font-weight-' . $count,
 				__( 'Font weight', 'custom-fonts' ),
 				__( 'Select font-weight property for this font', 'custom-fonts' ),
 				array(
@@ -304,15 +313,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					'800'    => '800',
 					'900'    => '900',
 				),
-				$data['font-weight'],
+				$data['font-weight-' . $count],
 			);
 			// $data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ), $data['font_woff_2'] );
-			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ), $data['font_woff'] );
-			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ), $data['font_ttf'] );
-			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ), $data['font_eot'] );
-			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ), $data['font_svg'] );
-			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ), $data['font_otf'] );
+			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ), $data['font_woff_2-' . $count], $count );
+			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ), $data['font_woff-' . $count], $count );
+			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ), $data['font_ttf-' . $count], $count );
+			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ), $data['font_eot-' . $count], $count );
+			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ), $data['font_svg-' . $count], $count );
+			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ), $data['font_otf-' . $count], $count );
 
 		}
 
@@ -350,7 +359,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
 
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
-				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" data-name="<?php echo '[' . esc_attr( $id ) . ']'; ?>" value="<?php echo esc_attr( $value ); ?>" />
+				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" data-name="<?php echo '[' . esc_attr( $id ) . ']'; ?>" name="bsf_custom_fonts<?php echo '[' . esc_attr( $id ) . ']'; ?>" value="<?php echo esc_attr( $value ); ?>" />
 				<a href="#" class="bsf-custom-fonts-upload button" data-upload-type="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Upload', 'custom-fonts' ); ?></a>
 				<p><?php echo esc_html( $description ); ?></p>
 			</div>
@@ -409,11 +418,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			?>
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
-				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" data-name="<?php echo '[' . esc_attr( $id ) . ']'; ?>" />
+				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" data-name="<?php echo '[' . esc_attr( $id ) . ']'; ?>" name="bsf_custom_fonts<?php echo '[' . esc_attr( $id ) . ']'; ?>" />
 					<?php
 					foreach ( $select_fields as $key => $value ) {
 						?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php echo $selected_value === $key ? 'selected' : '' ?>><?php echo esc_html( $value ); ?></option>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php echo $selected_value === $key ? 'selected="selected"' : '' ?>><?php echo esc_html( $value ); ?></option>
 					<?php } ?>
 				</select>
 			</div>
@@ -486,7 +495,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param string $value title font type meta values.
 		 * @param string $description title font type description.
 		 */
-		protected function font_file_edit_field( $id, $title, $description, $value = '' ) {
+		protected function font_file_edit_field( $id, $title, $description, $value = '', $count = 0 ) {
 			?>
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
 				<div scope="row">
@@ -495,7 +504,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					</label>
 				</div>
 				<div>
-					<input id="metadata-<?php echo esc_attr( $id ); ?>" type="text" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
+					<input id="metadata-<?php echo esc_attr( $id ); ?>" type="text" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ) . '-' . $count; ?>]" value="<?php echo esc_attr( $value ); ?>" />
 					<a href="#" class="bsf-custom-fonts-upload button" data-upload-type="<?php echo esc_attr( $id ); ?>"><?php esc_html_e( 'Upload', 'custom-fonts' ); ?></a>
 					<p><?php echo esc_html( $description ); ?></p>
 				</div>
@@ -512,7 +521,25 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		public function save_metadata( $term_id ) {
 			// echo '<pre>';
 			// var_dump( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] );
-			// echo '<pre>LOsing SLeep</pre>';
+			// echo '</pre>';
+			// wp_die();
+
+			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
+				$value = $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ];
+				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
+			}
+		}
+
+		/**
+		 * Save Taxonomy meta data value
+		 *
+		 * @since 1.0.0
+		 * @param int $term_id current term id.
+		 */
+		public function edit_save_metadata( $term_id ) {
+			// echo '<pre>';
+			// print_r( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] );
+			// echo '</pre>';
 			// wp_die();
 
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
