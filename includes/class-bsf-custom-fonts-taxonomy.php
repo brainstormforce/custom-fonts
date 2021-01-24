@@ -215,14 +215,14 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 			// 	),
 			// );
 
-			echo '<pre>';
-				print_r($links);
-				foreach ($links as $key => $value) {
-					if ( 'font-display' !== $key || 'font_fallback' !== $key ) {
-						$links['repeater'] =
-					}
-				}
-			echo '</pre>';
+			// echo '<pre>';
+			// 	print_r($links);
+			// 	foreach ($links as $key => $value) {
+			// 		if ( 'font-display' !== $key || 'font_fallback' !== $key ) {
+			// 			$links['repeater'] =
+			// 		}
+			// 	}
+			// echo '</pre>';
 
 			wp_die();
 			return self::default_args( $links );
