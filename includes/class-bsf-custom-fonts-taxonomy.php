@@ -203,30 +203,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 */
 		public static function get_font_links( $term_id ) {
 			$links = get_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", array() );
-			// var_dump( $links );
-			// wp_die();
-			// return self::default_args( $links );
-			// array(
-			// 	'font_fallback'   => '',
-			// 	'font-display'    => 'swap',
-			// 	'repeater_fields' => array(
-			// 		'normal' => array(
-			// 		),
-			// 	),
-			// );
-
-			// echo '<pre>';
-			// 	print_r($links);
-			// 	foreach ($links as $key => $value) {
-			// 		if ( 'font-display' !== $key || 'font_fallback' !== $key ) {
-			// 			$links['repeater'] =
-			// 		}
-			// 	}
-			// echo '</pre>';
-
-			wp_die();
-			return self::default_args( $links );
-
+			return $links;
 		}
 
 		/**
