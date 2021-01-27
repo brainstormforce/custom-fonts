@@ -594,7 +594,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param string $value title font type meta values.
 		 * @param string $description title font type description.
 		 */
-		protected function font_file_edit_field( $id, $title, $description, $value = '', $key ) {
+		protected function font_file_edit_field( $id, $title, $description, $value, $key ) {
 			?>
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap ">
 				<div scope="row">
