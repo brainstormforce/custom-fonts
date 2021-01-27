@@ -246,7 +246,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			wp_enqueue_style( 'bsf-custom-fonts-css', BSF_CUSTOM_FONTS_URI . 'assets/css/bsf-custom-fonts.css', array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_media();
 			// wp_enqueue_script( 'bsf-custom-font-repeater-js', BSF_CUSTOM_FONTS_URI . 'assets/js/repeater.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER );
-			// wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER, true );
+			wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER, true );
 		}
 
 		/**

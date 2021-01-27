@@ -146,7 +146,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                 </div>
                 <div class="clearfix"></div>
                 <!-- Repeater Items -->
-                <div class="items" data-group="font-weight-type">
+                <div id="item-0" class="items" data-group="font-weight-type">
                     <!-- Repeater Content -->
                     <div class="item-content">
 						<div class="form-group">

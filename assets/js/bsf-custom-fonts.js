@@ -65,28 +65,34 @@
 	}
 
 	var items = $("#repeater").find(".items");
-	var key = 0;
+	var key = 1;
 	var addButton = $("#repeater").find('.repeater-add-btn');
 
 	var addItem = function (items, key, fresh = true) {
-		console.log('inn');
 		var itemContent = items;
 		var item = itemContent;
 		var input = item.find('input,select');
 		input.each(function (index, el) {
 			var attrName = $(el).data('name');
-			var skipName = $(el).data('skip-name');
-			if (skipName != true) {
-				if( attrName == '[font-weight]' ) {
-					$(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
-				}
-				else{
-					$(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
-				}
-			} else {
-				if (attrName != 'undefined') {
-					$(el).attr("name", attrName);
-				}
+			if( attrName == '[font-weight-0]' ) {
+				console.log($(el));
+				$(el).attr("name", 'bsf_custom_fonts[font-weight-' + key + ']');
+			}
+			// var skipName = $(el).data('skip-name');
+			// if (skipName != true) {
+			// 	if( attrName == '[font-weight]' ) {
+			// 		$(el).attr("name", 'bsf_custom_fonts[font-weight-' + key + ']');
+			// 	}
+			// 	else{
+			// 		$(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
+			// 	}
+			// } else {
+			// 	if (attrName != 'undefined') {
+			// 		$(el).attr("name", attrName);
+			// 	}
+			// }
+			if( attrName == '[font-weight]' ) {
+
 			}
 			if (fresh == true) {
 				$(el).attr('value', '');
@@ -102,6 +108,8 @@
 		} else {
 			removeButton.attr('disabled', false);
 		}
+
+		// console.log(itemClone);
 
 		$("<div class='items'>" + itemClone.html() + "<div/>").insertBefore('.repeater-heading');
 
@@ -156,8 +164,19 @@
 
 	addButton.on("click", function () {
 		// addItem($(items[0]), key);
-		editItem($(items[0]), key);
-		key++;
+		// editItem($(items[0]), key);
+		// key++;
+		var item = $('#item-0').clone().prop("id", "item-1");
+		var input = item.find('input,select');
+		input.each(function (index, el) {
+			var clonedElement = item.find(el);
+			var attrName = clonedElement.data('name');
+			if( attrName == '[font-weight-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font-weight-1]');
+			}
+		});
+		input.appendTo("#repeater");
+		// $('#item-0').clone().prop("id", "item-1").html("#repeater");
 	});
 
 	/* Initializes the Bsf Custom Fonts. */
