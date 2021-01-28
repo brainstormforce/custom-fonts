@@ -167,15 +167,16 @@
 		// editItem($(items[0]), key);
 		// key++;
 		var item = $('#item-0').clone().prop("id", "item-1");
-		var input = item.find('input,select');
+		item.appendTo("#repeater");
+		var newItem = $('#item-1');
+		var input = newItem.find('input,select');
 		input.each(function (index, el) {
-			var clonedElement = item.find(el);
+			var clonedElement = newItem.find(el);
 			var attrName = clonedElement.data('name');
 			if( attrName == '[font-weight-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font-weight-1]');
 			}
 		});
-		input.appendTo("#repeater");
 		// $('#item-0').clone().prop("id", "item-1").html("#repeater");
 	});
 
