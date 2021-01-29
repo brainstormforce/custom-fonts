@@ -315,64 +315,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					),
 					$value,
 				);
-				?>
-				<div class="repeater-remove-btn">
-					<div class="button button-primary remove-btn">
-						Remove
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<?php
 			} else if ( strpos( $key, 'font_woff_2-' ) !== false ) {
 				$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ), $value, $key );
-				?>
-				<div class="repeater-remove-btn">
-					<div class="button button-primary remove-btn">
-						Remove
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<?php
 			} else if ( strpos( $key, 'font_woff-' ) !== false ) {
 				$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ), $value, $key );
-				?>
-				<div class="repeater-remove-btn">
-					<div class="button button-primary remove-btn">
-						Remove
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<?php
 			} else if ( strpos( $key, 'font_ttf' ) !== false ) {
 				$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ), $value, $key );
-				?>
-				<div class="repeater-remove-btn">
-					<div class="button button-primary remove-btn">
-						Remove
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<?php
 			} else if ( strpos( $key, 'font_eot' ) !== false ) {
 				$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ), $value, $key );
-				?>
-				<div class="repeater-remove-btn">
-					<div class="button button-primary remove-btn">
-						Remove
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<?php
 			} else if ( strpos( $key, 'font_svg' ) !== false ) {
 				$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ), $value, $key );
-				?>
-				<div class="repeater-remove-btn">
-					<div class="button button-primary remove-btn">
-						Remove
-					</div>
-				</div>
-				<div class="clearfix"></div>
-				<?php
 			} else if ( strpos( $key, 'font_otf' ) !== false ) {
 				$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ), $value, $key );
 				?>
