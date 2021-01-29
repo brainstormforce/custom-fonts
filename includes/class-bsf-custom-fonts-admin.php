@@ -136,6 +136,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 
 		public function add_new_taxonomy_data() {
 			$this->add_new_taxonomy_default_data();
+			?>
+			<input type="hidden" name="repeater-field-count" value="0">
+			<?php
 			echo '
 			<div id="repeater">
                 <!-- Repeater Heading -->
