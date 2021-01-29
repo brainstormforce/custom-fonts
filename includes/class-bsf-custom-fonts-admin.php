@@ -34,6 +34,14 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		protected $parent_menu_slug = 'themes.php';
 
 		/**
+		 * Edit repeater field initial count
+		 *
+		 * @since  x.x.x
+		 * @var (string) $edit_repeater_field_count
+		 */
+		protected static $edit_repeater_field_count = 0;
+
+		/**
 		 * Instance of Bsf_Custom_Fonts_Admin.
 		 *
 		 * @since  1.0.0
@@ -225,40 +233,22 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 
 		public function edit_new_taxonomy_data( $term ) {
 			$this->edit_new_taxonomy_default_data( $term );
-			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-			// echo "<pre>";
-			// var_dump($data);
-			// // print_r( $this->edit_new_taxonomy_repeater_data( $key ) );
-			// echo '</pre>'; ?>
-
+			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );?>
 			<div id="repeater">
 				<!-- Repeater Heading -->
 				<div class="repeater-heading">
-					<div class="button button-primary repeater-add-btn">
+					<div class="button button-primary repeater-add-btn edit">
 						Add Font Variation
 					</div>
 				</div>
 				<div class="clearfix"></div>
 				<!-- Repeater Items -->
 			<?php $count = 0; ?>
-			<?php
-				// echo '<pre>';
-				// print_r( $data["repeater_fields"] );
-				// echo '</pre>';
-			?>
 			<?php foreach($data as $key => $value ) { ?>
-					<div class="items" data-group="bsf_custom_fonts">
-						<!-- Repeater Content -->
-						<div class="item-content">
-							<div class="form-group">
-								<?php //$this->edit_new_taxonomy_repeater_data( $key, $count ); ?>
-								<?php $this->edit_new_taxonomy_repeater_data_2( $key, $value, $count ); ?>
-							</div>
-						</div>
-						<!-- Repeater Remove Btn -->
-					</div>
+				<?php $this->edit_new_taxonomy_repeater_data_2( $key, $value, $count ); ?>
 			<?php ++$count; ?>
 			<?php	} 	?>
+			<input type="hidden" name="repeater-field-count" value="<?php echo self::$edit_repeater_field_count; ?>">
             </div><?php
 		}
 
@@ -292,10 +282,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param object $term taxonomy terms.
 		 */
 		public function edit_new_taxonomy_repeater_data_2( $key, $value, $count = 0 ) {
-			// echo '<pre>';
-			// print_r($data);
-			// echo '</pre>';
-			if ( strpos( $key, 'font-weight' ) !== false ) {
+			if ( strpos( $key, 'font-weight' ) !== false ) { ?>
+				<div id="<?php echo 'item-' . self::$edit_repeater_field_count; ?>" class="items" data-group="font-weight-type">
+						<!-- Repeater Content -->
+						<div class="item-content">
+							<div class="form-group">
+							<?php
 				$this->select_new_field(
 					$key,
 					__( 'Font weight', 'custom-fonts' ),
@@ -315,6 +307,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					),
 					$value,
 				);
+				self::$edit_repeater_field_count++;
 			} else if ( strpos( $key, 'font_woff_2-' ) !== false ) {
 				$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ), $value, $key );
 			} else if ( strpos( $key, 'font_woff-' ) !== false ) {
@@ -328,55 +321,21 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			} else if ( strpos( $key, 'font_otf' ) !== false ) {
 				$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ), $value, $key );
 				?>
-				<div class="repeater-remove-btn">
-					<div class="button button-primary remove-btn">
-						Remove
+
+						</div>
 					</div>
+							<!-- Repeater Remove Btn -->
+					<div class="repeater-remove-btn">
+						<div class="button button-primary remove-btn">
+							Remove
+						</div>
+					</div>
+					<div class="clearfix"></div>
 				</div>
-				<div class="clearfix"></div>
 				<?php
 			} else {
 				return;
 			}
-		}
-
-		/**
-		 * Edit Taxonomy data
-		 *
-		 * @since 1.0.0
-		 * @param object $term taxonomy terms.
-		 */
-		public function edit_new_taxonomy_repeater_data( $data, $count = 0 ) {
-			echo '<pre>';
-			print_r($data);
-			echo '</pre>';
-			$this->select_new_field(
-				'font-weight-' . $count,
-				__( 'Font weight', 'custom-fonts' ),
-				__( 'Select font-weight property for this font', 'custom-fonts' ),
-				array(
-					'normal' => 'Normal',
-					'bold'   => 'Bold',
-					'100'    => '100',
-					'200'    => '200',
-					'300'    => '300',
-					'400'    => '400',
-					'500'    => '500',
-					'600'    => '600',
-					'700'    => '700',
-					'800'    => '800',
-					'900'    => '900',
-				),
-				$data['font-weight-' . $count],
-			);
-			// $data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
-			$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ), $data['font_woff_2-' . $count], $count );
-			$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ), $data['font_woff-' . $count], $count );
-			$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ), $data['font_ttf-' . $count], $count );
-			$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ), $data['font_eot-' . $count], $count );
-			$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ), $data['font_svg-' . $count], $count );
-			$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ), $data['font_otf-' . $count], $count );
-
 		}
 
 		/**

@@ -64,103 +64,7 @@
 		},
 	}
 
-	var items = $("#repeater").find(".items");
-	var key = 1;
 	var addButton = $("#repeater").find('.repeater-add-btn');
-
-	var addItem = function (items, key, fresh = true) {
-		var itemContent = items;
-		var item = itemContent;
-		var input = item.find('input,select');
-		input.each(function (index, el) {
-			var attrName = $(el).data('name');
-			if( attrName == '[font-weight-0]' ) {
-				console.log($(el));
-				$(el).attr("name", 'bsf_custom_fonts[font-weight-' + key + ']');
-			}
-			// var skipName = $(el).data('skip-name');
-			// if (skipName != true) {
-			// 	if( attrName == '[font-weight]' ) {
-			// 		$(el).attr("name", 'bsf_custom_fonts[font-weight-' + key + ']');
-			// 	}
-			// 	else{
-			// 		$(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
-			// 	}
-			// } else {
-			// 	if (attrName != 'undefined') {
-			// 		$(el).attr("name", attrName);
-			// 	}
-			// }
-			if( attrName == '[font-weight]' ) {
-
-			}
-			if (fresh == true) {
-				$(el).attr('value', '');
-			}
-		})
-		var itemClone = items;
-
-		/* Handling remove btn */
-		var removeButton = itemClone.find('.remove-btn');
-
-		if (key == 0) {
-			removeButton.attr('disabled', true);
-		} else {
-			removeButton.attr('disabled', false);
-		}
-
-		// console.log(itemClone);
-
-		$("<div class='items'>" + itemClone.html() + "<div/>").insertBefore('.repeater-heading');
-
-		removeButton.attr('onclick', '(function($){ console.log($(this).before()); $(this).parents().remove()})(jQuery);');
-
-
-		// var data_sbw = $("<div class='items'>" + itemClone.html() + "<div/>");
-
-		// repeater.html(data_sbw);
-
-	};
-
-	var editItem = function (items, key, fresh = true) {
-		console.log('inn');
-		var itemContent = items;
-		var item = itemContent;
-		var input = item.find('input,select');
-		input.each(function (index, el) {
-			var attrName = $(el).data('name');
-			var skipName = $(el).data('skip-name');
-			if (skipName != true) {
-				if( attrName == '[font-weight]' ) {
-					$(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
-				}
-				else{
-					$(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
-				}
-			} else {
-				if (attrName != 'undefined') {
-					$(el).attr("name", attrName);
-				}
-			}
-			if (fresh == true) {
-				$(el).attr('value', '');
-			}
-		})
-		var itemClone = items;
-
-		/* Handling remove btn */
-		var removeButton = itemClone.find('.remove-btn');
-
-		$("<div class='items'>" + itemClone.html() + "<div/>").insertBefore('.repeater-heading');
-
-		removeButton.attr('onclick', '(function($){ console.log($(this).before()); $(this).parents().remove()})(jQuery);');
-
-
-		// var data_sbw = $("<div class='items'>" + itemClone.html() + "<div/>");
-
-		// repeater.html(data_sbw);
-
-	};
 
 	addButton.on("click", function () {
 		var repeater_field_count = $("input[name=repeater-field-count]").val();
@@ -197,15 +101,47 @@
 		$("input[name=repeater-field-count]").val( parseInt( repeater_field_count ) + 1 );
 	});
 
-	/* Initializes the Bsf Custom Fonts. */
-		$(function(){
-			BsfCustomFonts.init();
-			// $("#repeater").createRepeater({
-		    //     showFirstItemToDefault: true,
-			// });
-			// $( "#repeater" ).click(function() {
-			// 	alert( "Handler for .click() called." );
-			// });
+	var editAddButton = $("#repeater").find('.repeater-add-btn.edit');
+
+	editAddButton.on("click", function () {
+		console.log('Working');
+		var repeater_field_count = $("input[name=repeater-field-count]").val();
+		var item = $('#item-0').clone().prop("id", "item-" + repeater_field_count);
+		item.appendTo("#repeater");
+		var newItem = $('#item-' + repeater_field_count);
+		var input = newItem.find('input,select');
+		input.each(function (index, el) {
+			var clonedElement = newItem.find(el);
+			var attrName = clonedElement.data('name');
+			console.log(attrName);
+			if( attrName == '[font-weight-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font-weight-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+			}
+			if( attrName == '[font_woff_2-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font_woff_2-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+			}
+			if( attrName == '[font_woff-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font_woff-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+			}
+			if( attrName == '[font_ttf-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font_ttf-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+			}
+			if( attrName == '[font_eot-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font_eot-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+			}
+			if( attrName == '[font_svg-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font_svg-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+			}
+			if( attrName == '[font_otf-0]' ) {
+				clonedElement.attr("name", 'bsf_custom_fonts[font_otf-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+			}
 		});
+		$("input[name=repeater-field-count]").val( parseInt( repeater_field_count ) + 1 );
+	});
+
+	/* Initializes the Bsf Custom Fonts. */
+	$(function(){
+		BsfCustomFonts.init();
+	});
 
 })(jQuery);
