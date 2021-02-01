@@ -237,16 +237,14 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<div id="repeater">
 				<!-- Repeater Heading -->
 				<div class="repeater-heading">
-					<div class="button button-primary repeater-add-btn edit">
+					<div class="button button-primary edit-repeater-add-btn">
 						Add Font Variation
 					</div>
 				</div>
 				<div class="clearfix"></div>
 				<!-- Repeater Items -->
-			<?php $count = 0; ?>
 			<?php foreach($data as $key => $value ) { ?>
-				<?php $this->edit_new_taxonomy_repeater_data_2( $key, $value, $count ); ?>
-			<?php ++$count; ?>
+				<?php $this->edit_new_taxonomy_repeater_data_2( $key, $value ); ?>
 			<?php	} 	?>
 			<input type="hidden" name="repeater-field-count" value="<?php echo self::$edit_repeater_field_count; ?>">
             </div><?php
@@ -281,7 +279,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since 1.0.0
 		 * @param object $term taxonomy terms.
 		 */
-		public function edit_new_taxonomy_repeater_data_2( $key, $value, $count = 0 ) {
+		public function edit_new_taxonomy_repeater_data_2( $key, $value ) {
 			if ( strpos( $key, 'font-weight' ) !== false ) { ?>
 				<div id="<?php echo 'item-' . self::$edit_repeater_field_count; ?>" class="items" data-group="font-weight-type">
 						<!-- Repeater Content -->
