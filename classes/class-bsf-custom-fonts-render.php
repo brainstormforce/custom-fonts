@@ -276,39 +276,70 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		private function render_font_css( $font ) {
 		$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
 
-		foreach ( $fonts as $font => $value ) :
+		// echo "<pre>";
+		// print_r($fonts);
+		// echo "</pre>";
 
-				foreach ( $value['repeater_fields'] as $key  ) :
+		foreach ($fonts as $key => $value) {
+			echo "<pre>";
+			print_r($key);
+			print_r($value);
+			echo '@font-face {';
+			echo 'font-family:' . "$key;";
+			foreach ($value as $key1 => $value1) {
+				// print_r($key1);
+				// print_r($value1);
 
-						$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
-						$css .= 'src:';
-						$arr  = array();
+				if ( strpos( $key1, 'display' ) !== false  ) {
+					echo 'font-display:' . $value1 . ';';
+				}
+				if ( strpos( $key1, 'weight' ) !== false  ) {
+					echo 'font-weight:' . $value1 . ';';
+				}
 
-						if ( $key['font_woff_2'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_woff_2'] ) . ") format('woff2')";
-						}
-						if ( $key ['font_woff'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_woff'] ) . ") format('woff')";
-						}
-						if ( $key['font_ttf'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_ttf'] ) . ") format('truetype')";
-						}
-						if ( $key['font_otf'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_otf'] ) . ") format('opentype')";
-						}
-						if ( $key['font_svg'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
-						}
-						$css .= join( ', ', $arr );
-						$css .= ';';
-						$css .= 'font-display: ' . esc_attr( $value['font-display'] ) . ';';
-						$css .= 'font-weight: ' . esc_attr( $key['font-weight'] ) . ';';
-						$css .= '}';
+				// @font-face {
+				// 	font-family: "DroidSerif";
+				// 	src: url("DroidSerif-Regular-webfont.ttf") format("truetype");
+				// 	font-weight: normal;
+				// 	font-display: auto;
+				// }
+			}
+			echo "</pre>";
+		}
 
-						$this->font_css .= $css;
+		// foreach ( $fonts as $font => $value ) :
 
-				endforeach;
-		endforeach;
+		// 		foreach ( $value['repeater_fields'] as $key  ) :
+
+		// 				$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
+		// 				$css .= 'src:';
+		// 				$arr  = array();
+
+		// 				if ( $key['font_woff_2'] ) {
+		// 					$arr[] .= 'url(' . esc_url( $key['font_woff_2'] ) . ") format('woff2')";
+		// 				}
+		// 				if ( $key ['font_woff'] ) {
+		// 					$arr[] .= 'url(' . esc_url( $key['font_woff'] ) . ") format('woff')";
+		// 				}
+		// 				if ( $key['font_ttf'] ) {
+		// 					$arr[] .= 'url(' . esc_url( $key['font_ttf'] ) . ") format('truetype')";
+		// 				}
+		// 				if ( $key['font_otf'] ) {
+		// 					$arr[] .= 'url(' . esc_url( $key['font_otf'] ) . ") format('opentype')";
+		// 				}
+		// 				if ( $key['font_svg'] ) {
+		// 					$arr[] .= 'url(' . esc_url( $key['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
+		// 				}
+		// 				$css .= join( ', ', $arr );
+		// 				$css .= ';';
+		// 				$css .= 'font-display: ' . esc_attr( $value['font-display'] ) . ';';
+		// 				$css .= 'font-weight: ' . esc_attr( $key['font-weight'] ) . ';';
+		// 				$css .= '}';
+
+		// 				$this->font_css .= $css;
+
+		// 		endforeach;
+		// endforeach;
 		}
 
 
