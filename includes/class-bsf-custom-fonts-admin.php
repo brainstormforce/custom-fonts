@@ -65,12 +65,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			add_action( 'admin_menu', array( $this, 'register_custom_fonts_menu' ), 101 );
 			add_action( 'admin_head', array( $this, 'custom_fonts_menu_highlight' ) );
 
-			// add_filter( 'manage_edit-' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_columns', array( $this, 'manage_columns' ) );
+			add_filter( 'manage_edit-' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_columns', array( $this, 'manage_columns' ) );
 
 			add_action( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_add_form_fields', array( $this, 'add_new_taxonomy_data' ) );
 			add_action( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug . '_edit_form_fields', array( $this, 'edit_new_taxonomy_data' ) );
 
-			add_action( 'edited_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'edit_save_metadata' ) );
+			add_action( 'edited_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'save_metadata' ) );
 			add_action( 'create_' . Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug, array( $this, 'save_metadata' ) );
 
 			add_filter( 'upload_mimes', array( $this, 'add_fonts_to_allowed_mimes' ) );
@@ -269,8 +269,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					'optional' => 'Optional',
 				) , $data['font-display']
 			);
-			// $this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), __( 'Add the font\'s fallback names with comma(,) separator.  eg. Arial, Serif', 'custom-fonts' ), $data['font_fallback'] );
-
 		}
 
 		/**
@@ -530,29 +528,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param int $term_id current term id.
 		 */
 		public function save_metadata( $term_id ) {
-			// echo '<pre>';
-			// var_dump( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] );
-			// echo '</pre>';
-			// wp_die();
-
-			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
-				$value = $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ];
-				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
-			}
-		}
-
-		/**
-		 * Save Taxonomy meta data value
-		 *
-		 * @since 1.0.0
-		 * @param int $term_id current term id.
-		 */
-		public function edit_save_metadata( $term_id ) {
-			// echo '<pre>';
-			// print_r( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] );
-			// echo '</pre>';
-			// wp_die();
-
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
 				$value = $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ];
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
