@@ -36,6 +36,46 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		private static $font_base = 'bsf-custom-fonts';
 
 		/**
+		 * Font base.
+		 *
+		 * This is used in case of Elementor's Font param
+		 *
+		 * @since  1.0.5
+		 * @var string
+		 */
+		private static $font_weight = '';
+
+		/**
+		 * Font base.
+		 *
+		 * This is used in case of Elementor's Font param
+		 *
+		 * @since  1.0.5
+		 * @var string
+		 */
+		private static $font_display = '';
+
+		/**
+		 * Font base.
+		 *
+		 * This is used in case of Elementor's Font param
+		 *
+		 * @since  1.0.5
+		 * @var string
+		 */
+		private static $font_family = '';
+
+		/**
+		 * Font base.
+		 *
+		 * This is used in case of Elementor's Font param
+		 *
+		 * @since  1.0.5
+		 * @var string
+		 */
+		private static $font_fallback = '';
+
+		/**
 		 * Member Varible
 		 *
 		 * @var string $font_css
@@ -274,75 +314,56 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @param array $font selected font from custom font list.
 		 */
 		private function render_font_css( $font ) {
-		$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
+			$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
+			$arr_font = array();
 
-		// echo "<pre>";
-		// print_r($fonts);
-		// echo "</pre>";
-
-		foreach ($fonts as $key => $value) {
-			echo "<pre>";
-			print_r($key);
-			print_r($value);
-			echo '@font-face {';
-			echo 'font-family:' . "$key;";
-			foreach ($value as $key1 => $value1) {
-				// print_r($key1);
-				// print_r($value1);
-
-				if ( strpos( $key1, 'display' ) !== false  ) {
-					echo 'font-display:' . $value1 . ';';
+			foreach ( $fonts as $font_key => $font_value ) {
+				self::$font_family =  $font_key;
+				foreach ( $font_value as $key => $value ) {
+					if ( strpos( $key, 'display' ) !== false ) {
+						self::$font_display = $value;
+					}
+					if ( strpos( $key, 'fallback' ) !== false ) {
+						self::$font_fallback = $value;
+					}
+					if ( strpos( $key, 'weight' ) !== false  ) {
+						self::$font_weight = $value;
+						$arr_font[$value] = array();
+					}
+					if ( strpos( $key, 'font_woff_2' ) !== false && $value ) {
+						$arr_font[self::$font_weight][0] = 'url(' . esc_url( $value ) . ") format('woff2')";
+					}
+					if ( strpos( $key, 'font_woff-' ) !== false && $value ) {
+						$arr_font[self::$font_weight][1] = 'url(' . esc_url( $value ) . ") format('woff')";
+					}
+					if ( strpos( $key, 'font_ttf-' ) !== false && $value ) {
+						$arr_font[self::$font_weight][2] = 'url(' . esc_url( $value ) . ") format('ttf')";
+					}
+					if ( strpos( $key, 'font_eot-' ) !== false && $value ) {
+						$arr_font[self::$font_weight][3] = 'url(' . esc_url( $value ) . ") format('eot')";
+					}
+					if ( strpos( $key, 'font_svg-' ) !== false && $value ) {
+						$arr_font[self::$font_weight][4] = 'url(' . esc_url( $value ) . ") format('svg')";
+					}
+					if ( strpos( $key, 'font_otf-' ) !== false && $value ) {
+						$arr_font[self::$font_weight][5] = 'url(' . esc_url( $value ) . ") format('otf')";
+					}
 				}
-				if ( strpos( $key1, 'weight' ) !== false  ) {
-					echo 'font-weight:' . $value1 . ';';
-				}
-
-				// @font-face {
-				// 	font-family: "DroidSerif";
-				// 	src: url("DroidSerif-Regular-webfont.ttf") format("truetype");
-				// 	font-weight: normal;
-				// 	font-display: auto;
-				// }
 			}
-			echo "</pre>";
+			$font_face_css = '';
+			foreach ( $arr_font as $key => $value ) {
+				$font_face_css .= '@font-face {';
+				$font_face_css .= 'font-family: "' . self::$font_family . '";';
+				$font_face_css .= 'font-display: ' . self::$font_display . ';';
+				$font_face_css .= 'font-fallback: ' . self::$font_fallback . ';';
+				$font_face_css .= 'font-weight: ' . $key . ';';
+				foreach ( $value as $font_file ) {
+					$font_face_css .= 'src: ' . $font_file . '; ';
+				}
+				$font_face_css .= '}';
+			}
+			$this->font_css .= $font_face_css;
 		}
-
-		// foreach ( $fonts as $font => $value ) :
-
-		// 		foreach ( $value['repeater_fields'] as $key  ) :
-
-		// 				$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
-		// 				$css .= 'src:';
-		// 				$arr  = array();
-
-		// 				if ( $key['font_woff_2'] ) {
-		// 					$arr[] .= 'url(' . esc_url( $key['font_woff_2'] ) . ") format('woff2')";
-		// 				}
-		// 				if ( $key ['font_woff'] ) {
-		// 					$arr[] .= 'url(' . esc_url( $key['font_woff'] ) . ") format('woff')";
-		// 				}
-		// 				if ( $key['font_ttf'] ) {
-		// 					$arr[] .= 'url(' . esc_url( $key['font_ttf'] ) . ") format('truetype')";
-		// 				}
-		// 				if ( $key['font_otf'] ) {
-		// 					$arr[] .= 'url(' . esc_url( $key['font_otf'] ) . ") format('opentype')";
-		// 				}
-		// 				if ( $key['font_svg'] ) {
-		// 					$arr[] .= 'url(' . esc_url( $key['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
-		// 				}
-		// 				$css .= join( ', ', $arr );
-		// 				$css .= ';';
-		// 				$css .= 'font-display: ' . esc_attr( $value['font-display'] ) . ';';
-		// 				$css .= 'font-weight: ' . esc_attr( $key['font-weight'] ) . ';';
-		// 				$css .= '}';
-
-		// 				$this->font_css .= $css;
-
-		// 		endforeach;
-		// endforeach;
-		}
-
-
 
 		/**
 		 * Set default 'inherit' if custom font is selected in customizer if this is deleted.
