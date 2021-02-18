@@ -36,31 +36,31 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		private static $font_base = 'bsf-custom-fonts';
 
 		/**
-		 * Font base.
+		 * Font Weight.
 		 *
-		 * This is used in case of Elementor's Font param
+		 * Store the Font Weight from DB to be use for frontend rendering.
 		 *
-		 * @since  1.0.5
+		 * @since  x.x.x
 		 * @var string
 		 */
 		private static $font_weight = '';
 
 		/**
-		 * Font base.
+		 * Font Display.
 		 *
-		 * This is used in case of Elementor's Font param
+		 * Store the Font Display from DB to be use for frontend rendering.
 		 *
-		 * @since  1.0.5
+		 * @since  x.x.x
 		 * @var string
 		 */
 		private static $font_display = '';
 
 		/**
-		 * Font base.
+		 * Font Family.
 		 *
-		 * This is used in case of Elementor's Font param
+		 * Store the Font Family from DB to be use for frontend rendering.
 		 *
-		 * @since  1.0.5
+		 * @since  x.x.x
 		 * @var string
 		 */
 		private static $font_family = '';
