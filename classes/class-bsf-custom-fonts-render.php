@@ -337,7 +337,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 						$arr_font[self::$font_weight][1] = 'url(' . esc_url( $value ) . ") format('woff')";
 					}
 					if ( strpos( $key, 'font_ttf-' ) !== false && $value ) {
-						$arr_font[self::$font_weight][2] = 'url(' . esc_url( $value ) . ") format('ttf')";
+						$arr_font[self::$font_weight][2] = 'url(' . esc_url( $value ) . ") format('TrueType')";
 					}
 					if ( strpos( $key, 'font_eot-' ) !== false && $value ) {
 						$arr_font[self::$font_weight][3] = 'url(' . esc_url( $value ) . ") format('eot')";
@@ -346,7 +346,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 						$arr_font[self::$font_weight][4] = 'url(' . esc_url( $value ) . ") format('svg')";
 					}
 					if ( strpos( $key, 'font_otf-' ) !== false && $value ) {
-						$arr_font[self::$font_weight][5] = 'url(' . esc_url( $value ) . ") format('otf')";
+						$arr_font[self::$font_weight][5] = 'url(' . esc_url( $value ) . ") format('OpenType')";
 					}
 				}
 			}
@@ -360,7 +360,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				foreach ( $value as $font_file ) {
 					$font_face_css .= 'src: ' . $font_file . '; ';
 				}
-				$font_face_css .= '}';
+				$font_face_css .= '} ';
 			}
 			$this->font_css .= $font_face_css;
 		}
