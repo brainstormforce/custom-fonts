@@ -117,7 +117,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 
 			// add Custom Font list into Astra customizer.
-			add_action( 'astra_customizer_font_list', array( $this, 'add_customizer_font_list' ) );
+			add_filter( 'astra_system_fonts', array( $this, 'add_custom_fonts_astra_customizer' ) );
 
 			// Beaver builder theme customizer, beaver buidler page builder.
 			add_filter( 'fl_theme_system_fonts', array( $this, 'bb_custom_fonts' ) );
@@ -240,23 +240,27 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Add Custom Font list into Astra customizer.
 		 *
-		 * @since  1.0.0
-		 * @param string $value selected font family.
+		 * @since  x.x.x
+		 * @param string $fonts_arr Array of System Fonts.
+		 * @return array $fonts_arr modified array with Custom Fonts.
 		 */
-		public function add_customizer_font_list( $value ) {
-
+		public function add_custom_fonts_astra_customizer( $fonts_arr ) {
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-				echo '<optgroup label="Custom">';
 
-			foreach ( $fonts as $font => $links ) {
-
-				$font_value = "'" . $font . "'";
-				if ( empty( $links['font_fallback'] ) ) {
-					echo '<option value="' . $font_value . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
-				} else {
-					echo '<option value="' . self::get_font_values( $font_value, $links['font_fallback'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+			foreach ( $fonts as $font => $values ) {
+				$custom_fonts_weights = array();
+				foreach ( $values as $key => $value) {
+					if ( strpos( $key, 'weight' ) !== false  ) {
+						array_push( $custom_fonts_weights, $value);
+					}
 				}
+				$fonts_arr[$font] = array(
+					'fallback' => $values['font_fallback'],
+					'weights'   => $custom_fonts_weights,
+				);
 			}
+
+			return $fonts_arr;
 		}
 
 		/**
