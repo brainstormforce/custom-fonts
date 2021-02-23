@@ -224,13 +224,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.4
 		 */
 		public function add_style() {
-			// echo "<pre>";
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-			// echo '<pre>';
-			// var_export($fonts);
 			if ( ! empty( $fonts ) ) {
 				foreach ( $fonts  as $load_font_name => $load_font ) {
-					// var_dump($load_font_name);
 					$this->render_font_css( $load_font_name );
 				}
 				?>
