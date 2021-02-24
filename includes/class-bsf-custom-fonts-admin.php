@@ -142,6 +142,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			return $columns;
 		}
 
+		/**
+		 * Add new taxonomy data.
+		 */
 		public function add_new_taxonomy_data() {
 			$this->add_new_taxonomy_default_data();
 			?>
@@ -163,7 +166,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 						<div class="form-group">
 						<div class="weight-wrapper">';
 							$this->add_new_taxonomy_repeater_data();
-					  echo '</div>
+							echo '</div>
 					  </div>
                     </div>
                     <!-- Repeater Remove Btn -->
@@ -231,9 +234,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->font_file_new_field( 'font_otf-0', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ) );
 		}
 
+		/**
+		 * Edit taxonomy data.
+		 *
+		 * @param object $term Term data.
+		 */
 		public function edit_new_taxonomy_data( $term ) {
 			$this->edit_new_taxonomy_default_data( $term );
-			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );?>
+			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
+			?>
 			<div id="repeater">
 				<!-- Repeater Heading -->
 				<div class="repeater-heading">
@@ -243,11 +252,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				</div>
 				<div class="clearfix"></div>
 				<!-- Repeater Items -->
-			<?php foreach($data as $key => $value ) { ?>
+			<?php foreach ( $data as $key => $value ) { ?>
 				<?php $this->edit_new_taxonomy_repeater_data_2( $key, $value ); ?>
-			<?php	} 	?>
-			<input type="hidden" name="repeater-field-count" value="<?php echo self::$edit_repeater_field_count; ?>">
-            </div><?php
+			<?php	} ?>
+			<input type="hidden" name="repeater-field-count" value="<?php echo esc_attr( self::$edit_repeater_field_count ); ?>">
+			</div>
+			<?php
 		}
 
 		/**
@@ -260,14 +270,18 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 			$this->font_edit_field( 'font_fallback', __( 'Font Fallback', 'custom-fonts' ), __( 'Add the font\'s fallback names with comma(,) separator.  eg. Arial, Serif', 'custom-fonts' ), $data['font_fallback'] );
 
-			$this->select_default_edit_field('font-display', __( 'Font Display', 'custom-fonts' ) ,__( 'Select font-display property for this font', 'custom-fonts' ),
+			$this->select_default_edit_field(
+				'font-display',
+				__( 'Font Display', 'custom-fonts' ),
+				__( 'Select font-display property for this font', 'custom-fonts' ),
 				array(
 					'auto'     => 'Auto',
 					'block'    => 'Block',
 					'swap'     => 'Swap',
 					'fallback' => 'Fallback',
 					'optional' => 'Optional',
-				) , $data['font-display']
+				),
+				$data['font-display']
 			);
 		}
 
@@ -278,43 +292,44 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param object $term taxonomy terms.
 		 */
 		public function edit_new_taxonomy_repeater_data_2( $key, $value ) {
-			if ( strpos( $key, 'font-weight' ) !== false ) { ?>
+			if ( strpos( $key, 'font-weight' ) !== false ) {
+				?>
 				<div id="<?php echo 'item-' . self::$edit_repeater_field_count; ?>" class="items" data-group="font-weight-type">
 						<!-- Repeater Content -->
 						<div class="item-content">
 							<div class="form-group">
 							<?php
-				$this->select_new_field(
-					$key,
-					__( 'Font weight', 'custom-fonts' ),
-					__( 'Select font-weight property for this font', 'custom-fonts' ),
-					array(
-						'normal' => 'Normal',
-						'bold'   => 'Bold',
-						'100'    => '100',
-						'200'    => '200',
-						'300'    => '300',
-						'400'    => '400',
-						'500'    => '500',
-						'600'    => '600',
-						'700'    => '700',
-						'800'    => '800',
-						'900'    => '900',
-					),
-					$value,
-				);
-				self::$edit_repeater_field_count++;
-			} else if ( strpos( $key, 'font_woff_2-' ) !== false ) {
+							$this->select_new_field(
+								$key,
+								__( 'Font weight', 'custom-fonts' ),
+								__( 'Select font-weight property for this font', 'custom-fonts' ),
+								array(
+									'normal' => 'Normal',
+									'bold'   => 'Bold',
+									'100'    => '100',
+									'200'    => '200',
+									'300'    => '300',
+									'400'    => '400',
+									'500'    => '500',
+									'600'    => '600',
+									'700'    => '700',
+									'800'    => '800',
+									'900'    => '900',
+								),
+								$value,
+							);
+							self::$edit_repeater_field_count++;
+			} elseif ( strpos( $key, 'font_woff_2-' ) !== false ) {
 				$this->font_file_edit_field( 'font_woff_2', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ), $value, $key );
-			} else if ( strpos( $key, 'font_woff-' ) !== false ) {
+			} elseif ( strpos( $key, 'font_woff-' ) !== false ) {
 				$this->font_file_edit_field( 'font_woff', __( 'Font .woff', 'custom-fonts' ), __( 'Upload the font\'s woff file or enter the URL.', 'custom-fonts' ), $value, $key );
-			} else if ( strpos( $key, 'font_ttf' ) !== false ) {
+			} elseif ( strpos( $key, 'font_ttf' ) !== false ) {
 				$this->font_file_edit_field( 'font_ttf', __( 'Font .ttf', 'custom-fonts' ), __( 'Upload the font\'s ttf file or enter the URL.', 'custom-fonts' ), $value, $key );
-			} else if ( strpos( $key, 'font_eot' ) !== false ) {
+			} elseif ( strpos( $key, 'font_eot' ) !== false ) {
 				$this->font_file_edit_field( 'font_eot', __( 'Font .eot', 'custom-fonts' ), __( 'Upload the font\'s eot file or enter the URL.', 'custom-fonts' ), $value, $key );
-			} else if ( strpos( $key, 'font_svg' ) !== false ) {
+			} elseif ( strpos( $key, 'font_svg' ) !== false ) {
 				$this->font_file_edit_field( 'font_svg', __( 'Font .svg', 'custom-fonts' ), __( 'Upload the font\'s svg file or enter the URL.', 'custom-fonts' ), $value, $key );
-			} else if ( strpos( $key, 'font_otf' ) !== false ) {
+			} elseif ( strpos( $key, 'font_otf' ) !== false ) {
 				$this->font_file_edit_field( 'font_otf', __( 'Font .otf', 'custom-fonts' ), __( 'Upload the font\'s otf file or enter the URL.', 'custom-fonts' ), $value, $key );
 				?>
 
@@ -399,7 +414,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<?php
 		}
 
-		protected function select_default_edit_field( $id, $title, $description, $select_fields , $selected ) {
+		protected function select_default_edit_field( $id, $title, $description, $select_fields, $selected ) {
 			?>
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
@@ -407,7 +422,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					<?php
 					foreach ( $select_fields as $key => $value ) {
 						?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php echo ($key == $selected) ? ' selected="selected"' : '';?> ><?php echo esc_html( $value ); ?></option>;
+						<option value="<?php echo esc_attr( $key ); ?>" <?php echo ( $key == $selected ) ? ' selected="selected"' : ''; ?> ><?php echo esc_html( $value ); ?></option>;
 					<?php } ?>
 				</select>
 			</div>
@@ -431,7 +446,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					<?php
 					foreach ( $select_fields as $key => $value ) {
 						?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php echo $selected_value == $key ? 'selected="selected"' : '' ?>><?php echo esc_html( $value ); ?></option>
+						<option value="<?php echo esc_attr( $key ); ?>" <?php echo $selected_value == $key ? 'selected="selected"' : ''; ?>><?php echo esc_html( $value ); ?></option>
 					<?php } ?>
 				</select>
 			</div>

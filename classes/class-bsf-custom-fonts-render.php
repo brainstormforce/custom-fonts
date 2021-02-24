@@ -159,7 +159,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * @since  x.x.x
 		 */
-		function remove_custom_font_google_url( $fonts ) {
+		public function remove_custom_font_google_url( $fonts ) {
 			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 			if ( ! empty( $custom_fonts ) ) {
 				foreach ( $custom_fonts as $key => $value ) {
@@ -249,14 +249,14 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			foreach ( $fonts as $font => $values ) {
 				$custom_fonts_weights = array();
-				foreach ( $values as $key => $value) {
-					if ( strpos( $key, 'weight' ) !== false  ) {
-						array_push( $custom_fonts_weights, $value);
+				foreach ( $values as $key => $value ) {
+					if ( strpos( $key, 'weight' ) !== false ) {
+						array_push( $custom_fonts_weights, $value );
 					}
 				}
-				$fonts_arr[$font] = array(
+				$fonts_arr[ $font ] = array(
 					'fallback' => $values['font_fallback'],
-					'weights'   => $custom_fonts_weights,
+					'weights'  => $custom_fonts_weights,
 				);
 			}
 
@@ -282,10 +282,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.0
 		 */
 		public function enqueue_admin_scripts() {
-
 			wp_enqueue_style( 'bsf-custom-fonts-css', BSF_CUSTOM_FONTS_URI . 'assets/css/bsf-custom-fonts.css', array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_media();
-			// wp_enqueue_script( 'bsf-custom-font-repeater-js', BSF_CUSTOM_FONTS_URI . 'assets/js/repeater.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER, true );
 		}
 
@@ -314,11 +312,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @param array $font selected font from custom font list.
 		 */
 		private function render_font_css( $font ) {
-			$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
+			$fonts    = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
 			$arr_font = array();
 
 			foreach ( $fonts as $font_key => $font_value ) {
-				self::$font_family =  $font_key;
+				self::$font_family = $font_key;
 				foreach ( $font_value as $key => $value ) {
 					if ( strpos( $key, 'display' ) !== false ) {
 						self::$font_display = $value;
@@ -326,27 +324,27 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					if ( strpos( $key, 'fallback' ) !== false ) {
 						self::$font_fallback = $value;
 					}
-					if ( strpos( $key, 'weight' ) !== false  ) {
-						self::$font_weight = $value;
-						$arr_font[$value] = array();
+					if ( strpos( $key, 'weight' ) !== false ) {
+						self::$font_weight  = $value;
+						$arr_font[ $value ] = array();
 					}
 					if ( strpos( $key, 'font_woff_2' ) !== false && $value ) {
-						$arr_font[self::$font_weight][0] = 'url(' . esc_url( $value ) . ") format('woff2')";
+						$arr_font[ self::$font_weight ][0] = 'url(' . esc_url( $value ) . ") format('woff2')";
 					}
 					if ( strpos( $key, 'font_woff-' ) !== false && $value ) {
-						$arr_font[self::$font_weight][1] = 'url(' . esc_url( $value ) . ") format('woff')";
+						$arr_font[ self::$font_weight ][1] = 'url(' . esc_url( $value ) . ") format('woff')";
 					}
 					if ( strpos( $key, 'font_ttf-' ) !== false && $value ) {
-						$arr_font[self::$font_weight][2] = 'url(' . esc_url( $value ) . ") format('TrueType')";
+						$arr_font[ self::$font_weight ][2] = 'url(' . esc_url( $value ) . ") format('TrueType')";
 					}
 					if ( strpos( $key, 'font_eot-' ) !== false && $value ) {
-						$arr_font[self::$font_weight][3] = 'url(' . esc_url( $value ) . ") format('eot')";
+						$arr_font[ self::$font_weight ][3] = 'url(' . esc_url( $value ) . ") format('eot')";
 					}
 					if ( strpos( $key, 'font_svg-' ) !== false && $value ) {
-						$arr_font[self::$font_weight][4] = 'url(' . esc_url( $value ) . ") format('svg')";
+						$arr_font[ self::$font_weight ][4] = 'url(' . esc_url( $value ) . ") format('svg')";
 					}
 					if ( strpos( $key, 'font_otf-' ) !== false && $value ) {
-						$arr_font[self::$font_weight][5] = 'url(' . esc_url( $value ) . ") format('OpenType')";
+						$arr_font[ self::$font_weight ][5] = 'url(' . esc_url( $value ) . ") format('OpenType')";
 					}
 				}
 			}
