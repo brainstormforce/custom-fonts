@@ -148,7 +148,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		public function add_new_taxonomy_data() {
 			$this->add_new_taxonomy_default_data();
 			?>
-			<input type="hidden" name="repeater-field-count" value="0">
+			<input type="hidden" name="repeater-field-count" value="1">
 			<?php
 			echo '
 			<div id="repeater">
@@ -170,7 +170,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					  </div>
                     </div>
                     <!-- Repeater Remove Btn -->
-                    <div class="repeater-remove-btn">
+                    <div class="repeater-remove-btn" data-id="0">
                         <div class="button button-primary remove-btn">
                             Remove
 						</div>

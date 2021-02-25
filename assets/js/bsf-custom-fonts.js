@@ -68,38 +68,38 @@
 
 	addButton.on("click", function () {
 		var repeater_field_count = $("input[name=repeater-field-count]").val();
-		var item = $('#item-0').clone().prop("id", "item-" + repeater_field_count);
+		var item = $('#item-0').clone().prop("id", "item-" + parseInt( repeater_field_count ) );
 		item.appendTo("#repeater");
-		var newItem = $('#item-' + repeater_field_count);
+		var newItem = $('#item-' + parseInt( repeater_field_count ) );
 		var input = newItem.find('input,select');
 		input.each(function (index, el) {
 			var clonedElement = newItem.find(el);
 			var attrName = clonedElement.data('name');
 			if( attrName == '[font-weight-0]' ) {
-				clonedElement.attr("name", 'bsf_custom_fonts[font-weight-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("name", 'bsf_custom_fonts[font-weight-' + ( parseInt( repeater_field_count ) ) + ']');
 			}
 			if( attrName == '[font_woff_2-0]' ) {
-				clonedElement.attr("name", 'bsf_custom_fonts[font_woff_2-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("name", 'bsf_custom_fonts[font_woff_2-' + ( parseInt( repeater_field_count ) ) + ']');
 				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_woff-0]' ) {
-				clonedElement.attr("name", 'bsf_custom_fonts[font_woff-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("name", 'bsf_custom_fonts[font_woff-' + ( parseInt( repeater_field_count ) ) + ']');
 				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_ttf-0]' ) {
-				clonedElement.attr("name", 'bsf_custom_fonts[font_ttf-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("name", 'bsf_custom_fonts[font_ttf-' + ( parseInt( repeater_field_count ) ) + ']');
 				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_eot-0]' ) {
-				clonedElement.attr("name", 'bsf_custom_fonts[font_eot-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("name", 'bsf_custom_fonts[font_eot-' + ( parseInt( repeater_field_count ) ) + ']');
 				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_svg-0]' ) {
-				clonedElement.attr("name", 'bsf_custom_fonts[font_svg-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("name", 'bsf_custom_fonts[font_svg-' + ( parseInt( repeater_field_count ) ) + ']');
 				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_otf-0]' ) {
-				clonedElement.attr("name", 'bsf_custom_fonts[font_otf-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("name", 'bsf_custom_fonts[font_otf-' + ( parseInt( repeater_field_count ) ) + ']');
 				clonedElement.attr("value", '');
 			}
 		});
