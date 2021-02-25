@@ -75,30 +75,38 @@
 		input.each(function (index, el) {
 			var clonedElement = newItem.find(el);
 			var attrName = clonedElement.data('name');
-			console.log(attrName);
 			if( attrName == '[font-weight-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font-weight-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
 			}
 			if( attrName == '[font_woff_2-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_woff_2-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_woff-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_woff-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_ttf-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_ttf-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_eot-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_eot-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_svg-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_svg-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == '[font_otf-0]' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_otf-' + ( parseInt( repeater_field_count ) + 1 ) + ']');
+				clonedElement.attr("value", '');
 			}
 		});
 		$("input[name=repeater-field-count]").val( parseInt( repeater_field_count ) + 1 );
+		$('html, body').animate({
+			scrollTop: newItem.offset().top
+		}, 500);
 	});
 
 	var editAddButton = $("#repeater").find('.edit-repeater-add-btn');
