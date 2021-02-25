@@ -118,21 +118,27 @@
 			}
 			if( attrName == 'bsf_custom_fonts[font_woff_2-' + newItemId + ']' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_woff_2-' + ( parseInt( repeater_field_count ) ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == 'bsf_custom_fonts[font_woff-' + newItemId + ']' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_woff-' + ( parseInt( repeater_field_count ) ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == 'bsf_custom_fonts[font_ttf-' + newItemId + ']' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_ttf-' + ( parseInt( repeater_field_count ) ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == 'bsf_custom_fonts[font_eot-' + newItemId + ']' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_eot-' + ( parseInt( repeater_field_count ) ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == 'bsf_custom_fonts[font_svg-' + newItemId + ']' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_svg-' + ( parseInt( repeater_field_count ) ) + ']');
+				clonedElement.attr("value", '');
 			}
 			if( attrName == 'bsf_custom_fonts[font_otf-' + newItemId + ']' ) {
 				clonedElement.attr("name", 'bsf_custom_fonts[font_otf-' + ( parseInt( repeater_field_count ) ) + ']');
+				clonedElement.attr("value", '');
 			}
 		});
 		$("input[name=repeater-field-count]").val( parseInt( repeater_field_count ) + 1 );
