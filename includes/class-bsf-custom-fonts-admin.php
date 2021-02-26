@@ -253,7 +253,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				<div class="clearfix"></div>
 				<!-- Repeater Items -->
 			<?php foreach ( $data as $key => $value ) { ?>
-				<?php $this->edit_new_taxonomy_repeater_data_2( $key, $value ); ?>
+				<?php $this->edit_taxonomy_repeater_data( $key, $value ); ?>
 			<?php	} ?>
 			<input type="hidden" name="repeater-field-count" value="<?php echo esc_attr( self::$edit_repeater_field_count ); ?>">
 			</div>
@@ -288,10 +288,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Edit Taxonomy data
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 * @param object $term taxonomy terms.
 		 */
-		public function edit_new_taxonomy_repeater_data_2( $key, $value ) {
+		public function edit_taxonomy_repeater_data( $key, $value ) {
 			if ( strpos( $key, 'font-weight' ) !== false ) {
 				?>
 				<div id="<?php echo 'item-' . self::$edit_repeater_field_count; ?>" class="cf-bsf-items" data-group="font-weight-type">
