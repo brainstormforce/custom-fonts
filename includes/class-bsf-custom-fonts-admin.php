@@ -171,7 +171,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                     </div>
                     <!-- Repeater Remove Btn -->
                     <div class="repeater-remove-btn">
-                        <div class="button button-primary disabled remove-btn" data-id="0" >
+                        <div class="button button-primary disabled remove-btn">
                             Remove
 						</div>
                     </div>
