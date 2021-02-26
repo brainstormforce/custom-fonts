@@ -43,6 +43,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 == Changelog ==
 
+= 1.3.0 =
+- New: Add multiple font weight to the Custom Fonts.
+
 = 1.2.6 =
 - Improvement: PHP 8.0 compatibility.
 
