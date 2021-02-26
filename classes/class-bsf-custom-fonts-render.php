@@ -36,6 +36,46 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		private static $font_base = 'bsf-custom-fonts';
 
 		/**
+		 * Font Weight.
+		 *
+		 * Store the Font Weight from DB to be use for frontend rendering.
+		 *
+		 * @since  x.x.x
+		 * @var string
+		 */
+		private static $font_weight = '';
+
+		/**
+		 * Font Display.
+		 *
+		 * Store the Font Display from DB to be use for frontend rendering.
+		 *
+		 * @since  x.x.x
+		 * @var string
+		 */
+		private static $font_display = '';
+
+		/**
+		 * Font Family.
+		 *
+		 * Store the Font Family from DB to be use for frontend rendering.
+		 *
+		 * @since  x.x.x
+		 * @var string
+		 */
+		private static $font_family = '';
+
+		/**
+		 * Font Fallback.
+		 *
+		 * Store the Font Fallback from DB to be use for frontend rendering.
+		 *
+		 * @since  x.x.x
+		 * @var string
+		 */
+		private static $font_fallback = '';
+
+		/**
 		 * Member Varible
 		 *
 		 * @var string $font_css
@@ -77,7 +117,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 
 			// add Custom Font list into Astra customizer.
-			add_action( 'astra_customizer_font_list', array( $this, 'add_customizer_font_list' ) );
+			add_filter( 'astra_system_fonts', array( $this, 'add_custom_fonts_astra_customizer' ) );
 
 			// Beaver builder theme customizer, beaver buidler page builder.
 			add_filter( 'fl_theme_system_fonts', array( $this, 'bb_custom_fonts' ) );
@@ -119,7 +159,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * @since  x.x.x
 		 */
-		function remove_custom_font_google_url( $fonts ) {
+		public function remove_custom_font_google_url( $fonts ) {
 			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 			if ( ! empty( $custom_fonts ) ) {
 				foreach ( $custom_fonts as $key => $value ) {
@@ -184,13 +224,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.4
 		 */
 		public function add_style() {
-			// echo "<pre>";
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-			// echo '<pre>';
-			// var_export($fonts);
 			if ( ! empty( $fonts ) ) {
 				foreach ( $fonts  as $load_font_name => $load_font ) {
-					// var_dump($load_font_name);
 					$this->render_font_css( $load_font_name );
 				}
 				?>
@@ -204,23 +240,27 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Add Custom Font list into Astra customizer.
 		 *
-		 * @since  1.0.0
-		 * @param string $value selected font family.
+		 * @since  x.x.x
+		 * @param string $fonts_arr Array of System Fonts.
+		 * @return array $fonts_arr modified array with Custom Fonts.
 		 */
-		public function add_customizer_font_list( $value ) {
-
+		public function add_custom_fonts_astra_customizer( $fonts_arr ) {
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
-				echo '<optgroup label="Custom">';
 
-			foreach ( $fonts as $font => $links ) {
-
-				$font_value = "'" . $font . "'";
-				if ( empty( $links['font_fallback'] ) && '' == $links['font_fallback'] ) {
-					echo '<option value="' . $font_value . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
-				} else {
-					echo '<option value="' . self::get_font_values( $font_value, $links['font_fallback'] ) . '" ' . selected( $font, $value, false ) . '>' . esc_attr( $font ) . '</option>';
+			foreach ( $fonts as $font => $values ) {
+				$custom_fonts_weights = array();
+				foreach ( $values as $key => $value ) {
+					if ( strpos( $key, 'weight' ) !== false ) {
+						array_push( $custom_fonts_weights, $value );
+					}
 				}
+				$fonts_arr[ $font ] = array(
+					'fallback' => $values['font_fallback'],
+					'weights'  => $custom_fonts_weights,
+				);
 			}
+
+			return $fonts_arr;
 		}
 
 		/**
@@ -242,10 +282,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.0
 		 */
 		public function enqueue_admin_scripts() {
-
 			wp_enqueue_style( 'bsf-custom-fonts-css', BSF_CUSTOM_FONTS_URI . 'assets/css/bsf-custom-fonts.css', array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_media();
-			wp_enqueue_script( 'bsf-custom-font-repeater-js', BSF_CUSTOM_FONTS_URI . 'assets/js/repeater.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_script( 'bsf-custom-fonts-js', BSF_CUSTOM_FONTS_URI . 'assets/js/bsf-custom-fonts.js', array( 'jquery' ), BSF_CUSTOM_FONTS_VER, true );
 		}
 
@@ -274,44 +312,56 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @param array $font selected font from custom font list.
 		 */
 		private function render_font_css( $font ) {
-		$fonts = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
+			$fonts    = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
+			$arr_font = array();
 
-		foreach ( $fonts as $font => $value ) :
-
-				foreach ( $value['repeater_fields'] as $key  ) :
-
-						$css  = '@font-face { font-family:"' . esc_attr( $font ) . '";';
-						$css .= 'src:';
-						$arr  = array();
-
-						if ( $key['font_woff_2'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_woff_2'] ) . ") format('woff2')";
-						}
-						if ( $key ['font_woff'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_woff'] ) . ") format('woff')";
-						}
-						if ( $key['font_ttf'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_ttf'] ) . ") format('truetype')";
-						}
-						if ( $key['font_otf'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_otf'] ) . ") format('opentype')";
-						}
-						if ( $key['font_svg'] ) {
-							$arr[] .= 'url(' . esc_url( $key['font_svg'] ) . '#' . esc_attr( strtolower( str_replace( ' ', '_', $font ) ) ) . ") format('svg')";
-						}
-						$css .= join( ', ', $arr );
-						$css .= ';';
-						$css .= 'font-display: ' . esc_attr( $value['font-display'] ) . ';';
-						$css .= 'font-weight: ' . esc_attr( $key['font-weight'] ) . ';';
-						$css .= '}';
-
-						$this->font_css .= $css;
-						
-				endforeach;
-		endforeach;
+			foreach ( $fonts as $font_key => $font_value ) {
+				self::$font_family = $font_key;
+				foreach ( $font_value as $key => $value ) {
+					if ( strpos( $key, 'display' ) !== false ) {
+						self::$font_display = $value;
+					}
+					if ( strpos( $key, 'fallback' ) !== false ) {
+						self::$font_fallback = $value;
+					}
+					if ( strpos( $key, 'weight' ) !== false ) {
+						self::$font_weight  = $value;
+						$arr_font[ $value ] = array();
+					}
+					if ( strpos( $key, 'font_woff_2' ) !== false && $value ) {
+						$arr_font[ self::$font_weight ][0] = 'url(' . esc_url( $value ) . ") format('woff2')";
+					}
+					if ( strpos( $key, 'font_woff-' ) !== false && $value ) {
+						$arr_font[ self::$font_weight ][1] = 'url(' . esc_url( $value ) . ") format('woff')";
+					}
+					if ( strpos( $key, 'font_ttf-' ) !== false && $value ) {
+						$arr_font[ self::$font_weight ][2] = 'url(' . esc_url( $value ) . ") format('TrueType')";
+					}
+					if ( strpos( $key, 'font_eot-' ) !== false && $value ) {
+						$arr_font[ self::$font_weight ][3] = 'url(' . esc_url( $value ) . ") format('eot')";
+					}
+					if ( strpos( $key, 'font_svg-' ) !== false && $value ) {
+						$arr_font[ self::$font_weight ][4] = 'url(' . esc_url( $value ) . ") format('svg')";
+					}
+					if ( strpos( $key, 'font_otf-' ) !== false && $value ) {
+						$arr_font[ self::$font_weight ][5] = 'url(' . esc_url( $value ) . ") format('OpenType')";
+					}
+				}
+			}
+			$font_face_css = '';
+			foreach ( $arr_font as $key => $value ) {
+				$font_face_css .= '@font-face {';
+				$font_face_css .= 'font-family: "' . self::$font_family . '";';
+				$font_face_css .= 'font-display: ' . self::$font_display . ';';
+				$font_face_css .= 'font-fallback: ' . self::$font_fallback . ';';
+				$font_face_css .= 'font-weight: ' . $key . ';';
+				foreach ( $value as $font_file ) {
+					$font_face_css .= 'src: ' . $font_file . '; ';
+				}
+				$font_face_css .= '} ';
+			}
+			$this->font_css .= $font_face_css;
 		}
-
-
 
 		/**
 		 * Set default 'inherit' if custom font is selected in customizer if this is deleted.

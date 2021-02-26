@@ -1,20 +1,20 @@
 (function($){
 
 	/**
-	 * Bsf Custom Fonts 
+	 * Bsf Custom Fonts
 	 *
 	 * @class BsfCustomFonts
 	 * @since 1.0.0
 	 */
 
 	BsfCustomFonts = {
-		
+
 		/**
 		 * Initializes a Bsf Custom Fonts.
 		 *
 		 * @since 1.0
 		 * @method init
-		 */ 
+		 */
 		init: function()
 		{
 			// Init.
@@ -27,9 +27,9 @@
 		 * @since 1.0.0
 		 * @access private
 		 * @method _fileUploads
-		 */ 
+		 */
 		_fileUploads: function()
-		{	
+		{
 			var file_frame;
 			window.inputWrapper = '';
 			$( document.body ).on('click', '.bsf-custom-fonts-upload', function(event) {
@@ -51,7 +51,7 @@
 
 			     // When an image is selected in the media frame...
     			file_frame.on( 'select', function() {
-    				
+
     				 // Get media attachment details from the frame state
       				var attachment = file_frame.state().get('selection').first().toJSON();
       					window.inputWrapper.find( '.bsf-custom-fonts-link' ).val(attachment.url);
@@ -64,67 +64,112 @@
 		},
 	}
 
-	var items = $("#repeater").find(".items");
-	var key = 0;
-	var addButton = $("#repeater").find('.repeater-add-btn');
+	var addButton = $('#repeater').find('.repeater-add-btn');
 
-	var addItem = function (items, key, fresh = true) {
-		console.log('inn');
-		var itemContent = items;
-		var item = itemContent;
-		var input = item.find('input,select');
+	addButton.on('click', function () {
+		var repeaterFieldCount = $('input[name=repeater-field-count]').val();
+		var item = $('#item-0').clone().prop('id', 'item-' + parseInt( repeaterFieldCount ) );
+		item.appendTo('#repeater');
+		var newItem = $('#item-' + parseInt( repeaterFieldCount ) );
+		var input = newItem.find('input,select');
 		input.each(function (index, el) {
-			var attrName = $(el).data('name');
-			var skipName = $(el).data('skip-name');
-			if (skipName != true) {
-				if( attrName == '[font-weight]' ) {
-					$(el).attr("name", 'bsf_custom_fonts[repeater_fields]'+ "[" + key +"]"+ attrName);
-				}
-				else{
-					$(el).attr("name", 'bsf_custom_fonts' + "[repeater_fields][" + key +"]"+     attrName);
-				}
-			} else {
-				if (attrName != 'undefined') {
-					$(el).attr("name", attrName);
-				}
+			var clonedElement = newItem.find(el);
+			var attrName = clonedElement.data('name');
+			if( attrName == '[font-weight-0]' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font-weight-' + ( parseInt( repeaterFieldCount ) ) + ']');
 			}
-			if (fresh == true) {
-				$(el).attr('value', '');
+			if( attrName == '[font_woff_2-0]' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_woff_2-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
 			}
-		})
-		var itemClone = items;
+			if( attrName == '[font_woff-0]' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_woff-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == '[font_ttf-0]' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_ttf-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == '[font_eot-0]' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_eot-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == '[font_svg-0]' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_svg-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == '[font_otf-0]' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_otf-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+		});
+		$('input[name=repeater-field-count]').val( parseInt( repeaterFieldCount ) + 1 );
+		$('.repeater-remove-btn .remove-btn').removeClass('disabled');
+		$('#item-0 .repeater-remove-btn .remove-btn').addClass('disabled');
+		$('html, body').animate({
+			scrollTop: newItem.offset().top
+		}, 500);
+	});
 
-		/* Handling remove btn */
-		var removeButton = itemClone.find('.remove-btn');
+	var editAddButton = $('#repeater').find('.edit-repeater-add-btn');
 
-		if (key == 0) {
-			removeButton.attr('disabled', true);
-		} else {
-			removeButton.attr('disabled', false);
+	editAddButton.on('click', function () {
+		var repeaterFieldCount = $('input[name=repeater-field-count]').val();
+		var item = $('#repeater .cf-bsf-items').first().clone().prop('id', 'item-' + ( parseInt( repeaterFieldCount ) ) );
+		item.appendTo('#repeater');
+		var newItem = $('#item-' + repeaterFieldCount);
+		var newItemId = $('#repeater .cf-bsf-items').first().find('select').attr('id').replace( /^\D+/g, '');
+		var input = newItem.find('input,select');
+		input.each(function (index, el) {
+			var clonedElement = newItem.find(el);
+			var attrName = clonedElement.attr('name');
+			if( attrName == 'bsf_custom_fonts[font-weight-' + newItemId + ']' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font-weight-' + ( parseInt( repeaterFieldCount ) ) + ']');
+			}
+			if( attrName == 'bsf_custom_fonts[font_woff_2-' + newItemId + ']' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_woff_2-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == 'bsf_custom_fonts[font_woff-' + newItemId + ']' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_woff-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == 'bsf_custom_fonts[font_ttf-' + newItemId + ']' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_ttf-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == 'bsf_custom_fonts[font_eot-' + newItemId + ']' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_eot-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == 'bsf_custom_fonts[font_svg-' + newItemId + ']' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_svg-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+			if( attrName == 'bsf_custom_fonts[font_otf-' + newItemId + ']' ) {
+				clonedElement.attr('name', 'bsf_custom_fonts[font_otf-' + ( parseInt( repeaterFieldCount ) ) + ']');
+				clonedElement.attr('value', '');
+			}
+		});
+		$('input[name=repeater-field-count]').val( parseInt( repeaterFieldCount ) + 1 );
+		$('.repeater-remove-btn .remove-btn').removeClass('disabled');
+		$('#item-0 .repeater-remove-btn .remove-btn').addClass('disabled');
+		$('html, body').animate({
+			scrollTop: newItem.offset().top
+		}, 500);
+	});
+
+	$(document).on('click', '.remove-btn', function () {
+		$this = $(this)
+		if ( $this.hasClass( 'disabled' ) ) {
+			return false;
 		}
-
-		$("<div class='items'>" + itemClone.html() + "<div/>").insertBefore('.repeater-heading');
-
-		removeButton.attr('onclick', '(function($){ console.log($(this).before()); $(this).parents().remove()})(jQuery);');
-
-		
-		// var data_sbw = $("<div class='items'>" + itemClone.html() + "<div/>");
-
-		// repeater.html(data_sbw);
-
-	};
-
-	addButton.on("click", function () {
-		addItem($(items[0]), key);
-		key++;
+		$this.parents('.cf-bsf-items').remove();
 	});
 
 	/* Initializes the Bsf Custom Fonts. */
-		$(function(){
-			BsfCustomFonts.init();
-			$("#repeater").createRepeater({
-		        showFirstItemToDefault: true,
-		    });
-		});
+	$(function(){
+		BsfCustomFonts.init();
+	});
 
 })(jQuery);
