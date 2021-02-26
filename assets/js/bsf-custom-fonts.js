@@ -104,6 +104,7 @@
 			}
 		});
 		$("input[name=repeater-field-count]").val( parseInt( repeater_field_count ) + 1 );
+		$( ".repeater-remove-btn .remove-btn" ).removeClass("disabled");
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
 		}, 500);
@@ -154,6 +155,8 @@
 			scrollTop: newItem.offset().top
 		}, 500);
 	});
+
+
 
 	/* Initializes the Bsf Custom Fonts. */
 	$(function(){
