@@ -66,11 +66,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		private static $font_family = '';
 
 		/**
-		 * Font base.
+		 * Font Fallback.
 		 *
-		 * This is used in case of Elementor's Font param
+		 * Store the Font Fallback from DB to be use for frontend rendering.
 		 *
-		 * @since  1.0.5
+		 * @since  x.x.x
 		 * @var string
 		 */
 		private static $font_fallback = '';
