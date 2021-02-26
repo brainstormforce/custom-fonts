@@ -166,6 +166,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 						<div class="form-group">
 						<div class="weight-wrapper">';
 							$this->add_new_taxonomy_repeater_data();
+							wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' );
 							echo '</div>
 					  </div>
                     </div>
@@ -256,6 +257,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				<?php $this->edit_taxonomy_repeater_data( $key, $value ); ?>
 			<?php	} ?>
 			<input type="hidden" name="repeater-field-count" value="<?php echo esc_attr( self::$edit_repeater_field_count ); ?>">
+			<?php wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' ); ?>
 			</div>
 			<?php
 		}
@@ -557,6 +559,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param int $term_id current term id.
 		 */
 		public function save_metadata( $term_id ) {
+			// Verify the nonce for both Add and Edit font save data.
+			if ( ! isset( $_POST['bsf_custom_font_nonce'] ) || ! wp_verify_nonce( $_POST['bsf_custom_font_nonce'], basename( __FILE__ ) ) ) {
+				return;
+			}
+
 			if ( isset( $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ] ) ) {
 				$value = $_POST[ Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ];
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $value, $term_id );
