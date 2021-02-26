@@ -160,7 +160,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                 </div>
                 <div class="clearfix"></div>
                 <!-- Repeater Items -->
-                <div id="item-0" class="items" data-group="font-weight-type">
+                <div id="item-0" class="cf-bsf-items" data-group="font-weight-type">
                     <!-- Repeater Content -->
                     <div class="item-content">
 						<div class="form-group">
@@ -294,7 +294,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		public function edit_new_taxonomy_repeater_data_2( $key, $value ) {
 			if ( strpos( $key, 'font-weight' ) !== false ) {
 				?>
-				<div id="<?php echo 'item-' . self::$edit_repeater_field_count; ?>" class="items" data-group="font-weight-type">
+				<div id="<?php echo 'item-' . self::$edit_repeater_field_count; ?>" class="cf-bsf-items" data-group="font-weight-type">
 						<!-- Repeater Content -->
 						<div class="item-content">
 							<div class="form-group">

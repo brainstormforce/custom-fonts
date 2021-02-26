@@ -105,6 +105,7 @@
 		});
 		$("input[name=repeater-field-count]").val( parseInt( repeater_field_count ) + 1 );
 		$( ".repeater-remove-btn .remove-btn" ).removeClass("disabled");
+		$( "#item-0 .repeater-remove-btn .remove-btn" ).addClass("disabled");
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
 		}, 500);
@@ -114,10 +115,10 @@
 
 	editAddButton.on("click", function () {
 		var repeater_field_count = $("input[name=repeater-field-count]").val();
-		var item = $('#repeater .items').first().clone().prop("id", "item-" + ( parseInt( repeater_field_count ) ) );
+		var item = $('#repeater .cf-bsf-items').first().clone().prop("id", "item-" + ( parseInt( repeater_field_count ) ) );
 		item.appendTo("#repeater");
 		var newItem = $("#item-" + repeater_field_count);
-		var newItemId = $('#repeater .items').first().find('select').attr('id').replace( /^\D+/g, '');
+		var newItemId = $('#repeater .cf-bsf-items').first().find('select').attr('id').replace( /^\D+/g, '');
 		var input = newItem.find('input,select');
 		input.each(function (index, el) {
 			var clonedElement = newItem.find(el);
@@ -156,7 +157,13 @@
 		}, 500);
 	});
 
-
+	$(document).on('click', ".remove-btn", function () {
+		$this = $(this)
+		if ( $this.hasClass( 'disabled' ) ) {
+			return false;
+		}
+		$this.parents( ".cf-bsf-items" ).remove();
+	});
 
 	/* Initializes the Bsf Custom Fonts. */
 	$(function(){
