@@ -335,9 +335,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 
 						</div>
 					</div>
-							<!-- Repeater Remove Btn -->
+					<!-- Repeater Remove Btn -->
 					<div class="repeater-remove-btn">
-						<div class="button button-primary remove-btn">
+						<div class="button button-primary remove-btn <?php echo esc_attr( 1 < self::$edit_repeater_field_count ? '' : 'disabled' ); ?>">
 							Remove
 						</div>
 					</div>

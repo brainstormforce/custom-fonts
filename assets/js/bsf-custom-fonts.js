@@ -152,6 +152,8 @@
 			}
 		});
 		$("input[name=repeater-field-count]").val( parseInt( repeater_field_count ) + 1 );
+		$( ".repeater-remove-btn .remove-btn" ).removeClass("disabled");
+		$( "#item-0 .repeater-remove-btn .remove-btn" ).addClass("disabled");
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
 		}, 500);
