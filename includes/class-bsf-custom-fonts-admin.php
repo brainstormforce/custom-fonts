@@ -289,12 +289,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * Edit Taxonomy data
 		 *
 		 * @since x.x.x
-		 * @param object $term taxonomy terms.
+		 * @param string $key Font array repeater fields key.
+		 * @param string $value Font array repeater fields value.
 		 */
 		public function edit_taxonomy_repeater_data( $key, $value ) {
 			if ( strpos( $key, 'font-weight' ) !== false ) {
 				?>
-				<div id="<?php echo 'item-' . self::$edit_repeater_field_count; ?>" class="cf-bsf-items" data-group="font-weight-type">
+				<div id="<?php echo esc_attr( 'item-' . self::$edit_repeater_field_count ); ?>" class="cf-bsf-items" data-group="font-weight-type">
 						<!-- Repeater Content -->
 						<div class="item-content">
 							<div class="form-group">
@@ -316,7 +317,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 									'800'    => '800',
 									'900'    => '900',
 								),
-								$value,
+								$value
 							);
 							self::$edit_repeater_field_count++;
 			} elseif ( strpos( $key, 'font_woff_2-' ) !== false ) {
@@ -363,7 +364,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
 
 				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
-				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
+				<input type="text" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
 				<p><?php echo esc_html( $description ); ?></p>
 			</div>
 			<?php
@@ -414,6 +415,17 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<?php
 		}
 
+		/**
+		 * Select default repeater edit field.
+		 *
+		 * @since x.x.x
+		 *
+		 * @param string $id Id of the field.
+		 * @param string $title Title of the field.
+		 * @param string $description Description of the field.
+		 * @param array  $select_fields Select - all options array.
+		 * @param string $selected Key for selected field.
+		 */
 		protected function select_default_edit_field( $id, $title, $description, $select_fields, $selected ) {
 			?>
 			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
@@ -432,10 +444,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Render select field for the new font screen.
 		 *
-		 * @param String $id Field ID.
-		 * @param String $title Field Title.
-		 * @param String $description Field Description.
-		 * @param Array  $select_fields Select fields as Array.
+		 * @param string $id Field ID.
+		 * @param string $title Field Title.
+		 * @param string $description Field Description.
+		 * @param array  $select_fields Select fields as Array.
+		 * @param string $selected_value Selected field.
 		 * @return void
 		 */
 		protected function select_new_field( $id, $title, $description, $select_fields, $selected_value = '' ) {
@@ -458,9 +471,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 *
 		 * @param String $id Field ID.
 		 * @param String $title Field Title.
-		 * @param String $saved_val Field Value.
 		 * @param String $description Field Description.
 		 * @param Array  $select_fields Select fields as Array.
+		 * @param String $saved_val Field Value.
 		 * @return void
 		 */
 		private function select_edit_field( $id, $title, $description, $select_fields, $saved_val = '' ) {
@@ -491,8 +504,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since 1.0.0
 		 * @param int    $id current term id.
 		 * @param string $title font type title.
-		 * @param string $value title font type meta values.
 		 * @param string $description title font type description.
+		 * @param string $value title font type meta values.
 		 */
 		protected function font_edit_field( $id, $title, $description, $value = '' ) {
 			?>
@@ -503,7 +516,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					</label>
 				</th>
 				<td>
-					<input id="metadata-<?php echo esc_attr( $id ); ?>" type="text" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug; ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
+					<input id="metadata-<?php echo esc_attr( $id ); ?>" type="text" class="bsf-custom-fonts-link <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" value="<?php echo esc_attr( $value ); ?>" />
 					<p><?php echo esc_html( $description ); ?></p>
 				</td>
 			</tr>
@@ -516,8 +529,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @since x.x.x
 		 * @param int    $id current term id.
 		 * @param string $title font type title.
-		 * @param string $value title font type meta values.
 		 * @param string $description title font type description.
+		 * @param string $value title font type meta values.
+		 * @param string $key key as the part of name of the fields.
 		 */
 		protected function font_file_edit_field( $id, $title, $description, $value, $key ) {
 			?>
