@@ -153,11 +153,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			echo '
 			<div id="repeater">
                 <!-- Repeater Heading -->
-                <div class="repeater-heading">
-                    <div class="button button-primary repeater-add-btn">
-                        Add Font Variation
-                    </div>
-                </div>
+                
                 <div class="clearfix"></div>
                 <!-- Repeater Items -->
                 <div id="item-0" class="cf-bsf-items" data-group="font-weight-type">
@@ -174,11 +170,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                     <div class="repeater-remove-btn">
                         <div class="button button-primary disabled remove-btn">
                             Remove
-						</div>
+						</div>              
                     </div>
                     <div class="clearfix"></div>
                 </div>
-            </div>';
+            </div>
+			<div class="cf-addbutton-wrapper">
+				<div class="button button-primary repeater-add-btn">
+					Add Font Variation
+				</div>
+			</div>';
 		}
 
 		/**
@@ -241,16 +242,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param object $term Term data.
 		 */
 		public function edit_new_taxonomy_data( $term ) {
-			$this->edit_new_taxonomy_default_data( $term );
+
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 			?>
 			<div id="repeater">
 				<!-- Repeater Heading -->
-				<div class="repeater-heading">
-					<div class="button button-primary edit-repeater-add-btn">
-						Add Font Variation
-					</div>
-				</div>
 				<div class="clearfix"></div>
 				<!-- Repeater Items -->
 			<?php foreach ( $data as $key => $value ) { ?>
@@ -259,7 +255,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<input type="hidden" name="repeater-field-count" value="<?php echo esc_attr( self::$edit_repeater_field_count ); ?>">
 			<?php wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' ); ?>
 			</div>
+			<div class="cf-addbutton-wrapper">
+					<div class="button button-primary edit-repeater-add-btn">
+						Add Font Variation
+					</div>
+				</div>
 			<?php
+			$this->edit_new_taxonomy_default_data( $term );
 		}
 
 		/**
