@@ -244,7 +244,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		public function edit_new_taxonomy_data( $term ) {
 
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
+			$this->edit_new_taxonomy_default_data( $term );
 			?>
+			<tr>
+			<th></th>
+			<td>
 			<div id="repeater">
 				<!-- Repeater Heading -->
 				<div class="clearfix"></div>
@@ -260,8 +264,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 						Add Font Variation
 					</div>
 				</div>
+			</td>
+			</tr>
 			<?php
-			$this->edit_new_taxonomy_default_data( $term );
+
 		}
 
 		/**
@@ -287,6 +293,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				),
 				$data['font-display']
 			);
+
 		}
 
 		/**
@@ -432,8 +439,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		protected function select_default_edit_field( $id, $title, $description, $select_fields, $selected ) {
 			?>
-			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
-				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
+			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
+				<th><label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label></th>
+				<td>
 				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" />
 					<?php
 					foreach ( $select_fields as $key => $value ) {
@@ -441,7 +449,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 						<option value="<?php echo esc_attr( $key ); ?>" <?php echo ( $key == $selected ) ? ' selected="selected"' : ''; ?> ><?php echo esc_html( $value ); ?></option>;
 					<?php } ?>
 				</select>
-			</div>
+				<td>
+			</tr>
 			<?php
 		}
 

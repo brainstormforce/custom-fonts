@@ -92,6 +92,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 				'add_new_item'      => __( 'Add New Font', 'custom-fonts' ),
 				'new_item_name'     => __( 'New Font Name', 'custom-fonts' ),
 				'not_found'         => __( 'No fonts found', 'custom-fonts' ),
+				'back_to_items'     => __( '← Go to Fonts', 'custom-fonts' ),
 			);
 
 			$args = array(
