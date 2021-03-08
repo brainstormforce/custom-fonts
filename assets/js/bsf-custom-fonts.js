@@ -65,8 +65,7 @@
 	}
 
 	var addButton = $('.repeater-add-btn:last');
-	console.log(addButton);
-
+	
 	addButton.on('click', function () {
 		var repeaterFieldCount = $('input[name=repeater-field-count]').val();
 		var item = $('#repeater .cf-bsf-items').first().clone().prop('id', 'item-' + ( parseInt( repeaterFieldCount ) ) );
