@@ -3,7 +3,7 @@ Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography
 Requires at least: 4.4
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: 1.2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -12,7 +12,7 @@ Custom Fonts allows you to add more fonts that extend formatting options in your
 
 == Description ==
 
-This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eot, otf) easily in your WordPress website. 
+This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eot, otf) easily in your WordPress website.
 
 Currently, it works with:
 
@@ -62,8 +62,8 @@ If you're not using any of the supported plugins and theme, you can write the cu
 - Improvement: Hardened the security of plugin
 - Improvement: Compatibility with latest WordPress PHP_CodeSniffer rules
 
-= 1.2.0 = 
-- Improvement: Displaying Menu after Astra options Menu.  
+= 1.2.0 =
+- Improvement: Displaying Menu after Astra options Menu.
 
 = 1.1.0 =
 - New: Option to select font-display property.
