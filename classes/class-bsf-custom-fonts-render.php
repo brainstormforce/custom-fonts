@@ -256,7 +256,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					}
 				}
 				$fonts_arr[ $font ] = array(
-					'fallback' => $values['font_fallback'],
+					'fallback' => $values['font_fallback'] ? $values['font_fallback'] : 'Helvetica, Arial, sans-serif',
 					'weights'  => $custom_fonts_weights,
 				);
 			}
