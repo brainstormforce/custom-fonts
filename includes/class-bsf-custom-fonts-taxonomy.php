@@ -126,7 +126,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 					'font_fallback'   => '',
 					'font-display'    => 'swap',
 					'repeater_fields' => array(
-						'normal' => array(
+						'400' => array(
 							'font_woff_2' => '',
 							'font_woff'   => '',
 							'font_ttf'    => '',
