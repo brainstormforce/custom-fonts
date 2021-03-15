@@ -153,11 +153,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			echo '
 			<div id="repeater">
                 <!-- Repeater Heading -->
-                <div class="repeater-heading">
-                    <div class="button button-primary repeater-add-btn">
-                        Add Font Variation
-                    </div>
-                </div>
+                
                 <div class="clearfix"></div>
                 <!-- Repeater Items -->
                 <div id="item-0" class="cf-bsf-items" data-group="font-weight-type">
@@ -174,11 +170,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                     <div class="repeater-remove-btn">
                         <div class="button button-primary disabled remove-btn">
                             Remove
-						</div>
+						</div>              
                     </div>
                     <div class="clearfix"></div>
                 </div>
-            </div>';
+            </div>
+			<div class="cf-addbutton-wrapper">
+				<div class="button button-primary repeater-add-btn">
+					Add Font Variation
+				</div>
+			</div>';
 		}
 
 		/**
@@ -214,17 +215,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				__( 'Font weight', 'custom-fonts' ),
 				__( 'Select font-weight property for this font', 'custom-fonts' ),
 				array(
-					'normal' => 'Normal',
-					'bold'   => 'Bold',
-					'100'    => '100',
-					'200'    => '200',
-					'300'    => '300',
-					'400'    => '400',
-					'500'    => '500',
-					'600'    => '600',
-					'700'    => '700',
-					'800'    => '800',
-					'900'    => '900',
+					'100' => __( 'Thin 100', 'custom-fonts' ),
+					'200' => __( 'Extra-Light 200', 'custom-fonts' ),
+					'300' => __( 'Light 300', 'custom-fonts' ),
+					'400' => __( 'Normal 400', 'custom-fonts' ),
+					'500' => __( 'Medium 500', 'custom-fonts' ),
+					'600' => __( 'Semi-Bold 600', 'custom-fonts' ),
+					'700' => __( 'Bold 700', 'custom-fonts' ),
+					'800' => __( 'Extra-Bold 800', 'custom-fonts' ),
+					'900' => __( 'Ultra-Bold 900', 'custom-fonts' ),
 				)
 			);
 			$this->font_file_new_field( 'font_woff_2-0', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
@@ -241,16 +240,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 * @param object $term Term data.
 		 */
 		public function edit_new_taxonomy_data( $term ) {
-			$this->edit_new_taxonomy_default_data( $term );
+
 			$data = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
+			$this->edit_new_taxonomy_default_data( $term );
 			?>
+			<tr>
+			<th></th>
+			<td>
 			<div id="repeater">
 				<!-- Repeater Heading -->
-				<div class="repeater-heading">
-					<div class="button button-primary edit-repeater-add-btn">
-						Add Font Variation
-					</div>
-				</div>
 				<div class="clearfix"></div>
 				<!-- Repeater Items -->
 			<?php foreach ( $data as $key => $value ) { ?>
@@ -259,7 +257,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			<input type="hidden" name="repeater-field-count" value="<?php echo esc_attr( self::$edit_repeater_field_count ); ?>">
 			<?php wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' ); ?>
 			</div>
+			<div class="cf-addbutton-wrapper">
+					<div class="button button-primary edit-repeater-add-btn">
+						Add Font Variation
+					</div>
+				</div>
+			</td>
+			</tr>
 			<?php
+
 		}
 
 		/**
@@ -285,6 +291,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				),
 				$data['font-display']
 			);
+
 		}
 
 		/**
@@ -307,17 +314,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 								__( 'Font weight', 'custom-fonts' ),
 								__( 'Select font-weight property for this font', 'custom-fonts' ),
 								array(
-									'normal' => 'Normal',
-									'bold'   => 'Bold',
-									'100'    => '100',
-									'200'    => '200',
-									'300'    => '300',
-									'400'    => '400',
-									'500'    => '500',
-									'600'    => '600',
-									'700'    => '700',
-									'800'    => '800',
-									'900'    => '900',
+									'100' => __( 'Thin 100', 'custom-fonts' ),
+									'200' => __( 'Extra-Light 200', 'custom-fonts' ),
+									'300' => __( 'Light 300', 'custom-fonts' ),
+									'400' => __( 'Normal 400', 'custom-fonts' ),
+									'500' => __( 'Medium 500', 'custom-fonts' ),
+									'600' => __( 'Semi-Bold 600', 'custom-fonts' ),
+									'700' => __( 'Bold 700', 'custom-fonts' ),
+									'800' => __( 'Extra-Bold 800', 'custom-fonts' ),
+									'900' => __( 'Ultra-Bold 900', 'custom-fonts' ),
+
 								),
 								$value
 							);
@@ -430,8 +436,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		 */
 		protected function select_default_edit_field( $id, $title, $description, $select_fields, $selected ) {
 			?>
-			<div class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
-				<label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label>
+			<tr class="bsf-custom-fonts-file-wrap form-field term-<?php echo esc_attr( $id ); ?>-wrap" >
+				<th><label for="font-<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $title ); ?></label></th>
+				<td>
 				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" />
 					<?php
 					foreach ( $select_fields as $key => $value ) {
@@ -439,7 +446,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 						<option value="<?php echo esc_attr( $key ); ?>" <?php echo ( $key == $selected ) ? ' selected="selected"' : ''; ?> ><?php echo esc_html( $value ); ?></option>;
 					<?php } ?>
 				</select>
-			</div>
+				<td>
+			</tr>
 			<?php
 		}
 

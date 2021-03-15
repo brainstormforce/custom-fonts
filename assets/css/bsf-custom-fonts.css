@@ -38,3 +38,14 @@
     border-bottom: 0;
     margin-bottom: 0;
 }
+
+.cf-addbutton-wrapper{
+    text-align: center;
+    padding: 10px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    box-shadow: 0 1px 10px 0px rgba(0, 0, 0, 0.19);
+    border-radius: 2px;
+    max-width: 540px;
+    margin-bottom: 10px;
+}
