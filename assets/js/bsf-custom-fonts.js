@@ -64,11 +64,20 @@
 		},
 	}
 
-	var addButton = $('#repeater').find('.repeater-add-btn');
+	function remove_button_disable(){
+		if (1 === $('.repeater-remove-btn .remove-btn').length ){
+			$('.repeater-remove-btn .remove-btn').addClass('disabled');
+		}else{
+			$('.repeater-remove-btn .remove-btn').removeClass('disabled');
+		}
+	}
 
+	var addButton = $('.repeater-add-btn:last');
+	
 	addButton.on('click', function () {
 		var repeaterFieldCount = $('input[name=repeater-field-count]').val();
-		var item = $('#item-0').clone().prop('id', 'item-' + parseInt( repeaterFieldCount ) );
+		var item = $('#repeater .cf-bsf-items').first().clone().prop('id', 'item-' + ( parseInt( repeaterFieldCount ) ) );
+		
 		item.appendTo('#repeater');
 		var newItem = $('#item-' + parseInt( repeaterFieldCount ) );
 		var input = newItem.find('input,select');
@@ -104,14 +113,14 @@
 			}
 		});
 		$('input[name=repeater-field-count]').val( parseInt( repeaterFieldCount ) + 1 );
-		$('.repeater-remove-btn .remove-btn').removeClass('disabled');
-		$('#item-0 .repeater-remove-btn .remove-btn').addClass('disabled');
+		
+		remove_button_disable();
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
 		}, 500);
 	});
 
-	var editAddButton = $('#repeater').find('.edit-repeater-add-btn');
+	var editAddButton = $('.edit-repeater-add-btn:last');
 
 	editAddButton.on('click', function () {
 		var repeaterFieldCount = $('input[name=repeater-field-count]').val();
@@ -152,8 +161,8 @@
 			}
 		});
 		$('input[name=repeater-field-count]').val( parseInt( repeaterFieldCount ) + 1 );
-		$('.repeater-remove-btn .remove-btn').removeClass('disabled');
-		$('#item-0 .repeater-remove-btn .remove-btn').addClass('disabled');
+
+		remove_button_disable();
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
 		}, 500);
@@ -165,11 +174,19 @@
 			return false;
 		}
 		$this.parents('.cf-bsf-items').remove();
+		remove_button_disable();
 	});
 
+	$( document ).ajaxComplete(function( event, request, settings ) {	
+		if( "action=add-tag" === settings.data.split("&")[0]){
+			location.reload();
+		}		
+	  });
+	
 	/* Initializes the Bsf Custom Fonts. */
 	$(function(){
 		BsfCustomFonts.init();
+		remove_button_disable();
 	});
 
 })(jQuery);

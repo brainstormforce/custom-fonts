@@ -245,6 +245,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @return array $fonts_arr modified array with Custom Fonts.
 		 */
 		public function add_custom_fonts_astra_customizer( $fonts_arr ) {
+
 			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 
 			foreach ( $fonts as $font => $values ) {
@@ -255,7 +256,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					}
 				}
 				$fonts_arr[ $font ] = array(
-					'fallback' => $values['font_fallback'],
+					'fallback' => $values['font_fallback'] ? $values['font_fallback'] : 'Helvetica, Arial, sans-serif',
 					'weights'  => $custom_fonts_weights,
 				);
 			}

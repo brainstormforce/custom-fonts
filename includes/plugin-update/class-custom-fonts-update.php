@@ -127,7 +127,7 @@ class Custom_Fonts_Update {
 				$new_font_arr                  = array();
 				$new_font_arr['font_fallback'] = '';
 				$new_font_arr['font-display']  = isset( $font_links['font-display'] ) ? $font_links['font-display'] : '';
-				$new_font_arr['font-weight-0'] = 'normal';
+				$new_font_arr['font-weight-0'] = '400';
 				$new_font_arr['font_woff_2-0'] = isset( $font_links['font_woff_2'] ) ? $font_links['font_woff_2'] : '';
 				$new_font_arr['font_woff-0']   = isset( $font_links['font_woff'] ) ? $font_links['font_woff'] : '';
 				$new_font_arr['font_ttf-0']    = isset( $font_links['font_ttf'] ) ? $font_links['font_ttf'] : '';
