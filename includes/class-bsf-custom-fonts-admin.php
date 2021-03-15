@@ -215,16 +215,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 				__( 'Font weight', 'custom-fonts' ),
 				__( 'Select font-weight property for this font', 'custom-fonts' ),
 				array(
-					'bold' => 'Bold',
-					'100'  => '100',
-					'200'  => '200',
-					'300'  => '300',
-					'400'  => '400-Normal',
-					'500'  => '500',
-					'600'  => '600',
-					'700'  => '700',
-					'800'  => '800',
-					'900'  => '900',
+					'100' => __( 'Thin 100', 'astra' ),
+					'200' => __( 'Extra-Light 200', 'astra' ),
+					'300' => __( 'Light 300', 'astra' ),
+					'400' => __( 'Normal 400', 'astra' ),
+					'500' => __( 'Medium 500', 'astra' ),
+					'600' => __( 'Semi-Bold 600', 'astra' ),
+					'700' => __( 'Bold 700', 'astra' ),
+					'800' => __( 'Extra-Bold 800', 'astra' ),
+					'900' => __( 'Ultra-Bold 900', 'astra' ),
 				)
 			);
 			$this->font_file_new_field( 'font_woff_2-0', __( 'Font .woff2', 'custom-fonts' ), __( 'Upload the font\'s woff2 file or enter the URL.', 'custom-fonts' ) );
@@ -315,16 +314,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 								__( 'Font weight', 'custom-fonts' ),
 								__( 'Select font-weight property for this font', 'custom-fonts' ),
 								array(
-									'bold' => 'Bold',
-									'100'  => '100',
-									'200'  => '200',
-									'300'  => '300',
-									'400'  => '400-Normal',
-									'500'  => '500',
-									'600'  => '600',
-									'700'  => '700',
-									'800'  => '800',
-									'900'  => '900',
+									'100' => __( 'Thin 100', 'astra' ),
+									'200' => __( 'Extra-Light 200', 'astra' ),
+									'300' => __( 'Light 300', 'astra' ),
+									'400' => __( 'Normal 400', 'astra' ),
+									'500' => __( 'Medium 500', 'astra' ),
+									'600' => __( 'Semi-Bold 600', 'astra' ),
+									'700' => __( 'Bold 700', 'astra' ),
+									'800' => __( 'Extra-Bold 800', 'astra' ),
+									'900' => __( 'Ultra-Bold 900', 'astra' ),
+
 								),
 								$value
 							);
