@@ -64,7 +64,7 @@
 		},
 	}
 
-	function remove_button_disble(){
+	function remove_button_disable(){
 		if (1 === $('.repeater-remove-btn .remove-btn').length ){
 			$('.repeater-remove-btn .remove-btn').addClass('disabled');
 		}else{
@@ -114,7 +114,7 @@
 		});
 		$('input[name=repeater-field-count]').val( parseInt( repeaterFieldCount ) + 1 );
 		
-		remove_button_disble();
+		remove_button_disable();
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
 		}, 500);
@@ -162,7 +162,7 @@
 		});
 		$('input[name=repeater-field-count]').val( parseInt( repeaterFieldCount ) + 1 );
 
-		remove_button_disble();
+		remove_button_disable();
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
 		}, 500);
@@ -174,7 +174,7 @@
 			return false;
 		}
 		$this.parents('.cf-bsf-items').remove();
-		remove_button_disble();
+		remove_button_disable();
 	});
 
 	$( document ).ajaxComplete(function( event, request, settings ) {	
@@ -186,7 +186,7 @@
 	/* Initializes the Bsf Custom Fonts. */
 	$(function(){
 		BsfCustomFonts.init();
-		remove_button_disble();
+		remove_button_disable();
 	});
 
 })(jQuery);
