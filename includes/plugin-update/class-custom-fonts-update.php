@@ -71,6 +71,10 @@ class Custom_Fonts_Update {
 			$this->v_1_2_5();
 		}
 
+		if ( version_compare( $db_version, '1.2.6', '<=' ) ) {
+			$this->v_1_3_0();
+		}
+
 		$this->update_db_version();
 
 		do_action( 'custom_fonts_update_after' );
@@ -100,6 +104,40 @@ class Custom_Fonts_Update {
 			}
 		}
 
+	}
+
+	/**
+	 * Update the font array according to new font weight repeater fields.
+	 *
+	 * @since x.x.x
+	 */
+	public function v_1_3_0() {
+
+		$terms = get_terms(
+			'bsf_custom_fonts',
+			array(
+				'hide_empty' => false,
+			)
+		);
+
+		if ( ! empty( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$font_links = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
+
+				$new_font_arr                  = array();
+				$new_font_arr['font_fallback'] = '';
+				$new_font_arr['font-display']  = isset( $font_links['font-display'] ) ? $font_links['font-display'] : '';
+				$new_font_arr['font-weight-0'] = '400';
+				$new_font_arr['font_woff_2-0'] = isset( $font_links['font_woff_2'] ) ? $font_links['font_woff_2'] : '';
+				$new_font_arr['font_woff-0']   = isset( $font_links['font_woff'] ) ? $font_links['font_woff'] : '';
+				$new_font_arr['font_ttf-0']    = isset( $font_links['font_ttf'] ) ? $font_links['font_ttf'] : '';
+				$new_font_arr['font_eot-0']    = isset( $font_links['font_eot'] ) ? $font_links['font_eot'] : '';
+				$new_font_arr['font_svg-0']    = isset( $font_links['font_svg'] ) ? $font_links['font_svg'] : '';
+				$new_font_arr['font_otf-0']    = isset( $font_links['font_otf'] ) ? $font_links['font_otf'] : '';
+
+				Bsf_Custom_Fonts_Taxonomy::update_font_links( $new_font_arr, $term->term_id );
+			}
+		}
 	}
 
 	/**

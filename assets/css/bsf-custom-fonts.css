@@ -4,10 +4,48 @@
 }
 .bsf-custom-fonts-upload.button {
     float: right;
-    margin-right: 5%;
     margin-top: 2px;
 }
 
 .bsf-custom-font-select-field {
     width: 95%;
+}
+
+#repeater .bsf-custom-font-select-field,
+#repeater .bsf-custom-fonts-link {
+    width: 100%;
+}
+
+.col-wrap #repeater + p.submit {
+    text-align: center;
+    margin-top: 0;
+    max-width: 540px;
+}
+#repeater {
+    background-color: #f7f7f7;
+    padding: 10px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 2px;
+    max-width: 540px;
+}
+.cf-bsf-items {
+    border-bottom: 1px solid #414b41;
+    padding-bottom: 40px;
+    margin-bottom: 34px;
+    border-bottom-style: dotted;
+}
+.cf-bsf-items:last-of-type {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+
+.cf-addbutton-wrapper{
+    text-align: center;
+    padding: 10px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    box-shadow: 0 1px 10px 0px rgba(0, 0, 0, 0.19);
+    border-radius: 2px;
+    max-width: 540px;
+    margin-bottom: 10px;
 }

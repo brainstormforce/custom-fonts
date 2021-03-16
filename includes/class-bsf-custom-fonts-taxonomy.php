@@ -92,6 +92,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 				'add_new_item'      => __( 'Add New Font', 'custom-fonts' ),
 				'new_item_name'     => __( 'New Font Name', 'custom-fonts' ),
 				'not_found'         => __( 'No fonts found', 'custom-fonts' ),
+				'back_to_items'     => __( '← Go to Fonts', 'custom-fonts' ),
 			);
 
 			$args = array(
@@ -122,13 +123,18 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 			return wp_parse_args(
 				$fonts,
 				array(
-					'font_woff_2'  => '',
-					'font_woff'    => '',
-					'font_ttf'     => '',
-					'font_svg'     => '',
-					'font_eot'     => '',
-					'font_otf'     => '',
-					'font-display' => 'swap',
+					'font_fallback'   => '',
+					'font-display'    => 'swap',
+					'repeater_fields' => array(
+						'400' => array(
+							'font_woff_2' => '',
+							'font_woff'   => '',
+							'font_ttf'    => '',
+							'font_svg'    => '',
+							'font_eot'    => '',
+							'font_otf'    => '',
+						),
+					),
 				)
 			);
 		}
@@ -198,7 +204,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 */
 		public static function get_font_links( $term_id ) {
 			$links = get_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", array() );
-			return self::default_args( $links );
+			return $links;
 		}
 
 		/**
@@ -209,15 +215,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @param int   $term_id custom font term id.
 		 */
 		public static function update_font_links( $posted, $term_id ) {
-
 			$links = self::get_font_links( $term_id );
-			foreach ( array_keys( $links ) as $key ) {
-				if ( isset( $posted[ $key ] ) ) {
-					$links[ $key ] = $posted[ $key ];
-				} else {
-					$links[ $key ] = '';
-				}
-			}
+			$links = $posted;
 			update_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", $links );
 		}
 

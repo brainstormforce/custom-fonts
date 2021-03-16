@@ -4,7 +4,7 @@
 **Tags:** Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography  
 **Requires at least:** 4.4  
 **Tested up to:** 5.7  
-**Stable tag:** 1.2.6  
+**Stable tag:** 1.3.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -42,6 +42,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 
 ## Changelog ##
+
+### 1.3.0 ###
+- New: Add multiple font weight to the Custom Fonts.
 
 ### 1.2.6 ###
 - Improvement: PHP 8.0 compatibility.
