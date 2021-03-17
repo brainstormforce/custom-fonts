@@ -356,9 +356,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				$font_face_css .= 'font-display: ' . self::$font_display . ';';
 				$font_face_css .= 'font-fallback: ' . self::$font_fallback . ';';
 				$font_face_css .= 'font-weight: ' . $key . ';';
+				$font_src_array = array();
 				foreach ( $value as $font_file ) {
-					$font_face_css .= 'src: ' . $font_file . '; ';
+					array_push( $font_src_array, $font_file );
 				}
+
+				$font_face_css .= 'src: ' . implode( ', ', $font_src_array ) . ';';
+
 				$font_face_css .= '} ';
 			}
 			$this->font_css .= $font_face_css;
