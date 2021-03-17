@@ -44,7 +44,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 == Changelog ==
 
 = 1.3.1 =
-- fix: Font not rendered properly in case of multiple font format files.
+- Fix: Font not rendered properly when multiple font format files are added for a single font.
 
 = 1.3.0 =
 - New: Add multiple font weight to the Custom Fonts.
