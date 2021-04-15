@@ -73,11 +73,11 @@
 	}
 
 	var addButton = $('.repeater-add-btn:last');
-	
+
 	addButton.on('click', function () {
 		var repeaterFieldCount = $('input[name=repeater-field-count]').val();
 		var item = $('#repeater .cf-bsf-items').first().clone().prop('id', 'item-' + ( parseInt( repeaterFieldCount ) ) );
-		
+
 		item.appendTo('#repeater');
 		var newItem = $('#item-' + parseInt( repeaterFieldCount ) );
 		var input = newItem.find('input,select');
@@ -113,7 +113,7 @@
 			}
 		});
 		$('input[name=repeater-field-count]').val( parseInt( repeaterFieldCount ) + 1 );
-		
+
 		remove_button_disable();
 		$('html, body').animate({
 			scrollTop: newItem.offset().top
@@ -177,12 +177,12 @@
 		remove_button_disable();
 	});
 
-	$( document ).ajaxComplete(function( event, request, settings ) {	
-		if( "action=add-tag" === settings.data.split("&")[0]){
+	$( document ).ajaxComplete(function( event, request, settings ) {
+		if( settings.data && "action=add-tag" === settings.data.split("&")[0]){
 			location.reload();
-		}		
+		}
 	  });
-	
+
 	/* Initializes the Bsf Custom Fonts. */
 	$(function(){
 		BsfCustomFonts.init();
