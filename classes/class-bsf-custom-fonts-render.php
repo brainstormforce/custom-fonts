@@ -222,7 +222,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since x.x.x
 		 */
 		public function add_block_assets_style() {
-			if ( is_admin() && !is_customize_preview() ) {
+			if ( is_admin() && ! is_customize_preview() ) {
 				add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
 			}
 		}
