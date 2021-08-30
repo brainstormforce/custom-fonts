@@ -219,7 +219,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Enqueue Block Assets Scripts
 		 *
-		 * @since x.x.x
+		 * @since 1.3.3
 		 */
 		public function add_block_assets_style() {
 			if ( is_admin() && ! is_customize_preview() ) {
