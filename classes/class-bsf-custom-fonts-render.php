@@ -125,9 +125,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 			// Add font files style.
 			add_action( 'wp_head', array( $this, 'add_style' ) );
-			if ( is_admin() ) {
-				add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
-			}
+			add_action( 'init', array( $this, 'add_block_assets_style' ) );
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
@@ -216,6 +214,17 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			}
 
 			return array_merge( $bb_fonts, $custom_fonts );
+		}
+
+		/**
+		 * Enqueue Block Assets Scripts
+		 *
+		 * @since 1.3.3
+		 */
+		public function add_block_assets_style() {
+			if ( is_admin() && ! is_customize_preview() ) {
+				add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
+			}
 		}
 
 		/**
