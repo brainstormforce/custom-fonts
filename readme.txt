@@ -43,6 +43,9 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 == Changelog ==
 
+= 1.3.4 =
+- Fix: Fixed custom font is not loading on Astra and Elementor customizer due to conflict with Elementor Pro.
+
 = 1.3.3 =
 - Fix: Headers already sent warning in customizer.
 
