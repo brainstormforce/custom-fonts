@@ -69,7 +69,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			add_action( 'init', array( $this, 'create_custom_fonts_taxonomies' ) );
+			add_action( 'init', array( 'Bsf_Custom_Fonts_Taxonomy', 'create_custom_fonts_taxonomies' ) );
 		}
 
 		/**
@@ -156,10 +156,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 						'hide_empty' => false,
 					)
 				);
-				if ( $terms instanceof WP_Error ) {
-					$terms       = null;
-					self::$fonts = null;
-				}
 				if ( ! empty( $terms ) ) {
 					foreach ( $terms as $term ) {
 						self::$fonts[ $term->name ] = self::get_font_links( $term->term_id );
