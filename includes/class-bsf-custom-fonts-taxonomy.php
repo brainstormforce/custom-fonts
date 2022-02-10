@@ -69,7 +69,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			add_action( 'init', array( $this, 'create_custom_fonts_taxonomies' ) );
+			add_action( 'init', array( 'Bsf_Custom_Fonts_Taxonomy', 'create_custom_fonts_taxonomies' ) );
 		}
 
 		/**
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 *
 		 * @since 1.0.0
 		 */
-		public function create_custom_fonts_taxonomies() {
+		public static function create_custom_fonts_taxonomies() {
 			// Taxonomy: bsf_custom_fonts.
 			$labels = array(
 				'name'              => apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) ),
@@ -146,7 +146,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @return array $fonts fonts array of fonts.
 		 */
 		public static function get_fonts() {
-
+			self::create_custom_fonts_taxonomies();
 			if ( is_null( self::$fonts ) ) {
 				self::$fonts = array();
 
@@ -156,7 +156,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 						'hide_empty' => false,
 					)
 				);
-
 				if ( ! empty( $terms ) ) {
 					foreach ( $terms as $term ) {
 						self::$fonts[ $term->name ] = self::get_font_links( $term->term_id );
