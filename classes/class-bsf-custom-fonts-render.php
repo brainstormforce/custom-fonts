@@ -393,7 +393,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				// get astra options.
 				$options = get_option( ASTRA_THEME_SETTINGS );
 				foreach ( $options as $key => $value ) {
-					if ( $value == $deleted_term->name ) {
+					if ( $value === $deleted_term->name ) {
 						// set default inherit if custom font is deleted.
 						$options[ $key ] = 'inherit';
 					}
