@@ -3,7 +3,7 @@ Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography
 Requires at least: 4.4
-Tested up to: 5.9.2
+Tested up to: 6.0
 Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -43,7 +43,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 == Changelog ==
 = 1.3.5 =
-- Fix: Inherit font option not working as expected for some customizer options. 
+- Fix: Inherit font option not working as expected for some customizer options.
 
 = 1.3.4 =
 - Fix: Custom fonts are not loading on Astra customizer and Elementor typography settings after Elementor Pro v3.6.0.
