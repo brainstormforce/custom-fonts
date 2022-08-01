@@ -295,7 +295,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					}
 				}
 				$fonts_arr[ $font ] = array(
-					'weight'  => $custom_fonts_weights,
+					'weight' => $custom_fonts_weights,
 				);
 			}
 
