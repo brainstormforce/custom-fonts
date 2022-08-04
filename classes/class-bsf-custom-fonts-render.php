@@ -279,7 +279,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Add Custom Font list into Spectra editor.
 		 *
-		 * @since  x.x.x
+		 * @since  1.3.6
 		 * @param string $fonts_arr Array of System Fonts.
 		 * @return array $fonts_arr modified array with Custom Fonts.
 		 */
