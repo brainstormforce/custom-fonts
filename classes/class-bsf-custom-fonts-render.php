@@ -228,6 +228,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			if ( is_admin() && ! is_customize_preview() ) {
 				add_action( 'enqueue_block_assets', array( $this, 'add_style' ) );
 			}
+			add_action( 'enqueue_block_editor_assets', array( $this, 'enque_data' ) );
+		}
+
+		public function enque_data()
+		{
+			wp_enqueue_script( 'bsf-custom-block-js', BSF_CUSTOM_FONTS_URI . 'assets/js/custom-fonts-preview.js', array( 'jquery' ), '2', true );
 		}
 
 		/**
@@ -242,7 +248,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					$this->render_font_css( $load_font_name );
 				}
 				?>
-				<style type="text/css">
+				<style type="text/css" class="cst_fonts" id="cst_font_data">
 					<?php echo wp_strip_all_tags( $this->font_css ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</style>
 				<?php
