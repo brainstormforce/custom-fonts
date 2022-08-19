@@ -43,7 +43,7 @@ If you're not using any of the supported plugins and theme, you can write the cu
 
 == Changelog ==
 = 1.3.7 =
-- Improvement: Compatibility with Spectra's responsive previews (tablet/mobile) in editor.
+- Fix: Custom font's CSS not applying in responsive previews of WordPress block editor.
 
 = 1.3.6 =
 - Improvement: Compatibility with Spectra editor.
