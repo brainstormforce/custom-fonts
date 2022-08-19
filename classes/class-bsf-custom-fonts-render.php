@@ -236,8 +236,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * @since 1.3.7
 		 */
-		public function enque_data()
-		{
+		public function enque_data() {
 			wp_enqueue_script( 'bsf-custom-block-js', BSF_CUSTOM_FONTS_URI . 'assets/js/custom-fonts-preview.js', array( 'jquery' ), '2', true );
 		}
 
