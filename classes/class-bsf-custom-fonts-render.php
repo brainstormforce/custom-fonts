@@ -252,7 +252,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					$this->render_font_css( $load_font_name );
 				}
 				?>
-				<style type="text/css" class="cst_fonts" id="cst_font_data">
+				<style type="text/css" id="cst_font_data">
 					<?php echo wp_strip_all_tags( $this->font_css ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</style>
 				<?php
