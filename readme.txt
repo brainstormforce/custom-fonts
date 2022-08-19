@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography
 Requires at least: 4.4
 Tested up to: 6.0.1
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
