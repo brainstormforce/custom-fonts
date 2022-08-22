@@ -1,6 +1,6 @@
 document.body.addEventListener('mousedown', function () {
-    var cust_font = document.getElementById('cst_font_data');
-    var cstfont = null !== cust_font ? cust_font.cloneNode(true) : null;
+    let cust_font = document.getElementById('cst_font_data');
+    let cstfont = null !== cust_font ? cust_font.cloneNode(true) : null;
 
 	setTimeout( function() {
 
