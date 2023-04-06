@@ -119,6 +119,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			// add Custom Font list into Astra customizer.
 			add_filter( 'astra_system_fonts', array( $this, 'add_custom_fonts_astra_customizer' ) );
 
+			// add Custom Font list into Spectra One.
+			add_filter( 'wp_theme_json_data_theme', array( $this, 'add_custom_fonts_spectra_one' ) );
+
 			// add Custom Font list into Spectra editor.
 			add_filter( 'spectra_system_fonts', array( $this, 'add_custom_fonts_spectra' ) );
 
@@ -284,6 +287,63 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			}
 
 			return $fonts_arr;
+		}
+
+		/**
+		 * Add Custom Font list into FSE Theme Font Family.
+		 *
+		 * @since  x.x.x
+		 * @param object $theme_json Object of Theme json data.
+		 * @return object $theme_json modified array with Custom Fonts.
+		 */
+		public function add_custom_fonts_spectra_one( $theme_json ) {
+
+			$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+			$data = $theme_json->get_data();
+			$font_families = $data['settings']['typography']['fontFamilies']['theme'];
+
+			$custom_fonts = array_map(function($key, $font) {
+				$slug = str_replace(' ', '-', strtolower($key));
+				$variations = array();
+				$num_variations = intdiv(count($font), 8);
+				for ($i = 0; $i < $num_variations; $i++) {
+					$variation = array(
+						'fontFamily' => $slug,
+						'fontStretch' => '',
+						'fontStyle' => 'normal',
+						'fontWeight' => $font['font-weight-' . $i],
+						'src' => array(
+							!empty($font['font_ttf-' . $i]) ? $font['font_ttf-' . $i] : (
+								!empty($font['font_woff_2-' . $i]) ? $font['font_woff_2-' . $i] : (
+									!empty($font['font_woff-' . $i]) ? $font['font_woff-' . $i] : (
+										!empty($font['font_eot-' . $i]) ? $font['font_eot-' . $i] : (
+											!empty($font['font_svg-' . $i]) ? $font['font_svg-' . $i] : (
+												!empty($font['font_otf-' . $i]) ? $font['font_otf-' . $i] : ""
+											)
+										)
+									)
+								)
+							)
+						)
+					);
+					array_push($variations, $variation);
+				}
+				return [
+					'fontFamily' => $slug,
+					'name' => $key,
+					'slug' => $slug,
+					'fontFace' => $variations
+				];
+			}, array_keys($fonts), $fonts);
+
+			// Merge custom font families with existing font families
+			$updated_font_families = array_merge($font_families, $custom_fonts);
+
+			// Set updated font families in theme JSON data
+			$data['settings']['typography']['fontFamilies']['theme'] = $updated_font_families;
+			$theme_json->update_with($data);
+
+			return $theme_json;
 		}
 
 		/**
