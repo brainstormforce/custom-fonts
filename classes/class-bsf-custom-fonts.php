@@ -37,12 +37,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts' ) ) {
 		public function __construct() {
 
 			$this->custom_fonts_update();
-			require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-bsf-custom-fonts-taxonomy.php';
-			require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts-render.php';
+			//require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-bsf-custom-fonts-taxonomy.php';
+			//require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts-render.php';
+			require_once BSF_CUSTOM_FONTS_DIR . 'admin/react/class-custom-font-admin-loader.php';
 
 			if ( is_admin() ) {
-				require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-bsf-custom-fonts-admin.php';
-				require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts-white-label.php';
+				//require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-bsf-custom-fonts-admin.php';
+				//require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts-white-label.php';
 			}
 
 		}

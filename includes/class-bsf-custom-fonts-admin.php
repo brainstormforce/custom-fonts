@@ -153,7 +153,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			echo '
 			<div id="repeater">
                 <!-- Repeater Heading -->
-                
+
                 <div class="clearfix"></div>
                 <!-- Repeater Items -->
                 <div id="item-0" class="cf-bsf-items" data-group="font-weight-type">
@@ -170,7 +170,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
                     <div class="repeater-remove-btn">
                         <div class="button button-primary disabled remove-btn">
                             Remove
-						</div>              
+						</div>
                     </div>
                     <div class="clearfix"></div>
                 </div>

@@ -38,6 +38,11 @@ if ( is_admin() ) {
 	 * Admin Notice Library Settings
 	 */
 	require_once BSF_CUSTOM_FONTS_DIR . 'lib/notices/class-astra-notices.php';
+
+	/**
+	 * Admin extended dashboard app.
+	 */
+	//require_once BSF_CUSTOM_FONTS_DIR . 'admin/react/class-custom-font-admin-loader.php';
 }
 
 // BSF Analytics library.
