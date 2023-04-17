@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LocalFont from "./LocalFont";
 import GoogleFont from "./GoogleFont";
 import { Link } from "react-router-dom";
+import { RangeControl } from '@wordpress/components';
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
@@ -11,10 +12,10 @@ const AddFont = () => {
 	};
 	return (
 		<div>
-			<div className="bg-white grid grid-cols-12">
-				<div className="col-span-4 px-6">
+			<div className="grid grid-cols-12">
+				<div className="col-span-3 px-6 bg-white ">
 					{/* Here will be Nav Section */}
-					<div className="flex items-center mb-5 border-b border-outline">
+					<div className="flex items-center mb-5 border-b border-light">
 						<Link
 							to={{
 								pathname: "admin.php",
@@ -61,14 +62,23 @@ const AddFont = () => {
 						{activeType === "google" && <GoogleFont />}
 					</div>
 				</div>
-				<div className="col-span-8 pt-6 pb-5 px-6">
+				<div className="col-span-9 pt-6 pb-5 px-6">
 					{/* Here will be Font Preview Section */}
-					<div className="text-sm text-secondary">Font preview</div>
-					<div className="text-sm text-neutral">
-						<p>
-							Font preview will appear here. Please select a font
-							file.
-						</p>
+					<div className="border-b border-light pb-5 flex justify-between items-center">
+						<div className="text-sm text-secondary">
+							Font preview
+						</div>
+						<div className="w-[314px]">
+							<RangeControl />
+						</div>
+					</div>
+					<div className="py-5">
+						<div className="text-sm text-neutral">
+							<p>
+								Font preview will appear here. Please select a
+								font file.
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>

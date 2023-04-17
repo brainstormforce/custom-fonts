@@ -151,7 +151,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _LocalFont__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LocalFont */ "./assets/src/dashboard-app/pages/fonts/LocalFont.js");
 /* harmony import */ var _GoogleFont__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GoogleFont */ "./assets/src/dashboard-app/pages/fonts/GoogleFont.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -163,12 +166,12 @@ const AddFont = () => {
     setActiveType(value);
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "bg-white grid grid-cols-12"
+    className: "grid grid-cols-12"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-4 px-6"
+    className: "col-span-3 px-6 bg-white "
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center mb-5 border-b border-outline"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+    className: "flex items-center mb-5 border-b border-light"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     to: {
       pathname: "admin.php",
       search: `?page=bsf-custom-fonts`
@@ -190,12 +193,18 @@ const AddFont = () => {
     onClick: () => toggleType("google"),
     className: `text-base hover:text-heading cursor-pointer px-4 pt-6 pb-5 border-b-2 border-white hover:border-b-primary ${activeType === "google" ? "text-heading border-b-primary" : "text-neutral"}`
   }, "Google Fonts")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, activeType === "local" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_LocalFont__WEBPACK_IMPORTED_MODULE_2__["default"], null), activeType === "google" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GoogleFont__WEBPACK_IMPORTED_MODULE_3__["default"], null))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-8 pt-6 pb-5 px-6"
+    className: "col-span-9 pt-6 pb-5 px-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "border-b border-light pb-5 flex justify-between items-center"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "text-sm text-secondary"
   }, "Font preview"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "w-[314px]"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, null))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "py-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "text-sm text-neutral"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Font preview will appear here. Please select a font file.")))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Font preview will appear here. Please select a font file."))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (AddFont);
 
@@ -230,7 +239,7 @@ const GoogleFont = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
     value: ""
   }, "Select a font family...")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mt-5"
+    className: "my-5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "button button-primary"
   }, "Save Font"))));
@@ -270,12 +279,14 @@ const LocalFont = () => {
     className: "w-full text-sm text-heading",
     htmlFor: ""
   }, "Advanced Options")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "relative border border-outline p-4"
+    className: "relative border border-light p-4 bg-theme-bg"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mb-3"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "file"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, ".otf, .ttf, .woff, .woff2 file extensions supported")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-xs text-neutral"
+  }, ".otf, .ttf, .woff, .woff2 file extensions supported")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-2 gap-x-3"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-1"
@@ -314,7 +325,7 @@ const LocalFont = () => {
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "text-sm text-primary"
   }, "Add Font Variation")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
-    className: "button button-primary"
+    className: "button button-primary my-5"
   }, "Save Font")));
 };
 /* harmony default export */ __webpack_exports__["default"] = (LocalFont);
@@ -337,7 +348,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const CustomFontGrid = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "border border-outline grid grid-cols-3 divide-x divide-y divide-outline"
+    className: "border border-light grid grid-cols-3 divide-x divide-y divide-outline"
   }, [1, 2, 3, 4].map(font => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "p-6"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -371,13 +382,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListItem */ "./assets/src/dashboard-app/pages/welcome/ListItem.js");
+
 
 
 const CustomFontList = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "border border-outline"
+    className: "border border-light"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ListItem__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+};
+/* harmony default export */ __webpack_exports__["default"] = (CustomFontList);
+
+/***/ }),
+
+/***/ "./assets/src/dashboard-app/pages/welcome/ListItem.js":
+/*!************************************************************!*\
+  !*** ./assets/src/dashboard-app/pages/welcome/ListItem.js ***!
+  \************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const ListItem = () => {
+  const [active, setActive] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const [checkDelete, setCheckDelete] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `${active || checkDelete ? "bg-white" : ""} transition-colors px-6`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center justify-between p-5"
+    className: "flex items-center justify-between py-5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex items-center"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
@@ -386,25 +424,49 @@ const CustomFontList = () => {
     className: "ml-3 text-sm"
   }, "(3 variants)")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+  }, checkDelete ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex gap-x-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-secondary"
+  }, "Remove \"Satoshi\" font?"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    onClick: () => setCheckDelete(false),
+    className: "text-neutral cursor-pointer"
+  }, "Cancel"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
     href: "",
-    className: "text-danger"
+    className: "text-danger cursor-pointer"
+  }, "Remove")) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    onClick: () => setCheckDelete(true),
+    className: "text-danger cursor-pointer"
   }, "Remove"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "ml-11"
+    onClick: () => setActive(!active),
+    className: "ml-11 cursor-pointer"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     width: "20",
     height: "20",
     viewBox: "0 0 20 20",
     fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
+    xmlns: "http://www.w3.org/2000/svg",
+    className: `${active ? "rotate-180" : ""} transition-transform duration-150 ease-in-out`
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
     d: "M5.23017 7.20938C5.52875 6.92228 6.00353 6.93159 6.29063 7.23017L10 11.1679L13.7094 7.23017C13.9965 6.93159 14.4713 6.92228 14.7698 7.20938C15.0684 7.49647 15.0777 7.97125 14.7906 8.26983L10.5406 12.7698C10.3992 12.9169 10.204 13 10 13C9.79599 13 9.60078 12.9169 9.45938 12.7698L5.20938 8.26983C4.92228 7.97125 4.93159 7.49647 5.23017 7.20938Z",
     fill: "#7E7E7E"
-  }))))));
+  }))))), active && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "py-5 border-t border-light"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-sm text-neutral"
+  }, "Regular 400"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "text-5xl text-heading font-normal"
+  }, "How vexingly quick daft zebras jump!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "py-5 border-t border-light"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-sm text-neutral"
+  }, "Semibold 600"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "text-5xl text-heading font-semibold"
+  }, "How vexingly quick daft zebras jump!"))));
 };
-/* harmony default export */ __webpack_exports__["default"] = (CustomFontList);
+/* harmony default export */ __webpack_exports__["default"] = (ListItem);
 
 /***/ }),
 
@@ -421,13 +483,14 @@ __webpack_require__.r(__webpack_exports__);
 
 const SearchBar = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "relative w-full my-6 flex items-center border-b border-outline"
+    className: "relative w-full my-6 flex items-center border-b border-light bsf-custom-font-search"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     width: "14",
     height: "14",
     viewBox: "0 0 14 14",
     fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
+    xmlns: "http://www.w3.org/2000/svg",
+    className: "mr-2"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -470,7 +533,9 @@ const Welcome = () => {
   const toggleView = value => {
     setActiveView(value);
   };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: ""
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "bg-white border-b border-slate-200"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full"
@@ -491,9 +556,9 @@ const Welcome = () => {
     },
     className: "button button-primary"
   }, "Add New Font")))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "bg-white max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full"
+    className: "max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SearchBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex justify-between items-center mb-6"
+    className: "flex justify-between items-center my-6"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "text-base"
   }, "1 font family"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -8048,6 +8113,17 @@ module.exports = window["ReactDOM"];
 
 "use strict";
 module.exports = window["wp"]["apiFetch"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["components"];
 
 /***/ }),
 

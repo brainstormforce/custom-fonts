@@ -21,10 +21,10 @@ const LocalFont = () => {
 						Advanced Options
 					</label>
 				</div>
-				<div className="relative border border-outline p-4">
+				<div className="relative border border-light p-4 bg-theme-bg">
 					<div className="mb-3">
 						<input type="file" />
-						<div>
+						<div className="text-xs text-neutral">
 							.otf, .ttf, .woff, .woff2 file extensions supported
 						</div>
 					</div>
@@ -76,7 +76,7 @@ const LocalFont = () => {
 					</div>
 				</div>
 
-				<button className="button button-primary">
+				<button className="button button-primary my-5">
 					Save Font
 				</button>
 			</div>

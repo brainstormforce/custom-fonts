@@ -18,7 +18,7 @@ const GoogleFont = () => {
 						</select>
 					</div>
 				</div>
-				<div className="mt-5">
+				<div className="my-5">
 					<button className="button button-primary">Save Font</button>
 				</div>
 			</div>

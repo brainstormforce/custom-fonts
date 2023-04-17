@@ -18,7 +18,8 @@ module.exports = {
 				secondary: '#3C434A',
 				neutral: '#7E7E7E',
 				danger: '#E65054',
-				light: '#dddddd'
+				light: '#dddddd',
+				'theme-bg': '#F6F7F7'
 			},
 			blur: {
 				xs: '3px',

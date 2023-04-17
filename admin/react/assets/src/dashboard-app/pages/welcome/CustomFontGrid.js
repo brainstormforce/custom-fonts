@@ -2,7 +2,7 @@ import React from "react";
 
 const CustomFontGrid = () => {
 	return (
-		<div className="border border-outline grid grid-cols-3 divide-x divide-y divide-outline">
+		<div className="border border-light grid grid-cols-3 divide-x divide-y divide-outline">
 			{/* Grid Item */}
 			{[1, 2, 3, 4].map((font) => (
 				<div className="p-6">

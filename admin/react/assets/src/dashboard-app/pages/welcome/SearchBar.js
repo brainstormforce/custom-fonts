@@ -1,12 +1,13 @@
 const SearchBar = () => {
 	return (
-		<div className="relative w-full my-6 flex items-center border-b border-outline">
+		<div className="relative w-full my-6 flex items-center border-b border-light bsf-custom-font-search">
 			<svg
 				width="14"
 				height="14"
 				viewBox="0 0 14 14"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
+				className="mr-2"
 			>
 				<path
 					fillRule="evenodd"

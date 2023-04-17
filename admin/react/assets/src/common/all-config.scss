@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.toplevel_page_bsf-custom-fonts #wpcontent {
+	padding-left: 0;
+}
+
+.bsf-custom-font-dashboard-app input {
+	border: 1px solid #dddddd;
+}
+
+.bsf-custom-font-search input {
+	border: 0;
+	background: transparent;
+	padding: 18px 0;
+}
+
+.bsf-custom-font-search input:focus {
+	outline: none;
+	border: 0;
+	border-color: transparent;
+	box-shadow: none;
+}
+
+

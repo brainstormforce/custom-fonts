@@ -11,7 +11,7 @@ const Welcome = () => {
 		setActiveView(value);
 	};
 	return (
-		<div>
+		<div className="">
 			<div className="bg-white border-b border-slate-200">
 				<div className="max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full">
 					<div className="relative flex flex-col lg:flex-row justify-between h-28 lg:h-16 py-3 lg:py-0">
@@ -39,11 +39,11 @@ const Welcome = () => {
 					</div>
 				</div>
 			</div>
-			<div className="bg-white max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full">
+			<div className="max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full">
 				{/* Search Custom Font */}
 				<SearchBar />
 				{/* Font Counter and View toggle */}
-				<div className="flex justify-between items-center mb-6">
+				<div className="flex justify-between items-center my-6">
 					<div className="text-base">1 font family</div>
 					<div className="flex justify-end gap-x-7">
 						<div
