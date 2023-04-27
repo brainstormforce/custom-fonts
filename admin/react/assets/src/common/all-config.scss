@@ -6,8 +6,16 @@
 	padding-left: 0;
 }
 
-.bsf-custom-font-dashboard-app input {
-	border: 1px solid #dddddd;
+.bsf-custom-font-dashboard-app {
+	input, select {
+		border: 1px solid #dddddd;
+		border-radius: 2px;
+		height: 30px;
+	}
+
+	input[type=file] {
+		border: 0;
+	}
 }
 
 .bsf-custom-font-search input {

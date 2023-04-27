@@ -13,7 +13,7 @@ const AddFont = () => {
 	return (
 		<div>
 			<div className="grid grid-cols-12">
-				<div className="col-span-3 px-6 bg-white ">
+				<div className="col-span-3 px-6 bg-white min-h-screen">
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
 						<Link

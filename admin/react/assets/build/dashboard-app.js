@@ -168,7 +168,7 @@ const AddFont = () => {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-12"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "col-span-3 px-6 bg-white "
+    className: "col-span-3 px-6 bg-white min-h-screen"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex items-center mb-5 border-b border-light"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
@@ -262,30 +262,78 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 
 
-const LocalFont = () => {
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "mb-5"
-  }, "Add local fonts assets and font face definitions to your currently active theme"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mb-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    className: "w-full text-sm text-heading",
-    htmlFor: ""
-  }, "Font name"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    className: "w-full",
-    type: "text"
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mb-5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    className: "w-full text-sm text-heading",
-    htmlFor: ""
-  }, "Advanced Options")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "relative border border-light p-4 bg-theme-bg"
+const VariationItem = _ref => {
+  let {
+    variation,
+    localDataLength,
+    handleVariationRemove,
+    handleVariationChange
+  } = _ref;
+  const [toggleView, setToggleView] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "border border-light rounded-sm"
+  }, !toggleView ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center justify-between p-3.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    className: "text-sm font-semibold text-secondary"
+  }, "Satoshi-Regular.otf"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center justify-end gap-x-4"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    onClick: () => setToggleView(true),
+    width: "12",
+    height: "8",
+    viewBox: "0 0 12 8",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M2.00039 0.800049L6.00039 4.80005L10.0004 0.800049L11.6004 1.60005L6.00039 7.20005L0.400391 1.60005L2.00039 0.800049Z",
+    fill: "#7E7E7E"
+  })), localDataLength > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 16 16",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    className: "cursor-pointer",
+    onClick: () => handleVariationRemove(variation.id)
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z",
+    fill: "#007CBA"
+  })))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "relative p-4 bg-theme-bg"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mb-3"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center gap-x-4"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "file"
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "text-xs text-neutral"
+    type: "file",
+    name: `variation-${variation.id}-font_file`,
+    value: variation.font_file,
+    className: "border-0",
+    onChange: event => handleVariationChange(event, variation.id, "font_file")
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    onClick: () => setToggleView(false),
+    width: "12",
+    height: "8",
+    viewBox: "0 0 12 8",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M2.00039 7.19995L6.00039 3.19995L10.0004 7.19995L11.6004 6.39995L6.00039 0.799951L0.400391 6.39995L2.00039 7.19995Z",
+    fill: "#7E7E7E"
+  })), localDataLength > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 16 16",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    className: "cursor-pointer",
+    onClick: () => handleVariationRemove(variation.id)
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z",
+    fill: "#007CBA"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-xs text-neutral mt-1.5"
   }, ".otf, .ttf, .woff, .woff2 file extensions supported")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "grid grid-cols-2 gap-x-3"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -296,11 +344,12 @@ const LocalFont = () => {
   }, "Font style:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mt-1.5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
-    className: "w-full",
-    name: "",
-    id: ""
+    name: `variation-${variation.id}-font_style`,
+    value: variation.font_style,
+    onChange: event => handleVariationChange(event, variation.id, "font_style"),
+    className: "w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
-    value: ""
+    value: "normal"
   }, "Normal")))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-1"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
@@ -310,9 +359,145 @@ const LocalFont = () => {
     className: "mt-1.5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
+    name: `variation-${variation.id}-font_weight`,
+    value: variation.font_weight,
+    onChange: event => handleVariationChange(event, variation.id, "font_weight"),
     className: "w-full"
-  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center gap-x-1 my-5"
+  }))))));
+};
+const LocalFont = () => {
+  const [advanceTab, setAdvanceTab] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+  const toggleAdvanceTab = () => {
+    setAdvanceTab(!advanceTab);
+  };
+  const [localFontData, setLocalFontData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+    font_name: "",
+    font_fallback: "",
+    font_display: "",
+    variations: [{
+      id: 1,
+      font_file: "",
+      font_style: "",
+      font_weight: ""
+    }]
+  });
+  const handleInputChange = (event, property) => {
+    const value = event.target.value;
+    setLocalFontData(prevState => ({
+      ...prevState,
+      [property]: value
+    }));
+  };
+  const handleVariationChange = (event, id, property) => {
+    const updatedVariations = localFontData.variations.map(variation => {
+      if (variation.id === id) {
+        return {
+          ...variation,
+          [property]: event.target.value
+        };
+      } else {
+        return variation;
+      }
+    });
+    setLocalFontData({
+      ...localFontData,
+      variations: updatedVariations
+    });
+  };
+  const addVariationOption = () => {
+    const lastId = localFontData.variations[localFontData.variations.length - 1].id;
+    const newId = lastId + 1;
+    const newVariation = {
+      id: newId,
+      font_file: "",
+      font_style: "",
+      font_weight: ""
+    };
+    const updatedVariations = [...localFontData.variations, newVariation];
+    setLocalFontData(prevState => ({
+      ...prevState,
+      variations: updatedVariations
+    }));
+  };
+  const handleVariationRemove = id => {
+    const updatedVariations = localFontData.variations.filter(variation => variation.id !== id);
+    setLocalFontData({
+      ...localFontData,
+      variations: updatedVariations
+    });
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "mb-5"
+  }, "Add local fonts assets and font face definitions to your currently active theme"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mb-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "w-full text-sm text-heading",
+    htmlFor: ""
+  }, "Font name"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mt-1.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    name: "font_name",
+    value: localFontData.font_name,
+    onChange: event => handleInputChange(event, "font_name"),
+    className: "w-full",
+    type: "text"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mb-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    onClick: toggleAdvanceTab,
+    className: "flex items-center px-1.5 gap-x-2"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    width: "6",
+    height: "8",
+    viewBox: "0 0 6 8",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    className: advanceTab ? "rotate-90" : "" + "transition-transform duration-300"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M0.400391 0.800049L5.20039 4.02405L0.400391 7.20005L0.400391 0.800049Z",
+    fill: "#007CBA"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "w-full text-sm text-heading",
+    htmlFor: ""
+  }, "Advanced Options")), advanceTab && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: `transition-opacity duration-300 ease-in-out mt-3 ${advanceTab ? "opacity-100 block" : "opacity-0 hidden"}`
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mb-3"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "w-full text-sm text-heading",
+    htmlFor: ""
+  }, "Font fallback:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mt-1.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    className: "w-full",
+    type: "text",
+    name: "font_fallback",
+    value: localFontData.font_fallback,
+    onChange: event => handleInputChange(event, "font_fallback")
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "mt-1.5 text-xs text-neutral"
+  }, "Separate font names with comma(,). eg. Arial, Serif")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mb-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    className: "w-full text-sm text-heading",
+    htmlFor: ""
+  }, "Font display:"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mt-1.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("select", {
+    className: "w-full",
+    name: "font_display",
+    value: localFontData.font_display,
+    onChange: event => handleInputChange(event, "font_display")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
+    value: "auto"
+  }, "auto")))))), localFontData.variations.map(variation => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(VariationItem, {
+    variation: variation,
+    localDataLength: localFontData.variations.length,
+    handleVariationRemove: handleVariationRemove,
+    handleVariationChange: handleVariationChange
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center gap-x-1 my-5 cursor-pointer",
+    onClick: addVariationOption
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
     width: "16",
     height: "16",
