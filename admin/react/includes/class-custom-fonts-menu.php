@@ -223,6 +223,7 @@ class Bsf_Custom_Fonts_Menu {
 			'logo_url'               => apply_filters( 'bsf_custom_fonts_admin_menu_icon', BSF_CUSTOM_FONTS_URI . 'inc/assets/images/astra-logo.svg' ),
 			'update_nonce'           => wp_create_nonce( 'astra_update_admin_setting' ),
 			'plugin_installer_nonce' => wp_create_nonce( 'updates' ),
+			'googleFonts'            => Bsf_Custom_Font_Families::get_google_fonts(),
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );

@@ -1,6 +1,9 @@
 import React from "react";
 
 const GoogleFont = () => {
+	const googleFonts = window.bsf_custom_fonts_admin.googleFonts;
+
+	console.log(googleFonts);
 	return (
 		<div>
 			<div>
@@ -15,6 +18,9 @@ const GoogleFont = () => {
 					<div className="mt-1.5">
 						<select className="w-full" name="" id="">
 							<option value="">Select a font family...</option>
+							{Object.keys(googleFonts).map((key) => (
+								<option value="">{key}</option>
+							))}
 						</select>
 					</div>
 				</div>
