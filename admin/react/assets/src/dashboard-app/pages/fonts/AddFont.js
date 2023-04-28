@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { RangeControl } from "@wordpress/components";
 import GooglePreviewItem from "./preview/GooglePreviewItem";
 import LocalPreviewItem from "./preview/LocalPreviewItem";
+import FontNotification from "./FontNotification";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
@@ -88,6 +89,7 @@ const AddFont = () => {
 					</div>
 				</div>
 			</div>
+			<FontNotification />
 		</div>
 	);
 };
