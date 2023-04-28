@@ -14,23 +14,23 @@ const Welcome = () => {
 		<div className="">
 			<div className="bg-white border-b border-slate-200">
 				<div className="max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full">
-					<div className="relative flex flex-col lg:flex-row justify-between h-28 lg:h-16 py-3 lg:py-0">
-						<div className="lg:flex-1 flex justify-between items-center">
+					<div className="relative py-7">
+						<div className="flex flex-col lg:flex-row justify-between items-start">
 							<div>
-								<h2 className="text-2xl font-semibold">
+								<h2 className="text-[1.625rem] font-semibold mb-3.5">
 									Custom Fonts
 								</h2>
 								<p className="text-xs">
 									Manage fonts that are used on your website
 								</p>
 							</div>
-							<div className="">
+							<div className="relative">
 								<Link
 									to={{
 										pathname: "admin.php",
 										search: `?page=bsf-custom-fonts&path=add-fonts`,
 									}}
-									className="button button-primary"
+									className="flex text-sm text-white bg-primary px-3 py-2"
 								>
 									Add New Font
 								</Link>

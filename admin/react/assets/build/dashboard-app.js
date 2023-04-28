@@ -151,9 +151,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _LocalFont__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LocalFont */ "./assets/src/dashboard-app/pages/fonts/LocalFont.js");
 /* harmony import */ var _GoogleFont__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GoogleFont */ "./assets/src/dashboard-app/pages/fonts/GoogleFont.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _preview_GooglePreviewItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./preview/GooglePreviewItem */ "./assets/src/dashboard-app/pages/fonts/preview/GooglePreviewItem.js");
+/* harmony import */ var _preview_LocalPreviewItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./preview/LocalPreviewItem */ "./assets/src/dashboard-app/pages/fonts/preview/LocalPreviewItem.js");
+
+
 
 
 
@@ -171,7 +175,7 @@ const AddFont = () => {
     className: "col-span-3 px-6 bg-white min-h-screen"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex items-center mb-5 border-b border-light"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
     to: {
       pathname: "admin.php",
       search: `?page=bsf-custom-fonts`
@@ -201,10 +205,10 @@ const AddFont = () => {
   }, "Font preview"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "w-[314px]"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, null))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "py-5"
+    className: "py-5 divide-y"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "text-sm text-neutral"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Font preview will appear here. Please select a font file."))))));
+    className: "text-sm text-neutral py-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Font preview will appear here. Please select a font file.")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, activeType === "local" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_preview_LocalPreviewItem__WEBPACK_IMPORTED_MODULE_6__["default"], null), activeType === "google" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_preview_GooglePreviewItem__WEBPACK_IMPORTED_MODULE_5__["default"], null))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (AddFont);
 
@@ -243,6 +247,25 @@ const GoogleFont = () => {
   }, "Select a font family..."), Object.keys(googleFonts).map(key => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("option", {
     value: ""
   }, key))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "my-5 border border-light rounded-sm p-3.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "text-sm font-semibold text-heading"
+  }, "Selected Variants"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mt-3.5 flex flex-col gap-y-3.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center justify-between"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-sm text-heading"
+  }, "Regular 400"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 16 16",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z",
+    fill: "#007CBA"
+  })))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "my-5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "button button-primary"
@@ -521,6 +544,75 @@ const LocalFont = () => {
 
 /***/ }),
 
+/***/ "./assets/src/dashboard-app/pages/fonts/preview/GooglePreviewItem.js":
+/*!***************************************************************************!*\
+  !*** ./assets/src/dashboard-app/pages/fonts/preview/GooglePreviewItem.js ***!
+  \***************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const GooglePreviewItem = () => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "py-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex justify-between items-center"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-sm text-neutral mb-3.5"
+  }, "Regular 400"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-5xl"
+  }, "How vexingly quick daft zebras jump!")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
+    className: "flex text-sm text-primary items-center py-2 px-3 border border-primary"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+    width: "16",
+    height: "17",
+    viewBox: "0 0 16 17",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+    d: "M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM8.80078 5.30005H7.20078V7.70005H4.80078V9.30005H7.20078V11.7H8.80078V9.30005H11.2008V7.70005H8.80078V5.30005Z",
+    fill: "#007CBA"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "ml-2"
+  }, "Add")))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (GooglePreviewItem);
+
+/***/ }),
+
+/***/ "./assets/src/dashboard-app/pages/fonts/preview/LocalPreviewItem.js":
+/*!**************************************************************************!*\
+  !*** ./assets/src/dashboard-app/pages/fonts/preview/LocalPreviewItem.js ***!
+  \**************************************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const LocalPreviewItem = () => {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "py-5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-sm text-neutral mb-3.5"
+  }, "Regular 400"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-5xl"
+  }, "How vexingly quick daft zebras jump!")));
+};
+/* harmony default export */ __webpack_exports__["default"] = (LocalPreviewItem);
+
+/***/ }),
+
 /***/ "./assets/src/dashboard-app/pages/welcome/CustomFontGrid.js":
 /*!******************************************************************!*\
   !*** ./assets/src/dashboard-app/pages/welcome/CustomFontGrid.js ***!
@@ -729,21 +821,21 @@ const Welcome = () => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "relative flex flex-col lg:flex-row justify-between h-28 lg:h-16 py-3 lg:py-0"
+    className: "relative py-7"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "lg:flex-1 flex justify-between items-center"
+    className: "flex flex-col lg:flex-row justify-between items-start"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "text-2xl font-semibold"
+    className: "text-[1.625rem] font-semibold mb-3.5"
   }, "Custom Fonts"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "text-xs"
   }, "Manage fonts that are used on your website")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: ""
+    className: "relative"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
     to: {
       pathname: "admin.php",
       search: `?page=bsf-custom-fonts&path=add-fonts`
     },
-    className: "button button-primary"
+    className: "flex text-sm text-white bg-primary px-3 py-2"
   }, "Add New Font")))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SearchBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

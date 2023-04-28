@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import LocalFont from "./LocalFont";
 import GoogleFont from "./GoogleFont";
 import { Link } from "react-router-dom";
-import { RangeControl } from '@wordpress/components';
+import { RangeControl } from "@wordpress/components";
+import GooglePreviewItem from "./preview/GooglePreviewItem";
+import LocalPreviewItem from "./preview/LocalPreviewItem";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
@@ -72,12 +74,16 @@ const AddFont = () => {
 							<RangeControl />
 						</div>
 					</div>
-					<div className="py-5">
-						<div className="text-sm text-neutral">
+					<div className="py-5 divide-y">
+						<div className="text-sm text-neutral py-5">
 							<p>
 								Font preview will appear here. Please select a
 								font file.
 							</p>
+						</div>
+						<div>
+							{activeType === "local" && <LocalPreviewItem />}
+							{activeType === "google" && <GooglePreviewItem />}
 						</div>
 					</div>
 				</div>
