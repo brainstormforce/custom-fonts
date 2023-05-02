@@ -25,12 +25,18 @@ define( 'BSF_CUSTOM_FONTS_FILE', __FILE__ );
 define( 'BSF_CUSTOM_FONTS_BASE', plugin_basename( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_DIR', plugin_dir_path( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_URI', plugins_url( '/', BSF_CUSTOM_FONTS_FILE ) );
-define( 'BSF_CUSTOM_FONTS_VER', '1.3.7' );
+define( 'BSF_CUSTOM_FONTS_VER', '1.4.0' );
+define( 'BSF_CUSTOM_FONTS_POST_TYPE', 'bsf_custom_font' );
 
 /**
- * BSF Custom Fonts
+ * BSF Custom Fonts Background Updater.
  */
-require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts.php';
+require_once BSF_CUSTOM_FONTS_DIR . 'includes/plugin-update/class-custom-fonts-update.php';
+
+/**
+ * Rest API support.
+ */
+require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-api-init.php';
 
 if ( is_admin() ) {
 
@@ -40,9 +46,9 @@ if ( is_admin() ) {
 	require_once BSF_CUSTOM_FONTS_DIR . 'lib/notices/class-astra-notices.php';
 
 	/**
-	 * Admin extended dashboard app.
+	 * Admin dashboard app.
 	 */
-	//require_once BSF_CUSTOM_FONTS_DIR . 'admin/react/class-custom-font-admin-loader.php';
+	require_once BSF_CUSTOM_FONTS_DIR . 'admin/react/class-custom-font-admin-loader.php';
 }
 
 // BSF Analytics library.
@@ -62,4 +68,3 @@ $bsf_analytics->set_entity(
 		),
 	)
 );
-

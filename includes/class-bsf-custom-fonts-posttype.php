@@ -69,48 +69,46 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		 * @since  1.0.0
 		 */
 		public function __construct() {
-			add_action( 'init', array( 'Bsf_Custom_Fonts_Taxonomy', 'create_custom_fonts_taxonomies' ) );
+			add_action( 'init', array( $this, 'bsf_custom_fonts_post_type' ) );
 		}
 
 		/**
-		 * Register custom font taxonomy
+		 * Create custom post type.
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 */
-		public static function create_custom_fonts_taxonomies() {
-			// Taxonomy: bsf_custom_fonts.
+		public function bsf_custom_fonts_post_type() {
+
 			$labels = array(
-				'name'              => apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) ),
-				'singular_name'     => __( 'Font', 'custom-fonts' ),
-				'menu_name'         => _x( 'Custom Fonts', 'Admin menu name', 'custom-fonts' ),
-				'search_items'      => __( 'Search Fonts', 'custom-fonts' ),
-				'all_items'         => __( 'All Fonts', 'custom-fonts' ),
-				'parent_item'       => __( 'Parent Font', 'custom-fonts' ),
-				'parent_item_colon' => __( 'Parent Font:', 'custom-fonts' ),
-				'edit_item'         => __( 'Edit Font', 'custom-fonts' ),
-				'update_item'       => __( 'Update Font', 'custom-fonts' ),
-				'add_new_item'      => __( 'Add New Font', 'custom-fonts' ),
-				'new_item_name'     => __( 'New Font Name', 'custom-fonts' ),
-				'not_found'         => __( 'No fonts found', 'custom-fonts' ),
-				'back_to_items'     => __( '← Go to Fonts', 'custom-fonts' ),
+				'name'          => esc_html_x( 'Custom Fonts', 'font general name', 'custom-fonts' ),
+				'singular_name' => esc_html_x( 'Font', 'font singular name', 'custom-fonts' ),
+				'search_items'  => esc_html__( 'Search Font', 'custom-fonts' ),
+				'all_items'     => esc_html__( 'All Fonts', 'custom-fonts' ),
+				'edit_item'     => esc_html__( 'Edit Font', 'custom-fonts' ),
+				'view_item'     => esc_html__( 'View Font', 'custom-fonts' ),
+				'add_new'       => esc_html__( 'Add New', 'custom-fonts' ),
+				'update_item'   => esc_html__( 'Update Font', 'custom-fonts' ),
+				'add_new_item'  => esc_html__( 'Add New', 'custom-fonts' ),
+				'new_item_name' => esc_html__( 'New Font Name', 'custom-fonts' ),
 			);
 
 			$args = array(
-				'hierarchical'      => false,
-				'labels'            => $labels,
-				'public'            => false,
-				'show_in_nav_menus' => false,
-				'show_ui'           => true,
-				'capabilities'      => array( self::$capability ),
-				'query_var'         => false,
-				'rewrite'           => false,
+				'labels'              => $labels,
+				'show_in_menu'        => false,
+				'public'              => false, // it's not public, not own permalink.
+				'publicly_queryable'  => true,  // you should be able to query it.
+				'show_ui'             => true,
+				'query_var'           => true,
+				'can_export'          => true,
+				'show_in_admin_bar'   => false,
+				'exclude_from_search' => true,
+				'has_archive'         => false,  // it shouldn't have archive page.
+				'rewrite'             => false,  // it shouldn't have rewrite rules.
+				'supports'            => array( 'title' ),
+				'capability_type'     => 'post',
 			);
 
-			register_taxonomy(
-				self::$register_taxonomy_slug,
-				apply_filters( 'bsf_taxonomy_objects_custom_fonts', array() ),
-				apply_filters( 'bsf_taxonomy_args_custom_fonts', $args )
-			);
+			register_post_type( BSF_CUSTOM_FONTS_POST_TYPE, $args );
 		}
 
 		/**
@@ -218,10 +216,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 			$links = $posted;
 			update_option( 'taxonomy_' . self::$register_taxonomy_slug . "_{$term_id}", $links );
 		}
-
 	}
-
-
 
 	/**
 	 *  Kicking this off by calling 'get_instance()' method

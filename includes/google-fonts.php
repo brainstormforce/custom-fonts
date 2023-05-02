@@ -3,13 +3,13 @@
  * Google fonts array file.
  *
  * @package     Bsf_Custom_Fonts
- * @since       2.0.0
+ * @since       x.x.x
  */
 
 /**
  * Returns google fonts array
  *
- * @since 2.0.0
+ * @since x.x.x
  */
 return array(
 	array(

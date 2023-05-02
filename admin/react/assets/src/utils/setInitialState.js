@@ -2,7 +2,7 @@ import apiFetch from '@wordpress/api-fetch';
 
 const setInitialState = ( store ) => {
 	apiFetch( {
-		path: '/custom-fonts/v1/admin/settings/',
+		path: '/bsf-custom-fonts/v1/admin/settings/',
 	} ).then( ( data ) => {
 		const initialState = {
 			settingsSavedNotification: '',

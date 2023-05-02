@@ -94,7 +94,7 @@ class Custom_Fonts_Update {
 			)
 		);
 
-		if ( ! empty( $terms ) ) {
+		if ( ! empty( $terms ) && class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) {
 			foreach ( $terms as $term ) {
 				$font_links = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 
@@ -120,7 +120,7 @@ class Custom_Fonts_Update {
 			)
 		);
 
-		if ( ! empty( $terms ) ) {
+		if ( ! empty( $terms ) && class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) {
 			foreach ( $terms as $term ) {
 				$font_links = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 
@@ -165,6 +165,6 @@ class Custom_Fonts_Update {
 	private function update_db_version() {
 		update_option( '_custom_fonts_db_version', BSF_CUSTOM_FONTS_VER );
 	}
-
 }
+
 Custom_Fonts_Update::get_instance();

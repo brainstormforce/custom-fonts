@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.toplevel_page_bsf-custom-fonts #wpcontent {
+.appearance_page_bsf-custom-fonts #wpcontent {
 	padding-left: 0;
 }
 
@@ -12,7 +12,6 @@
 		border-radius: 2px;
 		height: 30px;
 	}
-
 	input[type=file] {
 		border: 0;
 	}

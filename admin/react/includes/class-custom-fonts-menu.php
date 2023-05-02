@@ -3,7 +3,7 @@
  * Class Bsf_Custom_Fonts_Menu.
  *
  * @package Bsf_Custom_Fonts
- * @since 2.0.0
+ * @since x.x.x
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Bsf_Custom_Fonts_Menu.
  *
- * @since 2.0.0
+ * @since x.x.x
  */
 class Bsf_Custom_Fonts_Menu {
 
@@ -22,45 +22,43 @@ class Bsf_Custom_Fonts_Menu {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since 2.0.0
+	 * @since x.x.x
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
-			/** @psalm-suppress InvalidPropertyAssignmentValue */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 			self::$instance = new self();
-			/** @psalm-suppress InvalidPropertyAssignmentValue */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 		}
 		return self::$instance;
 	}
 
 	/**
-	 * Page title
-	 *
-	 * @since 2.0.0
-	 * @var string $page_title
-	 */
-	public static $page_title = 'Bsf Custom Fonts';
-
-	/**
 	 * Plugin slug
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 * @var string $plugin_slug
 	 */
 	public static $plugin_slug = 'bsf-custom-fonts';
 
 	/**
+	 * Parent Menu Slug
+	 *
+	 * @since  1.0.0
+	 * @var (string) $parent_menu_slug
+	 */
+	protected $parent_menu_slug = 'themes.php';
+
+	/**
 	 * Constructor
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 */
 	public function __construct() {
 		$this->initialize_hooks();
@@ -69,133 +67,135 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Init Hooks.
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 * @return void
 	 */
 	public function initialize_hooks() {
 
-		self::$page_title  = apply_filters( 'bsf_custom_fonts_page_title', __( 'Bsf Custom Fonts', 'bsf-custom-fonts' ) );
-		self::$plugin_slug = self::get_theme_page_slug();
-
-		add_action( 'admin_menu', array( $this, 'setup_menu' ) );
+		add_action( 'admin_menu', array( $this, 'register_custom_fonts_menu' ) );
 		add_action( 'admin_init', array( $this, 'settings_admin_scripts' ) );
+
+		add_filter( 'upload_mimes', array( $this, 'add_fonts_to_allowed_mimes' ) );
+		add_filter( 'wp_check_filetype_and_ext', array( $this, 'update_mime_types' ), 10, 3 );
 
 		add_action( 'after_setup_theme', array( $this, 'init_admin_settings' ), 99 );
 	}
 
 	/**
+	 * Register custom font menu
+	 *
+	 * @since 1.0.0
+	 */
+	public function register_custom_fonts_menu() {
+		$title = apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) );
+		add_theme_page(
+			$title,
+			$title,
+			'edit_theme_options',
+			self::$plugin_slug,
+			array( $this, 'render_admin_dashboard' )
+		);
+	}
+
+	/**
+	 * Allowed mime types and file extensions
+	 *
+	 * @since 1.0.0
+	 * @param array $mimes Current array of mime types.
+	 * @return array $mimes Updated array of mime types.
+	 */
+	public function add_fonts_to_allowed_mimes( $mimes ) {
+		$mimes['woff']  = 'application/x-font-woff';
+		$mimes['woff2'] = 'application/x-font-woff2';
+		$mimes['ttf']   = 'application/x-font-ttf';
+		$mimes['svg']   = 'image/svg+xml';
+		$mimes['eot']   = 'application/vnd.ms-fontobject';
+		$mimes['otf']   = 'font/otf';
+
+		return $mimes;
+	}
+
+	/**
+	 * Correct the mime types and extension for the font types.
+	 *
+	 * @param array  $defaults File data array containing 'ext', 'type', and
+	 *                                          'proper_filename' keys.
+	 * @param string $file                      Full path to the file.
+	 * @param string $filename                  The name of the file (may differ from $file due to
+	 *                                          $file being in a tmp directory).
+	 * @return Array File data array containing 'ext', 'type', and
+	 */
+	public function update_mime_types( $defaults, $file, $filename ) {
+		if ( 'ttf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+			$defaults['type'] = 'application/x-font-ttf';
+			$defaults['ext']  = 'ttf';
+		}
+
+		if ( 'otf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+			$defaults['type'] = 'application/x-font-otf';
+			$defaults['ext']  = 'otf';
+		}
+
+		return $defaults;
+	}
+
+	/**
 	 * Admin settings init.
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 */
 	public function init_admin_settings() {
 		if ( ! is_customize_preview() ) {
-			add_action( 'admin_head', array( $this, 'admin_submenu_css' ) );
 		}
-	}
-
-	/**
-	 * Add custom CSS for admin area sub menu icons.
-	 *
-	 * @since 2.0.0
-	 */
-	public function admin_submenu_css() {
-		echo '<style class="astra-menu-appearance-style">
-				#toplevel_page_' . esc_attr( self::$plugin_slug ) . ' .wp-menu-image.svg {
-					background-size: 18px auto !important;
-				}
-			</style>';
-	}
-
-	/**
-	 * Theme options page Slug getter including White Label string.
-	 *
-	 * @since 2.0.0
-	 * @return string Theme Options Page Slug.
-	 */
-	public static function get_theme_page_slug() {
-		return apply_filters( 'astra_theme_page_slug', self::$plugin_slug );
 	}
 
 	/**
 	 *  Initialize after Astra gets loaded.
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 */
 	public function settings_admin_scripts() {
-		// Enqueue admin scripts.
-		/** @psalm-suppress PossiblyInvalidArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
-		if ( ! empty( $_GET['page'] ) && ( self::$plugin_slug === $_GET['page'] || false !== strpos( $_GET['page'], self::$plugin_slug . '_' ) ) ) { //phpcs:ignore
-			/** @psalm-suppress PossiblyInvalidArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
+		if ( $this->is_custom_fonts_screen() ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'styles_scripts' ) );
 			add_filter( 'admin_footer_text', array( $this, 'bsf_custom_fonts_admin_footer_link' ), 99 );
 		}
 	}
 
 	/**
-	 * Add submenu to admin menu.
+	 * Check BSF Custom Fonts plugin screen.
 	 *
-	 * @since 2.0.0
+	 * @return bool true|false after checking plugins page.
+	 * @since x.x.x
 	 */
-	public function setup_menu() {
-		global $submenu;
-
-		$capability = 'manage_options';
-
-		if ( ! current_user_can( $capability ) ) {
-			return;
+	public function is_custom_fonts_screen() {
+		if ( isset( $_GET['page'] ) && self::$plugin_slug === sanitize_text_field( $_GET['page'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			return true;
 		}
-
-		$astra_icon = apply_filters( 'astra_menu_icon', 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0iI2E3YWFhZCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMCAyMEMxNS41MjI4IDIwIDIwIDE1LjUyMjggMjAgMTBDMjAgNC40NzcxNSAxNS41MjI4IDAgMTAgMEM0LjQ3NzE1IDAgMCA0LjQ3NzE1IDAgMTBDMCAxNS41MjI4IDQuNDc3MTUgMjAgMTAgMjBaTTUuODczMDQgMTEuMTY0MUM3LjIwMjM0IDguNDQyNzggOC41MzE4MSA1LjcyMTEyIDkuODYxMjcgMy4wMDAzOEwxMS4yNTUyIDUuNzA3NTlDMTAuMjA2NCA3Ljc2MjQ0IDkuMTU3NSA5LjgxNjg1IDguMTA4NzggMTEuODcwOEw2LjUxMTkgMTQuOTk4NUg0TDUuODczMDQgMTEuMTY0MVpNMTAuMDQ2NCAxMi44MzM5TDEyLjQ2NTUgNy45NjE2NUMxMi45OTMzIDkuMDEyOTIgMTMuNTIxMyAxMC4wNjQyIDE0LjA0OTQgMTEuMTE1NkMxNC42OTk2IDEyLjQxMDEgMTUuMzQ5OSAxMy43MDQ4IDE2IDE1SDEzLjMwMjVMMTIuODM5MyAxMy45NjY2TDEyLjM3MjIgMTIuOTI0NUgxMC4wNDY0SDkuOTk5NzZMMTAuMDQ2NCAxMi44MzM5WiIgZmlsbD0iI2E3YWFhZCIvPgo8L3N2Zz4K' );
-		$priority   = apply_filters( 'astra_menu_priority', 59 );
-
-		$page_slug = 'bsf-custom-fonts';
-
-		add_menu_page( // phpcs:ignore WPThemeReview.PluginTerritory.NoAddAdminPages.add_menu_pages_add_menu_page -- Taken the menu on top level
-			self::$page_title,
-			self::$page_title,
-			$capability,
-			$page_slug,
-			array( $this, 'render_admin_dashboard' ),
-			$astra_icon,
-			$priority
-		);
-
-		// Rename to Home menu.
-		//$submenu[ self::$plugin_slug ][0][0] = __( 'Dashboard', 'bsf-custom-fonts' ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Required to rename the home menu.
+		return false;
 	}
 
 	/**
 	 * Renders the admin settings.
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 * @return void
 	 */
 	public function render_admin_dashboard() {
-		$page_action = '';
-
-		if ( isset( $_GET['action'] ) ) { //phpcs:ignore
-			/** @psalm-suppress PossiblyInvalidArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
-			$page_action = sanitize_text_field( wp_unslash( $_GET['action'] ) ); //phpcs:ignore
-			/** @psalm-suppress PossiblyInvalidArgument */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
-			$page_action = str_replace( '_', '-', $page_action );
-		}
-
 		?>
-		<div class="bsf-cf-menu-page-wrapper">
-			<div id="bsf-cf-menu-page">
-				<div class="bsf-cf-menu-page-content">
-					<div id="bsf-custom-font-dashboard-app" class="bsf-custom-font-dashboard-app"> </div>
+			<div class="bsf-cf-menu-page-wrapper">
+				<div id="bsf-cf-menu-page">
+					<div class="bsf-cf-menu-page-content">
+						<div id="bsf-custom-font-dashboard-app" class="bsf-custom-font-dashboard-app"> </div>
+					</div>
 				</div>
 			</div>
-		</div>
 		<?php
 	}
 
 	/**
 	 * Enqueues the needed CSS/JS for the builder's admin settings page.
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 */
 	public function styles_scripts() {
 
@@ -216,13 +216,10 @@ class Bsf_Custom_Fonts_Menu {
 			'plugin_ver'             => defined( 'BSF_CUSTOM_FONTS_VER' ) ? BSF_CUSTOM_FONTS_VER : '',
 			'plugin_name'            => 'Custom Fonts',
 			'ajax_url'               => admin_url( 'admin-ajax.php' ),
-			'show_self_branding'     => $show_self_branding,
 			'admin_url'              => admin_url( 'admin.php' ),
 			'home_slug'              => self::$plugin_slug,
-			'bsf_custom_fonts_base_url'         => admin_url( 'admin.php?page=' . self::$plugin_slug ),
-			'logo_url'               => apply_filters( 'bsf_custom_fonts_admin_menu_icon', BSF_CUSTOM_FONTS_URI . 'inc/assets/images/astra-logo.svg' ),
+			'app_base_url'           => admin_url( 'admin.php?page=' . self::$plugin_slug ),
 			'update_nonce'           => wp_create_nonce( 'astra_update_admin_setting' ),
-			'plugin_installer_nonce' => wp_create_nonce( 'updates' ),
 			'googleFonts'            => Bsf_Custom_Font_Families::get_google_fonts(),
 		);
 
@@ -230,44 +227,21 @@ class Bsf_Custom_Fonts_Menu {
 	}
 
 	/**
-	 * Get plugin status
-	 *
-	 * @since 2.0.0
-	 *
-	 * @param  string $plugin_init_file Plguin init file.
-	 * @return mixed
-	 */
-	public static function get_plugin_status( $plugin_init_file ) {
-
-		$installed_plugins = get_plugins();
-
-		if ( ! isset( $installed_plugins[ $plugin_init_file ] ) ) {
-			return 'install';
-		} elseif ( is_plugin_active( $plugin_init_file ) ) {
-			return 'activated';
-		} else {
-			return 'installed';
-		}
-	}
-
-	/**
 	 * Settings app scripts
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 * @param array $localize Variable names.
 	 */
 	public function settings_app_scripts( $localize ) {
 		$handle            = 'bsf-custom-fonts-admin-dashboard-app';
-		$build_path        = BSF_CUSTOM_FONTS_DIR . 'admin/react/assets/build/';
-		$build_url         = BSF_CUSTOM_FONTS_URI . 'admin/react/assets/build/';
+		$build_path        = BSF_CUSTOM_FONTS_ADMIN_DIR . '/assets/build/';
+		$build_url         = BSF_CUSTOM_FONTS_ADMIN_URL . '/assets/build/';
 		$script_asset_path = $build_path . 'dashboard-app.asset.php';
 
-		/** @psalm-suppress MissingFile */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 		$script_info = file_exists( $script_asset_path ) ? include $script_asset_path : array(  // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 			'dependencies' => array(),
 			'version'      => BSF_CUSTOM_FONTS_VER,
 		);
-		/** @psalm-suppress MissingFile */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
 
 		$script_dep = array_merge( $script_info['dependencies'], array( 'updates', 'wp-hooks' ) );
 
@@ -308,12 +282,11 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 *  Add footer link.
 	 *
-	 * @since 2.0.0
+	 * @since x.x.x
 	 */
 	public function bsf_custom_fonts_admin_footer_link() {
-		return '<span id="footer-thankyou"> Thank you for using <span class="focus:text-astra-hover active:text-astra-hover hover:text-astra-hover"> ' . esc_html( 'BSF Custom Fonts' ) . '.</span></span>';
+		return '<span id="footer-thankyou"> Thank you for using <span class="focus:text-astra-hover active:text-astra-hover hover:text-astra-hover"> ' . esc_html( 'Custom Fonts', 'custom-fonts' ) . '.</span></span>';
 	}
-
 }
 
 Bsf_Custom_Fonts_Menu::get_instance();
