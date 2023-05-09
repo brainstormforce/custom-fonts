@@ -220,6 +220,8 @@ class Bsf_Custom_Fonts_Menu {
 			'home_slug'              => self::$plugin_slug,
 			'app_base_url'           => admin_url( 'admin.php?page=' . self::$plugin_slug ),
 			'update_nonce'           => wp_create_nonce( 'astra_update_admin_setting' ),
+			'add_font_nonce'         => wp_create_nonce( 'add_font_nonce' ),
+			'delete_font_nonce'      => wp_create_nonce( 'delete_font_nonce' ),
 			'googleFonts'            => Bsf_Custom_Font_Families::get_google_fonts(),
 		);
 
@@ -243,6 +245,7 @@ class Bsf_Custom_Fonts_Menu {
 			'version'      => BSF_CUSTOM_FONTS_VER,
 		);
 
+		wp_enqueue_media();
 		$script_dep = array_merge( $script_info['dependencies'], array( 'updates', 'wp-hooks' ) );
 
 		wp_register_script(

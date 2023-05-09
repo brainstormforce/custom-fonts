@@ -1,3 +1,5 @@
+import { __ } from "@wordpress/i18n";
+
 const SearchBar = () => {
 	return (
 		<div className="relative w-full my-6 flex items-center border-b border-light bsf-custom-font-search">
@@ -19,7 +21,7 @@ const SearchBar = () => {
 			<input
 				className="w-full border-0"
 				type="text"
-				placeholder="Search Custom Fonts"
+				placeholder={ __("Search Custom Font", "custom-fonts") }
 			/>
 		</div>
 	);

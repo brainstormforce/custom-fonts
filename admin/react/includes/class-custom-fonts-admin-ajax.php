@@ -1,9 +1,9 @@
 <?php
 /**
- * Helper class for font settings.
+ * Ajax class for font settings.
  *
  * @package     Bsf_Custom_Fonts
- * @since       2.0.0
+ * @since       x.x.x
  */
 
 // Exit if accessed directly.
@@ -12,102 +12,179 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Font info class for System and Google fonts.
+ * AJAX events class to manage dashboard application requests.
+ *
+ * @since x.x.x
  */
-if ( ! class_exists( 'Bsf_Custom_Font_Families' ) ) :
+class BSF_Custom_Fonts_Admin_Ajax {
+	/**
+	 * Instance
+	 *
+	 * @access private
+	 * @var null $instance
+	 * @since 4.0.0
+	 */
+	private static $instance;
 
 	/**
-	 * Font info class for System and Google fonts.
+	 * Initiator
+	 *
+	 * @since 4.0.0
+	 * @return object initialized object of class.
 	 */
-	final class Bsf_Custom_Font_Families {
-
-		/**
-		 * Google Fonts
-		 *
-		 * @since 1.0.19
-		 * @var array
-		 */
-		public static $google_fonts = array();
-
-		/**
-		 * Variant labels.
-		 *
-		 * @since 2.0.0
-		 * @return array
-		 */
-		public static function font_variant_labels() {
-			return array(
-				'100'       => __( 'Thin 100', 'astra' ),
-				'200'       => __( 'Extra Light 200', 'astra' ),
-				'300'       => __( 'Light 300', 'astra' ),
-				'400'       => __( 'Regular 400', 'astra' ),
-				'500'       => __( 'Medium 500', 'astra' ),
-				'600'       => __( 'Semi-Bold 600', 'astra' ),
-				'700'       => __( 'Bold 700', 'astra' ),
-				'800'       => __( 'Extra-Bold 800', 'astra' ),
-				'900'       => __( 'Ultra-Bold 900', 'astra' ),
-				'100italic' => __( 'Thin 100 Italic', 'astra' ),
-				'200italic' => __( 'Extra Light 200 Italic', 'astra' ),
-				'300italic' => __( 'Light 300 Italic', 'astra' ),
-				'400italic' => __( 'Regular 400 Italic', 'astra' ),
-				'italic'    => __( 'Regular 400 Italic', 'astra' ),
-				'500italic' => __( 'Medium 500 Italic', 'astra' ),
-				'600italic' => __( 'Semi-Bold 600 Italic', 'astra' ),
-				'700italic' => __( 'Bold 700 Italic', 'astra' ),
-				'800italic' => __( 'Extra-Bold 800 Italic', 'astra' ),
-				'900italic' => __( 'Ultra-Bold 900 Italic', 'astra' ),
-			);
+	public static function get_instance() {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new self();
 		}
-
-		/**
-		 * Google Fonts used in Bsf Custom Fonts.
-		 * Array is generated from the google-fonts.json file.
-		 *
-		 * @since  2.0.0
-		 *
-		 * @return Array Array of Google Fonts.
-		 */
-		public static function get_google_fonts() {
-
-			if ( empty( self::$google_fonts ) ) {
-
-				/**
-				 * Deprecating the Filter to change the Google Fonts JSON file path.
-				 *
-				 * @since 2.0.0
-				 * @param string $json_file File where google fonts json format added.
-				 * @return array
-				 */
-				$google_fonts_file = apply_filters( 'bsf_custom_font_google_fonts_php_file', BSF_CUSTOM_FONTS_DIR . 'includes/google-fonts.php' );
-
-				if ( ! file_exists( $google_fonts_file ) ) {
-					return array();
-				}
-
-				$google_fonts_arr = include $google_fonts_file;// phpcs:ignore: WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-
-				foreach ( $google_fonts_arr as $key => $font ) {
-					$name = key( $font );
-					foreach ( $font[ $name ] as $font_key => $single_font ) {
-
-						if ( 'variants' === $font_key ) {
-
-							foreach ( $single_font as $variant_key => $variant ) {
-
-								if ( 'regular' == $variant ) {
-									$font[ $name ][ $font_key ][ $variant_key ] = '400';
-								}
-							}
-						}
-
-						self::$google_fonts[ $name ] = array_values( $font[ $name ] );
-					}
-				}
-			}
-
-			return apply_filters( 'bsf_custom_font_google_fonts', self::$google_fonts );
-		}
-
+		return self::$instance;
 	}
 
-endif;
+	/**
+	 * Errors class instance.
+	 *
+	 * @var array
+	 * @since 4.0.0
+	 */
+	private $errors = array();
+
+	/**
+	 * Constructor
+	 *
+	 * @since 4.0.0
+	 */
+	public function __construct() {
+		$this->errors = array(
+			'permission' => __( 'Sorry, you are not allowed to do this operation.', 'astra' ),
+			'nonce'      => __( 'Nonce validation failed', 'astra' ),
+			'default'    => __( 'Sorry, something went wrong.', 'astra' ),
+			'invalid'    => __( 'No post data found!', 'astra' ),
+		);
+
+		$ajax_events = array(
+			'bcf_add_new_font',
+			'bcf_delete_font',
+		);
+
+		foreach ( $ajax_events as $key => $event ) {
+			add_action( 'wp_ajax_' . $event, array( $this, $event ) );
+		}
+	}
+
+	/**
+	 * Get ajax error message.
+	 *
+	 * @param string $type Message type.
+	 * @return string
+	 * @since 4.0.0
+	 */
+	public function get_error_msg( $type ) {
+
+		if ( ! isset( $this->errors[ $type ] ) ) {
+			$type = 'default';
+		}
+
+		return $this->errors[ $type ];
+	}
+
+	/**
+	 * Create the font post.
+	 * 
+	 * @since x.x.x
+	 */
+	public function bcf_add_new_font() {
+
+		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'add_font_nonce', 'security', false ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$font_data = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
+		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
+
+		if ( empty( $font_variations ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		// Create post object.
+		$new_font_post = array(
+			'post_title'   => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
+			'post_status'  => 'publish',
+			'post_type'    => BSF_CUSTOM_FONTS_POST_TYPE,
+		);
+
+		// Insert the post into the database.
+		$font_post_id = wp_insert_post( $new_font_post );
+
+		if ( is_wp_error( $font_post_id ) ) {
+			$response_data = array( 'message' => $font_post_id->get_error_message() );
+			wp_send_json_error( $response_data );
+		}
+
+		$font_face = bcf_get_font_face_css( $font_post_id, $font_data );
+
+		update_post_meta( $font_post_id, 'fonts-data', $font_data );
+		update_post_meta( $font_post_id, 'fonts-face', $font_face );
+
+		/**
+		 * Redirect to the new flow edit screen
+		 */
+		$response_data = array(
+			'message'      => __( 'Successfully created the Font!', 'custom-fonts' ),
+			'redirect_url' => admin_url( 'post.php?action=edit&post=' . $font_post_id ),
+			'font_post_id' => $font_post_id,
+		);
+		wp_send_json_success( $response_data );
+	}
+
+	/**
+	 * Delete the font post.
+	 * 
+	 * @since x.x.x
+	 */
+	public function bcf_delete_font() {
+		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'delete_font_nonce', 'security', false ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$font_id = isset( $_POST['font_id'] ) ? absint( $_POST['font_id'] ) : 0;
+
+		if ( ! $font_id ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$delete_post_response = wp_delete_post( $font_id );
+
+		if ( ! is_object( $delete_post_response ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$response_data = array(
+			'message'      => __( 'Successfully deleted the Font!', 'custom-fonts' ),
+		);
+		wp_send_json_success( $response_data );
+	}
+}
+
+BSF_Custom_Fonts_Admin_Ajax::get_instance();

@@ -5,95 +5,27 @@ const globalDataReducer = ( state = {}, action ) => {
 			return {
 				...action.payload,
 			};
-		case 'UPDATE_BLOCK_STATUSES':
-			return {
-				...state,
-				blocksStatuses: action.payload
-			};
 		case 'UPDATE_INITIAL_STATE_FLAG':
 			return {
 				...state,
 				initialStateSetFlag: action.payload,
 			};
-		case 'UPDATE_SETTINGS_ACTIVE_NAVIGATION_TAB':
+		case 'SET_FONTS':
 			return {
 				...state,
-				activeSettingsNavigationTab: action.payload
+				fonts: [ ...action.fonts ],
 			};
-		case 'UPDATE_ENABLE_LOAD_FONTS_LOCALLY':
+		case 'SET_FONTS_DATA':
 			return {
 				...state,
-				enableLoadFontsLocally: action.payload,
-			};
-		case 'UPDATE_ENABLE_PRELOAD_LOCAL_FONTS':
-			return {
-				...state,
-				enablePreloadLocalFonts: action.payload,
-			};
-		case 'UPDATE_ENABLE_WHITE_LABEL':
-			return {
-				...state,
-				enableWhiteLabel: action.payload,
-			};
-		case 'UPDATE_PLUGIN_DESCRIPTION':
-			return {
-					...state,
-					pluginDescription: action.payload,
-				};
-		case 'UPDATE_PLUGIN_NAME':
-			return {
-					...state,
-					pluginName: action.payload,
-				};
-		case 'UPDATE_THEME_SCREENSHOT_URL':
-			return {
-					...state,
-					themeScreenshotURL: action.payload,
-				};
-		case 'UPDATE_THEME_DESCRIPTION':
-			return {
-					...state,
-					themeDescription: action.payload,
-				};
-		case 'UPDATE_THEME_NAME':
-			return {
-					...state,
-					themeName: action.payload,
-				};
-		case 'UPDATE_AGENCY_LICENSE_LINK':
-			return {
-					...state,
-					agencyLicenseLink: action.payload,
-				};
-		case 'UPDATE_AGENCY_AUTHOR_URL':
-			return {
-					...state,
-					agencyAuthorURL: action.payload,
-				};
-		case 'UPDATE_AGENCY_AUTHOR_NAME':
-			return {
-				...state,
-				agencyAuthorName: action.payload
-			};
-		case 'UPDATE_FILE_GENERATION':
-			return {
-				...state,
-				enableFileGeneration: action.payload,
-			};
-		case 'UPDATE_BETA':
-			return {
-				...state,
-				enableBeta: action.payload,
-			};
-		case 'USE_OLD_HEADER_FOOTER':
-			return {
-				...state,
-				useOldHeaderFooter: action.payload,
-			};
-		case 'UPGRADE_NOTICES':
-			return {
-				...state,
-				useUpgradeNotices: action.payload,
+				fonts: [ ...action.fonts ],
+				fonts_pagination: action.pagination,
+				found_posts: action.found_posts,
+				active_fonts_count: action.active_fonts_count,
+				trash_fonts_count: action.trash_fonts_count,
+				draft_fonts_count: action.draft_fonts_count,
+				fonts_count: action.found_posts,
+				fonts_limit_over: false, // Removed the flow count condition
 			};
 		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
 			return {

@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { RangeControl } from "@wordpress/components";
 import GooglePreviewItem from "./preview/GooglePreviewItem";
 import LocalPreviewItem from "./preview/LocalPreviewItem";
-import FontNotification from "./FontNotification";
+import FontNotification from "../../FontNotification";
+import { __ } from "@wordpress/i18n";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
@@ -13,6 +14,7 @@ const AddFont = () => {
 	const toggleType = (value) => {
 		setActiveType(value);
 	};
+
 	return (
 		<div>
 			<div className="grid grid-cols-12">
@@ -47,7 +49,7 @@ const AddFont = () => {
 									: "text-neutral"
 							}`}
 						>
-							Local Fonts
+							{__('Local Fonts', 'custom-fonts')}
 						</div>
 						<div
 							onClick={() => toggleType("google")}
@@ -57,7 +59,7 @@ const AddFont = () => {
 									: "text-neutral"
 							}`}
 						>
-							Google Fonts
+							{__('Google Fonts', 'custom-fonts')}
 						</div>
 					</div>
 					<div>
@@ -69,7 +71,7 @@ const AddFont = () => {
 					{/* Here will be Font Preview Section */}
 					<div className="border-b border-light pb-5 flex justify-between items-center">
 						<div className="text-sm text-secondary">
-							Font preview
+							{__('Font preview', 'custom-fonts')}
 						</div>
 						<div className="w-[314px]">
 							<RangeControl />
@@ -78,8 +80,7 @@ const AddFont = () => {
 					<div className="py-5 divide-y">
 						<div className="text-sm text-neutral py-5">
 							<p>
-								Font preview will appear here. Please select a
-								font file.
+								{__('Font preview will appear here. Please select a font file.', 'custom-fonts')}
 							</p>
 						</div>
 						<div>
@@ -89,7 +90,7 @@ const AddFont = () => {
 					</div>
 				</div>
 			</div>
-			<FontNotification />
+			{/* <FontNotification /> */}
 		</div>
 	);
 };

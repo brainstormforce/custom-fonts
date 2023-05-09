@@ -5,7 +5,6 @@
 .appearance_page_bsf-custom-fonts #wpcontent {
 	padding-left: 0;
 }
-
 .bsf-custom-font-dashboard-app {
 	input, select {
 		border: 1px solid #dddddd;
@@ -16,18 +15,35 @@
 		border: 0;
 	}
 }
-
 .bsf-custom-font-search input {
 	border: 0;
 	background: transparent;
 	padding: 18px 0;
 }
-
 .bsf-custom-font-search input:focus {
 	outline: none;
 	border: 0;
 	border-color: transparent;
 	box-shadow: none;
 }
-
-
+button.font-file-uploader.btn {
+	border: 1px solid #767676;
+	margin: 0px;
+	padding: 1px 6px;
+	border-radius: 2px;
+	line-height: 1.6;
+}
+span.font-filename {
+	margin-left: -10px;
+}
+.font-triggers {
+    position: absolute;
+    right: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+}
+.bcf-font-list-wrap > .bg-white:not(:first-child) > .list-font-title,
+.bcf-font-list-wrap > .bg-white .list-font-variations > .font-variation-item:not(:first-child) {
+    border-top: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
+}

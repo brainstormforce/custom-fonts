@@ -3,20 +3,15 @@ import globalDataReducer from './globalDataReducer';
 
 const initialState = wp.hooks.applyFilters( 'custom_fonts_dashboard/datastore', {
 		initialStateSetFlag : false,
-		useUpgradeNotices : false,
-		enableBeta : 'disable',
 		settingsSavedNotification : '',
-		blocksStatuses : [],
-		enableFileGeneration: 'disable',
-		activeSettingsNavigationTab : '',
-		pluginDescription: '',
-		pluginName: '',
-		themeScreenshotURL: '',
-		themeDescription: '',
-		themeName: '',
-		agencyLicenseLink: '',
-		agencyAuthorURL: '',
-		agencyAuthorName: '',
+		fonts: null,
+		fonts_pagination : {},
+		found_posts : '',
+		active_fonts_count : '',
+		trash_fonts_count : '',
+		draft_fonts_count : '',
+		fonts_count : '',
+		fonts_limit_over : false,
 	}
 );
 

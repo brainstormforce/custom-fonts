@@ -25,8 +25,8 @@ define( 'BSF_CUSTOM_FONTS_FILE', __FILE__ );
 define( 'BSF_CUSTOM_FONTS_BASE', plugin_basename( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_DIR', plugin_dir_path( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_URI', plugins_url( '/', BSF_CUSTOM_FONTS_FILE ) );
-define( 'BSF_CUSTOM_FONTS_VER', '1.4.0' );
-define( 'BSF_CUSTOM_FONTS_POST_TYPE', 'bsf_custom_font' );
+define( 'BSF_CUSTOM_FONTS_VER', '2.0.0' );
+define( 'BSF_CUSTOM_FONTS_POST_TYPE', 'bsf_custom_fonts' );
 
 /**
  * BSF Custom Fonts Background Updater.
@@ -37,6 +37,11 @@ require_once BSF_CUSTOM_FONTS_DIR . 'includes/plugin-update/class-custom-fonts-u
  * Rest API support.
  */
 require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-api-init.php';
+
+/**
+ * Helper functions needed for further processing.
+ */
+require_once BSF_CUSTOM_FONTS_DIR . '/includes/helper-functions.php';
 
 if ( is_admin() ) {
 

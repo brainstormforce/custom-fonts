@@ -3,9 +3,12 @@ import CustomFontGrid from "./CustomFontGrid";
 import CustomFontList from "./CustomFontList";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import { __ } from "@wordpress/i18n";
+import { useSelector, useDispatch } from 'react-redux';
 
 const Welcome = () => {
 	const [activeView, setActiveView] = useState("list");
+	const fontsData = useSelector( ( state ) => state.fonts );
 
 	const toggleView = (value) => {
 		setActiveView(value);
@@ -21,7 +24,7 @@ const Welcome = () => {
 									Custom Fonts
 								</h2>
 								<p className="text-xs">
-									Manage fonts that are used on your website
+									{ __("Manage fonts that are used on your website", "custom-fonts") }
 								</p>
 							</div>
 							<div className="relative">
@@ -30,9 +33,9 @@ const Welcome = () => {
 										pathname: "admin.php",
 										search: `?page=bsf-custom-fonts&path=add-fonts`,
 									}}
-									className="flex text-sm text-white bg-primary px-3 py-2"
+									className="flex text-sm text-white hover:text-white bg-primary px-3 py-2"
 								>
-									Add New Font
+									{ __("Add New Font", "custom-fonts") }
 								</Link>
 							</div>
 						</div>
@@ -44,7 +47,7 @@ const Welcome = () => {
 				<SearchBar />
 				{/* Font Counter and View toggle */}
 				<div className="flex justify-between items-center my-6">
-					<div className="text-base">1 font family</div>
+					<div className="text-base"> { fontsData ? fontsData.length : 0 } { __(" font family", "custom-fonts") } </div>
 					<div className="flex justify-end gap-x-7">
 						<div
 							className="cursor-pointer"
@@ -98,7 +101,7 @@ const Welcome = () => {
 				{activeView === "grid" && <CustomFontGrid />}
 				{activeView === "list" && <CustomFontList />}
 				<div className="mt-6 text-center">
-					<button className="button">Add New Font</button>
+					<button className="button"> { __("Add New Font", "custom-fonts") } </button>
 				</div>
 			</div>
 		</div>

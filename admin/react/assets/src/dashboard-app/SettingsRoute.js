@@ -2,12 +2,6 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Welcome from '@DashboardApp/pages/welcome/Welcome';
 import AddFont from '@DashboardApp/pages/fonts/AddFont';
-// import FreeVsPro from '@DashboardApp/pages/free-vs-pro/FreeVsPro';
-// import Settings from '@DashboardApp/pages/settings/Settings';
-// import StarterTemplates from '@DashboardApp/pages/starter-templates/StarterTemplates';
-// import CustomLayouts from '@DashboardApp/pages/custom-layouts/CustomLayouts';
-// import SpectraScreen from '@DashboardApp/pages/spectra/SpectraScreen';
-// import Docs from '@DashboardApp/pages/docs/Docs';
 
 function SettingsRoute() {
 	const query = new URLSearchParams( useLocation().search );
@@ -30,8 +24,6 @@ function SettingsRoute() {
 					break;
 			}
 		}
-
-		//astWpMenuClassChange( path );
 	}
 
 	return <>{ routePage }</>;

@@ -5,10 +5,12 @@ const setInitialState = ( store ) => {
 		path: '/bsf-custom-fonts/v1/admin/settings/',
 	} ).then( ( data ) => {
 		const initialState = {
-			settingsSavedNotification: '',
 			initialStateSetFlag : true,
-			activeSettingsNavigationTab : 'global-settings',
-			useUpgradeNotices: data.use_upgrade_notices,
+			fonts: data.fonts,
+			found_posts : data.found_posts,
+			active_fonts_count : data.active_fonts_count,
+			trash_fonts_count : data.trash_fonts_count,
+			draft_fonts_count : data.draft_fonts_count,
 		};
 
 		store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );

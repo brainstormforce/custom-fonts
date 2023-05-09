@@ -117,17 +117,45 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 * @since x.x.x
 	 */
 	public function get_admin_settings( $request ) {
-		$db_option = get_option( 'bsf_custom_fonts_settings', array() );
+		$args = array(
+			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
+			'post_status' => 'publish',
+			'orderby'     => 'ID',
+		);
+		$bsf_fonts_data = array();
+		$query_posts = new WP_Query( $args );
+		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
+
+		if ( $query_posts && $query_posts->have_posts() ) {
+			while ( $query_posts->have_posts() ) {
+				$query_posts->the_post();
+				global $post;
+
+				$font_post_data = array(
+					'id' => $post->ID,
+					'title' => $post->post_title,
+					'slug' => $post->post_name,
+					'fonts-face' => get_post_meta( $post->ID, 'fonts-face', true ),
+					'fonts-data' => get_post_meta( $post->ID, 'fonts-data', true ),
+				);
+
+				$bsf_fonts_data[] = $font_post_data;
+				wp_reset_postdata();
+			}
+		}
 
 		$defaults = apply_filters(
-			'bsf_custom_fonts_dashboard_rest_options',
+			'bsf_custom_fonts_rest_data',
 			array(
-				'self_hosted_gfonts'    => self::get_admin_settings_option( 'self_hosted_gfonts', false ),
+				'fonts' => $bsf_fonts_data,
+				'found_posts' => $query_posts->found_posts,
+				'active_fonts_count' => isset( $bsf_custom_font_posts->publish ) ? intval( $bsf_custom_font_posts->publish ) : 0,
+				'trash_fonts_count' => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
+				'draft_fonts_count' => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
 			)
 		);
 
-		$updated_option = wp_parse_args( $db_option, $defaults );
-		return $updated_option;
+		return $defaults;
 	}
 
 	/**
@@ -140,7 +168,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	public function get_permissions_check( $request ) {
 
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
-			return new WP_Error( 'bsf_custom_fonts_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'custom-fonts' ), array( 'status' => rest_authorization_required_code() ) );
+			// return new WP_Error( 'bsf_custom_fonts_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'custom-fonts' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;

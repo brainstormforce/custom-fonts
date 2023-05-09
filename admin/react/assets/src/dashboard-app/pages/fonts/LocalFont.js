@@ -1,26 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { __ } from "@wordpress/i18n";
+import apiFetch from '@wordpress/api-fetch';
+import { useDispatch } from 'react-redux';
 
 const VariationItem = ({
+	id,
 	variation,
 	localDataLength,
 	handleVariationRemove,
 	handleVariationChange,
 }) => {
 	const [toggleView, setToggleView] = useState(true);
+	const [fontFileName, setfontFileName] = useState('');
+
+	let frame;
+	const fontFileUploader = (event) => {
+		event.preventDefault()
+
+		// If the media frame already exists, reopen it.
+		if ( frame ) {
+			frame.open()
+			return
+		}
+
+		// Create a new media frame
+		frame = wp.media({
+			title: __( 'Select or Upload Font', 'custom-fonts' ),
+			button: {
+				text: __( 'Use Font', 'custom-fonts' ),
+			},
+			multiple: false, // Set to true to allow multiple files to be selected
+		})
+
+		// When an image is selected in the media frame...
+		frame.on( 'select', function() {
+			// Get media attachment details from the frame state
+			let attachment = frame.state().get('selection').first().toJSON();
+			setfontFileName( attachment.filename );
+			handleVariationChange(
+				event,
+				variation.id,
+				"font_file",
+				attachment
+			);
+		});
+
+		// Finally, open the modal on click
+		frame.open();
+	}
 
 	return (
-		<div className="border border-light rounded-sm">
+		<div className="border border-light rounded-sm variation-file-field">
 			{!toggleView ? (
-				<div className="flex items-center justify-between p-3.5">
+				<div className="flex items-center justify-between p-3.5 relative">
 					<h2 className="text-sm font-semibold text-secondary">
-						Satoshi-Regular.otf
+						{ '' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts') }
 					</h2>
-					<div className="flex items-center justify-end gap-x-4">
+					<div className="flex items-center justify-end gap-x-4 font-triggers">
 						<svg
 							onClick={() => setToggleView(true)}
 							width="12"
 							height="8"
 							viewBox="0 0 12 8"
+							className="arrow-icon"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 						>
@@ -37,7 +79,7 @@ const VariationItem = ({
 								viewBox="0 0 16 16"
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
-								className="cursor-pointer"
+								className="cursor-pointer remove-icon"
 								onClick={() =>
 									handleVariationRemove(variation.id)
 								}
@@ -54,50 +96,51 @@ const VariationItem = ({
 				<div className="relative p-4 bg-theme-bg">
 					<div className="mb-3">
 						<div className="flex items-center gap-x-4">
-							<input
-								type="file"
-								name={`variation-${variation.id}-font_file`}
-								value={variation.font_file}
-								className="border-0"
-								onChange={(event) =>
-									handleVariationChange(
-										event,
-										variation.id,
-										"font_file"
-									)
+							<input name={`variation[${variation.id}][font_file]`} type="hidden" value={variation.font_file} />
+							<input name={`variation[${variation.id}][font_url]`} type="hidden" value={variation.font_url} />
+							<button
+								onClick={(event) =>
+									fontFileUploader(event)
 								}
-							/>
-							<svg
-								onClick={() => setToggleView(false)}
-								width="12"
-								height="8"
-								viewBox="0 0 12 8"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
+								className="font-file-uploader btn btn-primary"
 							>
-								<path
-									d="M2.00039 7.19995L6.00039 3.19995L10.0004 7.19995L11.6004 6.39995L6.00039 0.799951L0.400391 6.39995L2.00039 7.19995Z"
-									fill="#7E7E7E"
-								/>
-							</svg>
-							{localDataLength > 1 && (
+								{ __( "Choose File", 'custom-fonts' ) }
+							</button>
+							<span className="font-filename"> { '' !== fontFileName ? fontFileName : __( 'No file chosen', 'custom-fonts' ) } </span>
+							<div className="font-triggers">
 								<svg
-									width="16"
-									height="16"
-									viewBox="0 0 16 16"
+									onClick={() => setToggleView(false)}
+									width="12"
+									height="8"
+									viewBox="0 0 12 8"
+									className="arrow-icon"
 									fill="none"
 									xmlns="http://www.w3.org/2000/svg"
-									className="cursor-pointer"
-									onClick={() =>
-										handleVariationRemove(variation.id)
-									}
 								>
 									<path
-										d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-										fill="#007CBA"
+										d="M2.00039 7.19995L6.00039 3.19995L10.0004 7.19995L11.6004 6.39995L6.00039 0.799951L0.400391 6.39995L2.00039 7.19995Z"
+										fill="#7E7E7E"
 									/>
 								</svg>
-							)}
+								{localDataLength > 1 && (
+									<svg
+										width="16"
+										height="16"
+										viewBox="0 0 16 16"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+										className="cursor-pointer remove-icon"
+										onClick={() =>
+											handleVariationRemove(variation.id)
+										}
+									>
+										<path
+											d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
+											fill="#007CBA"
+										/>
+									</svg>
+								)}
+							</div>
 						</div>
 
 						<div className="text-xs text-neutral mt-1.5">
@@ -108,13 +151,13 @@ const VariationItem = ({
 						<div className="col-span-1">
 							<label
 								className="w-full text-sm text-heading"
-								htmlFor=""
+								htmlFor={`variation[${variation.id}][font_style]`}
 							>
-								Font style:
+								{__('Font style:', 'custom-fonts' )}
 							</label>
 							<div className="mt-1.5">
 								<select
-									name={`variation-${variation.id}-font_style`}
+									name={`variation[${variation.id}][font_style]`}
 									value={variation.font_style}
 									onChange={(event) =>
 										handleVariationChange(
@@ -125,21 +168,23 @@ const VariationItem = ({
 									}
 									className="w-full"
 								>
-									<option value="normal">Normal</option>
+									<option value="normal"> {__( 'Normal', 'custom-fonts' )} </option>
+									<option value="italic"> {__( 'Italic', 'custom-fonts' )} </option>
+									<option value="oblique"> {__( 'Oblique', 'custom-fonts' )} </option>
 								</select>
 							</div>
 						</div>
 						<div className="col-span-1">
 							<label
 								className="w-full text-sm text-heading"
-								htmlFor=""
+								htmlFor={`variation[${variation.id}][font_weight]`}
 							>
-								Font weight:
+								{__( 'Font weight:', 'custom-fonts' )}
 							</label>
 							<div className="mt-1.5">
 								<input
 									type="text"
-									name={`variation-${variation.id}-font_weight`}
+									name={`variation[${variation.id}][font_weight]`}
 									value={variation.font_weight}
 									onChange={(event) =>
 										handleVariationChange(
@@ -165,18 +210,20 @@ const LocalFont = () => {
 		setAdvanceTab(!advanceTab);
 	};
 	const [localFontData, setLocalFontData] = useState({
-		font_name: "",
-		font_fallback: "",
-		font_display: "",
+		font_name: '',
+		font_fallback: '',
+		font_display: '',
 		variations: [
 			{
 				id: 1,
-				font_file: "",
-				font_style: "",
-				font_weight: "",
+				font_file: '',
+				font_url: '',
+				font_style: 'normal',
+				font_weight: '',
 			},
 		],
 	});
+	const [ addingFont, setAddingFont ] = useState( false );
 
 	const handleInputChange = (event, property) => {
 		const value = event.target.value;
@@ -187,13 +234,21 @@ const LocalFont = () => {
 		}));
 	};
 
-	const handleVariationChange = (event, id, property) => {
+	const handleVariationChange = (event, id, property, attachment = '') => {
 		const updatedVariations = localFontData.variations.map((variation) => {
 			if (variation.id === id) {
-				return {
-					...variation,
-					[property]: event.target.value,
-				};
+				if( '' !== attachment ) {
+					return {
+						...variation,
+						['font_file']: attachment.id,
+						['font_url']: attachment.url,
+					};
+				} else {
+					return {
+						...variation,
+						[property]: event.target.value,
+					};
+				}
 			} else {
 				return variation;
 			}
@@ -211,9 +266,10 @@ const LocalFont = () => {
 		const newId = lastId + 1;
 		const newVariation = {
 			id: newId,
-			font_file: "",
-			font_style: "",
-			font_weight: "",
+			font_file: '',
+			font_url: '',
+			font_style: 'normal',
+			font_weight: '',
 		};
 		const updatedVariations = [...localFontData.variations, newVariation];
 
@@ -234,16 +290,47 @@ const LocalFont = () => {
 		});
 	};
 
+	const insertNewFontPost = ( e ) => {
+		console.log( '***** Publishing New Font *****' );
+		e.preventDefault();
+
+		if ( '' === localFontData.font_name ) {
+			window.alert(
+				__( 'Make sure to provide valid details.', 'custom-fonts' )
+			);
+			return;
+		}
+
+		setAddingFont( 'loading' );
+		const formData = new window.FormData();
+
+		formData.append( 'action', 'bcf_add_new_font' );
+		formData.append( 'security', bsf_custom_fonts_admin.add_font_nonce );
+		formData.append( 'font_data', JSON.stringify( localFontData ) );
+
+		apiFetch( {
+			url: bsf_custom_fonts_admin.ajax_url,
+			method: 'POST',
+			body: formData,
+		} ).then( (response) => {
+			if ( response.success ) {
+				setTimeout( () => {
+					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
+				}, 500 );
+			}
+			setAddingFont( false );
+		} );
+	};
+
 	return (
 		<div>
 			<div>
 				<p className="mb-5">
-					Add local fonts assets and font face definitions to your
-					currently active theme
+					{__( 'Add local fonts assets and font face definitions to your currently active theme.', 'custom-fonts' )}
 				</p>
 				<div className="mb-5">
-					<label className="w-full text-sm text-heading" htmlFor="">
-						Font name
+					<label className="w-full text-sm text-heading" htmlFor="font_name">
+						{__( 'Font name', 'custom-fonts' )}
 					</label>
 					<div className="mt-1.5">
 						<input
@@ -284,7 +371,7 @@ const LocalFont = () => {
 							className="w-full text-sm text-heading"
 							htmlFor=""
 						>
-							Advanced Options
+							{__( 'Advanced Options', 'custom-fonts' )}
 						</label>
 					</div>
 					{advanceTab && (
@@ -298,9 +385,9 @@ const LocalFont = () => {
 							<div className="mb-3">
 								<label
 									className="w-full text-sm text-heading"
-									htmlFor=""
+									htmlFor="font_fallback"
 								>
-									Font fallback:
+									{__( 'Font fallback:', 'custom-fonts' )}
 								</label>
 								<div className="mt-1.5">
 									<input
@@ -317,16 +404,16 @@ const LocalFont = () => {
 									/>
 								</div>
 								<span className="mt-1.5 text-xs text-neutral">
-									Separate font names with comma(,). eg.
+									{__( 'Separate font names with comma(,). eg.', 'custom-fonts' )}
 									Arial, Serif
 								</span>
 							</div>
 							<div className="mb-5">
 								<label
 									className="w-full text-sm text-heading"
-									htmlFor=""
+									htmlFor="font_display"
 								>
-									Font display:
+									{__( 'Font display:', 'custom-fonts' )}
 								</label>
 								<div className="mt-1.5">
 									<select
@@ -340,15 +427,21 @@ const LocalFont = () => {
 											)
 										}
 									>
-										<option value="auto">auto</option>
+										<option value="auto"> {__( 'auto', 'custom-fonts' )} </option>
+										<option value="block"> {__( 'block', 'custom-fonts' )} </option>
+										<option value="swap"> {__( 'swap', 'custom-fonts' )} </option>
+										<option value="fallback"> {__( 'fallback', 'custom-fonts' )} </option>
+										<option value="optional"> {__( 'optional', 'custom-fonts' )} </option>
 									</select>
 								</div>
 							</div>
 						</div>
 					)}
 				</div>
+
 				{localFontData.variations.map((variation) => (
 					<VariationItem
+						key={variation}
 						variation={variation}
 						localDataLength={localFontData.variations.length}
 						handleVariationRemove={handleVariationRemove}
@@ -375,12 +468,22 @@ const LocalFont = () => {
 						</svg>
 					</div>
 					<div className="text-sm text-primary">
-						Add Font Variation
+						{__( 'Add Font Variation', 'custom-fonts' )}
 					</div>
 				</div>
 
-				<button className="button button-primary my-5">
-					Save Font
+				<button
+					type="button"
+					className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
+					onClick={ insertNewFontPost }
+				>
+					{__( 'Save Font', 'custom-fonts' )}
+					{ 'loading' === addingFont && (
+						<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+							<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+							<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+						</svg>
+					) }
 				</button>
 			</div>
 		</div>

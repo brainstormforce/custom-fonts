@@ -10,17 +10,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit();
 }
 
-if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
+if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 
 	/**
-	 * Bsf_Custom_Fonts_Taxonomy
+	 * BSF_Custom_Fonts_Posttype
 	 */
-	class Bsf_Custom_Fonts_Taxonomy {
+	class BSF_Custom_Fonts_Posttype {
 		/**
-		 * Instance of Bsf_Custom_Fonts_Taxonomy
+		 * Instance of BSF_Custom_Fonts_Posttype
 		 *
 		 * @since  1.0.0
-		 * @var (Object) Bsf_Custom_Fonts_Taxonomy
+		 * @var (Object) BSF_Custom_Fonts_Posttype
 		 */
 		private static $instance = null;
 
@@ -102,6 +102,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 				'can_export'          => true,
 				'show_in_admin_bar'   => false,
 				'exclude_from_search' => true,
+				'show_in_rest'        => true,
 				'has_archive'         => false,  // it shouldn't have archive page.
 				'rewrite'             => false,  // it shouldn't have rewrite rules.
 				'supports'            => array( 'title' ),
@@ -221,6 +222,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 	/**
 	 *  Kicking this off by calling 'get_instance()' method
 	 */
-	Bsf_Custom_Fonts_Taxonomy::get_instance();
+	BSF_Custom_Fonts_Posttype::get_instance();
 
 endif;

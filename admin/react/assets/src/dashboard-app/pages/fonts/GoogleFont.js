@@ -1,19 +1,19 @@
 import React from "react";
+import { __ } from "@wordpress/i18n";
 
 const GoogleFont = () => {
-	const googleFonts = window.bsf_custom_fonts_admin.googleFonts;
+	const googleFonts = bsf_custom_fonts_admin.googleFonts;
 
 	console.log(googleFonts);
 	return (
 		<div>
 			<div>
 				<p className="mb-5">
-					Add Google fonts assets and font face definitions to your
-					currently active theme
+					{__('Add Google fonts assets and font face definitions to your currently active theme', 'custom-fonts')}
 				</p>
 				<div>
 					<label className="w-full text-sm text-heading" htmlFor="">
-						Select font
+						{__('Select font', 'custom-fonts')}
 					</label>
 					<div className="mt-1.5">
 						<select className="w-full" name="" id="">
@@ -26,7 +26,7 @@ const GoogleFont = () => {
 				</div>
 				<div className="my-5 border border-light rounded-sm p-3.5">
 					<h3 className="text-sm font-semibold text-heading">
-						Selected Variants
+						{__('Selected Variants', 'custom-fonts')}
 					</h3>
 					<div className="mt-3.5 flex flex-col gap-y-3.5">
 						<div className="flex items-center justify-between">
@@ -51,7 +51,7 @@ const GoogleFont = () => {
 					</div>
 				</div>
 				<div className="my-5">
-					<button className="button button-primary">Save Font</button>
+					<button className="button button-primary"> {__('Save Font', 'custom-fonts')} </button>
 				</div>
 			</div>
 		</div>

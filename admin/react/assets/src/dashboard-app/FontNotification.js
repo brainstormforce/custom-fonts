@@ -1,7 +1,5 @@
 import { Fragment, useState } from "react";
 import { Transition } from "@headlessui/react";
-import { CheckCircleIcon } from "@heroicons/react/outline";
-import { XIcon } from "@heroicons/react/solid";
 
 const FontNotification = () => {
 	const [show, setShow] = useState(true);
