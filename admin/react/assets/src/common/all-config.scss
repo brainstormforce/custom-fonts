@@ -47,3 +47,30 @@ span.font-filename {
 .bcf-font-list-wrap > .bg-white .list-font-variations > .font-variation-item:not(:first-child) {
     border-top: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
 }
+.bcf-font-grid-wrap > .p-6 {
+    border-right: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
+    border-bottom: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
+}
+.bcf-font-size-range .components-input-control__container {
+    position: relative;
+}
+.bcf-font-size-range .components-input-control__container .components-input-control__backdrop:before {
+    position: absolute;
+    content: "PX";
+    right: 4px;
+    padding-left: 4px;
+    border-left: 1px solid #949494;
+    font-weight: 600;
+    top: -1px;
+    color: #949494;
+    font-size: 11px;
+    line-height: 30px;
+}
+.bcf-font-size-range .components-input-control__container input::-webkit-outer-spin-button,
+.bcf-font-size-range .components-input-control__container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.bcf-font-size-range .components-input-control__container input[type=number] {
+  -moz-appearance: textfield;
+}

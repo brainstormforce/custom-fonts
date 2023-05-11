@@ -24,7 +24,7 @@ const Welcome = () => {
 									Custom Fonts
 								</h2>
 								<p className="text-xs">
-									{ __("Manage fonts that are used on your website", "custom-fonts") }
+									{ __("Manage fonts that are used on your website.", "custom-fonts") }
 								</p>
 							</div>
 							<div className="relative">
@@ -101,7 +101,15 @@ const Welcome = () => {
 				{activeView === "grid" && <CustomFontGrid />}
 				{activeView === "list" && <CustomFontList />}
 				<div className="mt-6 text-center">
-					<button className="button"> { __("Add New Font", "custom-fonts") } </button>
+					<Link
+						to={{
+							pathname: "admin.php",
+							search: `?page=bsf-custom-fonts&path=add-fonts`,
+						}}
+						className="button"
+					>
+						{ __("Add New Font", "custom-fonts") }
+					</Link>
 				</div>
 			</div>
 		</div>

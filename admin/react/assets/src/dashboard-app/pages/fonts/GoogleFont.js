@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
 
 const GoogleFont = () => {
 	const googleFonts = bsf_custom_fonts_admin.googleFonts;
+	const dispatch = useDispatch();
+	const [gFont, setGFont] = useState('');
 
-	console.log(googleFonts);
+	function handleGoogleFontChange( e ) {
+		setGFont( e.target.value );
+
+		const changeEvent = new CustomEvent( 'bcf:googleFontSelection:change', {
+			bubbles: true,
+			detail: { e, name: e.target.name, value: e.target.value },
+		} );
+
+		document.dispatchEvent( changeEvent );
+		dispatch( { type: 'SET_GOOGLE_FONT', payload: {
+			"font_name": e.target.value,
+			"font_fallback": '',
+			"font_display": '',
+			"variations": []
+		} } );
+	}
+
 	return (
 		<div>
 			<div>
@@ -16,10 +35,16 @@ const GoogleFont = () => {
 						{__('Select font', 'custom-fonts')}
 					</label>
 					<div className="mt-1.5">
-						<select className="w-full" name="" id="">
-							<option value="">Select a font family...</option>
+						<select
+							className="w-full"
+							name="bcf-google-font-selection"
+							id="bcf-google-font-selection"
+							value={gFont}
+							onChange={handleGoogleFontChange}
+						>
+							<option value=''> {__('Select a font family...', 'custom-fonts')} </option>
 							{Object.keys(googleFonts).map((key) => (
-								<option value="">{key}</option>
+								<option value={key} key={key}>{key}</option>
 							))}
 						</select>
 					</div>
@@ -31,7 +56,7 @@ const GoogleFont = () => {
 					<div className="mt-3.5 flex flex-col gap-y-3.5">
 						<div className="flex items-center justify-between">
 							<div className="text-sm text-heading">
-								Regular 400
+								{__('Regular 400', 'custom-fonts')}
 							</div>
 							<div>
 								<svg

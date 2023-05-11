@@ -15,6 +15,33 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				fonts: [ ...action.fonts ],
 			};
+		case 'SET_LOCAL_FONT' :
+			return {
+				...state,
+				localFont: action.payload,
+			};
+		case 'SET_GOOGLE_FONT':
+			if ( ! ( 'googleFont' in state ) || ( 'googleFont' in state && state.googleFont.font_name !== action.payload.font_name ) ) {
+				return {
+					...state,
+					googleFont: {
+						"font_name": action.payload.font_name,
+						"font_fallback": '',
+						"font_display": '',
+						"variations": []
+					},
+				};
+			} else {
+				return {
+					...state,
+					googleFont: {
+						"font_name": action.payload.font_name,
+						"font_fallback": action.payload.font_fallback ? action.payload.font_fallback : '',
+						"font_display": action.payload.font_display ? action.payload.font_display : 'fallback',
+						"variations": action.payload.variations ? action.payload.variations : []
+					},
+				};
+			}
 		case 'SET_FONTS_DATA':
 			return {
 				...state,

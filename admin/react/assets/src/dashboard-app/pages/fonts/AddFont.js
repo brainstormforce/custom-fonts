@@ -10,6 +10,7 @@ import { __ } from "@wordpress/i18n";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
+	const [previewSize, updatePreviewSize] = useState("48");
 
 	const toggleType = (value) => {
 		setActiveType(value);
@@ -18,6 +19,7 @@ const AddFont = () => {
 	return (
 		<div>
 			<div className="grid grid-cols-12">
+				<style id={`bcf-fonts-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 				<div className="col-span-3 px-6 bg-white min-h-screen">
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
@@ -43,7 +45,7 @@ const AddFont = () => {
 						</Link>
 						<div
 							onClick={() => toggleType("local")}
-							className={`text-base hover:text-heading cursor-pointer px-4 pt-6 pb-5 border-b-2 border-white hover:border-b-primary ${
+							className={`text-base leading-8 hover:text-heading cursor-pointer px-4 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
 								activeType === "local"
 									? "text-heading border-b-primary"
 									: "text-neutral"
@@ -53,7 +55,7 @@ const AddFont = () => {
 						</div>
 						<div
 							onClick={() => toggleType("google")}
-							className={`text-base hover:text-heading cursor-pointer px-4 pt-6 pb-5 border-b-2 border-white hover:border-b-primary ${
+							className={`text-base leading-8 hover:text-heading cursor-pointer px-4 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
 								activeType === "google"
 									? "text-heading border-b-primary"
 									: "text-neutral"
@@ -74,11 +76,17 @@ const AddFont = () => {
 							{__('Font preview', 'custom-fonts')}
 						</div>
 						<div className="w-[314px]">
-							<RangeControl />
+							<RangeControl
+								className="bcf-font-size-range"
+								onChange={(value) => updatePreviewSize(value)}
+								min={1}
+								max={100}
+								step={1}
+							/>
 						</div>
 					</div>
 					<div className="py-5 divide-y">
-						<div className="text-sm text-neutral py-5">
+						<div className="text-sm text-neutral pb-5">
 							<p>
 								{__('Font preview will appear here. Please select a font file.', 'custom-fonts')}
 							</p>

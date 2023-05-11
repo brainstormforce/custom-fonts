@@ -1,7 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
-import apiFetch from '@wordpress/api-fetch';
 import { useDispatch } from 'react-redux';
+import apiFetch from '@wordpress/api-fetch';
 
 const VariationItem = ({
 	id,
@@ -206,6 +206,7 @@ const VariationItem = ({
 
 const LocalFont = () => {
 	const [advanceTab, setAdvanceTab] = useState(false);
+	const dispatch = useDispatch();
 	const toggleAdvanceTab = () => {
 		setAdvanceTab(!advanceTab);
 	};
@@ -224,6 +225,10 @@ const LocalFont = () => {
 		],
 	});
 	const [ addingFont, setAddingFont ] = useState( false );
+
+	useEffect(() => {
+		dispatch( { type: 'SET_LOCAL_FONT', payload: localFontData } );
+	}, [localFontData]);
 
 	const handleInputChange = (event, property) => {
 		const value = event.target.value;
@@ -347,7 +352,7 @@ const LocalFont = () => {
 				<div className="mb-5">
 					<div
 						onClick={toggleAdvanceTab}
-						className="flex items-center px-1.5 gap-x-2"
+						className="flex items-center px-1 gap-x-2"
 					>
 						<svg
 							width="6"

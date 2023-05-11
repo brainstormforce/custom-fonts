@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { __ } from "@wordpress/i18n";
-import { useSelector, useDispatch } from 'react-redux';
 import apiFetch from '@wordpress/api-fetch';
 
-const ListItem = () => {
-	const dispatch = useDispatch();
-
+const ListItem = ({ item }) => {
 	const [active, setActive] = useState(false);
 	const [checkDelete, setCheckDelete] = useState(false);
-	const fontsData = useSelector( ( state ) => state.fonts );
 
 	const deleteFontPost = ( e ) => {
 		console.log( '***** Deleting Font *****' );
@@ -58,8 +54,7 @@ const ListItem = () => {
 	}
 
 	return (
-		fontsData && fontsData.map(( item, key ) => (
-			<div key={key} className={`${active || checkDelete ? "bg-white" : ""} transition-colors ${key ? '' : ''}`}>
+			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors`}>
 				<div className="flex items-center justify-between py-5 border-b border-light list-font-title">
 					<style id={`bcf-custom-font-${item.id}-css`}> {item['fonts-face']} </style>
 					<div className="flex items-center px-6">
@@ -78,7 +73,7 @@ const ListItem = () => {
 								>
 									{__('Cancel', 'custom-fonts')}
 								</div>
-	
+
 								<div
 									className="text-danger cursor-pointer"
 									onClick={deleteFontPost}
@@ -96,7 +91,7 @@ const ListItem = () => {
 								>
 									{__('Edit', 'custom-fonts')}
 								</div>
-	
+
 								<div
 									onClick={() => setCheckDelete(true)}
 									className="text-danger cursor-pointer"
@@ -105,7 +100,7 @@ const ListItem = () => {
 								</div>
 							</div>
 						)}
-	
+
 						<div
 							onClick={() => setActive(!active)}
 							className="ml-11 cursor-pointer"
@@ -136,7 +131,7 @@ const ListItem = () => {
 							item['fonts-data']['variations'].map(( varItem, varKey ) => (
 								<div key={varKey} className="py-5 font-variation-item">
 									<div className="text-sm text-neutral mb-3"> { getFontWeightTitle( varItem.font_weight ) } </div>
-									<h3 className="text-5xl text-heading" style={{  fontFamily: item.title, fontWeight: varItem.font_weight, fontSize: "2em" }}>
+									<h3 className="text-5xl text-heading" style={{  fontFamily: item.title, fontWeight: varItem.font_weight, fontSize: "var(--bsf-custom-font-size)" }}>
 										{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 									</h3>
 								</div>
@@ -145,7 +140,6 @@ const ListItem = () => {
 					</div>
 				)}
 			</div>
-		))
 	);
 };
 

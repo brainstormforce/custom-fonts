@@ -796,10 +796,6 @@ select {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}.divide-x > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-x-reverse: 0;
-  border-right-width: calc(1px * var(--tw-divide-x-reverse));
-  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
 }.divide-y > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-y-reverse: 0;
   border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
@@ -863,9 +859,6 @@ select {
 }.px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
-}.px-1\.5 {
-  padding-left: 0.375rem;
-  padding-right: 0.375rem;
 }.px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -889,6 +882,8 @@ select {
   padding-bottom: 1.75rem;
 }.pb-5 {
   padding-bottom: 1.25rem;
+}.pb-6 {
+  padding-bottom: 1.5rem;
 }.pt-6 {
   padding-top: 1.5rem;
 }.text-center {
@@ -914,6 +909,8 @@ select {
   font-weight: 600;
 }.italic {
   font-style: italic;
+}.leading-8 {
+  line-height: 2rem;
 }.text-danger {
   --tw-text-opacity: 1;
   color: rgb(230 80 84 / var(--tw-text-opacity));
@@ -994,7 +991,7 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }.ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}.appearance_page_bsf-custom-fonts #wpcontent{padding-left:0}.bsf-custom-font-dashboard-app input,.bsf-custom-font-dashboard-app select{border:1px solid #ddd;border-radius:2px;height:30px}.bsf-custom-font-dashboard-app input[type=file]{border:0}.bsf-custom-font-search input{border:0;background:rgba(0,0,0,0);padding:18px 0}.bsf-custom-font-search input:focus{outline:none;border:0;border-color:rgba(0,0,0,0);box-shadow:none}button.font-file-uploader.btn{border:1px solid #767676;margin:0px;padding:1px 6px;border-radius:2px;line-height:1.6}span.font-filename{margin-left:-10px}.font-triggers{position:absolute;right:15px;display:inline-flex;align-items:center;gap:15px}.bcf-font-list-wrap>.bg-white:not(:first-child)>.list-font-title,.bcf-font-list-wrap>.bg-white .list-font-variations>.font-variation-item:not(:first-child){border-top:1px solid rgb(221 221 221/var(--tw-border-opacity))}.hover\:border-b-primary:hover {
+}.appearance_page_bsf-custom-fonts #wpcontent{padding-left:0}.bsf-custom-font-dashboard-app input,.bsf-custom-font-dashboard-app select{border:1px solid #ddd;border-radius:2px;height:30px}.bsf-custom-font-dashboard-app input[type=file]{border:0}.bsf-custom-font-search input{border:0;background:rgba(0,0,0,0);padding:18px 0}.bsf-custom-font-search input:focus{outline:none;border:0;border-color:rgba(0,0,0,0);box-shadow:none}button.font-file-uploader.btn{border:1px solid #767676;margin:0px;padding:1px 6px;border-radius:2px;line-height:1.6}span.font-filename{margin-left:-10px}.font-triggers{position:absolute;right:15px;display:inline-flex;align-items:center;gap:15px}.bcf-font-list-wrap>.bg-white:not(:first-child)>.list-font-title,.bcf-font-list-wrap>.bg-white .list-font-variations>.font-variation-item:not(:first-child){border-top:1px solid rgb(221 221 221/var(--tw-border-opacity))}.bcf-font-grid-wrap>.p-6{border-right:1px solid rgb(221 221 221/var(--tw-border-opacity));border-bottom:1px solid rgb(221 221 221/var(--tw-border-opacity))}.bcf-font-size-range .components-input-control__container{position:relative}.bcf-font-size-range .components-input-control__container .components-input-control__backdrop:before{position:absolute;content:"PX";right:4px;padding-left:4px;border-left:1px solid #949494;font-weight:600;top:-1px;color:#949494;font-size:11px;line-height:30px}.bcf-font-size-range .components-input-control__container input::-webkit-outer-spin-button,.bcf-font-size-range .components-input-control__container input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.bcf-font-size-range .components-input-control__container input[type=number]{-moz-appearance:textfield}.hover\:border-b-primary:hover {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(0 124 186 / var(--tw-border-opacity));
 }.hover\:bg-primaryDark:hover {
