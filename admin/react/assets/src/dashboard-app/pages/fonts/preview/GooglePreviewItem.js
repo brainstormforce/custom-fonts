@@ -19,11 +19,29 @@ const GooglePreviewItem = () => {
 		return `https://fonts.googleapis.com/css?family=${fontName}&ver=${version+1}`;
 	}
 
+	const checkWeightPresentInState = (weight) => {
+		if ( ! googleFontState.variations.length ) {
+			return false;
+		}
+
+		const new_obs = [];
+		Object.entries( googleFontState.variations ).map( ( variation ) => {
+			console.error( variation );
+			new_obs.push( variation.font_weight );
+		})
+
+		if ( weight in new_obs ) {
+			return true;
+		}
+
+		return false;
+	}
+
 	return (
 		variations && Object.keys( variations ).map( ( key, i ) => (
 			<div key={i}>
 				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(googleFont, i)} media='all' />
-				<GFontVariation font={googleFont} weight={variations[key]} key={key} />
+				<GFontVariation font={googleFont} weight={variations[key]} isInGoogleState={checkWeightPresentInState(variations[key])} key={key} />
 			</div>
 		))
 	);

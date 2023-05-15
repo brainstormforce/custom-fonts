@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
-import { useDispatch } from 'react-redux';
 import apiFetch from '@wordpress/api-fetch';
+import { useSelector, useDispatch } from 'react-redux';
 
-const LocalVariationItem = ({
+const EditLocalVariationItem = ({
 	id,
 	variation,
 	localDataLength,
@@ -11,7 +11,13 @@ const LocalVariationItem = ({
 	handleVariationChange,
 }) => {
 	const [toggleView, setToggleView] = useState(true);
-	const [fontFileName, setFontFileName] = useState('');
+
+	const getFileName = ( url ) => {
+		const parts = url.split('/');
+		return parts.at(-1);
+	}
+
+	const [fontFileName, setFontFileName] = useState(variation.font_url ? getFileName(variation.font_url) : '');
 
 	let frame;
 	const fontFileUploader = (event) => {
@@ -50,7 +56,7 @@ const LocalVariationItem = ({
 	}
 
 	return (
-		<div className="border border-light rounded-sm variation-file-field">
+		<div key={id} className="border border-light rounded-sm variation-file-field">
 			{!toggleView ? (
 				<div className="flex items-center justify-between p-3.5 relative">
 					<h2 className="text-sm font-semibold text-secondary">
@@ -93,7 +99,7 @@ const LocalVariationItem = ({
 					</div>
 				</div>
 			) : (
-				<div className="relative p-4 bg-theme-bg">
+				<div className="relative p-4 bg-theme-bg edit-font-variation-wrap">
 					<div className="mb-3">
 						<div className="flex items-center gap-x-4">
 							<input name={`variation[${variation.id}][font_file]`} type="hidden" value={variation.font_file} />
@@ -204,36 +210,34 @@ const LocalVariationItem = ({
 	);
 };
 
-const LocalFont = () => {
+const EditLocalFont = ({fontId}) => {
 	const [advanceTab, setAdvanceTab] = useState(false);
 	const dispatch = useDispatch();
+	const restAllData = useSelector( ( state ) => state.fonts );
+	const editFontId = parseInt( fontId );
+
 	const toggleAdvanceTab = () => {
 		setAdvanceTab(!advanceTab);
 	};
-	const [localFontData, setLocalFontData] = useState({
-		font_name: '',
-		font_fallback: '',
-		font_display: '',
-		variations: [
-			{
-				id: 1,
-				font_file: '',
-				font_url: '',
-				font_style: 'normal',
-				font_weight: '',
-			},
-		],
+
+	let toBeEditFont = {};
+	restAllData.forEach(function(individualFont) {
+		if ( editFontId === individualFont.id ) {
+			toBeEditFont = individualFont;
+		}
 	});
+
+	const [localFontData, setEditLocalFontData] = useState( toBeEditFont['fonts-data'] );
 	const [ addingFont, setAddingFont ] = useState( false );
 
 	useEffect(() => {
-		dispatch( { type: 'SET_LOCAL_FONT', payload: localFontData } );
+		dispatch( { type: 'SET_EDIT_LOCAL_FONT', payload: localFontData } );
 	}, [localFontData]);
 
 	const handleInputChange = (event, property) => {
 		const value = event.target.value;
 
-		setLocalFontData((prevState) => ({
+		setEditLocalFontData((prevState) => ({
 			...prevState,
 			[property]: value,
 		}));
@@ -259,7 +263,7 @@ const LocalFont = () => {
 			}
 		});
 
-		setLocalFontData({
+		setEditLocalFontData({
 			...localFontData,
 			variations: updatedVariations,
 		});
@@ -278,7 +282,7 @@ const LocalFont = () => {
 		};
 		const updatedVariations = [...localFontData.variations, newVariation];
 
-		setLocalFontData((prevState) => ({
+		setEditLocalFontData((prevState) => ({
 			...prevState,
 			variations: updatedVariations,
 		}));
@@ -289,14 +293,14 @@ const LocalFont = () => {
 			(variation) => variation.id !== id
 		);
 
-		setLocalFontData({
+		setEditLocalFontData({
 			...localFontData,
 			variations: updatedVariations,
 		});
 	};
 
-	const insertNewFontPost = ( e ) => {
-		console.log( '***** Publishing New Font *****' );
+	const updatingNewFontPost = ( e ) => {
+		console.log( '***** Editing New Font *****' );
 		e.preventDefault();
 
 		if ( '' === localFontData.font_name ) {
@@ -309,9 +313,10 @@ const LocalFont = () => {
 		setAddingFont( 'loading' );
 		const formData = new window.FormData();
 
-		formData.append( 'action', 'bcf_add_new_font' );
-		formData.append( 'security', bsf_custom_fonts_admin.add_font_nonce );
+		formData.append( 'action', 'bcf_edit_font' );
+		formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
 		formData.append( 'font_type', 'local' );
+		formData.append( 'font_id', fontId );
 		formData.append( 'font_data', JSON.stringify( localFontData ) );
 
 		apiFetch( {
@@ -331,8 +336,8 @@ const LocalFont = () => {
 	return (
 		<div>
 			<div>
-				<p className="mb-5">
-					{__( 'Add local fonts assets and font face definitions to your currently active theme.', 'custom-fonts' )}
+				<p className="mb-5 text-xl font-semibold">
+					{__( 'Edit Font', 'custom-fonts' )}
 				</p>
 				<div className="mb-5">
 					<label className="w-full text-sm text-heading" htmlFor="font_name">
@@ -341,7 +346,7 @@ const LocalFont = () => {
 					<div className="mt-1.5">
 						<input
 							name="font_name"
-							value={localFontData.font_name}
+							value={toBeEditFont.title}
 							onChange={(event) =>
 								handleInputChange(event, "font_name")
 							}
@@ -446,8 +451,8 @@ const LocalFont = () => {
 				</div>
 
 				{localFontData.variations.map((variation) => (
-					<LocalVariationItem
-						key={variation}
+					<EditLocalVariationItem
+						key={variation.id}
 						variation={variation}
 						localDataLength={localFontData.variations.length}
 						handleVariationRemove={handleVariationRemove}
@@ -481,7 +486,7 @@ const LocalFont = () => {
 				<button
 					type="button"
 					className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
-					onClick={ insertNewFontPost }
+					onClick={ updatingNewFontPost }
 				>
 					{__( 'Save Font', 'custom-fonts' )}
 					{ 'loading' === addingFont && (
@@ -496,4 +501,4 @@ const LocalFont = () => {
 	);
 };
 
-export default LocalFont;
+export default EditLocalFont;

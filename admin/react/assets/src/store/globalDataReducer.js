@@ -20,6 +20,11 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				localFont: action.payload,
 			};
+		case 'SET_EDIT_LOCAL_FONT' :
+			return {
+				...state,
+				localFont: action.payload,
+			};
 		case 'SET_GOOGLE_FONT':
 			if ( ! ( 'googleFont' in state ) || ( 'googleFont' in state && state.googleFont.font_name !== action.payload.font_name ) ) {
 				return {

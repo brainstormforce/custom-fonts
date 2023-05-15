@@ -135,9 +135,9 @@ function bcf_prepare_font_face_css( $font_family, $font_data, $variation_data ) 
  * @since x.x.x
  * @return string css
  */
-function bcf_get_font_face_css( $post_id, $font_data = array() ) {
+function bcf_get_font_face_css( $post_id, $font_data = array(), $force_update = false ) {
 	$saved = get_post_meta( $post_id, 'fonts-face', true );
-	if ( ! empty( $saved ) ) {
+	if ( ! empty( $saved ) && false === $force_update ) {
 		return $saved;
 	}
 

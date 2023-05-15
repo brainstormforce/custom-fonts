@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { __ } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
+import EditFont from "../fonts/edit/EditFont";
 
 const ListItem = ({ item }) => {
 	const [active, setActive] = useState(false);
 	const [checkDelete, setCheckDelete] = useState(false);
+	const [editFontId, setEditFontId] = useState('0');
+
+	const [openPopup, setOpenPopup] = useState(false);
 
 	const deleteFontPost = ( e ) => {
 		console.log( '***** Deleting Font *****' );
@@ -53,7 +57,14 @@ const ListItem = ({ item }) => {
 		}
 	}
 
+	const setupEditFontScreen = (e) => {
+		const fontId = e.target.dataset.font_id;
+		setOpenPopup(! openPopup);
+		setEditFontId(fontId);
+	}
+
 	return (
+		<>
 			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors`}>
 				<div className="flex items-center justify-between py-5 border-b border-light list-font-title">
 					<style id={`bcf-custom-font-${item.id}-css`}> {item['fonts-face']} </style>
@@ -85,7 +96,7 @@ const ListItem = ({ item }) => {
 						) : (
 							<div className="flex gap-x-6">
 								<div
-									onClick={() => getEditFont()}
+									onClick={setupEditFontScreen}
 									data-font_id={item.id}
 									className="text-primary cursor-pointer"
 								>
@@ -140,6 +151,15 @@ const ListItem = ({ item }) => {
 					</div>
 				)}
 			</div>
+
+			{
+				<EditFont
+					font={editFontId}
+					openPopup={openPopup}
+					setOpenPopup={setOpenPopup}
+				/>
+			}
+		</>
 	);
 };
 

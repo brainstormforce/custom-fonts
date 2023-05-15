@@ -63,6 +63,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		$ajax_events = array(
 			'bcf_add_new_font',
 			'bcf_delete_font',
+			'bcf_edit_font',
 		);
 
 		foreach ( $ajax_events as $key => $event ) {
@@ -88,7 +89,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 	/**
 	 * Create the font post.
-	 * 
+	 *
 	 * @since x.x.x
 	 */
 	public function bcf_add_new_font() {
@@ -109,6 +110,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		$font_data = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
 		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
+		$font_type = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
 
 		if ( empty( $font_variations ) ) {
 			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
@@ -134,21 +136,66 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		update_post_meta( $font_post_id, 'fonts-data', $font_data );
 		update_post_meta( $font_post_id, 'fonts-face', $font_face );
+		update_post_meta( $font_post_id, 'fonts-type', $font_type );
 
 		/**
-		 * Redirect to the new flow edit screen
+		 * Send the response.
 		 */
 		$response_data = array(
 			'message'      => __( 'Successfully created the Font!', 'custom-fonts' ),
-			'redirect_url' => admin_url( 'post.php?action=edit&post=' . $font_post_id ),
-			'font_post_id' => $font_post_id,
+		);
+		wp_send_json_success( $response_data );
+	}
+
+	/**
+	 * Edit the existing font post.
+	 *
+	 * @since x.x.x
+	 */
+	public function bcf_edit_font() {
+
+		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'edit_font_nonce', 'security', false ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$font_data = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
+		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
+		$font_type = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
+		$font_id = ! empty( $_POST['font_id'] ) ? absint( $_POST['font_id'] ) : false;
+
+		if ( empty( $font_variations ) || false === $font_id ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$font_face = bcf_get_font_face_css( $font_id, $font_data, true );
+
+		update_post_meta( $font_id, 'fonts-data', $font_data );
+		update_post_meta( $font_id, 'fonts-face', $font_face );
+		update_post_meta( $font_id, 'fonts-type', $font_type );
+
+		/**
+		 * Send the response.
+		 */
+		$response_data = array(
+			'message'      => __( 'Successfully updated the Font!', 'custom-fonts' ),
 		);
 		wp_send_json_success( $response_data );
 	}
 
 	/**
 	 * Delete the font post.
-	 * 
+	 *
 	 * @since x.x.x
 	 */
 	public function bcf_delete_font() {
