@@ -35,6 +35,7 @@ const GFontVariation = (props) => {
 	const addWeight = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
+
 		const varWt = e.target.dataset.font_weight;
 		const variations = googleFont.variations;
 		if ( undefined === varWt ) {
@@ -54,9 +55,12 @@ const GFontVariation = (props) => {
 		} } );
 	}
 
-	const removeWeight = (index) => {
+	const removeWeight = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+
 		const updatedVariations = googleFont.variations.filter(
-			(variation) => variation.id !== index
+			(variation) => variation.font_weight !== weight
 		);
 
 		dispatch( { type: 'SET_GOOGLE_FONT', payload: {
@@ -104,7 +108,7 @@ const GFontVariation = (props) => {
 						</button>
 					}
 					{ isInGoogleState &&
-						<button className="flex text-sm text-neutral items-center py-2 px-3 border border-neutral" data-font_weight={weight} onClick={() => removeWeight(index)}>
+						<button className="flex text-sm text-neutral items-center py-2 px-3 border border-neutral" data-font_weight={weight} onClick={removeWeight}>
 							<svg
 								width="16"
 								height="17"

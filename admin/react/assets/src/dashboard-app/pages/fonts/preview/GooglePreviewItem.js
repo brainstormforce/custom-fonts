@@ -25,12 +25,11 @@ const GooglePreviewItem = () => {
 		}
 
 		const new_obs = [];
-		Object.entries( googleFontState.variations ).map( ( variation ) => {
-			console.error( variation );
-			new_obs.push( variation.font_weight );
+		Object.keys( googleFontState.variations ).map( ( index ) => {
+			new_obs.push( googleFontState.variations[index].font_weight );
 		})
 
-		if ( weight in new_obs ) {
+		if ( new_obs.includes(weight) ) {
 			return true;
 		}
 

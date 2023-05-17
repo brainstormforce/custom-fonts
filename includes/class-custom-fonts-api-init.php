@@ -136,8 +136,8 @@ class Custom_Fonts_API extends WP_REST_Controller {
 					'title' => $post->post_title,
 					'slug' => $post->post_name,
 					'fonts-face' => get_post_meta( $post->ID, 'fonts-face', true ),
+					'font-type' => get_post_meta( $post->ID, 'font-type', true ),
 					'fonts-data' => get_post_meta( $post->ID, 'fonts-data', true ),
-					'fonts-type' => get_post_meta( $post->ID, 'fonts-type', true ),
 				);
 
 				$bsf_fonts_data[] = $font_post_data;

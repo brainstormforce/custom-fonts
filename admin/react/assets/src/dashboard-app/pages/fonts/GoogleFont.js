@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
 import { useSelector } from 'react-redux';
+import apiFetch from '@wordpress/api-fetch';
 
 const GoogleVariationItem = ({
 	id,
@@ -34,7 +35,7 @@ const GoogleVariationItem = ({
 	}
 
 	return (
-		<div className="my-5 border border-light rounded-sm p-3.5">
+		<div key={id} className="my-5 border border-light rounded-sm p-3.5">
 			<h3 className="text-sm font-semibold text-heading">
 				{__('Selected Variant', 'custom-fonts')}
 			</h3>
@@ -75,6 +76,7 @@ const GoogleFont = () => {
 	const googleFonts = bsf_custom_fonts_admin.googleFonts;
 	const dispatch = useDispatch();
 	const [gFont, setGFont] = useState('');
+	const [ addingFont, setAddingFont ] = useState( false );
 
 	function handleGoogleFontChange( e ) {
 		setGFont( e.target.value );
@@ -104,6 +106,39 @@ const GoogleFont = () => {
 			"font_display": googleFontData.font_display ? googleFontData.font_display : '',
 			"variations": updatedVariations
 		} } );
+	};
+
+	const insertGoogleFontPost = ( e ) => {
+		console.log( '***** Publishing New Font *****' );
+		e.preventDefault();
+
+		if ( '' === googleFontData.font_name ) {
+			window.alert(
+				__( 'Make sure to provide valid details.', 'custom-fonts' )
+			);
+			return;
+		}
+
+		setAddingFont( 'loading' );
+		const formData = new window.FormData();
+
+		formData.append( 'action', 'bcf_add_new_google_font' );
+		formData.append( 'security', bsf_custom_fonts_admin.add_font_nonce );
+		formData.append( 'font_type', 'google' );
+		formData.append( 'font_data', JSON.stringify( googleFontData ) );
+
+		apiFetch( {
+			url: bsf_custom_fonts_admin.ajax_url,
+			method: 'POST',
+			body: formData,
+		} ).then( (response) => {
+			if ( response.success ) {
+				setTimeout( () => {
+					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
+				}, 500 );
+			}
+			setAddingFont( false );
+		} );
 	};
 
 	return (
@@ -139,7 +174,19 @@ const GoogleFont = () => {
 					/>
 				))}
 				<div className="my-5">
-					<button className="button button-primary"> {__('Save Font', 'custom-fonts')} </button>
+					<button
+						type="button"
+						className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
+						onClick={ insertGoogleFontPost }
+					>
+						{__( 'Save Font', 'custom-fonts' )}
+						{ 'loading' === addingFont && (
+							<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+								<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+								<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+							</svg>
+						) }
+					</button>
 				</div>
 			</div>
 		</div>

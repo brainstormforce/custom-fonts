@@ -61,7 +61,8 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		);
 
 		$ajax_events = array(
-			'bcf_add_new_font',
+			'bcf_add_new_local_font',
+			'bcf_add_new_google_font',
 			'bcf_delete_font',
 			'bcf_edit_font',
 		);
@@ -88,11 +89,11 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	}
 
 	/**
-	 * Create the font post.
+	 * Create the local font post.
 	 *
 	 * @since x.x.x
 	 */
-	public function bcf_add_new_font() {
+	public function bcf_add_new_local_font() {
 
 		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
 
@@ -136,7 +137,66 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		update_post_meta( $font_post_id, 'fonts-data', $font_data );
 		update_post_meta( $font_post_id, 'fonts-face', $font_face );
-		update_post_meta( $font_post_id, 'fonts-type', $font_type );
+		update_post_meta( $font_post_id, 'font-type', $font_type );
+
+		/**
+		 * Send the response.
+		 */
+		$response_data = array(
+			'message'      => __( 'Successfully created the Font!', 'custom-fonts' ),
+		);
+		wp_send_json_success( $response_data );
+	}
+
+	/**
+	 * Create the Google font post.
+	 *
+	 * @since x.x.x
+	 */
+	public function bcf_add_new_google_font() {
+
+		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'add_font_nonce', 'security', false ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$font_data = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
+		$font_type = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
+
+		if ( empty( $font_data ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$font_face = bcf_google_fonts_compatibility()->save_google_fonts_to_theme( $font_data );
+
+		// Create post object.
+		$new_font_post = array(
+			'post_title'   => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
+			'post_status'  => 'publish',
+			'post_type'    => BSF_CUSTOM_FONTS_POST_TYPE,
+		);
+
+		// Insert the post into the database.
+		$font_post_id = wp_insert_post( $new_font_post );
+
+		if ( is_wp_error( $font_post_id ) ) {
+			$response_data = array( 'message' => $font_post_id->get_error_message() );
+			wp_send_json_error( $response_data );
+		}
+
+		update_post_meta( $font_post_id, 'fonts-data', $font_data );
+		update_post_meta( $font_post_id, 'fonts-face', $font_face );
+		update_post_meta( $font_post_id, 'font-type', $font_type );
 
 		/**
 		 * Send the response.
@@ -182,7 +242,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		update_post_meta( $font_id, 'fonts-data', $font_data );
 		update_post_meta( $font_id, 'fonts-face', $font_face );
-		update_post_meta( $font_id, 'fonts-type', $font_type );
+		update_post_meta( $font_id, 'font-type', $font_type );
 
 		/**
 		 * Send the response.

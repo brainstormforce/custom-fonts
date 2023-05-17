@@ -15,23 +15,11 @@ const EditFont = ( props ) => {
 
 	const [ open, setOpen ] = useState( openPopup );
 	const [ previewSize, setPreviewSize ] = useState( '20' );
-
-	let productName = 'Custom Font';
-
 	const cancelButtonRef = useRef( null );
 
 	useEffect( () => {
 		setOpen( openPopup );
 	}, [ openPopup ] );
-
-	const onCancelClick = () => {
-		setOpenPopup( !openPopup );
-	};
-
-	const onContinueClick = () => {
-		setOpenPopup( false );
-		console.error( 'Continue...' );
-	};
 
 	return (
 		<Transition.Root show={ open } as={ Fragment }>

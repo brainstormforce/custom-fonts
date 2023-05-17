@@ -43,6 +43,16 @@ require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-api-init.php';
  */
 require_once BSF_CUSTOM_FONTS_DIR . '/includes/helper-functions.php';
 
+/**
+ * WP Filesystem extender.
+ */
+require_once BSF_CUSTOM_FONTS_DIR . '/includes/class-bcf-filesystem.php';
+
+/**
+ * Plugin's Google fonts compatibility processor.
+ */
+require_once BSF_CUSTOM_FONTS_DIR . '/includes/class-bcf-google-fonts-compatibility.php';
+
 if ( is_admin() ) {
 
 	/**

@@ -295,7 +295,7 @@ const LocalFont = () => {
 		});
 	};
 
-	const insertNewFontPost = ( e ) => {
+	const insertLocalFontPost = ( e ) => {
 		console.log( '***** Publishing New Font *****' );
 		e.preventDefault();
 
@@ -309,7 +309,7 @@ const LocalFont = () => {
 		setAddingFont( 'loading' );
 		const formData = new window.FormData();
 
-		formData.append( 'action', 'bcf_add_new_font' );
+		formData.append( 'action', 'bcf_add_new_local_font' );
 		formData.append( 'security', bsf_custom_fonts_admin.add_font_nonce );
 		formData.append( 'font_type', 'local' );
 		formData.append( 'font_data', JSON.stringify( localFontData ) );
@@ -481,7 +481,7 @@ const LocalFont = () => {
 				<button
 					type="button"
 					className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
-					onClick={ insertNewFontPost }
+					onClick={ insertLocalFontPost }
 				>
 					{__( 'Save Font', 'custom-fonts' )}
 					{ 'loading' === addingFont && (

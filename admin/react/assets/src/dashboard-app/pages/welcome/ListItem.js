@@ -63,11 +63,25 @@ const ListItem = ({ item }) => {
 		setEditFontId(fontId);
 	}
 
+	const getAssetDetail = ( fontItem ) => {
+		const fontType = fontItem['font-type'] ? fontItem['font-type'] : 'local';
+		if ( fontType === 'local' ) {
+			return <style id={`bcf-custom-font-${fontItem.id}-css`}> {fontItem['fonts-face']} </style>
+		} else {
+			const fontName = fontItem.title.replace( / /g, "+" );
+			return <link rel="stylesheet" id={`bcf-custom-font-${fontItem.id}-css`} href={`https://fonts.googleapis.com/css?family=${fontName}&ver=${fontItem.id}`} media="all"></link>
+		}
+	}
+
+	const getRenderFontWeight = (weight) => {
+		return weight.replace( "italic", "" );
+	}
+
 	return (
 		<>
 			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors`}>
 				<div className="flex items-center justify-between py-5 border-b border-light list-font-title">
-					<style id={`bcf-custom-font-${item.id}-css`}> {item['fonts-face']} </style>
+					{ getAssetDetail(item) }
 					<div className="flex items-center px-6">
 						<h1 className="text-xl" style={{  fontFamily: item.title, fontWeight: "normal", fontSize: "2em" }}> {item.title} </h1>
 						<div className="ml-3 text-sm"> {`(${item['fonts-data']['variations'] ? item['fonts-data']['variations'].length : 0} ${__( 'variants', 'custom-fonts' )})`} </div>
@@ -142,7 +156,7 @@ const ListItem = ({ item }) => {
 							item['fonts-data']['variations'].map(( varItem, varKey ) => (
 								<div key={varKey} className="py-5 font-variation-item">
 									<div className="text-sm text-neutral mb-3"> { getFontWeightTitle( varItem.font_weight ) } </div>
-									<h3 className="text-5xl text-heading" style={{  fontFamily: item.title, fontWeight: varItem.font_weight, fontSize: "var(--bsf-custom-font-size)" }}>
+									<h3 className="text-5xl text-heading" style={{  fontFamily: item.title, fontWeight: getRenderFontWeight(varItem.font_weight) }}>
 										{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 									</h3>
 								</div>
