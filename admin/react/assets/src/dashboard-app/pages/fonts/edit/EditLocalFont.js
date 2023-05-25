@@ -10,7 +10,7 @@ const EditLocalVariationItem = ({
 	handleVariationRemove,
 	handleVariationChange,
 }) => {
-	const [toggleView, setToggleView] = useState(true);
+	const [toggleView, setToggleView] = useState(false);
 
 	const getFileName = ( url ) => {
 		const parts = url.split('/');
@@ -227,12 +227,12 @@ const EditLocalFont = ({fontId}) => {
 		}
 	});
 
-	const [localFontData, setEditLocalFontData] = useState( toBeEditFont['fonts-data'] );
-	const [ addingFont, setAddingFont ] = useState( false );
+	const [editFontData, setEditLocalFontData] = useState( toBeEditFont['fonts-data'] );
+	const [ isLoading, setLoading ] = useState( false );
 
 	useEffect(() => {
-		dispatch( { type: 'SET_EDIT_LOCAL_FONT', payload: localFontData } );
-	}, [localFontData]);
+		dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
+	}, [editFontData]);
 
 	const handleInputChange = (event, property) => {
 		const value = event.target.value;
@@ -244,7 +244,7 @@ const EditLocalFont = ({fontId}) => {
 	};
 
 	const handleVariationChange = (event, id, property, attachment = '') => {
-		const updatedVariations = localFontData.variations.map((variation) => {
+		const updatedVariations = editFontData.variations.map((variation) => {
 			if (variation.id === id) {
 				if( '' !== attachment ) {
 					return {
@@ -264,14 +264,14 @@ const EditLocalFont = ({fontId}) => {
 		});
 
 		setEditLocalFontData({
-			...localFontData,
+			...editFontData,
 			variations: updatedVariations,
 		});
 	};
 
 	const addVariationOption = () => {
 		const lastId =
-			localFontData.variations[localFontData.variations.length - 1].id;
+			editFontData.variations[editFontData.variations.length - 1].id;
 		const newId = lastId + 1;
 		const newVariation = {
 			id: newId,
@@ -280,7 +280,7 @@ const EditLocalFont = ({fontId}) => {
 			font_style: 'normal',
 			font_weight: '',
 		};
-		const updatedVariations = [...localFontData.variations, newVariation];
+		const updatedVariations = [...editFontData.variations, newVariation];
 
 		setEditLocalFontData((prevState) => ({
 			...prevState,
@@ -289,12 +289,12 @@ const EditLocalFont = ({fontId}) => {
 	};
 
 	const handleVariationRemove = (id) => {
-		const updatedVariations = localFontData.variations.filter(
+		const updatedVariations = editFontData.variations.filter(
 			(variation) => variation.id !== id
 		);
 
 		setEditLocalFontData({
-			...localFontData,
+			...editFontData,
 			variations: updatedVariations,
 		});
 	};
@@ -303,21 +303,21 @@ const EditLocalFont = ({fontId}) => {
 		console.log( '***** Editing New Font *****' );
 		e.preventDefault();
 
-		if ( '' === localFontData.font_name ) {
+		if ( '' === editFontData.font_name ) {
 			window.alert(
 				__( 'Make sure to provide valid details.', 'custom-fonts' )
 			);
 			return;
 		}
 
-		setAddingFont( 'loading' );
+		setLoading( 'loading' );
 		const formData = new window.FormData();
 
 		formData.append( 'action', 'bcf_edit_font' );
 		formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
 		formData.append( 'font_type', 'local' );
 		formData.append( 'font_id', fontId );
-		formData.append( 'font_data', JSON.stringify( localFontData ) );
+		formData.append( 'font_data', JSON.stringify( editFontData ) );
 
 		apiFetch( {
 			url: bsf_custom_fonts_admin.ajax_url,
@@ -329,7 +329,7 @@ const EditLocalFont = ({fontId}) => {
 					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
 				}, 500 );
 			}
-			setAddingFont( false );
+			setLoading( false );
 		} );
 	};
 
@@ -339,22 +339,6 @@ const EditLocalFont = ({fontId}) => {
 				<p className="mb-5 text-xl font-semibold">
 					{__( 'Edit Font', 'custom-fonts' )}
 				</p>
-				<div className="mb-5">
-					<label className="w-full text-sm text-heading" htmlFor="font_name">
-						{__( 'Font name', 'custom-fonts' )}
-					</label>
-					<div className="mt-1.5">
-						<input
-							name="font_name"
-							value={toBeEditFont.title}
-							onChange={(event) =>
-								handleInputChange(event, "font_name")
-							}
-							className="w-full"
-							type="text"
-						/>
-					</div>
-				</div>
 				<div className="mb-5">
 					<div
 						onClick={toggleAdvanceTab}
@@ -405,7 +389,7 @@ const EditLocalFont = ({fontId}) => {
 										className="w-full"
 										type="text"
 										name="font_fallback"
-										value={localFontData.font_fallback}
+										value={editFontData.font_fallback}
 										onChange={(event) =>
 											handleInputChange(
 												event,
@@ -430,7 +414,7 @@ const EditLocalFont = ({fontId}) => {
 									<select
 										className="w-full"
 										name="font_display"
-										value={localFontData.font_display}
+										value={editFontData.font_display}
 										onChange={(event) =>
 											handleInputChange(
 												event,
@@ -450,11 +434,11 @@ const EditLocalFont = ({fontId}) => {
 					)}
 				</div>
 
-				{localFontData.variations.map((variation) => (
+				{editFontData.variations.map((variation) => (
 					<EditLocalVariationItem
 						key={variation.id}
 						variation={variation}
-						localDataLength={localFontData.variations.length}
+						localDataLength={editFontData.variations.length}
 						handleVariationRemove={handleVariationRemove}
 						handleVariationChange={handleVariationChange}
 					/>
@@ -489,7 +473,7 @@ const EditLocalFont = ({fontId}) => {
 					onClick={ updatingNewFontPost }
 				>
 					{__( 'Save Font', 'custom-fonts' )}
-					{ 'loading' === addingFont && (
+					{ 'loading' === isLoading && (
 						<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 							<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
 							<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>

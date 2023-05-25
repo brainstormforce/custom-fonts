@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
 import EditFont from "../fonts/edit/EditFont";
+import { useSelector, useDispatch } from 'react-redux';
 
 const ListItem = ({ item }) => {
 	const [active, setActive] = useState(false);
 	const [checkDelete, setCheckDelete] = useState(false);
-	const [editFontId, setEditFontId] = useState('0');
-
+	const [editFontId, setEditFontId] = useState(item.id);
+	const [editFontType, setEditFontType] = useState(item['font-type'] ? item['font-type'] : 'local');
+	const [editFontName, setEditFontName] = useState(item.title);
 	const [openPopup, setOpenPopup] = useState(false);
+
+	const updatedEditData = useSelector( ( state ) => state.editFont );
+	const [editFontData, setEditFontData] = useState(updatedEditData);
+
+	const dispatch = useDispatch();
 
 	const deleteFontPost = ( e ) => {
 		console.log( '***** Deleting Font *****' );
@@ -59,9 +66,24 @@ const ListItem = ({ item }) => {
 
 	const setupEditFontScreen = (e) => {
 		const fontId = e.target.dataset.font_id;
+		const fontType = e.target.dataset.font_type;
+		const fontName = e.target.dataset.font_name;
+
 		setOpenPopup(! openPopup);
 		setEditFontId(fontId);
+		setEditFontType(fontType);
+		setEditFontName( fontName );
 	}
+
+	useEffect( () => {
+		if ( openPopup ) {
+			setEditFontData( editFontData );
+			dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
+		} else {
+			setEditFontData( null );
+			dispatch( { type: 'SET_EDIT_FONT', payload: null } );
+		}
+	}, [openPopup] );
 
 	const getAssetDetail = ( fontItem ) => {
 		const fontType = fontItem['font-type'] ? fontItem['font-type'] : 'local';
@@ -103,6 +125,8 @@ const ListItem = ({ item }) => {
 									className="text-danger cursor-pointer"
 									onClick={deleteFontPost}
 									data-font_id={item.id}
+									data-font_type={item['font-type']}
+									data_font_name={item.title}
 								>
 									{__('Remove', 'custom-fonts')}
 								</div>
@@ -112,6 +136,8 @@ const ListItem = ({ item }) => {
 								<div
 									onClick={setupEditFontScreen}
 									data-font_id={item.id}
+									data-font_type={item['font-type']}
+									data_font_name={item.title}
 									className="text-primary cursor-pointer"
 								>
 									{__('Edit', 'custom-fonts')}
@@ -169,6 +195,8 @@ const ListItem = ({ item }) => {
 			{
 				<EditFont
 					font={editFontId}
+					fontType={editFontType}
+					fontName={editFontName}
 					openPopup={openPopup}
 					setOpenPopup={setOpenPopup}
 				/>

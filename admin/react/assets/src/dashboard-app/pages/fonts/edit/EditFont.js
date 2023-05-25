@@ -2,20 +2,27 @@ import { Fragment, useRef, useState, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { __ } from '@wordpress/i18n';
 import EditLocalFont from "./EditLocalFont";
+import EditGoogleFont from "./EditGoogleFont";
 import { RangeControl } from "@wordpress/components";
-import GooglePreviewItem from "../preview/GooglePreviewItem";
-import LocalPreviewItem from "../preview/LocalPreviewItem";
+import EditGooglePreviewItem from "./preview/EditGooglePreviewItem";
+import EditLocalPreviewItem from "./preview/EditLocalPreviewItem";
 
 const EditFont = ( props ) => {
 	const {
 		openPopup,
 		setOpenPopup,
-		font
+		font,
+		fontName,
+		fontType
 	} = props;
 
 	const [ open, setOpen ] = useState( openPopup );
 	const [ previewSize, setPreviewSize ] = useState( '20' );
 	const cancelButtonRef = useRef( null );
+
+	const onCancelClick = () => {
+		setOpenPopup( ! openPopup );
+	};
 
 	useEffect( () => {
 		setOpen( openPopup );
@@ -51,13 +58,23 @@ const EditFont = ( props ) => {
 						leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 					>
 						<div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-[65%] sm:max-h-[50%] sm:w-full">
-							<div className="grid grid-cols-12">
+							<div className="bcf-edit-modal-close-wrapper absolute right-[5px] p-1 top-[0px] width-[20px] height-[10px]">
+								<button
+									type="button"
+									className="mt-3 w-full inline-flex justify-center rounded border shadow-none border-slate-200 padding-[5px] bg-white text-base font-medium text-slate-800 focus:bg-gray-50 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:w-auto sm:text-xs bold border-none"
+									onClick={ onCancelClick }
+									ref={ cancelButtonRef }
+								>
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false"><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+								</button>
+							</div>
+
+							<div className="grid grid-cols-12 sm:max-h-[650px] overflow-auto">
 								<style id={`bcf-font-${font}-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 								<div className="col-span-4 bg-white px-4 pt-5 pb-4 sm:p-6">
 									<div>
-										{/* {activeType === "local" && <EditLocalFont />}
-										{activeType === "google" && <EditGoogleFont />} */}
-										<EditLocalFont fontId={font} />
+										{fontType === "local" && <EditLocalFont fontId={font} fontName={fontName} />}
+										{fontType === "google" && <EditGoogleFont fontId={font} fontName={fontName} />}
 									</div>
 								</div>
 								<div className="col-span-8 bg-[#F6F7F7] px-4 pt-5 pb-4 sm:p-6">
@@ -65,7 +82,7 @@ const EditFont = ( props ) => {
 										<div className="text-sm text-secondary">
 											{__('Font preview', 'custom-fonts')}
 										</div>
-										<div className="w-[314px]">
+										<div className="w-[314px] pr-[20px]">
 											<RangeControl
 												className="bcf-font-size-range"
 												onChange={(value) => setPreviewSize(value)}
@@ -82,9 +99,8 @@ const EditFont = ( props ) => {
 											</p>
 										</div>
 										<div>
-											{/* {activeType === "local" && <LocalPreviewItem />}
-											{activeType === "google" && <GooglePreviewItem />} */}
-											<LocalPreviewItem />
+											{fontType === "local" && <EditLocalPreviewItem fontId={font} fontName={fontName} />}
+											{fontType === "google" && <EditGooglePreviewItem fontId={font} fontName={fontName} />}
 										</div>
 									</div>
 								</div>

@@ -69,7 +69,6 @@ const GoogleVariationItem = ({
 	);
 };
 
-
 const GoogleFont = () => {
 	const googleFontData = useSelector( ( state ) => state.googleFont );
 
