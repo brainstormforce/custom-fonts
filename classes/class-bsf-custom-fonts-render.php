@@ -360,7 +360,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.0
 		 * @param array $font selected font from custom font list.
 		 */
-		private function render_font_css( $font ) {
+		public function render_font_css( $font ) {
 			$fonts    = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
 			$arr_font = array();
 

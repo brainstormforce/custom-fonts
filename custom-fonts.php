@@ -29,6 +29,11 @@ define( 'BSF_CUSTOM_FONTS_VER', '2.0.0' );
 define( 'BSF_CUSTOM_FONTS_POST_TYPE', 'bsf_custom_fonts' );
 
 /**
+ * BSF Custom Fonts
+ */
+require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts.php';
+
+/**
  * BSF Custom Fonts Background Updater.
  */
 require_once BSF_CUSTOM_FONTS_DIR . 'includes/plugin-update/class-custom-fonts-update.php';
