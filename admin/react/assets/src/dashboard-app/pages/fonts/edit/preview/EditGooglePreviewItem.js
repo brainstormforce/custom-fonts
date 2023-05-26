@@ -103,21 +103,19 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	const dispatch = useDispatch();
 	const editFontId = parseInt( fontId );
 
-	let editingFontData = useSelector( ( state ) => state.editFont );
+	let editingFontData = null;
 
-	if ( editingFontData === null ) {
-		const restAllData = useSelector( ( state ) => state.fonts );
+	const restAllData = useSelector( ( state ) => state.fonts );
 
-		let toBeEditFont = {};
-		restAllData.forEach(function(individualFont) {
-			if ( editFontId === individualFont.id ) {
-				toBeEditFont = individualFont;
-			}
-		});
-
-		if ( undefined === toBeEditFont['fonts-data'] || ! toBeEditFont['fonts-data'].length ) {
-			editingFontData = toBeEditFont['fonts-data'];
+	let toBeEditFont = {};
+	restAllData.forEach(function(individualFont) {
+		if ( editFontId === individualFont.id ) {
+			toBeEditFont = individualFont;
 		}
+	});
+
+	if ( undefined === toBeEditFont['fonts-data'] || ! toBeEditFont['fonts-data'].length ) {
+		editingFontData = toBeEditFont['fonts-data'];
 	}
 
 	const [editFontData, setEditGoogleFontData] = useState( editingFontData );
@@ -127,7 +125,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 
 	console.error( editFontData );
 
-	const variations = editFontData.variations;
+	const variations = toBeEditFont.variations;
 
 	useEffect( () => {
 		dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
