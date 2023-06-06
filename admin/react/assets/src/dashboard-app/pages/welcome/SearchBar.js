@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
 import useDebounce from "../../../utils/useDebounce";
 
-const SearchBar = ({ setSearchResults }) => {
+const SearchBar = ({ setSearchResults, setLoading }) => {
 	const [query, setQuery] = useState("");
-	const debouncedQuery = useDebounce(query, 500);
+	const debouncedQuery = useDebounce(query, 800);
 	const handleSearch = (e) => {
 		const q = e.target.value;
+		setLoading( true );
 		setQuery(q);
 	};
 	useEffect(() => {
@@ -16,6 +17,7 @@ const SearchBar = ({ setSearchResults }) => {
 			path: `/bsf-custom-fonts/v1/search?q=${debouncedQuery}`,
 		}).then((results) => {
 			if (results) {
+				setLoading( false );
 				setSearchResults(results);
 			}
 		});

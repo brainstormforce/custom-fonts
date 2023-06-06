@@ -142,6 +142,105 @@ const SettingsWrap = () => {
 
 /***/ }),
 
+/***/ "./assets/src/dashboard-app/SkeletonSkins.js":
+/*!***************************************************!*\
+  !*** ./assets/src/dashboard-app/SkeletonSkins.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const SkeletonSkins = _ref => {
+  let {
+    activeView,
+    count
+  } = _ref;
+  return activeView === "list" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ListSkeleton, {
+    count: count
+  }) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(GridSkeleton, {
+    count: count
+  });
+};
+const ListSkeleton = _ref2 => {
+  let {
+    count
+  } = _ref2;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "border border-light bcf-font-list-wrap"
+  }, Array.from({
+    length: count
+  }).map((_, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
+    className: "flex items-center justify-between py-5 border-b border-light list-font-title"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex items-center px-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-2 h-10 w-40 animate-pulse"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ml-3 text-sm"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-3 w-16 animate-pulse"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex px-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex gap-x-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-3 h-2 w-12 animate-pulse"
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-danger cursor-pointer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-3 h-2 w-12 animate-pulse"
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "ml-11 cursor-pointer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-3 h-2 w-2 rounded-full animate-pulse"
+  }))))));
+};
+const GridSkeleton = _ref3 => {
+  let {
+    count
+  } = _ref3;
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "border border-light grid grid-cols-3 bcf-font-grid-wrap"
+  }, Array.from({
+    length: count
+  }).map((_, index) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    key: index,
+    className: "p-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex justify-between items-center"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-neutral"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-3 w-16 animate-pulse"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: ""
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex gap-x-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    "data-font_id": "50",
+    className: "text-primary cursor-pointer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-3 h-2 w-12 animate-pulse"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "text-danger cursor-pointer"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-3 h-2 w-12 animate-pulse"
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "mt-6"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", {
+    className: "text-5xl"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "bg-gray-300 p-2 h-10 w-40 animate-pulse"
+  }))))));
+};
+/* harmony default export */ __webpack_exports__["default"] = (SkeletonSkins);
+
+/***/ }),
+
 /***/ "./assets/src/dashboard-app/pages/fonts/AddFont.js":
 /*!*********************************************************!*\
   !*** ./assets/src/dashboard-app/pages/fonts/AddFont.js ***!
@@ -2231,6 +2330,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _GridItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GridItem */ "./assets/src/dashboard-app/pages/welcome/GridItem.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _SkeletonSkins__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../SkeletonSkins */ "./assets/src/dashboard-app/SkeletonSkins.js");
+
 
 
 
@@ -2238,9 +2339,17 @@ __webpack_require__.r(__webpack_exports__);
 
 const CustomFontGrid = _ref => {
   let {
-    searchResults
+    searchResults,
+    loading,
+    activeView
   } = _ref;
   const fontsData = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(state => state.fonts);
+  if (loading) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SkeletonSkins__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      activeView: activeView,
+      count: 8
+    });
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "border border-light grid grid-cols-3 bcf-font-grid-wrap"
   }, searchResults ? searchResults.fonts && searchResults.fonts.map((item, key) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_GridItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -2269,15 +2378,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListItem */ "./assets/src/dashboard-app/pages/welcome/ListItem.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _SkeletonSkins__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../SkeletonSkins */ "./assets/src/dashboard-app/SkeletonSkins.js");
+
 
 
 
 
 const CustomFontList = _ref => {
   let {
-    searchResults
+    searchResults,
+    loading,
+    activeView
   } = _ref;
   const fontsData = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(state => state.fonts);
+  if (loading) {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SkeletonSkins__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      activeView: activeView,
+      count: 8
+    });
+  }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "border border-light bcf-font-list-wrap"
   }, searchResults ? searchResults.fonts && searchResults.fonts.map((item, key) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ListItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -2611,12 +2730,14 @@ __webpack_require__.r(__webpack_exports__);
 
 const SearchBar = _ref => {
   let {
-    setSearchResults
+    setSearchResults,
+    setLoading
   } = _ref;
   const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
-  const debouncedQuery = (0,_utils_useDebounce__WEBPACK_IMPORTED_MODULE_5__["default"])(query, 500);
+  const debouncedQuery = (0,_utils_useDebounce__WEBPACK_IMPORTED_MODULE_5__["default"])(query, 800);
   const handleSearch = e => {
     const q = e.target.value;
+    setLoading(true);
     setQuery(q);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
@@ -2624,6 +2745,7 @@ const SearchBar = _ref => {
       path: `/bsf-custom-fonts/v1/search?q=${debouncedQuery}`
     }).then(results => {
       if (results) {
+        setLoading(false);
         setSearchResults(results);
       }
     });
@@ -2684,6 +2806,7 @@ const Welcome = () => {
   const [activeView, setActiveView] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)("list");
   const fontsData = (0,react_redux__WEBPACK_IMPORTED_MODULE_6__.useSelector)(state => state.fonts);
   const [searchResults, setSearchResults] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+  const [loading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
   const toggleView = value => {
     setActiveView(value);
   };
@@ -2712,7 +2835,8 @@ const Welcome = () => {
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__.__)("Add New Font", "custom-fonts"))))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_SearchBar__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    setSearchResults: setSearchResults
+    setSearchResults: setSearchResults,
+    setLoading: setLoading
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "flex justify-between items-center my-6"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -2748,9 +2872,13 @@ const Welcome = () => {
     d: "M4.25 2C3.00736 2 2 3.00736 2 4.25V6.75C2 7.99264 3.00736 9 4.25 9H6.75C7.99264 9 9 7.99264 9 6.75V4.25C9 3.00736 7.99264 2 6.75 2H4.25ZM4.25 11C3.00736 11 2 12.0074 2 13.25V15.75C2 16.9926 3.00736 18 4.25 18H6.75C7.99264 18 9 16.9926 9 15.75V13.25C9 12.0074 7.99264 11 6.75 11H4.25ZM13.25 2C12.0074 2 11 3.00736 11 4.25V6.75C11 7.99264 12.0074 9 13.25 9H15.75C16.9926 9 18 7.99264 18 6.75V4.25C18 3.00736 16.9926 2 15.75 2H13.25ZM13.25 11C12.0074 11 11 12.0074 11 13.25V15.75C11 16.9926 12.0074 18 13.25 18H15.75C16.9926 18 18 16.9926 18 15.75V13.25C18 12.0074 16.9926 11 15.75 11H13.25Z",
     fill: activeView === "grid" ? "#1D2327" : "#DDDDDD"
   }))))), activeView === "grid" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CustomFontGrid__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    searchResults: searchResults
+    searchResults: searchResults,
+    loading: loading,
+    activeView: activeView
   }), activeView === "list" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_CustomFontList__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    searchResults: searchResults
+    searchResults: searchResults,
+    loading: loading,
+    activeView: activeView
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "mt-6 text-center"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
