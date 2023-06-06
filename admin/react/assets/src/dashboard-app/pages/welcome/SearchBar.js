@@ -1,5 +1,4 @@
 import { __ } from "@wordpress/i18n";
-import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
 import useDebounce from "../../../utils/useDebounce";
