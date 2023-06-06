@@ -2602,6 +2602,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_useDebounce__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/useDebounce */ "./assets/src/utils/useDebounce.js");
+
 
 
 
@@ -2612,19 +2614,20 @@ const SearchBar = _ref => {
     setSearchResults
   } = _ref;
   const [query, setQuery] = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)("");
+  const debouncedQuery = (0,_utils_useDebounce__WEBPACK_IMPORTED_MODULE_5__["default"])(query, 500);
   const handleSearch = e => {
     const q = e.target.value;
     setQuery(q);
   };
   (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_4___default()({
-      path: `/bsf-custom-fonts/v1/search?q=${query}`
+      path: `/bsf-custom-fonts/v1/search?q=${debouncedQuery}`
     }).then(results => {
       if (results) {
         setSearchResults(results);
       }
     });
-  }, [query]);
+  }, [debouncedQuery]);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "relative w-full my-6 flex items-center border-b border-light bsf-custom-font-search"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
@@ -2909,6 +2912,33 @@ const setInitialState = store => {
   });
 };
 /* harmony default export */ __webpack_exports__["default"] = (setInitialState);
+
+/***/ }),
+
+/***/ "./assets/src/utils/useDebounce.js":
+/*!*****************************************!*\
+  !*** ./assets/src/utils/useDebounce.js ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(value);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+  return debouncedValue;
+};
+/* harmony default export */ __webpack_exports__["default"] = (useDebounce);
 
 /***/ }),
 

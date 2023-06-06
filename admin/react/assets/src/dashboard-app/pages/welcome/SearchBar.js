@@ -2,22 +2,24 @@ import { __ } from "@wordpress/i18n";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import apiFetch from "@wordpress/api-fetch";
+import useDebounce from "../../../utils/useDebounce";
 
 const SearchBar = ({ setSearchResults }) => {
 	const [query, setQuery] = useState("");
+	const debouncedQuery = useDebounce(query, 500);
 	const handleSearch = (e) => {
 		const q = e.target.value;
 		setQuery(q);
 	};
 	useEffect(() => {
 		apiFetch({
-			path: `/bsf-custom-fonts/v1/search?q=${query}`,
+			path: `/bsf-custom-fonts/v1/search?q=${debouncedQuery}`,
 		}).then((results) => {
 			if (results) {
 				setSearchResults(results);
 			}
 		});
-	}, [query]);
+	}, [debouncedQuery]);
 	return (
 		<div className="relative w-full my-6 flex items-center border-b border-light bsf-custom-font-search">
 			<svg
