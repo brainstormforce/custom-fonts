@@ -233,16 +233,13 @@ class Custom_Fonts_API extends WP_REST_Controller {
 			'orderby'        => 'ID',
 			's'              => $search_query,
 		);
-
 		$bsf_fonts_data = array();
 		$query_posts = new WP_Query( $args );
 		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
-
 		if ( $query_posts && $query_posts->have_posts() ) {
 			while ( $query_posts->have_posts() ) {
 				$query_posts->the_post();
 				global $post;
-
 				$font_post_data = array(
 					'id' => $post->ID,
 					'title' => $post->post_title,
@@ -251,13 +248,11 @@ class Custom_Fonts_API extends WP_REST_Controller {
 					'font-type' => get_post_meta( $post->ID, 'font-type', true ),
 					'fonts-data' => get_post_meta( $post->ID, 'fonts-data', true ),
 				);
-
 				$bsf_fonts_data[] = $font_post_data;
 				wp_reset_postdata();
 			}
 		}
-
-		$defaults = apply_filters(
+		$found_fonts = apply_filters(
 			'bsf_custom_fonts_rest_search_results',
 			array(
 				'fonts' => $bsf_fonts_data,
@@ -267,8 +262,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 				'draft_fonts_count' => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
 			)
 		);
-
-		return $defaults;
+		return $found_fonts;
 	}
 }
 
