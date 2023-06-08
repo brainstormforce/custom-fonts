@@ -1,6 +1,26 @@
 import { __ } from "@wordpress/i18n";
+import { useEffect, useState } from "react";
+import apiFetch from "@wordpress/api-fetch";
+import useDebounce from "../../../utils/useDebounce";
 
-const SearchBar = () => {
+const SearchBar = ({ setSearchResults, setLoading }) => {
+	const [query, setQuery] = useState("");
+	const debouncedQuery = useDebounce(query, 800);
+	const handleSearch = (e) => {
+		const q = e.target.value;
+		setLoading( true );
+		setQuery(q);
+	};
+	useEffect(() => {
+		apiFetch({
+			path: `/bsf-custom-fonts/v1/search?q=${debouncedQuery}`,
+		}).then((results) => {
+			if (results) {
+				setLoading( false );
+				setSearchResults(results);
+			}
+		});
+	}, [debouncedQuery]);
 	return (
 		<div className="relative w-full my-6 flex items-center border-b border-light bsf-custom-font-search">
 			<svg
@@ -21,7 +41,8 @@ const SearchBar = () => {
 			<input
 				className="w-full border-0"
 				type="text"
-				placeholder={ __("Search Custom Font", "custom-fonts") }
+				placeholder={__("Search Custom Font", "custom-fonts")}
+				onChange={handleSearch}
 			/>
 		</div>
 	);

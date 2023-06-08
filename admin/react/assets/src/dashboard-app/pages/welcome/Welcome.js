@@ -9,7 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 const Welcome = () => {
 	const [activeView, setActiveView] = useState("list");
 	const fontsData = useSelector( ( state ) => state.fonts );
-
+	const [searchResults, setSearchResults] = useState(null);
+	const [loading, setLoading] = useState(false);
 	const toggleView = (value) => {
 		setActiveView(value);
 	};
@@ -44,10 +45,10 @@ const Welcome = () => {
 			</div>
 			<div className="max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full">
 				{/* Search Custom Font */}
-				<SearchBar />
+				<SearchBar setSearchResults={ setSearchResults } setLoading={ setLoading }/>
 				{/* Font Counter and View toggle */}
 				<div className="flex justify-between items-center my-6">
-					<div className="text-base"> { fontsData ? fontsData.length : 0 } { __(" font family", "custom-fonts") } </div>
+					<div className="text-base"> { searchResults ? searchResults.found_posts : (fontsData ? fontsData.length : 0) } { __(" font family", "custom-fonts") } </div>
 					<div className="flex justify-end gap-x-7">
 						<div
 							className="cursor-pointer"
@@ -98,8 +99,8 @@ const Welcome = () => {
 					</div>
 				</div>
 				{/* Font Listing Components */}
-				{activeView === "grid" && <CustomFontGrid />}
-				{activeView === "list" && <CustomFontList />}
+				{activeView === "grid" && <CustomFontGrid searchResults={searchResults} loading={loading} activeView={activeView} />}
+				{activeView === "list" && <CustomFontList searchResults={searchResults} loading={loading} activeView={activeView}/>}
 				<div className="mt-6 text-center">
 					<Link
 						to={{
