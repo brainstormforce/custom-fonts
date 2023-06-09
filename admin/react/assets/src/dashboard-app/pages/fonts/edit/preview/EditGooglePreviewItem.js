@@ -108,8 +108,11 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	const restAllData = useSelector( ( state ) => state.fonts );
 
 	let toBeEditFont = {};
+	let variations = null;
 	restAllData.forEach(function(individualFont) {
 		if ( editFontId === individualFont.id ) {
+			const gFontData = bsf_custom_fonts_admin.googleFonts[individualFont.title];
+			variations = gFontData[0] ? gFontData[0] : [];
 			toBeEditFont = individualFont;
 		}
 	});
@@ -119,13 +122,9 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	}
 
 	const [editFontData, setEditGoogleFontData] = useState( editingFontData );
-	if ( ! editFontData.variations.length || '' === editFontData.font_name ) {
+	if ( null === variations || ! editFontData.variations.length || '' === editFontData.font_name ) {
 		return;
 	}
-
-	console.error( editFontData );
-
-	const variations = toBeEditFont.variations;
 
 	useEffect( () => {
 		dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
@@ -151,7 +150,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 		e.preventDefault();
 		e.stopPropagation();
 
-		const varWt = e.target.dataset.font_weight;
+		const varWt = (e.target.dataset.font_weight).toString();
 
 		const variations = editFontData.variations;
 		if ( undefined === varWt ) {
@@ -175,7 +174,6 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 		e.stopPropagation();
 
 		const varWt = (e.target.dataset.font_weight).toString();
-		console.error(varWt);
 
 		const updatedVariations = editFontData.variations.filter(
 			(variation) => variation.font_weight !== varWt
@@ -208,17 +206,25 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 		variations && Object.keys( variations ).map( ( key, i ) => (
 			<div key={i}>
 				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(editFontData.font_name, i)} media='all' />
-				<EditGFontVariation
+				{/* <EditGFontVariation
 					key={i}
 					weight={variations[key].font_weight}
 					font={editFontData.font_name}
 					isInGoogleState={checkWeightPresentInState(variations[key].font_weight)}
 					addWeight={addWeight}
 					removeWeight={removeWeight}
+				/> */}
+				<EditGFontVariation
+					key={i}
+					weight={variations[key]}
+					font={editFontData.font_name}
+					isInGoogleState={checkWeightPresentInState(variations[key])}
+					addWeight={addWeight}
+					removeWeight={removeWeight}
 				/>
 			</div>
-		))
+		) )
 	);
-};
+}
 
 export default EditGooglePreviewItem;
