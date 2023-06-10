@@ -5,9 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const EditGoogleVariationItem = ({
 	id,
-	variation,
-	localDataLength,
-	handleVariationRemove
+	variation
 }) => {
 	const getFontWeightTitle = ( weight ) => {
 		switch ( weight ) {
@@ -35,46 +33,16 @@ const EditGoogleVariationItem = ({
 	}
 
 	return (
-		<div key={id} className="my-5 border border-light rounded-sm p-3.5">
-			<h3 className="text-sm font-semibold text-heading">
-				{__('Selected Variant', 'custom-fonts')}
-			</h3>
-			<div className="mt-3.5 flex flex-col gap-y-3.5">
-				<div className="flex items-center justify-between">
-					<div className="text-sm text-heading">
-						{
-							getFontWeightTitle(variation.font_weight)
-						}
-					</div>
-					<div>
-					{localDataLength > 1 && (
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 16 16"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							onClick={() =>
-								handleVariationRemove(variation.id)
-							}
-						>
-							<path
-								d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-								fill="#007CBA"
-							/>
-						</svg>
-					)}
-					</div>
-				</div>
-			</div>
+		<div key={id} className={`text-sm text-heading mt-3.5 edit-gfont-variation-item`} data-varweight={variation}>
+			{
+				getFontWeightTitle(variation)
+			}
 		</div>
 	);
 };
 
 const EditGoogleFont = ({fontId, fontName}) => {
 	const [advanceTab, setAdvanceTab] = useState(false);
-
-	const dispatch = useDispatch();
 	const restAllData = useSelector( ( state ) => state.fonts );
 	const editFontId = parseInt( fontId );
 
@@ -83,8 +51,11 @@ const EditGoogleFont = ({fontId, fontName}) => {
 	};
 
 	let toBeEditFont = {};
+	let variations = null;
 	restAllData.forEach(function(individualFont) {
 		if ( editFontId === individualFont.id ) {
+			const gFontData = bsf_custom_fonts_admin.googleFonts[individualFont.title];
+			variations = gFontData[0] ? gFontData[0] : [];
 			toBeEditFont = individualFont;
 		}
 	});
@@ -97,87 +68,19 @@ const EditGoogleFont = ({fontId, fontName}) => {
 	const [editFontData, setEditGoogleFontData] = useState( editingFontData );
 	const [ isLoading, setLoading ] = useState( false );
 
-	useEffect(() => {
-		dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
-	}, [editFontData]);
-
-	const handleInputChange = (event, property) => {
-		const value = event.target.value;
-
-		setEditGoogleFontData((prevState) => ({
-			...prevState,
-			[property]: value,
-		}));
-	};
-
-	const handleVariationChange = (event, id, property, attachment = '') => {
-		const updatedVariations = editFontData.variations.map((variation) => {
-			if (variation.id === id) {
-				if( '' !== attachment ) {
-					return {
-						...variation,
-						['font_file']: attachment.id,
-						['font_url']: attachment.url,
-					};
-				} else {
-					return {
-						...variation,
-						[property]: event.target.value,
-					};
-				}
-			} else {
-				return variation;
-			}
-		});
-
-		setEditGoogleFontData({
-			...editFontData,
-			variations: updatedVariations,
-		});
-	};
-
-	const addVariationOption = () => {
-		const lastId =
-			editFontData.variations[editFontData.variations.length - 1].id;
-		const newId = lastId + 1;
-		const newVariation = {
-			id: newId.toString(),
-			font_file: '',
-			font_url: '',
-			font_style: 'normal',
-			font_weight: '',
-		};
-		const updatedVariations = [...editFontData.variations, newVariation];
-
-		setEditGoogleFontData((prevState) => ({
-			...prevState,
-			variations: updatedVariations,
-		}));
-	};
-
-	const handleVariationRemove = (id) => {
-		const updatedVariations = editFontData.variations.filter(
-			(variation) => variation.id !== id
-		);
-
-		setEditGoogleFontData({
-			...editFontData,
-			variations: updatedVariations,
-		});
-	};
-
 	const updatingNewFontPost = ( e ) => {
 		console.log( '***** Editing New Font *****' );
 		e.preventDefault();
 
 		setLoading( 'loading' );
 		const formData = new window.FormData();
+		const editFontStringifiedData = document.getElementById('gfont-edit-variation-data').innerHTML;
 
 		formData.append( 'action', 'bcf_edit_font' );
 		formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
 		formData.append( 'font_type', 'google' );
 		formData.append( 'font_id', fontId );
-		formData.append( 'font_data', JSON.stringify( editFontData ) );
+		formData.append( 'font_data', editFontStringifiedData );
 
 		apiFetch( {
 			url: bsf_custom_fonts_admin.ajax_url,
@@ -191,6 +94,23 @@ const EditGoogleFont = ({fontId, fontName}) => {
 			}
 			setLoading( false );
 		} );
+	};
+
+	const checkWeightPresentInState = (weight) => {
+		if ( ! editFontData.variations.length ) {
+			return false;
+		}
+
+		const new_obs = [];
+		Object.keys( editFontData.variations ).map( ( index ) => {
+			new_obs.push( editFontData.variations[index].font_weight );
+		})
+
+		if ( new_obs.includes(weight) ) {
+			return true;
+		}
+
+		return false;
 	};
 
 	return (
@@ -231,14 +151,21 @@ const EditGoogleFont = ({fontId, fontName}) => {
 					</div>
 				</div>
 
-				{editFontData.variations.map((variation) => (
-					<EditGoogleVariationItem
-						key={variation.id}
-						variation={variation}
-						localDataLength={editFontData.variations.length}
-						handleVariationRemove={handleVariationRemove}
-					/>
-				))}
+				<div className="my-5 border border-light rounded-sm p-3.5">
+					<h3 className="text-sm font-semibold text-heading">
+						{__('Selected Variant', 'custom-fonts')}
+					</h3>
+					<div className="flex flex-col gap-y-3.5">
+						<div className="gvariations-wrapper">
+							{variations.map((variation) => (
+								<EditGoogleVariationItem
+									key={variation}
+									variation={variation}
+								/>
+							))}
+						</div>
+					</div>
+				</div>
 
 				<div className="my-5">
 					<button

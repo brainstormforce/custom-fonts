@@ -1372,6 +1372,10 @@ span.font-filename {
   outline: none;
 }
 
+.edit-gfont-variation-item {
+  display: none;
+}
+
 .hover\:border-b-primary:hover {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(0 124 186 / var(--tw-border-opacity));

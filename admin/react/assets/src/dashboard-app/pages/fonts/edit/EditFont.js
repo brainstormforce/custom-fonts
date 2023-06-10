@@ -71,6 +71,7 @@ const EditFont = ( props ) => {
 
 							<div className="grid grid-cols-12 sm:max-h-[650px] overflow-auto">
 								<style id={`bcf-font-${font}-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
+								<div id="gfont-edit-variation-data" hidden={true}></div>
 								<div className="col-span-4 bg-white px-4 pt-5 pb-4 sm:p-6">
 									<div>
 										{fontType === "local" && <EditLocalFont fontId={font} fontName={fontName} />}

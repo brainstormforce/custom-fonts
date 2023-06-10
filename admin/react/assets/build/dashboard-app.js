@@ -1021,6 +1021,9 @@ const EditFont = props => {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
     id: `bcf-font-${font}-preview-size-css`
   }, " ", `:root { --bsf-custom-font-size: ${previewSize}px }`, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    id: "gfont-edit-variation-data",
+    hidden: true
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "col-span-4 bg-white px-4 pt-5 pb-4 sm:p-6"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, fontType === "local" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_EditLocalFont__WEBPACK_IMPORTED_MODULE_3__["default"], {
     fontId: font,
@@ -1083,9 +1086,7 @@ __webpack_require__.r(__webpack_exports__);
 const EditGoogleVariationItem = _ref => {
   let {
     id,
-    variation,
-    localDataLength,
-    handleVariationRemove
+    variation
   } = _ref;
   const getFontWeightTitle = weight => {
     switch (weight) {
@@ -1113,26 +1114,9 @@ const EditGoogleVariationItem = _ref => {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: id,
-    className: "my-5 border border-light rounded-sm p-3.5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
-    className: "text-sm font-semibold text-heading"
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Selected Variant', 'custom-fonts')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "mt-3.5 flex flex-col gap-y-3.5"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "flex items-center justify-between"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "text-sm text-heading"
-  }, getFontWeightTitle(variation.font_weight)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, localDataLength > 1 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
-    width: "16",
-    height: "16",
-    viewBox: "0 0 16 16",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    onClick: () => handleVariationRemove(variation.id)
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
-    d: "M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z",
-    fill: "#007CBA"
-  }))))));
+    className: `text-sm text-heading mt-3.5 edit-gfont-variation-item`,
+    "data-varweight": variation
+  }, getFontWeightTitle(variation));
 };
 const EditGoogleFont = _ref2 => {
   let {
@@ -1140,15 +1124,17 @@ const EditGoogleFont = _ref2 => {
     fontName
   } = _ref2;
   const [advanceTab, setAdvanceTab] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-  const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useDispatch)();
   const restAllData = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(state => state.fonts);
   const editFontId = parseInt(fontId);
   const toggleAdvanceTab = () => {
     setAdvanceTab(!advanceTab);
   };
   let toBeEditFont = {};
+  let variations = null;
   restAllData.forEach(function (individualFont) {
     if (editFontId === individualFont.id) {
+      const gFontData = bsf_custom_fonts_admin.googleFonts[individualFont.title];
+      variations = gFontData[0] ? gFontData[0] : [];
       toBeEditFont = individualFont;
     }
   });
@@ -1158,77 +1144,17 @@ const EditGoogleFont = _ref2 => {
   }
   const [editFontData, setEditGoogleFontData] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(editingFontData);
   const [isLoading, setLoading] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
-    dispatch({
-      type: 'SET_EDIT_FONT',
-      payload: editFontData
-    });
-  }, [editFontData]);
-  const handleInputChange = (event, property) => {
-    const value = event.target.value;
-    setEditGoogleFontData(prevState => ({
-      ...prevState,
-      [property]: value
-    }));
-  };
-  const handleVariationChange = function (event, id, property) {
-    let attachment = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '';
-    const updatedVariations = editFontData.variations.map(variation => {
-      if (variation.id === id) {
-        if ('' !== attachment) {
-          return {
-            ...variation,
-            ['font_file']: attachment.id,
-            ['font_url']: attachment.url
-          };
-        } else {
-          return {
-            ...variation,
-            [property]: event.target.value
-          };
-        }
-      } else {
-        return variation;
-      }
-    });
-    setEditGoogleFontData({
-      ...editFontData,
-      variations: updatedVariations
-    });
-  };
-  const addVariationOption = () => {
-    const lastId = editFontData.variations[editFontData.variations.length - 1].id;
-    const newId = lastId + 1;
-    const newVariation = {
-      id: newId.toString(),
-      font_file: '',
-      font_url: '',
-      font_style: 'normal',
-      font_weight: ''
-    };
-    const updatedVariations = [...editFontData.variations, newVariation];
-    setEditGoogleFontData(prevState => ({
-      ...prevState,
-      variations: updatedVariations
-    }));
-  };
-  const handleVariationRemove = id => {
-    const updatedVariations = editFontData.variations.filter(variation => variation.id !== id);
-    setEditGoogleFontData({
-      ...editFontData,
-      variations: updatedVariations
-    });
-  };
   const updatingNewFontPost = e => {
     console.log('***** Editing New Font *****');
     e.preventDefault();
     setLoading('loading');
     const formData = new window.FormData();
+    const editFontStringifiedData = document.getElementById('gfont-edit-variation-data').innerHTML;
     formData.append('action', 'bcf_edit_font');
     formData.append('security', bsf_custom_fonts_admin.edit_font_nonce);
     formData.append('font_type', 'google');
     formData.append('font_id', fontId);
-    formData.append('font_data', JSON.stringify(editFontData));
+    formData.append('font_data', editFontStringifiedData);
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_3___default()({
       url: bsf_custom_fonts_admin.ajax_url,
       method: 'POST',
@@ -1241,6 +1167,19 @@ const EditGoogleFont = _ref2 => {
       }
       setLoading(false);
     });
+  };
+  const checkWeightPresentInState = weight => {
+    if (!editFontData.variations.length) {
+      return false;
+    }
+    const new_obs = [];
+    Object.keys(editFontData.variations).map(index => {
+      new_obs.push(editFontData.variations[index].font_weight);
+    });
+    if (new_obs.includes(weight)) {
+      return true;
+    }
+    return false;
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "mb-5 text-xl font-semibold"
@@ -1262,12 +1201,18 @@ const EditGoogleFont = _ref2 => {
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
     className: "w-full text-sm text-heading",
     htmlFor: ""
-  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Advanced Options', 'custom-fonts')))), editFontData.variations.map(variation => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(EditGoogleVariationItem, {
-    key: variation.id,
-    variation: variation,
-    localDataLength: editFontData.variations.length,
-    handleVariationRemove: handleVariationRemove
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Advanced Options', 'custom-fonts')))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "my-5 border border-light rounded-sm p-3.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", {
+    className: "text-sm font-semibold text-heading"
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Selected Variant', 'custom-fonts')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "flex flex-col gap-y-3.5"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "gvariations-wrapper"
+  }, variations.map(variation => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(EditGoogleVariationItem, {
+    key: variation,
+    variation: variation
+  }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "my-5"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     type: "button",
@@ -1799,6 +1744,7 @@ const EditGooglePreviewItem = _ref2 => {
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
   const editFontId = parseInt(fontId);
   let editingFontData = null;
+  const [variationToggleStyle, setVariationToggleStyle] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)('');
   const restAllData = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(state => state.fonts);
   let toBeEditFont = {};
   let variations = null;
@@ -1817,6 +1763,14 @@ const EditGooglePreviewItem = _ref2 => {
     return;
   }
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+    let newStyle = '';
+    Object.keys(editFontData.variations).map(index => {
+      const varwt = editFontData.variations[index].font_weight.toString();
+      newStyle += `.gvariations-wrapper > [data-varweight='${varwt}'] { display: block }`;
+    });
+    setVariationToggleStyle(newStyle);
+    document.getElementById('gfont-edit-variation-data').innerHTML = "";
+    document.getElementById('gfont-edit-variation-data').innerHTML = JSON.stringify(editFontData);
     dispatch({
       type: 'SET_EDIT_FONT',
       payload: editFontData
@@ -1826,21 +1780,7 @@ const EditGooglePreviewItem = _ref2 => {
     const fontName = font.replace(/ /g, "+");
     return `https://fonts.googleapis.com/css?family=${fontName}&ver=${version + 1}`;
   };
-
-  // const handleVariationRemove = (id) => {
-  // 	const updatedVariations = editFontData.variations.filter(
-  // 		(variation) => variation.id !== id
-  // 	);
-
-  // 	setEditGoogleFontData({
-  // 		...editFontData,
-  // 		variations: updatedVariations,
-  // 	});
-  // };
-
   const addWeight = e => {
-    e.preventDefault();
-    e.stopPropagation();
     const varWt = e.target.dataset.font_weight.toString();
     const variations = editFontData.variations;
     if (undefined === varWt) {
@@ -1858,13 +1798,11 @@ const EditGooglePreviewItem = _ref2 => {
     });
   };
   const removeWeight = e => {
-    e.preventDefault();
-    e.stopPropagation();
     const varWt = e.target.dataset.font_weight.toString();
-    const updatedVariations = editFontData.variations.filter(variation => variation.font_weight !== varWt);
+    const newVariation = editFontData.variations.filter(variation => variation.font_weight != varWt);
     setEditGoogleFontData({
       ...editFontData,
-      variations: updatedVariations
+      variations: newVariation
     });
   };
   const checkWeightPresentInState = weight => {
@@ -1882,7 +1820,9 @@ const EditGooglePreviewItem = _ref2 => {
   };
   return variations && Object.keys(variations).map((key, i) => (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     key: i
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("link", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+    id: `bcf-gfont-${editFontData.font_name}-variation-css`
+  }, " ", variationToggleStyle, " "), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("link", {
     rel: "stylesheet",
     id: `bcf-google-font-${i}-link`,
     href: getGoogleFontLink(editFontData.font_name, i),

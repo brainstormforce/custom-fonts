@@ -72,7 +72,7 @@ const ListItem = ({ item }) => {
 		setOpenPopup(! openPopup);
 		setEditFontId(fontId);
 		setEditFontType(fontType);
-		setEditFontName( fontName );
+		setEditFontName(fontName);
 	}
 
 	useEffect( () => {
