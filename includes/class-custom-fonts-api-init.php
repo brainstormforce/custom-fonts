@@ -130,13 +130,13 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 * @since x.x.x
 	 */
 	public function get_admin_settings( $request ) {
-		$args = array(
+		$args                  = array(
 			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
 			'post_status' => 'publish',
 			'orderby'     => 'ID',
 		);
-		$bsf_fonts_data = array();
-		$query_posts = new WP_Query( $args );
+		$bsf_fonts_data        = array();
+		$query_posts           = new WP_Query( $args );
 		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
 
 		if ( $query_posts && $query_posts->have_posts() ) {
@@ -145,11 +145,11 @@ class Custom_Fonts_API extends WP_REST_Controller {
 				global $post;
 
 				$font_post_data = array(
-					'id' => $post->ID,
-					'title' => $post->post_title,
-					'slug' => $post->post_name,
+					'id'         => $post->ID,
+					'title'      => $post->post_title,
+					'slug'       => $post->post_name,
 					'fonts-face' => get_post_meta( $post->ID, 'fonts-face', true ),
-					'font-type' => get_post_meta( $post->ID, 'font-type', true ),
+					'font-type'  => get_post_meta( $post->ID, 'font-type', true ),
 					'fonts-data' => get_post_meta( $post->ID, 'fonts-data', true ),
 				);
 
@@ -161,11 +161,11 @@ class Custom_Fonts_API extends WP_REST_Controller {
 		$defaults = apply_filters(
 			'bsf_custom_fonts_rest_data',
 			array(
-				'fonts' => $bsf_fonts_data,
-				'found_posts' => $query_posts->found_posts,
+				'fonts'              => $bsf_fonts_data,
+				'found_posts'        => $query_posts->found_posts,
 				'active_fonts_count' => isset( $bsf_custom_font_posts->publish ) ? intval( $bsf_custom_font_posts->publish ) : 0,
-				'trash_fonts_count' => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
-				'draft_fonts_count' => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
+				'trash_fonts_count'  => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
+				'draft_fonts_count'  => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
 			)
 		);
 
@@ -226,26 +226,26 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 * @since x.x.x
 	 */
 	public function search_fonts( $request ) {
-		$search_query = $request->get_param( 'q' );
-		$args = array(
-			'post_type'      => BSF_CUSTOM_FONTS_POST_TYPE,
-			'post_status'    => 'publish',
-			'orderby'        => 'ID',
-			's'              => $search_query,
+		$search_query          = $request->get_param( 'q' );
+		$args                  = array(
+			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
+			'post_status' => 'publish',
+			'orderby'     => 'ID',
+			's'           => $search_query,
 		);
-		$bsf_fonts_data = array();
-		$query_posts = new WP_Query( $args );
+		$bsf_fonts_data        = array();
+		$query_posts           = new WP_Query( $args );
 		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
 		if ( $query_posts && $query_posts->have_posts() ) {
 			while ( $query_posts->have_posts() ) {
 				$query_posts->the_post();
 				global $post;
-				$font_post_data = array(
-					'id' => $post->ID,
-					'title' => $post->post_title,
-					'slug' => $post->post_name,
+				$font_post_data   = array(
+					'id'         => $post->ID,
+					'title'      => $post->post_title,
+					'slug'       => $post->post_name,
 					'fonts-face' => get_post_meta( $post->ID, 'fonts-face', true ),
-					'font-type' => get_post_meta( $post->ID, 'font-type', true ),
+					'font-type'  => get_post_meta( $post->ID, 'font-type', true ),
 					'fonts-data' => get_post_meta( $post->ID, 'fonts-data', true ),
 				);
 				$bsf_fonts_data[] = $font_post_data;
@@ -255,11 +255,11 @@ class Custom_Fonts_API extends WP_REST_Controller {
 		$found_fonts = apply_filters(
 			'bsf_custom_fonts_rest_search_results',
 			array(
-				'fonts' => $bsf_fonts_data,
-				'found_posts' => $query_posts->found_posts,
+				'fonts'              => $bsf_fonts_data,
+				'found_posts'        => $query_posts->found_posts,
 				'active_fonts_count' => isset( $bsf_custom_font_posts->publish ) ? intval( $bsf_custom_font_posts->publish ) : 0,
-				'trash_fonts_count' => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
-				'draft_fonts_count' => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
+				'trash_fonts_count'  => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
+				'draft_fonts_count'  => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
 			)
 		);
 		return $found_fonts;

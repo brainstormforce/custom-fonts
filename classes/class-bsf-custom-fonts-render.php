@@ -148,14 +148,14 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		public function get_existing_font_posts() {
 			if ( ! isset( self::$existing_fonts ) ) {
-				$args = array(
-					'post_type'     => BSF_CUSTOM_FONTS_POST_TYPE,
+				$args                 = array(
+					'post_type'      => BSF_CUSTOM_FONTS_POST_TYPE,
 					'post_status'    => 'publish',
 					'fields'         => 'ids',
 					'no_found_rows'  => true,
 					'posts_per_page' => '-1',
 				);
-				$query = new WP_Query( $args );
+				$query                = new WP_Query( $args );
 				self::$existing_fonts = $query->posts;
 			}
 
@@ -305,9 +305,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$query_posts = $this->get_existing_font_posts();
 
 			foreach ( $query_posts as $key => $post_id ) {
-				$font_data = get_post_meta( $post_id, 'fonts-data', true );
+				$font_data            = get_post_meta( $post_id, 'fonts-data', true );
 				$custom_fonts_weights = array();
-				if( ! empty( $font_data['variations'] ) ) {
+				if ( ! empty( $font_data['variations'] ) ) {
 					foreach ( $font_data['variations'] as $var_key => $var_data ) {
 						array_push( $custom_fonts_weights, $var_data['font_weight'] );
 					}
@@ -333,15 +333,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$query_posts = $this->get_existing_font_posts();
 
 			foreach ( $query_posts as $key => $post_id ) {
-				$font_data = get_post_meta( $post_id, 'fonts-data', true );
+				$font_data            = get_post_meta( $post_id, 'fonts-data', true );
 				$custom_fonts_weights = array( 'Default' );
-				if( ! empty( $font_data['variations'] ) ) {
+				if ( ! empty( $font_data['variations'] ) ) {
 					foreach ( $font_data['variations'] as $var_key => $var_data ) {
 						array_push( $custom_fonts_weights, $var_data['font_weight'] );
 					}
 				}
 				$fonts_arr[ $font_data['font_name'] ] = array(
-					'weight'  => $custom_fonts_weights,
+					'weight' => $custom_fonts_weights,
 				);
 			}
 

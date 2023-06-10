@@ -92,7 +92,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				return;
 			}
 
-			$bcf_filesystem   = bcf_filesystem();
+			$bcf_filesystem    = bcf_filesystem();
 			$fonts_folder_path = $this->get_fonts_folder();
 
 			if ( file_exists( $fonts_folder_path ) ) {
@@ -142,15 +142,15 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				return;
 			}
 
-			$font_family    = ! empty( $font['font_name'] ) ? $font['font_name'] : '';
-			$font_slug      = $this->get_font_slug( $font_family );
-			$font_data = array();
-			$variations = array();
-			$counter = 1;
+			$font_family = ! empty( $font['font_name'] ) ? $font['font_name'] : '';
+			$font_slug   = $this->get_font_slug( $font_family );
+			$font_data   = array();
+			$variations  = array();
+			$counter     = 1;
 
 			foreach ( $font['variations'] as $variation ) {
 				$font_weight = ! empty( $variation['font_weight'] ) ? $variation['font_weight'] : '';
-				$font_style = ! empty( $variation['font_style'] ) ? $variation['font_style'] : 'normal';
+				$font_style  = ! empty( $variation['font_style'] ) ? $variation['font_style'] : 'normal';
 
 				$final_font_files = $this->get_fonts_file_url( $font_family, $font_weight, $font_style );
 
@@ -165,23 +165,23 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 				if ( ! empty( $final_font_files ) ) {
 					$updated_font_weight = strpos( $font_weight, 'italic' ) !== false ? str_replace( 'italic', '', $font_weight ) : $font_weight;
-					$updated_font_style = strpos( $font_weight, 'italic' ) !== false ? 'italic' : $font_style;
-					$variations[] = array(
-						'id' => $counter, // for making bcf font data in specific way.
-						'font_file' => $counter + 1000, // for making bcf font data in specific way.
-						'font_url' => $final_font_files,
-						'font_style' => $updated_font_style,
-						'font_weight' => $updated_font_weight
+					$updated_font_style  = strpos( $font_weight, 'italic' ) !== false ? 'italic' : $font_style;
+					$variations[]        = array(
+						'id'          => $counter, // for making bcf font data in specific way.
+						'font_file'   => $counter + 1000, // for making bcf font data in specific way.
+						'font_url'    => $final_font_files,
+						'font_style'  => $updated_font_style,
+						'font_weight' => $updated_font_weight,
 					);
 				}
 				$counter++;
 			}
 
 			$font_data = array(
-				'font_name' => $font_family,
+				'font_name'     => $font_family,
 				'font_fallback' => '',
-				'font_display' => 'fallback',
-				'variations' => $variations
+				'font_display'  => 'fallback',
+				'variations'    => $variations,
 			);
 
 			$font_face_css = bcf_get_font_face_css( 1, $font_data, true, true );
@@ -211,7 +211,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @return string
 		 */
 		public function get_fonts_folder() {
-			$fonts_folder = $this->get_filesystem()->wp_content_dir();
+			$fonts_folder  = $this->get_filesystem()->wp_content_dir();
 			$fonts_folder .= '/bcf-fonts';
 
 			return $fonts_folder;
@@ -273,7 +273,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				}
 
 				$fonts_file_name_final = $fonts_file_name . $key . '.' . $this->font_format;
-				$font_path = $fonts_folder_path . '/' . $fonts_file_name_final;
+				$font_path             = $fonts_folder_path . '/' . $fonts_file_name_final;
 
 				// Move font asset to wp-content assets folder.
 				$success = $this->get_filesystem()->move( $tmp_path, $font_path, true );
@@ -313,7 +313,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 					'fontFamily' => $font_name,
 					'slug'       => $font_slug,
 					'fontFace'   => $font_faces,
-					'isBcf'  => true,
+					'isBcf'      => true,
 				);
 			} else { // If the new font family already exists in the theme.json font families, add the new font faces to the existing font family.
 				$theme_font_families            = array_values(

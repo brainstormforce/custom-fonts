@@ -109,9 +109,9 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
-		$font_data = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
+		$font_data       = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
 		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
-		$font_type = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
+		$font_type       = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
 
 		if ( empty( $font_variations ) ) {
 			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
@@ -120,9 +120,9 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		// Create post object.
 		$new_font_post = array(
-			'post_title'   => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
-			'post_status'  => 'publish',
-			'post_type'    => BSF_CUSTOM_FONTS_POST_TYPE,
+			'post_title'  => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
+			'post_status' => 'publish',
+			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
 		);
 
 		// Insert the post into the database.
@@ -143,7 +143,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		 * Send the response.
 		 */
 		$response_data = array(
-			'message'      => __( 'Successfully created the Font!', 'custom-fonts' ),
+			'message' => __( 'Successfully created the Font!', 'custom-fonts' ),
 		);
 		wp_send_json_success( $response_data );
 	}
@@ -181,9 +181,9 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		// Create post object.
 		$new_font_post = array(
-			'post_title'   => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
-			'post_status'  => 'publish',
-			'post_type'    => BSF_CUSTOM_FONTS_POST_TYPE,
+			'post_title'  => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
+			'post_status' => 'publish',
+			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
 		);
 
 		// Insert the post into the database.
@@ -202,7 +202,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		 * Send the response.
 		 */
 		$response_data = array(
-			'message'      => __( 'Successfully created the Font!', 'custom-fonts' ),
+			'message' => __( 'Successfully created the Font!', 'custom-fonts' ),
 		);
 		wp_send_json_success( $response_data );
 	}
@@ -228,10 +228,10 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
-		$font_data = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
+		$font_data       = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
 		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
-		$font_type = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
-		$font_id = ! empty( $_POST['font_id'] ) ? absint( $_POST['font_id'] ) : false;
+		$font_type       = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
+		$font_id         = ! empty( $_POST['font_id'] ) ? absint( $_POST['font_id'] ) : false;
 
 		if ( empty( $font_variations ) || false === $font_id ) {
 			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
@@ -248,7 +248,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		 * Send the response.
 		 */
 		$response_data = array(
-			'message'      => __( 'Successfully updated the Font!', 'custom-fonts' ),
+			'message' => __( 'Successfully updated the Font!', 'custom-fonts' ),
 		);
 		wp_send_json_success( $response_data );
 	}
@@ -288,7 +288,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		}
 
 		$response_data = array(
-			'message'      => __( 'Successfully deleted the Font!', 'custom-fonts' ),
+			'message' => __( 'Successfully deleted the Font!', 'custom-fonts' ),
 		);
 		wp_send_json_success( $response_data );
 	}

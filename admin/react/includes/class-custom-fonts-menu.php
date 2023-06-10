@@ -207,21 +207,21 @@ class Bsf_Custom_Fonts_Menu {
 
 		wp_enqueue_style( 'wp-components' );
 
-		$localize       = array(
-			'admin_base_url'         => admin_url(),
-			'plugin_dir'             => BSF_CUSTOM_FONTS_URI,
-			'plugin_ver'             => defined( 'BSF_CUSTOM_FONTS_VER' ) ? BSF_CUSTOM_FONTS_VER : '',
-			'plugin_name'            => 'Custom Fonts',
-			'ajax_url'               => admin_url( 'admin-ajax.php' ),
-			'admin_url'              => admin_url( 'admin.php' ),
-			'home_slug'              => self::$plugin_slug,
-			'app_base_url'           => admin_url( 'admin.php?page=' . self::$plugin_slug ),
-			'update_nonce'           => wp_create_nonce( 'astra_update_admin_setting' ),
-			'add_font_nonce'         => wp_create_nonce( 'add_font_nonce' ),
-			'edit_font_nonce'        => wp_create_nonce( 'edit_font_nonce' ),
-			'delete_font_nonce'      => wp_create_nonce( 'delete_font_nonce' ),
-			'googleFonts'            => Bsf_Custom_Font_Families::get_google_fonts(),
-			'existingGoogleFonts'    => Bsf_Custom_Font_Families::get_existing_google_fonts(),
+		$localize = array(
+			'admin_base_url'      => admin_url(),
+			'plugin_dir'          => BSF_CUSTOM_FONTS_URI,
+			'plugin_ver'          => defined( 'BSF_CUSTOM_FONTS_VER' ) ? BSF_CUSTOM_FONTS_VER : '',
+			'plugin_name'         => 'Custom Fonts',
+			'ajax_url'            => admin_url( 'admin-ajax.php' ),
+			'admin_url'           => admin_url( 'admin.php' ),
+			'home_slug'           => self::$plugin_slug,
+			'app_base_url'        => admin_url( 'admin.php?page=' . self::$plugin_slug ),
+			'update_nonce'        => wp_create_nonce( 'astra_update_admin_setting' ),
+			'add_font_nonce'      => wp_create_nonce( 'add_font_nonce' ),
+			'edit_font_nonce'     => wp_create_nonce( 'edit_font_nonce' ),
+			'delete_font_nonce'   => wp_create_nonce( 'delete_font_nonce' ),
+			'googleFonts'         => Bsf_Custom_Font_Families::get_google_fonts(),
+			'existingGoogleFonts' => Bsf_Custom_Font_Families::get_existing_google_fonts(),
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );

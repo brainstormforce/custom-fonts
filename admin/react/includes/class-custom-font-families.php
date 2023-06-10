@@ -67,22 +67,22 @@ if ( ! class_exists( 'Bsf_Custom_Font_Families' ) ) :
 		 * @return Array Array of existing Google fonts.
 		 */
 		public static function get_existing_google_fonts() {
-			$args = array(
-				'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
-				'post_status' => 'publish',
-				'fields' => 'ids',
-				'no_found_rows' => true,
+			$args         = array(
+				'post_type'      => BSF_CUSTOM_FONTS_POST_TYPE,
+				'post_status'    => 'publish',
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
 				'posts_per_page' => '-1',
-				'meta_query' => array(
+				'meta_query'     => array(
 					array(
-						'key' => 'font-type',
-						'value' => 'google',
+						'key'     => 'font-type',
+						'value'   => 'google',
 						'compare' => '=',
-					)
-				)
+					),
+				),
 			);
 			$google_fonts = array();
-			$query = new WP_Query( $args );
+			$query        = new WP_Query( $args );
 
 			if ( $query->posts ) {
 				foreach ( $query->posts as $key => $post_id ) {
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Bsf_Custom_Font_Families' ) ) :
 				}
 
 				$google_fonts_arr = include $google_fonts_file;// phpcs:ignore: WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-				$existing_gfonts = self::get_existing_google_fonts();
+				$existing_gfonts  = self::get_existing_google_fonts();
 				foreach ( $google_fonts_arr as $key => $font ) {
 					$name = key( $font );
 					foreach ( $font[ $name ] as $font_key => $single_font ) {
