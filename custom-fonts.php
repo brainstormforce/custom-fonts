@@ -34,6 +34,11 @@ define( 'BSF_CUSTOM_FONTS_POST_TYPE', 'bsf_custom_fonts' );
 require_once BSF_CUSTOM_FONTS_DIR . 'classes/class-bsf-custom-fonts.php';
 
 /**
+ * Helper functions needed for further processing.
+ */
+require_once BSF_CUSTOM_FONTS_DIR . '/includes/helper-functions.php';
+
+/**
  * BSF Custom Fonts Background Updater.
  */
 require_once BSF_CUSTOM_FONTS_DIR . 'includes/plugin-update/class-custom-fonts-update.php';
@@ -42,11 +47,6 @@ require_once BSF_CUSTOM_FONTS_DIR . 'includes/plugin-update/class-custom-fonts-u
  * Rest API support.
  */
 require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-api-init.php';
-
-/**
- * Helper functions needed for further processing.
- */
-require_once BSF_CUSTOM_FONTS_DIR . '/includes/helper-functions.php';
 
 /**
  * WP Filesystem extender.

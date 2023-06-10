@@ -75,6 +75,10 @@ class Custom_Fonts_Update {
 			$this->v_1_3_0();
 		}
 
+		if ( version_compare( $db_version, '2.0.0', '<=' ) ) {
+			$this->v_2_0_0();
+		}
+
 		$this->update_db_version();
 
 		do_action( 'custom_fonts_update_after' );
@@ -137,6 +141,38 @@ class Custom_Fonts_Update {
 
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $new_font_arr, $term->term_id );
 			}
+		}
+	}
+
+	/**
+	 * Migrate existing local fonts to new revamped dashboard app.
+	 *
+	 * @since x.x.x
+	 */
+	public function v_2_0_0() {
+		$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+		foreach ( $fonts as $load_font_name => $load_font ) {
+			$font_data = bcf_prepare_backward_font_data( $load_font_name );
+
+			// Create post object.
+			$new_font_post = array(
+				'post_title'   => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
+				'post_status'  => 'publish',
+				'post_type'    => BSF_CUSTOM_FONTS_POST_TYPE,
+			);
+
+			// Insert the post into the database.
+			$font_post_id = wp_insert_post( $new_font_post );
+
+			if ( is_wp_error( $font_post_id ) ) {
+				return;
+			}
+
+			$font_face = bcf_get_font_face_css( $font_post_id, $font_data, true );
+
+			update_post_meta( $font_post_id, 'fonts-data', $font_data );
+			update_post_meta( $font_post_id, 'fonts-face', $font_face );
+			update_post_meta( $font_post_id, 'font-type', 'local' );
 		}
 	}
 
