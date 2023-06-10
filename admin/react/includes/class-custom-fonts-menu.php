@@ -207,10 +207,7 @@ class Bsf_Custom_Fonts_Menu {
 
 		wp_enqueue_style( 'wp-components' );
 
-		/** @psalm-suppress UndefinedClass */ // phpcs:ignore Generic.Commenting.DocComment.MissingShort
-		$user_firstname = wp_get_current_user()->user_firstname;
 		$localize       = array(
-			'current_user'           => ! empty( $user_firstname ) ? ucfirst( $user_firstname ) : ucfirst( wp_get_current_user()->display_name ),
 			'admin_base_url'         => admin_url(),
 			'plugin_dir'             => BSF_CUSTOM_FONTS_URI,
 			'plugin_ver'             => defined( 'BSF_CUSTOM_FONTS_VER' ) ? BSF_CUSTOM_FONTS_VER : '',
@@ -224,6 +221,7 @@ class Bsf_Custom_Fonts_Menu {
 			'edit_font_nonce'        => wp_create_nonce( 'edit_font_nonce' ),
 			'delete_font_nonce'      => wp_create_nonce( 'delete_font_nonce' ),
 			'googleFonts'            => Bsf_Custom_Font_Families::get_google_fonts(),
+			'existingGoogleFonts'    => Bsf_Custom_Font_Families::get_existing_google_fonts(),
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );

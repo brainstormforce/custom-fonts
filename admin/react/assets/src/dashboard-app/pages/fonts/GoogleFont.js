@@ -160,7 +160,7 @@ const GoogleFont = () => {
 						>
 							<option value=''> {__('Select a font family...', 'custom-fonts')} </option>
 							{Object.keys(googleFonts).map((key) => (
-								<option value={key} key={key}>{key}</option>
+								<option value={key} key={key} disabled={ bsf_custom_fonts_admin.existingGoogleFonts.includes( key ) }>{key}</option>
 							))}
 						</select>
 					</div>

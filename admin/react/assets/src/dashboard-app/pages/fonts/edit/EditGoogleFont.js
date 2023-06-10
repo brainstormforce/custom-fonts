@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { __ } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const EditGoogleVariationItem = ({
 	id,
@@ -42,13 +42,8 @@ const EditGoogleVariationItem = ({
 };
 
 const EditGoogleFont = ({fontId, fontName}) => {
-	const [advanceTab, setAdvanceTab] = useState(false);
 	const restAllData = useSelector( ( state ) => state.fonts );
 	const editFontId = parseInt( fontId );
-
-	const toggleAdvanceTab = () => {
-		setAdvanceTab(!advanceTab);
-	};
 
 	let toBeEditFont = {};
 	let variations = null;
@@ -96,60 +91,12 @@ const EditGoogleFont = ({fontId, fontName}) => {
 		} );
 	};
 
-	const checkWeightPresentInState = (weight) => {
-		if ( ! editFontData.variations.length ) {
-			return false;
-		}
-
-		const new_obs = [];
-		Object.keys( editFontData.variations ).map( ( index ) => {
-			new_obs.push( editFontData.variations[index].font_weight );
-		})
-
-		if ( new_obs.includes(weight) ) {
-			return true;
-		}
-
-		return false;
-	};
-
 	return (
 		<div>
 			<div>
 				<p className="mb-5 text-xl font-semibold">
 					{__( 'Edit Font', 'custom-fonts' )}
 				</p>
-				<div className="mb-5">
-					<div
-						onClick={toggleAdvanceTab}
-						className="flex items-center px-1 gap-x-2"
-					>
-						<svg
-							width="6"
-							height="8"
-							viewBox="0 0 6 8"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							className={
-								advanceTab
-									? "rotate-90"
-									: "" + "transition-transform duration-300"
-							}
-						>
-							<path
-								d="M0.400391 0.800049L5.20039 4.02405L0.400391 7.20005L0.400391 0.800049Z"
-								fill="#007CBA"
-							/>
-						</svg>
-
-						<label
-							className="w-full text-sm text-heading"
-							htmlFor=""
-						>
-							{__( 'Advanced Options', 'custom-fonts' )}
-						</label>
-					</div>
-				</div>
 
 				<div className="my-5 border border-light rounded-sm p-3.5">
 					<h3 className="text-sm font-semibold text-heading">

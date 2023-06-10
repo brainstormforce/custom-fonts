@@ -58,10 +58,10 @@ const EditFont = ( props ) => {
 						leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 					>
 						<div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-[65%] sm:max-h-[50%] sm:w-full">
-							<div className="bcf-edit-modal-close-wrapper absolute right-[5px] p-1 top-[0px] width-[20px] height-[10px]">
+							<div className="bcf-edit-modal-close-wrapper absolute right-[5px] p-1 top-[-2px] width-[20px] height-[10px]">
 								<button
 									type="button"
-									className="mt-3 w-full inline-flex justify-center rounded border shadow-none border-slate-200 padding-[5px] bg-white text-base font-medium text-slate-800 focus:bg-gray-50 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:w-auto sm:text-xs bold border-none"
+									className="mt-3 inline-flex justify-center rounded border shadow-none border-slate-200 padding-[5px] bg-white text-base font-medium text-slate-800 focus:bg-gray-50 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:text-xs bold border-none w-[15px] h-[15px]"
 									onClick={ onCancelClick }
 									ref={ cancelButtonRef }
 								>
