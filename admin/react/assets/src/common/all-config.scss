@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.bsf-cf-menu-page-wrapper {
+	font-family: 'SF Pro Text';
+	font-family: 'Inter';
+	font-style: normal;
+}
 .appearance_page_bsf-custom-fonts #wpcontent {
 	padding-left: 0;
 }
@@ -48,8 +53,8 @@ span.font-filename {
     border-top: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
 }
 .bcf-font-grid-wrap > .p-6 {
-    border-right: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
-    border-bottom: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
+	--tw-border-opacity: 1;
+    border: 1px solid rgb(221 221 221/var(--tw-border-opacity));
 }
 .bcf-font-size-range .components-input-control__container {
     position: relative;
@@ -81,6 +86,6 @@ span.font-filename {
 .font-file-uploader:focus-visible {
     outline: none;
 }
-.edit-gfont-variation-item {
+.edit-gfont-variation-item, #bcf-google-font-selection option:disabled {
     display: none;
 }

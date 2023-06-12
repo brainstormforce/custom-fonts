@@ -134,6 +134,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
 			'post_status' => 'publish',
 			'orderby'     => 'ID',
+			'posts_per_page'   => -1,
 		);
 		$bsf_fonts_data        = array();
 		$query_posts           = new WP_Query( $args );

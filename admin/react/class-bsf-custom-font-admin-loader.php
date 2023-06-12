@@ -11,11 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Bsf_Custom_Fonts_Admin_Loader
+ * BSF_Custom_Font_Admin_Loader
  *
  * @since x.x.x
  */
-class Bsf_Custom_Fonts_Admin_Loader {
+class BSF_Custom_Font_Admin_Loader {
 
 	/**
 	 * Instance
@@ -44,7 +44,7 @@ class Bsf_Custom_Fonts_Admin_Loader {
 	/**
 	 * Constructor
 	 *
-	 * @since 4.0.0
+	 * @since x.x.x
 	 */
 	public function __construct() {
 		define( 'BSF_CUSTOM_FONTS_ADMIN_DIR', BSF_CUSTOM_FONTS_DIR . 'admin/react' );
@@ -66,11 +66,11 @@ class Bsf_Custom_Fonts_Admin_Loader {
 		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-custom-fonts-admin-ajax.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 
 		/* Font families */
-		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-custom-font-families.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
+		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-bcf-custom-font-families.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 
 		/* Setup Menu */
 		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-custom-fonts-menu.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 	}
 }
 
-Bsf_Custom_Fonts_Admin_Loader::get_instance();
+BSF_Custom_Font_Admin_Loader::get_instance();

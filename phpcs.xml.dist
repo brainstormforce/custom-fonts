@@ -22,4 +22,5 @@
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/admin/bsf-core/*</exclude-pattern>
+	<exclude-pattern>*/dashboard-app.asset.php</exclude-pattern>
 </ruleset>

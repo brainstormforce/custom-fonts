@@ -203,7 +203,7 @@ class Bsf_Custom_Fonts_Menu {
 			return;
 		}
 
-		wp_enqueue_style( 'bsf-custom-fonts-admin-font', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap', array(), BSF_CUSTOM_FONTS_VER ); // Styles.
+		wp_enqueue_style( 'bsf-custom-fonts-admin-font', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap', array(), ASTRA_THEME_VERSION ); // Styles.
 
 		wp_enqueue_style( 'wp-components' );
 
@@ -220,8 +220,8 @@ class Bsf_Custom_Fonts_Menu {
 			'add_font_nonce'      => wp_create_nonce( 'add_font_nonce' ),
 			'edit_font_nonce'     => wp_create_nonce( 'edit_font_nonce' ),
 			'delete_font_nonce'   => wp_create_nonce( 'delete_font_nonce' ),
-			'googleFonts'         => Bsf_Custom_Font_Families::get_google_fonts(),
-			'existingGoogleFonts' => Bsf_Custom_Font_Families::get_existing_google_fonts(),
+			'googleFonts'         => BCF_Custom_Font_Families::get_google_fonts(),
+			'existingGoogleFonts' => BCF_Custom_Font_Families::get_existing_google_fonts(),
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );

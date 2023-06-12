@@ -331,7 +331,7 @@ const LocalFont = () => {
 	return (
 		<div>
 			<div>
-				<p className="mb-5">
+				<p className="mb-5 text-neutral">
 					{__( 'Add local fonts assets and font face definitions to your currently active theme.', 'custom-fonts' )}
 				</p>
 				<div className="mb-5">

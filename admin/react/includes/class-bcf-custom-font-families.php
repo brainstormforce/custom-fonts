@@ -14,12 +14,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Font info class for System and Google fonts.
  */
-if ( ! class_exists( 'Bsf_Custom_Font_Families' ) ) :
+if ( ! class_exists( 'BCF_Custom_Font_Families' ) ) :
 
 	/**
 	 * Font info class for System and Google fonts.
 	 */
-	final class Bsf_Custom_Font_Families {
+	final class BCF_Custom_Font_Families {
 
 		/**
 		 * Google Fonts

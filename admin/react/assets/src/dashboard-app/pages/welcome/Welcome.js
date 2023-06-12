@@ -22,10 +22,10 @@ const Welcome = () => {
 						<div className="flex flex-col lg:flex-row justify-between items-start">
 							<div>
 								<h2 className="text-[1.625rem] font-semibold mb-3.5">
-									Custom Fonts
+									{ __( "Custom Fonts", "custom-fonts" ) }
 								</h2>
 								<p className="text-xs">
-									{ __("Manage fonts that are used on your website.", "custom-fonts") }
+									{ __( "Manage fonts that are used on your website.", "custom-fonts" ) }
 								</p>
 							</div>
 							<div className="relative">
@@ -48,7 +48,7 @@ const Welcome = () => {
 				<SearchBar setSearchResults={ setSearchResults } setLoading={ setLoading }/>
 				{/* Font Counter and View toggle */}
 				<div className="flex justify-between items-center my-6">
-					<div className="text-base"> { searchResults ? searchResults.found_posts : (fontsData ? fontsData.length : 0) } { __(" font family", "custom-fonts") } </div>
+					<div className="text-base"> { searchResults ? searchResults.found_posts : (fontsData ? fontsData.length : 0) } { __(" font families", "custom-fonts") } </div>
 					<div className="flex justify-end gap-x-7">
 						<div
 							className="cursor-pointer"

@@ -10,7 +10,7 @@ const CustomFontGrid = ({ searchResults, loading, activeView }) => {
 		return <SkeletonSkins activeView={activeView} count={8} />;
 	}
 	return (
-		<div className="border border-light grid grid-cols-3 bcf-font-grid-wrap">
+		<div className="grid grid-cols-3 bcf-font-grid-wrap">
 			{searchResults
 				? searchResults.fonts &&
 				  searchResults.fonts.map((item, key) => (

@@ -35,35 +35,28 @@ const GoogleVariationItem = ({
 	}
 
 	return (
-		<div key={id} className="my-5 border border-light rounded-sm p-3.5">
-			<h3 className="text-sm font-semibold text-heading">
-				{__('Selected Variant', 'custom-fonts')}
-			</h3>
-			<div className="mt-3.5 flex flex-col gap-y-3.5">
-				<div className="flex items-center justify-between">
-					<div className="text-sm text-heading">
-						{
-							getFontWeightTitle(variation.font_weight)
-						}
-					</div>
-					<div>
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 16 16"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							onClick={() =>
-								handleVariationRemove(variation.id)
-							}
-						>
-							<path
-								d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-								fill="#007CBA"
-							/>
-						</svg>
-					</div>
-				</div>
+		<div key={id} className="flex items-center justify-between">
+			<div className="text-sm text-heading">
+				{
+					getFontWeightTitle(variation.font_weight)
+				}
+			</div>
+			<div>
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 16 16"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					onClick={() =>
+						handleVariationRemove(variation.id)
+					}
+				>
+					<path
+						d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
+						fill="#007CBA"
+					/>
+				</svg>
 			</div>
 		</div>
 	);
@@ -143,8 +136,8 @@ const GoogleFont = () => {
 	return (
 		<div>
 			<div>
-				<p className="mb-5">
-					{__('Add Google fonts assets and font face definitions to your currently active theme', 'custom-fonts')}
+				<p className="mb-5 text-neutral">
+					{__('Add Google fonts assets and font face definitions to your currently active theme.', 'custom-fonts')}
 				</p>
 				<div>
 					<label className="w-full text-sm text-heading" htmlFor="">
@@ -165,13 +158,22 @@ const GoogleFont = () => {
 						</select>
 					</div>
 				</div>
-				{(googleFontData && googleFontData.variations) && googleFontData.variations.map((variation) => (
-					<GoogleVariationItem
-						key={variation.id+1}
-						variation={variation}
-						handleVariationRemove={handleVariationRemove}
-					/>
-				))}
+				{ (googleFontData && googleFontData.variations && googleFontData.variations.length > 0) &&
+					<div className="my-5 border border-light rounded-sm p-3.5">
+						<h3 className="text-sm font-semibold text-heading">
+							{__('Selected Variant', 'custom-fonts')}
+						</h3>
+						<div className="mt-3.5 flex flex-col gap-y-3.5">
+							{googleFontData.variations.map((variation) => (
+								<GoogleVariationItem
+									key={variation.id+1}
+									variation={variation}
+									handleVariationRemove={handleVariationRemove}
+								/>
+							))}
+						</div>
+					</div>
+				}
 				<div className="my-5">
 					<button
 						type="button"

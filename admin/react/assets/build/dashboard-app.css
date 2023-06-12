@@ -658,12 +658,12 @@ select {
   inset: 0px;
 }.left-60 {
   left: 15rem;
-}.right-\[5px\] {
-  right: 5px;
+}.right-\[-5px\] {
+  right: -5px;
 }.top-5 {
   top: 1.25rem;
-}.top-\[-2px\] {
-  top: -2px;
+}.top-\[-20px\] {
+  top: -20px;
 }.col-span-1 {
   grid-column: span 1 / span 1;
 }.col-span-3 {
@@ -733,8 +733,10 @@ select {
   height: 0.5rem;
 }.h-5 {
   height: 1.25rem;
-}.h-\[15px\] {
-  height: 15px;
+}.h-\[20px\] {
+  height: 20px;
+}.h-\[25px\] {
+  height: 25px;
 }.min-h-screen {
   min-height: 100vh;
 }.w-12 {
@@ -747,8 +749,10 @@ select {
   width: 10rem;
 }.w-5 {
   width: 1.25rem;
-}.w-\[15px\] {
-  width: 15px;
+}.w-\[20px\] {
+  width: 20px;
+}.w-\[25px\] {
+  width: 25px;
 }.w-\[314px\] {
   width: 314px;
 }.w-full {
@@ -848,8 +852,6 @@ select {
   overflow: hidden;
 }.overflow-y-auto {
   overflow-y: auto;
-}.rounded {
-  border-radius: 0.25rem;
 }.rounded-full {
   border-radius: 9999px;
 }.rounded-lg {
@@ -913,8 +915,8 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }.bg-opacity-75 {
   --tw-bg-opacity: 0.75;
-}.p-1 {
-  padding: 0.25rem;
+}.p-0 {
+  padding: 0px;
 }.p-2 {
   padding: 0.5rem;
 }.p-3 {
@@ -925,6 +927,8 @@ select {
   padding: 1rem;
 }.p-6 {
   padding: 1.5rem;
+}.p-\[3px\] {
+  padding: 3px;
 }.px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1097,7 +1101,7 @@ select {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }.ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-}.appearance_page_bsf-custom-fonts #wpcontent{padding-left:0}.bsf-custom-font-dashboard-app input,.bsf-custom-font-dashboard-app select{border:1px solid #ddd;border-radius:2px;height:30px}.bsf-custom-font-dashboard-app input[type=file]{border:0}.bsf-custom-font-search input{border:0;background:rgba(0,0,0,0);padding:18px 0}.bsf-custom-font-search input:focus{outline:none;border:0;border-color:rgba(0,0,0,0);box-shadow:none}button.font-file-uploader.btn{border:1px solid #767676;margin:0px;padding:1px 6px;border-radius:2px;line-height:1.6}span.font-filename{margin-left:-10px}.font-triggers{position:absolute;right:15px;display:inline-flex;align-items:center;gap:15px}.bcf-font-list-wrap>.bg-white:not(:first-child)>.list-font-title,.bcf-font-list-wrap>.bg-white .list-font-variations>.font-variation-item:not(:first-child){border-top:1px solid rgb(221 221 221/var(--tw-border-opacity))}.bcf-font-grid-wrap>.p-6{border-right:1px solid rgb(221 221 221/var(--tw-border-opacity));border-bottom:1px solid rgb(221 221 221/var(--tw-border-opacity))}.bcf-font-size-range .components-input-control__container{position:relative}.bcf-font-size-range .components-input-control__container .components-input-control__backdrop:before{position:absolute;content:"PX";right:4px;padding-left:4px;border-left:1px solid #949494;font-weight:600;top:-1px;color:#949494;font-size:11px;line-height:30px}.bcf-font-size-range .components-input-control__container input::-webkit-outer-spin-button,.bcf-font-size-range .components-input-control__container input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.bcf-font-size-range .components-input-control__container input[type=number]{-moz-appearance:textfield}.edit-font-variation-wrap select{padding-top:2px;padding-bottom:2px}.font-file-uploader:focus-visible{outline:none}.edit-gfont-variation-item{display:none}.hover\:border-b-primary:hover {
+}.bsf-cf-menu-page-wrapper{font-family:"SF Pro Text";font-family:"Inter";font-style:normal}.appearance_page_bsf-custom-fonts #wpcontent{padding-left:0}.bsf-custom-font-dashboard-app input,.bsf-custom-font-dashboard-app select{border:1px solid #ddd;border-radius:2px;height:30px}.bsf-custom-font-dashboard-app input[type=file]{border:0}.bsf-custom-font-search input{border:0;background:rgba(0,0,0,0);padding:18px 0}.bsf-custom-font-search input:focus{outline:none;border:0;border-color:rgba(0,0,0,0);box-shadow:none}button.font-file-uploader.btn{border:1px solid #767676;margin:0px;padding:1px 6px;border-radius:2px;line-height:1.6}span.font-filename{margin-left:-10px}.font-triggers{position:absolute;right:15px;display:inline-flex;align-items:center;gap:15px}.bcf-font-list-wrap>.bg-white:not(:first-child)>.list-font-title,.bcf-font-list-wrap>.bg-white .list-font-variations>.font-variation-item:not(:first-child){border-top:1px solid rgb(221 221 221/var(--tw-border-opacity))}.bcf-font-grid-wrap>.p-6{--tw-border-opacity: 1;border:1px solid rgb(221 221 221/var(--tw-border-opacity))}.bcf-font-size-range .components-input-control__container{position:relative}.bcf-font-size-range .components-input-control__container .components-input-control__backdrop:before{position:absolute;content:"PX";right:4px;padding-left:4px;border-left:1px solid #949494;font-weight:600;top:-1px;color:#949494;font-size:11px;line-height:30px}.bcf-font-size-range .components-input-control__container input::-webkit-outer-spin-button,.bcf-font-size-range .components-input-control__container input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.bcf-font-size-range .components-input-control__container input[type=number]{-moz-appearance:textfield}.edit-font-variation-wrap select{padding-top:2px;padding-bottom:2px}.font-file-uploader:focus-visible{outline:none}.edit-gfont-variation-item,#bcf-google-font-selection option:disabled{display:none}.hover\:border-b-primary:hover {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(0 124 186 / var(--tw-border-opacity));
 }.hover\:bg-gray-50:hover {
