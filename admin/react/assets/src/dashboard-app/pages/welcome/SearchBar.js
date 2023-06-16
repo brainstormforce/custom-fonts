@@ -13,7 +13,7 @@ const SearchBar = ({ setSearchResults, setLoading }) => {
 	};
 	useEffect(() => {
 		apiFetch({
-			path: `/bsf-custom-fonts/v1/search?q=${debouncedQuery}`,
+			path: `/bsf-custom-fonts/v1/admin/settings?q=${debouncedQuery}`,
 		}).then((results) => {
 			if (results) {
 				setLoading( false );

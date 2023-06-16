@@ -106,19 +106,6 @@ class Custom_Fonts_API extends WP_REST_Controller {
 				'schema' => array( $this, 'get_public_item_schema' ),
 			)
 		);
-		register_rest_route(
-			$this->namespace,
-			'search',
-			array(
-				array(
-					'methods'             => WP_REST_Server::READABLE,
-					'callback'            => array( $this, 'search_fonts' ),
-					'permission_callback' => array( $this, 'get_permissions_check' ),
-					'args'                => array(),
-				),
-				'schema' => array( $this, 'get_public_item_schema' ),
-			)
-		);
 	}
 
 	/**
@@ -136,6 +123,10 @@ class Custom_Fonts_API extends WP_REST_Controller {
 			'orderby'     => 'ID',
 			'posts_per_page'   => -1,
 		);
+		$search_query = $request->get_param( 'q' );
+		if ( isset( $search_query ) ) {
+			$args['s'] = $search_query;
+		}
 		$bsf_fonts_data        = array();
 		$query_posts           = new WP_Query( $args );
 		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
@@ -216,54 +207,6 @@ class Custom_Fonts_API extends WP_REST_Controller {
 		$admin_updated_settings         = get_option( self::$option_name, array() );
 		$admin_updated_settings[ $key ] = $value;
 		update_option( self::$option_name, $admin_updated_settings );
-	}
-
-	/**
-	 * Search for fonts.
-	 *
-	 * @param WP_REST_Request $request Full details about the request.
-	 * @return array $found_fonts Found font data matching the search query.
-	 *
-	 * @since x.x.x
-	 */
-	public function search_fonts( $request ) {
-		$search_query          = $request->get_param( 'q' );
-		$args                  = array(
-			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
-			'post_status' => 'publish',
-			'orderby'     => 'ID',
-			's'           => $search_query,
-		);
-		$bsf_fonts_data        = array();
-		$query_posts           = new WP_Query( $args );
-		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
-		if ( $query_posts && $query_posts->have_posts() ) {
-			while ( $query_posts->have_posts() ) {
-				$query_posts->the_post();
-				global $post;
-				$font_post_data   = array(
-					'id'         => $post->ID,
-					'title'      => $post->post_title,
-					'slug'       => $post->post_name,
-					'fonts-face' => get_post_meta( $post->ID, 'fonts-face', true ),
-					'font-type'  => get_post_meta( $post->ID, 'font-type', true ),
-					'fonts-data' => get_post_meta( $post->ID, 'fonts-data', true ),
-				);
-				$bsf_fonts_data[] = $font_post_data;
-				wp_reset_postdata();
-			}
-		}
-		$found_fonts = apply_filters(
-			'bsf_custom_fonts_rest_search_results',
-			array(
-				'fonts'              => $bsf_fonts_data,
-				'found_posts'        => $query_posts->found_posts,
-				'active_fonts_count' => isset( $bsf_custom_font_posts->publish ) ? intval( $bsf_custom_font_posts->publish ) : 0,
-				'trash_fonts_count'  => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
-				'draft_fonts_count'  => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
-			)
-		);
-		return $found_fonts;
 	}
 }
 
