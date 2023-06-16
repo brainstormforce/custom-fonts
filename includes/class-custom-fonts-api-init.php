@@ -117,16 +117,19 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 * @since x.x.x
 	 */
 	public function get_admin_settings( $request ) {
-		$args                  = array(
-			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
-			'post_status' => 'publish',
-			'orderby'     => 'ID',
+
+		$args = array(
+			'post_type'        => BSF_CUSTOM_FONTS_POST_TYPE,
+			'post_status'      => 'publish',
+			'orderby'          => 'ID',
 			'posts_per_page'   => -1,
 		);
-		$search_query = $request->get_param( 'q' );
-		if ( isset( $search_query ) ) {
+
+		$search_query = sanitize_text_field( $request->get_param( 'q' ) );
+		if ( isset( $search_query ) && ! empty( $search_query ) && is_string( $search_query ) ) {
 			$args['s'] = $search_query;
 		}
+
 		$bsf_fonts_data        = array();
 		$query_posts           = new WP_Query( $args );
 		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
