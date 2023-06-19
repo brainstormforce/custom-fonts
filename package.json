@@ -8,6 +8,7 @@
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-wp-i18n": "^1.0.3",
     "grunt-wp-readme-to-markdown": "~2.0.1",
+    "grunt-rtlcss": "^2.0.2",
     "minimist": ">=1.2.3"
   }
 }

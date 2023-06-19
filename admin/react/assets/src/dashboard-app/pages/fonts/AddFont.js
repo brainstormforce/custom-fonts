@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { RangeControl } from "@wordpress/components";
 import GooglePreviewItem from "./preview/GooglePreviewItem";
 import LocalPreviewItem from "./preview/LocalPreviewItem";
-import FontNotification from "../../FontNotification";
 import { __ } from "@wordpress/i18n";
 
 const AddFont = () => {
@@ -71,7 +70,7 @@ const AddFont = () => {
 				</div>
 				<div className="col-span-9 pt-6 pb-5 px-6">
 					{/* Here will be Font Preview Section */}
-					<div className="border-b border-light pb-5 flex justify-between items-center">
+					<div className="pb-5 flex justify-between items-center">
 						<div className="text-sm text-secondary">
 							{__('Font preview', 'custom-fonts')}
 						</div>
@@ -85,20 +84,18 @@ const AddFont = () => {
 							/>
 						</div>
 					</div>
-					<div className="py-5 divide-y">
-						<div className="text-sm text-neutral pb-5">
+					<div className="py-5 divide-y border-t border-light">
+						<div className="text-sm text-neutral pb-5 preview-font-name">
 							<p>
-								{__('Font preview will appear here. Please select a font file.', 'custom-fonts')}
+								{activeType === "local" && __('Font preview will appear here. Please select a font file.', 'custom-fonts')}
+								{activeType === "google" && __('Font preview will appear here. Please select a font.', 'custom-fonts')}
 							</p>
 						</div>
-						<div>
-							{activeType === "local" && <LocalPreviewItem />}
-							{activeType === "google" && <GooglePreviewItem />}
-						</div>
+						{activeType === "local" && <LocalPreviewItem />}
+						{activeType === "google" && <GooglePreviewItem />}
 					</div>
 				</div>
 			</div>
-			{/* <FontNotification /> */}
 		</div>
 	);
 };

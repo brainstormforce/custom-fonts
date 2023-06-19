@@ -123,7 +123,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	}
 
 	const [editFontData, setEditGoogleFontData] = useState( editingFontData );
-	if ( null === variations || ! editFontData.variations.length || '' === editFontData.font_name ) {
+	if ( null === variations ) {
 		return;
 	}
 

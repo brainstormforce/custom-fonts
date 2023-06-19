@@ -68,7 +68,7 @@ const EditLocalVariationItem = ({
 							width="12"
 							height="8"
 							viewBox="0 0 12 8"
-							className="arrow-icon"
+							className="arrow-icon h-[40px]"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
 						>
@@ -85,7 +85,7 @@ const EditLocalVariationItem = ({
 								viewBox="0 0 16 16"
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
-								className="cursor-pointer remove-icon"
+								className="cursor-pointer remove-icon h-[40px]"
 								onClick={() =>
 									handleVariationRemove(variation.id)
 								}
@@ -119,7 +119,7 @@ const EditLocalVariationItem = ({
 									width="12"
 									height="8"
 									viewBox="0 0 12 8"
-									className="arrow-icon"
+									className="arrow-icon h-[40px]"
 									fill="none"
 									xmlns="http://www.w3.org/2000/svg"
 								>
@@ -135,7 +135,7 @@ const EditLocalVariationItem = ({
 										viewBox="0 0 16 16"
 										fill="none"
 										xmlns="http://www.w3.org/2000/svg"
-										className="cursor-pointer remove-icon"
+										className="cursor-pointer remove-icon h-[40px]"
 										onClick={() =>
 											handleVariationRemove(variation.id)
 										}
