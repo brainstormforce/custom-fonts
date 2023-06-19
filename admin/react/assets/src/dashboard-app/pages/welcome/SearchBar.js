@@ -53,11 +53,17 @@ const SearchBar = ({ setSearchResults, setLoading }) => {
 						// Clear input.
 						ref.current.value = "";
 						setSearchIcon(true);
+
+						// Load initial fonts on clear.
+						if ( query !== "" ) {
+							setLoading(true);
+							setQuery("");
+						}
 					}}
 				>
 					<svg
-						width="20"
-						height="20"
+						width="14"
+						height="14"
 						viewBox="0 0 20 20"
 						fill="none"
 						className="mr-2"
