@@ -5,7 +5,7 @@ import useDebounce from "../../../utils/useDebounce";
 
 const SearchBar = ({ setSearchResults, setLoading }) => {
 	const [query, setQuery] = useState("");
-	const debouncedQuery = useDebounce(query, 800);
+	const debouncedQuery = useDebounce(query, 700);
 	const [searchIcon, setSearchIcon] = useState(true);
 	const ref = useRef(null);
 
