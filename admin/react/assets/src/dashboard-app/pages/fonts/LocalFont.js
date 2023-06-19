@@ -480,7 +480,7 @@ const LocalFont = () => {
 
 				<button
 					type="button"
-					className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
+					className="inline-flex px-4 py-2 mb-5 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
 					onClick={ insertLocalFontPost }
 				>
 					{__( 'Save Font', 'custom-fonts' )}

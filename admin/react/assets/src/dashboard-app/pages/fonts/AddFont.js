@@ -19,7 +19,7 @@ const AddFont = () => {
 		<div>
 			<div className="grid grid-cols-12">
 				<style id={`bcf-fonts-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
-				<div className="col-span-3 px-6 bg-white min-h-screen">
+				<div className="col-span-3 tablet:col-span-5 mobile:col-span-12 px-6 bg-white md:min-h-screen">
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
 						<Link
@@ -68,9 +68,9 @@ const AddFont = () => {
 						{activeType === "google" && <GoogleFont />}
 					</div>
 				</div>
-				<div className="col-span-9 pt-6 pb-5 px-6">
+				<div className="col-span-9 tablet:col-span-7 mobile:col-span-12 pt-6 pb-5 px-6">
 					{/* Here will be Font Preview Section */}
-					<div className="pb-5 flex justify-between items-center">
+					<div className="pb-5 flex justify-between items-center tablet:block">
 						<div className="text-sm text-secondary">
 							{__('Font preview', 'custom-fonts')}
 						</div>

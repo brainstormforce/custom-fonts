@@ -258,6 +258,10 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 			}
 			$final_font_files = array();
 
+			if ( ! isset( $font_files[ $font_family_key ] ) ) {
+				return $final_font_files;
+			}
+
 			foreach ( $font_files[ $font_family_key ] as $key => $font_file ) {
 
 				// require file.php if the download_url function doesn't exist.

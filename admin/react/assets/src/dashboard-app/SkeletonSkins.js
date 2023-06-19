@@ -49,7 +49,7 @@ const ListSkeleton = ({ count }) => {
 
 const GridSkeleton = ({ count }) => {
 	return (
-		<div className="border border-light grid grid-cols-3 bcf-font-grid-wrap">
+		<div className="grid grid-cols-3 tablet:grid-cols-2 bcf-font-grid-wrap mobile:block">
 			{Array.from({ length: count }).map((_, index) => (
 				<div key={index} className="p-6">
 					<div className="flex justify-between items-center">

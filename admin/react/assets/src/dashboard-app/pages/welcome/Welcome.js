@@ -28,7 +28,7 @@ const Welcome = () => {
 									{ __( "Manage fonts that are used on your website.", "custom-fonts" ) }
 								</p>
 							</div>
-							<div className="relative">
+							<div className="relative tablet:mt-4">
 								<Link
 									to={{
 										pathname: "admin.php",
