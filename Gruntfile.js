@@ -7,6 +7,31 @@ module.exports = function( grunt ) {
 
 		pkg: grunt.file.readJSON( 'package.json' ),
 
+		rtlcss: {
+            options: {
+                config: {
+                    preserveComments: true,
+                    greedy: true
+                },
+                // generate source maps
+                map: false
+            },
+            dist: {
+                files: [
+					{
+                        expand: true,
+                        cwd: 'admin/react/assets/build',
+                        src: [
+                            '*.css',
+                            '!*-rtl.css',
+                        ],
+                        dest: 'admin/react/assets/build',
+                        ext: '-rtl.css'
+                    },
+                ]
+            }
+        },
+
 		addtextdomain: {
 			options: {
 				textdomain: 'custom-fonts',
@@ -46,8 +71,10 @@ module.exports = function( grunt ) {
 
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
+    grunt.loadNpmTasks('grunt-rtlcss');
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+    grunt.registerTask('rtl', ['rtlcss']);
 
 	grunt.util.linefeed = '\n';
 

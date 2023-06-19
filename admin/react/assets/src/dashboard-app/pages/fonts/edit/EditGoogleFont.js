@@ -60,7 +60,6 @@ const EditGoogleFont = ({fontId, fontName}) => {
 		editingFontData = toBeEditFont['fonts-data'];
 	}
 
-	const [editFontData, setEditGoogleFontData] = useState( editingFontData );
 	const [ isLoading, setLoading ] = useState( false );
 
 	const updatingNewFontPost = ( e ) => {
@@ -91,6 +90,8 @@ const EditGoogleFont = ({fontId, fontName}) => {
 		} );
 	};
 
+	let variationCount = 0;
+
 	return (
 		<div>
 			<div>
@@ -98,36 +99,38 @@ const EditGoogleFont = ({fontId, fontName}) => {
 					{__( 'Edit Font', 'custom-fonts' )}
 				</p>
 
-				<div className="my-5 border border-light rounded-sm p-3.5">
-					<h3 className="text-sm font-semibold text-heading">
-						{__('Selected Variant', 'custom-fonts')}
-					</h3>
-					<div className="flex flex-col gap-y-3.5">
-						<div className="gvariations-wrapper">
-							{variations.map((variation) => (
-								<EditGoogleVariationItem
-									key={variation}
-									variation={variation}
-								/>
-							))}
+				<div className="geditfontwrapper">
+					<div className="my-5 border border-light rounded-sm p-3.5">
+						<h3 className="text-sm font-semibold text-heading">
+							{__('Selected Variant', 'custom-fonts')}
+						</h3>
+						<div className="flex flex-col gap-y-3.5">
+							<div className="gvariations-wrapper">
+								{variations.map((variation) => (
+									<EditGoogleVariationItem
+										key={variation}
+										variation={variation}
+									/>
+								))}
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div className="my-5">
-					<button
-						type="button"
-						className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
-						onClick={ updatingNewFontPost }
-					>
-						{__( 'Save Font', 'custom-fonts' )}
-						{ 'loading' === isLoading && (
-							<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-								<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-								<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-							</svg>
-						) }
-					</button>
+					<div className="my-5">
+						<button
+							type="button"
+							className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
+							onClick={ updatingNewFontPost }
+						>
+							{__( 'Save Font', 'custom-fonts' )}
+							{ 'loading' === isLoading && (
+								<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+									<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+									<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+								</svg>
+							) }
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>

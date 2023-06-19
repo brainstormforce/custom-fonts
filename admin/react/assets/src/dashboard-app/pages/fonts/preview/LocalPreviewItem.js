@@ -18,7 +18,7 @@ const LocalPreviewItem = () => {
 	const fontName = localFont.font_name;
 
 	const getLocalFontStyle = () => {
-		let defaultFont = `@font-face {\r\n\tfont-family: '${fontName}';\r\n\tfont-style: normal;`;
+		let defaultFont = `.preview-font-name {display: none;} @font-face {\r\n\tfont-family: '${fontName}';\r\n\tfont-style: normal;`;
 		let srcFont = '';
 
 		variations.map((variation) => {

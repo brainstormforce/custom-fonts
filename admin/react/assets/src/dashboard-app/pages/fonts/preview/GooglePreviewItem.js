@@ -12,6 +12,9 @@ const GooglePreviewItem = () => {
 
 	const googleFont = googleFontState.font_name;
 	const gFontData = bsf_custom_fonts_admin.googleFonts[googleFont];
+	if ( undefined === gFontData ) {
+		return;
+	}
 	const variations = gFontData[0] ? gFontData[0] : [];
 
 	const getGoogleFontLink = (font, version) => {
@@ -38,7 +41,8 @@ const GooglePreviewItem = () => {
 
 	return (
 		variations && Object.keys( variations ).map( ( key, i ) => (
-			<div key={i}>
+			<div key={i} className="google-fonts-preview-wrapper">
+				<style id={`bcf-google-font-${i}-css`}> {'.preview-font-name {display: none;}'} </style>
 				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(googleFont, i)} media='all' />
 				<GFontVariation font={googleFont} weight={variations[key]} isInGoogleState={checkWeightPresentInState(variations[key])} key={key} />
 			</div>
