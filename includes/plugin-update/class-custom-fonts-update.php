@@ -150,6 +150,12 @@ class Custom_Fonts_Update {
 	 * @since x.x.x
 	 */
 	public function v_2_0_0() {
+		// Halt if already migrated.
+		$is_already_migrated = get_option( 'bcf_custom_fonts_2_0_migration', false );
+		if ( true === $is_already_migrated  ) {
+			return;
+		}
+
 		$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
 		foreach ( $fonts as $load_font_name => $load_font ) {
 			$font_data = bcf_prepare_backward_font_data( $load_font_name );
@@ -174,6 +180,7 @@ class Custom_Fonts_Update {
 			update_post_meta( $font_post_id, 'fonts-face', $font_face );
 			update_post_meta( $font_post_id, 'font-type', 'local' );
 		}
+		update_option( 'bcf_custom_fonts_2_0_migration', true );
 	}
 
 	/**
