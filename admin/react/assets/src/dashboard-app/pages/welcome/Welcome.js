@@ -4,7 +4,7 @@ import CustomFontList from "./CustomFontList";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import { __ } from "@wordpress/i18n";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Welcome = () => {
 	const [activeView, setActiveView] = useState("list");
