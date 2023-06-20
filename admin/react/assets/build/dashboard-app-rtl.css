@@ -673,8 +673,6 @@ select {
   margin-bottom: 0.875rem;
 }.mb-5 {
   margin-bottom: 1.25rem;
-}.ml-11 {
-  margin-right: 2.75rem;
 }.ml-2 {
   margin-right: 0.5rem;
 }.ml-3 {
@@ -1075,6 +1073,14 @@ select {
     margin-bottom: 2rem;
   }
 
+  .sm\:ml-11 {
+    margin-right: 2.75rem;
+  }
+
+  .sm\:ml-3 {
+    margin-right: 0.75rem;
+  }
+
   .sm\:mt-0 {
     margin-top: 0px;
   }
@@ -1184,6 +1190,14 @@ select {
 
   .mobile\:col-span-12 {
     grid-column: span 12 / span 12;
+  }
+
+  .mobile\:ml-2 {
+    margin-right: 0.5rem;
+  }
+
+  .mobile\:mt-3 {
+    margin-top: 0.75rem;
   }
 
   .mobile\:block {

@@ -62,8 +62,8 @@ const SearchBar = ({ setSearchResults, setLoading }) => {
 					}}
 				>
 					<svg
-						width="14"
-						height="14"
+						width="17"
+						height="17"
 						viewBox="0 0 20 20"
 						fill="none"
 						className="mr-2"

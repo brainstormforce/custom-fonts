@@ -104,9 +104,9 @@ const ListItem = ({ item }) => {
 			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors`}>
 				<div className="flex items-center justify-between py-5 border-b border-light list-font-title">
 					{ getAssetDetail(item) }
-					<div className="flex items-center px-6">
+					<div className="flex items-center px-6 mobile:block">
 						<h1 className="text-xl" style={{  fontFamily: item.title, fontWeight: "normal", fontSize: "2em" }}> {item.title} </h1>
-						<div className="ml-3 text-sm"> {`(${item['fonts-data']['variations'] ? item['fonts-data']['variations'].length : 0} ${__( 'variants', 'custom-fonts' )})`} </div>
+						<div className="sm:ml-3 mobile:mt-3 text-sm"> {`(${item['fonts-data']['variations'] ? item['fonts-data']['variations'].length : 0} ${__( 'variants', 'custom-fonts' )})`} </div>
 					</div>
 					<div className="flex px-6">
 						{checkDelete ? (
@@ -154,7 +154,7 @@ const ListItem = ({ item }) => {
 
 						<div
 							onClick={() => setActive(!active)}
-							className="ml-11 cursor-pointer"
+							className="sm:ml-11 mobile:ml-2 cursor-pointer"
 						>
 							<svg
 								width="20"

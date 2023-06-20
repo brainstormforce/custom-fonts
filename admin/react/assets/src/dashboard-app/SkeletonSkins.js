@@ -35,7 +35,7 @@ const ListSkeleton = ({ count }) => {
 								</div>
 							</div>
 						</div>
-						<div className="ml-11 cursor-pointer">
+						<div className="sm:ml-11 mobile:ml-2 cursor-pointer">
 							<div className="bg-gray-300 p-3 h-2 w-2 rounded-full animate-pulse">
 								{/* Arrow Skeleton */}
 							</div>
