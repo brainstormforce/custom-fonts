@@ -11,6 +11,11 @@ const SearchBar = ({ setSearchResults, setLoading }) => {
 
 	const handleSearch = (e) => {
 		const q = e.target.value;
+		if ( '' === q ) {
+			setSearchIcon(true);
+		} else {
+			setSearchIcon(false);
+		}
 		setLoading(true);
 		setQuery(q);
 	};
@@ -89,7 +94,6 @@ const SearchBar = ({ setSearchResults, setLoading }) => {
 				type="text"
 				placeholder={__("Search Custom Font", "custom-fonts")}
 				onChange={handleSearch}
-				onFocus={() => setSearchIcon(false)}
 				ref={ref}
 			/>
 		</div>

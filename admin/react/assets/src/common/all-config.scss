@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.appearance_page_bsf-custom-fonts #wpbody-content {
+	padding-bottom: 10px;
+}
 .bsf-cf-menu-page-wrapper {
-	font-family: 'SF Pro Text';
 	font-family: 'Inter';
 	font-style: normal;
 }

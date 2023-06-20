@@ -183,7 +183,7 @@ const LocalVariationItem = ({
 							</label>
 							<div className="mt-1.5">
 								<input
-									type="text"
+									type="number"
 									name={`variation[${variation.id}][font_weight]`}
 									value={variation.font_weight}
 									onChange={(event) =>
