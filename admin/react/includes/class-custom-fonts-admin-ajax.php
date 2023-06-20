@@ -177,7 +177,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
-		$font_face = bcf_google_fonts_compatibility()->save_google_fonts_to_theme( $font_data );
+		$font_face = bcf_google_fonts_compatibility()->process_google_fonts_locally( $font_data );
 
 		// Create post object.
 		$new_font_post = array(
@@ -238,7 +238,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
-		$font_face = bcf_google_fonts_compatibility()->save_google_fonts_to_theme( $font_data );
+		$font_face = bcf_google_fonts_compatibility()->process_google_fonts_locally( $font_data );
 
 		update_post_meta( $font_id, 'fonts-data', $font_data );
 		update_post_meta( $font_id, 'fonts-face', $font_face );

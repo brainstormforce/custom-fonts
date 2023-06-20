@@ -86,9 +86,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since x.x.x
 		 */
 		public function __construct() {
-			$upload_dir = wp_upload_dir( null, false );
-
-			if ( empty( $_GET['page'] ) || BSF_CUSTOM_FONTS_POST_TYPE !== $_GET['page'] || empty( $_GET['path'] ) || 'add-fonts' !== $_GET['path'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			if ( empty( $_GET['page'] ) || BSF_CUSTOM_FONTS_ADMIN_PAGE !== $_GET['page'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				return;
 			}
 
@@ -99,7 +97,10 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$bcf_filesystem->delete( $fonts_folder_path, true, 'd' );
 			}
 
-			self::delete_all_theme_font_family();
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				self::delete_all_theme_font_family();
+				add_action( 'admin_init', array( $this, 'update_fse_theme_json' ) );
+			}
 		}
 
 		/**
@@ -131,12 +132,62 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		}
 
 		/**
-		 * Save Google Fonts to the FSE Theme.
+		 * Save Google Fonts to locally.
 		 *
 		 * @return void
 		 * @since x.x.x
 		 */
-		public function save_google_fonts_to_theme( $font ) {
+		public function update_fse_theme_json() {
+
+			$all_fonts = Bsf_Custom_Fonts_Render::get_instance()->get_existing_font_posts();
+
+			if ( empty( $all_fonts ) || ! is_array( $all_fonts ) ) {
+				return;
+			}
+
+			foreach ( $all_fonts as $font => $id ) {
+				$new_font_faces = array();
+				$font_family    = get_the_title( $id );
+				$font_slug      = $this->get_font_slug( $font_family );
+				$font_data      = get_post_meta( $id, 'fonts-data', true );
+
+				if ( ! empty( $font_data['variations'] ) ) {
+					foreach ( $font_data['variations'] as $variation ) {
+						$font_weight = ! empty( $variation['font_weight'] ) ? $variation['font_weight'] : '';
+						$font_style  = ! empty( $variation['font_style'] ) ? $variation['font_style'] : 'normal';
+
+						$final_font_files = $this->get_fonts_file_url( $font_family, $font_weight, $font_style, $id, true );
+
+						// Convert paths to URLs.
+						foreach ( $final_font_files as $remote => $local ) {
+							$final_font_files[ $remote ] = str_replace(
+								$this->get_base_path(),
+								$this->get_base_url(),
+								$local
+							);
+						}
+
+						// Add each variant as one font face.
+						$new_font_faces[] = array(
+							'fontFamily'  => $font_family,
+							'fontStretch' => '',
+							'fontStyle'   => $font_style,
+							'fontWeight'  => $font_weight,
+							'src'         => $final_font_files,
+						);
+					}
+					$this->add_or_update_theme_font_faces( $font_family, $font_slug, $new_font_faces );
+				}
+			}
+		}
+
+		/**
+		 * Save Google Fonts to locally.
+		 *
+		 * @return void
+		 * @since x.x.x
+		 */
+		public function process_google_fonts_locally( $font ) {
 
 			if ( empty( $font ) || ! is_array( $font ) ) {
 				return;
@@ -186,9 +237,6 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 			$font_face_css = bcf_get_font_face_css( 1, $font_data, true, true );
 			return $font_face_css;
-
-			// FSE support need to check.
-			$this->add_or_update_theme_font_faces( $font_family, $font_slug, $font_data );
 		}
 
 		/**
@@ -223,66 +271,83 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @param string $font_family Font Family.
 		 * @param string $font_weight Font Weight.
 		 * @param string $font_style Font Style.
+		 * @param mixed  $font_id Font id.
+		 * @param bool   $for_theme_json Flag for Theme JSON file path.
 		 * @return array final font files.
 		 * @since x.x.x
 		 */
-		public function get_fonts_file_url( $font_family, $font_weight, $font_style ) {
-
+		public function get_fonts_file_url( $font_family, $font_weight, $font_style, $font_id = null, $for_theme_json = false ) {
 			$font_family_key = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
-			$fonts_attr      = str_replace( ' ', '+', $font_family );
-			$fonts_file_name = $font_family_key;
-			if ( ! empty( $font_weight ) ) {
-				$fonts_attr      .= ':' . $font_weight;
-				$fonts_file_name .= '-' . $font_weight;
-				if ( ! empty( $font_style ) ) {
-					$fonts_attr      .= ',' . $font_weight . $font_style;
-					$fonts_file_name .= '-' . $font_style;
+
+			if ( ! is_null( $font_id ) && 'local' === get_post_meta( $font_id, 'font-type', true ) ) {
+				$font_data  = get_post_meta( $font_id, 'fonts-data', true );
+				$fonts_link = '';
+				foreach ( $font_data['variations'] as $key => $var_arr ) {
+					if ( $font_weight === $var_arr['font_weight'] ) {
+						$fonts_link = $var_arr['font_url'];
+						break;
+					}
 				}
-			}
-			$fonts_link = 'https://fonts.googleapis.com/css?family=' . esc_attr( $fonts_attr );
-
-			// Get the remote URL contents.
-			$this->remote_styles = $this->get_remote_url_contents( $fonts_link );
-			$font_files          = $this->get_remote_files_from_css();
-
-			$fonts_folder_path = $this->get_fonts_folder() . '/' . $font_family;
-
-			// If the fonts folder don't exist, create it.
-			if ( ! file_exists( $fonts_folder_path ) ) {
-
-				wp_mkdir_p( $fonts_folder_path );
-
-				if ( ! file_exists( $fonts_folder_path ) ) {
-					$this->get_filesystem()->mkdir( $fonts_folder_path, FS_CHMOD_DIR );
+			} else {
+				$fonts_attr      = str_replace( ' ', '+', $font_family );
+				$fonts_file_name = $font_family_key;
+				if ( ! empty( $font_weight ) ) {
+					$fonts_attr      .= ':' . $font_weight;
+					$fonts_file_name .= '-' . $font_weight;
+					if ( ! empty( $font_style ) ) {
+						$fonts_attr      .= ',' . $font_weight . $font_style;
+						$fonts_file_name .= '-' . $font_style;
+					}
 				}
+				$fonts_link = 'https://fonts.googleapis.com/css?family=' . esc_attr( $fonts_attr );
 			}
+
 			$final_font_files = array();
 
-			if ( ! isset( $font_files[ $font_family_key ] ) ) {
-				return $final_font_files;
-			}
+			if ( ! is_null( $font_id ) && 'local' === get_post_meta( $font_id, 'font-type', true ) ) {
+				$final_font_files[] = $fonts_link;
+			} else {
+				// Get the remote URL contents.
+				$this->remote_styles = $this->get_remote_url_contents( $fonts_link );
+				$font_files          = $this->get_remote_files_from_css();
 
-			foreach ( $font_files[ $font_family_key ] as $key => $font_file ) {
+				$fonts_folder_path = $this->get_fonts_folder() . '/' . $font_family;
 
-				// require file.php if the download_url function doesn't exist.
-				if ( ! function_exists( 'download_url' ) ) {
-					require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
+				// If the fonts folder don't exist, create it.
+				if ( ! file_exists( $fonts_folder_path ) ) {
+
+					wp_mkdir_p( $fonts_folder_path );
+
+					if ( ! file_exists( $fonts_folder_path ) ) {
+						$this->get_filesystem()->mkdir( $fonts_folder_path, FS_CHMOD_DIR );
+					}
 				}
-				// Download file to temporary location.
-				$tmp_path = download_url( $font_file );
 
-				// Make sure there were no errors.
-				if ( is_wp_error( $tmp_path ) ) {
-					return array();
+				if ( ! isset( $font_files[ $font_family_key ] ) ) {
+					return $final_font_files;
 				}
 
-				$fonts_file_name_final = $fonts_file_name . $key . '.' . $this->font_format;
-				$font_path             = $fonts_folder_path . '/' . $fonts_file_name_final;
+				foreach ( $font_files[ $font_family_key ] as $key => $font_file ) {
 
-				// Move font asset to wp-content assets folder.
-				$success = $this->get_filesystem()->move( $tmp_path, $font_path, true );
+					// require file.php if the download_url function doesn't exist.
+					if ( ! function_exists( 'download_url' ) ) {
+						require_once wp_normalize_path( ABSPATH . '/wp-admin/includes/file.php' );
+					}
+					// Download file to temporary location.
+					$tmp_path = download_url( $font_file );
 
-				$final_font_files[] = $font_path;
+					// Make sure there were no errors.
+					if ( is_wp_error( $tmp_path ) ) {
+						return array();
+					}
+
+					$fonts_file_name_final = $fonts_file_name . $key . '.' . $this->font_format;
+					$font_path             = $fonts_folder_path . '/' . $fonts_file_name_final;
+
+					// Move font asset to wp-content assets folder.
+					$success            = $this->get_filesystem()->move( $tmp_path, $font_path, true );
+					$final_font_files[] = $font_path;
+				}
 			}
 
 			return $final_font_files;
@@ -618,7 +683,6 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				}
 			}
 			$bcf_global_fse_fonts = self::sanitize_form_inputs( $bcf_global_fse_fonts );
-			// BCF_Admin_Helper::update_admin_settings_option( 'bcf_global_fse_fonts', $bcf_global_fse_fonts );
 
 			$response_data = array(
 				'messsage' => __( 'Successfully deleted font.', 'custom-fonts' ),

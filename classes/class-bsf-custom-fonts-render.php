@@ -224,7 +224,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			return $fonts;
 		}
 
-
 		/**
 		 * Add Custom Font list to BB theme and BB Page Builder
 		 *
