@@ -94,6 +94,11 @@ const SearchBar = ({ setSearchResults, setLoading }) => {
 				type="text"
 				placeholder={__("Search Custom Font", "custom-fonts")}
 				onChange={handleSearch}
+				onBlur={() => {
+					if (ref.current.value === "") {
+						setSearchIcon(true);
+					}
+				}}
 				ref={ref}
 			/>
 		</div>

@@ -30,3 +30,4 @@ vendor/
 borders-for-default-menu.json
 defaults.json
 no-toggle-border-fix.json
+config.bat
