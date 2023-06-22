@@ -135,8 +135,8 @@ if ( ! class_exists( 'BCF_Custom_Font_Families' ) ) :
 						if ( 'files' === $font_key ) {
 							foreach ( $single_font as $file_key => $var ) {
 								if ( 'regular' == $file_key ) {
-									$font[ $name ][ $font_key ][ '400' ] = $var;
-									unset( $font[ $name ][ $font_key ][ 'regular' ] );
+									$font[ $name ][ $font_key ]['400'] = $var;
+									unset( $font[ $name ][ $font_key ]['regular'] );
 								} else {
 									$font[ $name ][ $font_key ][ $file_key ] = $var;
 								}

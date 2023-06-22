@@ -222,6 +222,7 @@ class Bsf_Custom_Fonts_Menu {
 			'delete_font_nonce'   => wp_create_nonce( 'delete_font_nonce' ),
 			'googleFonts'         => BCF_Custom_Font_Families::get_google_fonts(),
 			'existingGoogleFonts' => BCF_Custom_Font_Families::get_existing_google_fonts(),
+			'fontPostCount'       => wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE )->publish,
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );

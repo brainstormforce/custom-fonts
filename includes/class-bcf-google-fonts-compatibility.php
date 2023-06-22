@@ -97,10 +97,8 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$bcf_filesystem->delete( $fonts_folder_path, true, 'd' );
 			}
 
-			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
-				self::delete_all_theme_font_family();
-				add_action( 'admin_init', array( $this, 'update_fse_theme_json' ) );
-			}
+			self::delete_all_theme_font_family();
+			add_action( 'admin_init', array( $this, 'update_fse_theme_json' ) );
 		}
 
 		/**
@@ -364,49 +362,51 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since x.x.x
 		 */
 		public function add_or_update_theme_font_faces( $font_name, $font_slug, $font_faces ) {
-			// Get the current theme.json and fontFamilies defined (if any).
-			$theme_json_raw      = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
-			$theme_font_families = isset( $theme_json_raw['settings']['typography']['fontFamilies'] ) ? $theme_json_raw['settings']['typography']['fontFamilies'] : null;
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				// Get the current theme.json and fontFamilies defined (if any).
+				$theme_json_raw      = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
+				$theme_font_families = isset( $theme_json_raw['settings']['typography']['fontFamilies'] ) ? $theme_json_raw['settings']['typography']['fontFamilies'] : null;
 
-			$existent_family = $theme_font_families ? array_values(
-				array_filter(
-					$theme_font_families,
-					function ( $font_family ) use ( $font_slug ) {
-						return $font_family['slug'] === $font_slug; }
-				)
-			) : null;
-
-			// Add the new font faces.
-			if ( empty( $existent_family ) ) { // If the new font family doesn't exist in the theme.json font families, add it to the existing font families.
-				$theme_font_families[] = array(
-					'fontFamily' => $font_name,
-					'slug'       => $font_slug,
-					'fontFace'   => $font_faces,
-					'isBcf'      => true,
-				);
-			} else { // If the new font family already exists in the theme.json font families, add the new font faces to the existing font family.
-				$theme_font_families            = array_values(
+				$existent_family = $theme_font_families ? array_values(
 					array_filter(
 						$theme_font_families,
 						function ( $font_family ) use ( $font_slug ) {
-							return $font_family['slug'] !== $font_slug; }
+							return $font_family['slug'] === $font_slug; }
 					)
+				) : null;
+
+				// Add the new font faces.
+				if ( empty( $existent_family ) ) { // If the new font family doesn't exist in the theme.json font families, add it to the existing font families.
+					$theme_font_families[] = array(
+						'fontFamily' => $font_name,
+						'slug'       => $font_slug,
+						'fontFace'   => $font_faces,
+						'isBcf'      => true,
+					);
+				} else { // If the new font family already exists in the theme.json font families, add the new font faces to the existing font family.
+					$theme_font_families            = array_values(
+						array_filter(
+							$theme_font_families,
+							function ( $font_family ) use ( $font_slug ) {
+								return $font_family['slug'] !== $font_slug; }
+						)
+					);
+					$existent_family[0]['fontFace'] = $font_faces;
+					$theme_font_families            = array_merge( $theme_font_families, $existent_family );
+				}
+
+				// Overwrite the previous fontFamilies with the new ones.
+				$theme_json_raw['settings']['typography']['fontFamilies'] = $theme_font_families;
+
+				$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+				$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
+
+				// Write the new theme.json to the theme folder.
+				file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
+					get_stylesheet_directory() . '/theme.json',
+					$theme_json_string
 				);
-				$existent_family[0]['fontFace'] = $font_faces;
-				$theme_font_families            = array_merge( $theme_font_families, $existent_family );
 			}
-
-			// Overwrite the previous fontFamilies with the new ones.
-			$theme_json_raw['settings']['typography']['fontFamilies'] = $theme_font_families;
-
-			$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-			$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
-
-			// Write the new theme.json to the theme folder.
-			file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
-				get_stylesheet_directory() . '/theme.json',
-				$theme_json_string
-			);
 		}
 
 		/**
@@ -590,37 +590,38 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since x.x.x
 		 */
 		public static function delete_all_theme_font_family() {
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				// Construct updated theme.json.
+				$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
 
-			// Construct updated theme.json.
-			$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
+				// Overwrite the previous fontFamilies with the new ones.
+				$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
 
-			// Overwrite the previous fontFamilies with the new ones.
-			$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
-
-			if ( ! empty( $font_families ) && is_array( $font_families ) ) {
-				$font_families = array_values(
-					array_filter(
-						$font_families,
-						function( $value ) {
-							if ( ! empty( $value['isBcf'] ) ) {
-								return false;
+				if ( ! empty( $font_families ) && is_array( $font_families ) ) {
+					$font_families = array_values(
+						array_filter(
+							$font_families,
+							function( $value ) {
+								if ( ! empty( $value['isBcf'] ) ) {
+									return false;
+								}
+								return true;
 							}
-							return true;
-						}
-					)
+						)
+					);
+				}
+
+				$theme_json_raw['settings']['typography']['fontFamilies'] = $font_families;
+
+				$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+				$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
+
+				// Write the new theme.json to the theme folder.
+				file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
+					get_stylesheet_directory() . '/theme.json',
+					$theme_json_string
 				);
 			}
-
-			$theme_json_raw['settings']['typography']['fontFamilies'] = $font_families;
-
-			$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-			$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
-
-			// Write the new theme.json to the theme folder.
-			file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
-				get_stylesheet_directory() . '/theme.json',
-				$theme_json_string
-			);
 		}
 
 		/**
@@ -631,63 +632,65 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since x.x.x
 		 */
 		public static function delete_theme_font_family( $font ) {
-			// Construct updated theme.json.
-			$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
+			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				// Construct updated theme.json.
+				$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
 
-			// Overwrite the previous fontFamilies with the new ones.
-			$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
-			if ( ! empty( $font_families ) && is_array( $font_families ) ) {
-				foreach ( $font_families as $key => $value ) {
-					if ( $font['fontFamily'] === $value['fontFamily'] && ! empty( $value['fontFace'] ) && is_array( $value['fontFace'] ) ) {
-						unset( $font_families[ $key ] );
-						break;
-					}
-				}
-			}
-			$theme_json_raw['settings']['typography']['fontFamilies'] = $font_families;
-
-			$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-			$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
-
-			// Write the new theme.json to the theme folder.
-			file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
-				get_stylesheet_directory() . '/theme.json',
-				$theme_json_string
-			);
-
-			$bcf_global_fse_fonts = array();
-
-			if ( ! is_array( $bcf_global_fse_fonts ) ) {
-				$response_data = array(
-					'messsage' => __( 'There was some error in deleting the font.', 'custom-fonts' ),
-				);
-				wp_send_json_error( $response_data );
-			}
-
-			$bcf_global_fse_fonts = array_values(
-				array_filter(
-					$bcf_global_fse_fonts,
-					function( $value ) use ( $font ) {
-						if ( $font['fontFamily'] === $value['value'] ) {
-							return false;
+				// Overwrite the previous fontFamilies with the new ones.
+				$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
+				if ( ! empty( $font_families ) && is_array( $font_families ) ) {
+					foreach ( $font_families as $key => $value ) {
+						if ( $font['fontFamily'] === $value['fontFamily'] && ! empty( $value['fontFace'] ) && is_array( $value['fontFace'] ) ) {
+							unset( $font_families[ $key ] );
+							break;
 						}
-						return true;
 					}
-				)
-			);
-
-			foreach ( $bcf_global_fse_fonts as $key => $value ) {
-				if ( $font['fontFamily'] === $value['value'] ) {
-					array_splice( $bcf_global_fse_fonts, $key, $key );
 				}
+				$theme_json_raw['settings']['typography']['fontFamilies'] = $font_families;
+
+				$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+				$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
+
+				// Write the new theme.json to the theme folder.
+				file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
+					get_stylesheet_directory() . '/theme.json',
+					$theme_json_string
+				);
+
+				$bcf_global_fse_fonts = array();
+
+				if ( ! is_array( $bcf_global_fse_fonts ) ) {
+					$response_data = array(
+						'messsage' => __( 'There was some error in deleting the font.', 'custom-fonts' ),
+					);
+					wp_send_json_error( $response_data );
+				}
+
+				$bcf_global_fse_fonts = array_values(
+					array_filter(
+						$bcf_global_fse_fonts,
+						function( $value ) use ( $font ) {
+							if ( $font['fontFamily'] === $value['value'] ) {
+								return false;
+							}
+							return true;
+						}
+					)
+				);
+
+				foreach ( $bcf_global_fse_fonts as $key => $value ) {
+					if ( $font['fontFamily'] === $value['value'] ) {
+						array_splice( $bcf_global_fse_fonts, $key, $key );
+					}
+				}
+				$bcf_global_fse_fonts = self::sanitize_form_inputs( $bcf_global_fse_fonts );
+
+				$response_data = array(
+					'messsage' => __( 'Successfully deleted font.', 'custom-fonts' ),
+				);
+
+				wp_send_json_success( $response_data );
 			}
-			$bcf_global_fse_fonts = self::sanitize_form_inputs( $bcf_global_fse_fonts );
-
-			$response_data = array(
-				'messsage' => __( 'Successfully deleted font.', 'custom-fonts' ),
-			);
-
-			wp_send_json_success( $response_data );
 		}
 	}
 }

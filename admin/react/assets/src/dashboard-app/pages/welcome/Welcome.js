@@ -4,11 +4,9 @@ import CustomFontList from "./CustomFontList";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 import { __ } from "@wordpress/i18n";
-import { useSelector } from 'react-redux';
 
 const Welcome = () => {
 	const [activeView, setActiveView] = useState("list");
-	const fontsData = useSelector( ( state ) => state.fonts );
 	const [searchResults, setSearchResults] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const toggleView = (value) => {
@@ -48,7 +46,7 @@ const Welcome = () => {
 				<SearchBar setSearchResults={ setSearchResults } setLoading={ setLoading }/>
 				{/* Font Counter and View toggle */}
 				<div className="flex justify-between items-center my-6">
-					<div className="text-base"> { searchResults ? searchResults.found_posts : (fontsData ? fontsData.length : 0) } { __(" font families", "custom-fonts") } </div>
+					<div className="text-base"> { searchResults ? searchResults.found_posts : bsf_custom_fonts_admin.fontPostCount } { __(" font families", "custom-fonts") } </div>
 					<div className="flex justify-end gap-x-7">
 						<div
 							className="cursor-pointer"
