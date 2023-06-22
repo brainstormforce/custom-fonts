@@ -5,6 +5,29 @@
 .appearance_page_bsf-custom-fonts #wpbody-content {
 	padding-bottom: 10px;
 }
+.bcf-add-new-font-page.appearance_page_bsf-custom-fonts #wpbody-content {
+	padding-bottom: 0;
+}
+.appearance_page_bsf-custom-fonts .bcf-edit-dialog-panel {
+	top: 25%;
+    position: absolute;
+    left: 25%;
+    max-width: 60%;
+    width: 100%;
+}
+.border.bcf-font-list-wrap {
+	border-bottom: 0;
+    border-top: 0;
+}
+.bcf-font-list-wrap .transition-colors:last-child > div.border-b {
+    border-bottom-width: 1px;
+}
+.bcf-font-list-wrap .transition-colors:first-child > div.border-b {
+    border-top-width: 1px;
+}
+.bcf-add-new-font-page #wpfooter, .bcf-add-new-font-page .clear {
+    display: none;
+}
 .bsf-cf-menu-page-wrapper {
 	font-family: 'Inter';
 	font-style: normal;
@@ -42,6 +65,11 @@ button.font-file-uploader.btn {
 }
 span.font-filename {
 	margin-left: -10px;
+	margin-left: -10px;
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .font-triggers {
     position: absolute;

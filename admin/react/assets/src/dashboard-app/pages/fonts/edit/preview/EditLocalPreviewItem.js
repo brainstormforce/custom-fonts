@@ -51,7 +51,7 @@ const EditLocalPreviewItem = (fontId) => {
 			<style id={`bcf-local-font-css`}> {getLocalFontStyle()} </style>
 			{
 				variations && variations.map( ( variation ) => (
-					<LFontVariation font={fontName} weight={variation.font_weight} key={parseInt(variation.font_weight)+100} />
+					<LFontVariation font={fontName} weight={variation.font_weight} fontUrl={variation.font_url} style={ '' === variation.font_style ? 'normal' : variation.font_style } key={parseInt(variation.font_weight)+1000} />
 				))
 			}
 		</div>

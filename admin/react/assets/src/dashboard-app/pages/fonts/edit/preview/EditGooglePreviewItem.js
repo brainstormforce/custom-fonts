@@ -13,27 +13,32 @@ const EditGFontVariation = (
 	}
 ) => {
 	const getFontWeightTitle = ( weight ) => {
+		let updatedWeight = weight,
+			oldWeight = weight;
+		if ( oldWeight.includes('italic') ) {
+			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
+		}
 		switch ( weight ) {
 			case '100':
-				return __( 'Thin ', 'custom-fonts' ) + weight;
+				return __( 'Thin ', 'custom-fonts' ) + updatedWeight;
 			case '200':
-				return __( 'Extra Light ', 'custom-fonts' ) + weight;
+				return __( 'Extra Light ', 'custom-fonts' ) + updatedWeight;
 			case '300':
-				return __( 'Light ', 'custom-fonts' ) + weight;
+				return __( 'Light ', 'custom-fonts' ) + updatedWeight;
 			case '400':
-				return __( 'Regular ', 'custom-fonts' ) + weight;
+				return __( 'Regular ', 'custom-fonts' ) + updatedWeight;
 			case '500':
-				return __( 'Medium ', 'custom-fonts' ) + weight;
+				return __( 'Medium ', 'custom-fonts' ) + updatedWeight;
 			case '600':
-				return __( 'Semi Bold ', 'custom-fonts' ) + weight;
+				return __( 'Semi Bold ', 'custom-fonts' ) + updatedWeight;
 			case '700':
-				return __( 'Bold ', 'custom-fonts' ) + weight;
+				return __( 'Bold ', 'custom-fonts' ) + updatedWeight;
 			case '800':
-				return __( 'Extra Bold ', 'custom-fonts' ) + weight;
+				return __( 'Extra Bold ', 'custom-fonts' ) + updatedWeight;
 			case '900':
-				return __( 'Black ', 'custom-fonts' ) + weight;
+				return __( 'Black ', 'custom-fonts' ) + updatedWeight;
 			default:
-				return __( 'Weight ', 'custom-fonts' ) + weight;
+				return __( 'Weight ', 'custom-fonts' ) + updatedWeight;
 		}
 	}
 

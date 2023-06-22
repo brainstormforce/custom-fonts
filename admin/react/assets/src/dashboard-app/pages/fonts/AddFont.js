@@ -9,7 +9,7 @@ import { __ } from "@wordpress/i18n";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
-	const [previewSize, updatePreviewSize] = useState("48");
+	const [previewSize, updatePreviewSize] = useState("50");
 
 	const toggleType = (value) => {
 		setActiveType(value);
@@ -44,7 +44,7 @@ const AddFont = () => {
 						</Link>
 						<div
 							onClick={() => toggleType("local")}
-							className={`text-base leading-8 hover:text-heading cursor-pointer px-4 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
+							className={`text-base leading-8 hover:text-heading cursor-pointer px-3 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
 								activeType === "local"
 									? "text-heading border-b-primary"
 									: "text-neutral"
@@ -54,7 +54,7 @@ const AddFont = () => {
 						</div>
 						<div
 							onClick={() => toggleType("google")}
-							className={`text-base leading-8 hover:text-heading cursor-pointer px-4 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
+							className={`text-base leading-8 hover:text-heading cursor-pointer px-3 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
 								activeType === "google"
 									? "text-heading border-b-primary"
 									: "text-neutral"
@@ -81,6 +81,7 @@ const AddFont = () => {
 								min={1}
 								max={100}
 								step={1}
+								value={parseInt(previewSize)}
 							/>
 						</div>
 					</div>
