@@ -697,6 +697,8 @@ select {
   display: block;
 }.inline-block {
   display: inline-block;
+}.inline {
+  display: inline;
 }.flex {
   display: flex;
 }.inline-flex {
@@ -891,6 +893,8 @@ select {
   padding: 1rem;
 }.p-6 {
   padding: 1.5rem;
+}.p-\[2em\] {
+  padding: 2em;
 }.p-\[3px\] {
   padding: 3px;
 }.px-1 {
@@ -911,9 +915,6 @@ select {
 }.py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
-}.py-7 {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
 }.pb-20 {
   padding-bottom: 5rem;
 }.pb-4 {
@@ -939,6 +940,8 @@ select {
 }.text-5xl {
   font-size: 3rem;
   line-height: 1;
+}.text-\[0\.8125rem\] {
+  font-size: 0.8125rem;
 }.text-\[1\.625rem\] {
   font-size: 1.625rem;
 }.text-base {
@@ -1164,6 +1167,10 @@ select {
 
   .lg\:flex-row {
     flex-direction: row;
+  }
+
+  .lg\:p-\[2em\] {
+    padding: 2em;
   }
 }@media (max-width: 782px) {
 
