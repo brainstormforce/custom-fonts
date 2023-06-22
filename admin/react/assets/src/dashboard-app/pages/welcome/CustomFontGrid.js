@@ -3,6 +3,7 @@ import { __ } from "@wordpress/i18n";
 import GridItem from "./GridItem";
 import { useSelector } from "react-redux";
 import SkeletonSkins from "../../SkeletonSkins";
+import EmptyState from "./EmptyState";
 
 const CustomFontGrid = ({ searchResults, loading, activeView }) => {
 	const fontsData = useSelector((state) => state.fonts);
