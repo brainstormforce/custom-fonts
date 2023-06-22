@@ -50,7 +50,7 @@ const LocalVariationItem = ({
 	}
 
 	return (
-		<div className="border border-light rounded-sm variation-file-field">
+		<div key={id} className="border border-light rounded-sm variation-file-field">
 			{!toggleView ? (
 				<div className="flex items-center justify-between p-3.5 relative">
 					<h2 className="text-sm font-semibold text-secondary">

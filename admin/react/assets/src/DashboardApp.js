@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 /* Main Component */
+import './common/common';
 import './common/all-config.scss';
 import SettingsWrap from '@DashboardApp/SettingsWrap';
 import { Provider } from 'react-redux';

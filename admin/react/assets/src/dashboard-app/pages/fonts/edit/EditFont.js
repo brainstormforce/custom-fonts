@@ -30,7 +30,7 @@ const EditFont = ( props ) => {
 
 	return (
 		<Transition.Root show={ open } as={ Fragment }>
-			<Dialog as="div" className="ast-edit-font__dialog fixed backdrop-blur-sm inset-0 overflow-y-auto" initialFocus={ cancelButtonRef } onClose={ setOpen }>
+			<Dialog as="div" className="ast-edit-font__dialog fixed backdrop-blur-sm inset-0 overflow-y-auto" initialFocus={ cancelButtonRef } onClose={ onCancelClick }>
 				<div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
 					<Transition.Child
 						as={ Fragment }
@@ -57,7 +57,8 @@ const EditFont = ( props ) => {
 						leaveFrom="opacity-100 translate-y-0 sm:scale-100"
 						leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
 					>
-						<div className="inline-block align-bottom bg-white rounded-lg text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-[65%] sm:max-h-[50%] sm:w-full">
+						<Dialog.Panel className="bcf-edit-dialog-panel">
+						<div className="inline-block align-bottom bg-white rounded-lg text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-[100%] sm:max-h-[50%] sm:w-full">
 							<div className="bcf-edit-modal-close-wrapper absolute right-[-15px] p-0 top-[-15px] w-[25px] h-[25px]">
 								<button
 									type="button"
@@ -90,6 +91,7 @@ const EditFont = ( props ) => {
 												min={1}
 												max={100}
 												step={1}
+												value={parseInt(previewSize)}
 											/>
 										</div>
 									</div>
@@ -102,6 +104,7 @@ const EditFont = ( props ) => {
 								</div>
 							</div>
 						</div>
+						</Dialog.Panel>
 					</Transition.Child>
 				</div>
 			</Dialog>

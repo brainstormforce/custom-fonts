@@ -17,13 +17,32 @@ const LocalPreviewItem = () => {
 	const variations = localFont.variations;
 	const fontName = localFont.font_name;
 
+	const getPreviewTitleToggleCSS = () => {
+		let previewNameToggleCSS = `.preview-font-name {display: none;}`,
+			varsLength = variations.length,
+			counter = 0;
+
+		variations.map((variation) => {
+			if ( '' === variation.font_url ) {
+				counter = counter + 1;
+			}
+		});
+
+		if ( varsLength === counter ) {
+			previewNameToggleCSS = `.preview-font-name {display: block;}`;
+		}
+
+		return previewNameToggleCSS;
+	}
+
 	const getLocalFontStyle = () => {
-		let defaultFont = `.preview-font-name {display: none;} @font-face {\r\n\tfont-family: '${fontName}';\r\n\tfont-style: normal;`;
+		let defaultFont = `@font-face {\r\n\tfont-family: '${fontName}';`;
 		let srcFont = '';
 
 		variations.map((variation) => {
 			let fontUrl = variation.font_url,
 				weight = variation.font_weight,
+				style = '' === variation.font_style ? 'normal' : variation.font_style,
 				src = 'url(\'' + fontUrl + '\') ';
 			if (fontUrl.includes('.woff2')) {
 				src += 'format(\'woff2\')';
@@ -40,7 +59,7 @@ const LocalPreviewItem = () => {
 			} else {
 				// Do nothing.
 			}
-			srcFont += `${defaultFont}\r\n\tfont-weight: ${weight};\r\n\tsrc: ${src};\r\n}\r\n`;
+			srcFont += `${defaultFont}\r\n\tfont-style: ${style};\r\n\tfont-weight: ${weight};\r\n\tsrc: ${src};\r\n}\r\n`;
 		});
 
 		return srcFont;
@@ -48,10 +67,10 @@ const LocalPreviewItem = () => {
 
 	return (
 		<div className="local-fonts-preview-wrapper">
-			<style id={`bcf-local-font-css`}> {getLocalFontStyle()} </style>
+			<style id={`bcf-local-font-css`}> {`${getLocalFontStyle()} ${getPreviewTitleToggleCSS()}` } </style>
 			{
 				variations && variations.map( ( variation ) => (
-					<LFontVariation font={fontName} weight={variation.font_weight} key={parseInt(variation.font_weight)+100} />
+					<LFontVariation font={fontName} weight={variation.font_weight} fontUrl={variation.font_url} style={ '' === variation.font_style ? 'normal' : variation.font_style } key={parseInt(variation.font_weight)+1000} />
 				))
 			}
 		</div>

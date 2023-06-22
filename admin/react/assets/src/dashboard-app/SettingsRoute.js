@@ -24,6 +24,7 @@ function SettingsRoute() {
 					break;
 			}
 		}
+		bcfWpMenuClassChange( path );
 	}
 
 	return <>{ routePage }</>;
