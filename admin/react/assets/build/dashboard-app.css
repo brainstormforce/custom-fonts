@@ -893,8 +893,6 @@ select {
   padding: 1rem;
 }.p-6 {
   padding: 1.5rem;
-}.p-\[2em\] {
-  padding: 2em;
 }.p-\[3px\] {
   padding: 3px;
 }.px-1 {
@@ -915,6 +913,9 @@ select {
 }.py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
 }.pb-20 {
   padding-bottom: 5rem;
 }.pb-4 {
