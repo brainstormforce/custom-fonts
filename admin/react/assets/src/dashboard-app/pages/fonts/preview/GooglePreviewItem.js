@@ -17,9 +17,10 @@ const GooglePreviewItem = () => {
 	}
 	const variations = gFontData[0] ? gFontData[0] : [];
 
-	const getGoogleFontLink = (font, version) => {
+	const getGoogleFontLink = (font, weight, version) => {
 		const fontName = font.replace( / /g, "+" );
-		return `https://fonts.googleapis.com/css?family=${fontName}&ver=${version+1}`;
+		// valid URL - https://fonts.googleapis.com/css?family=Poppins:100,800&display=fallback&ver=4.1.5
+		return `https://fonts.googleapis.com/css?family=${fontName}:${weight}&display=fallback&ver=${version+1}`;
 	}
 
 	const checkWeightPresentInState = (weight) => {
@@ -43,7 +44,7 @@ const GooglePreviewItem = () => {
 		variations && Object.keys( variations ).map( ( key, i ) => (
 			<div key={i} className="google-fonts-preview-wrapper">
 				<style id={`bcf-google-font-${i}-css`}> {'.preview-font-name {display: none;}'} </style>
-				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(googleFont, i)} media='all' />
+				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(googleFont, variations[key], i)} media='all' />
 				<GFontVariation font={googleFont} weight={variations[key]} isInGoogleState={checkWeightPresentInState(variations[key])} key={key} />
 			</div>
 		))

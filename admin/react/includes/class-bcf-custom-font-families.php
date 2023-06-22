@@ -113,24 +113,32 @@ if ( ! class_exists( 'BCF_Custom_Font_Families' ) ) :
 				 * @param string $json_file File where google fonts json format added.
 				 * @return array
 				 */
-				$google_fonts_file = apply_filters( 'bsf_custom_font_google_fonts_php_file', BSF_CUSTOM_FONTS_DIR . 'includes/google-fonts.php' );
+				$google_fonts_file = apply_filters( 'bsf_custom_font_google_fonts_php_file', BSF_CUSTOM_FONTS_DIR . 'assets/fonts/google-fonts.php' );
 
 				if ( ! file_exists( $google_fonts_file ) ) {
 					return array();
 				}
 
 				$google_fonts_arr = include $google_fonts_file;// phpcs:ignore: WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
-				$existing_gfonts  = self::get_existing_google_fonts();
 				foreach ( $google_fonts_arr as $key => $font ) {
 					$name = key( $font );
 					foreach ( $font[ $name ] as $font_key => $single_font ) {
 
 						if ( 'variants' === $font_key ) {
-
 							foreach ( $single_font as $variant_key => $variant ) {
-
 								if ( 'regular' == $variant ) {
 									$font[ $name ][ $font_key ][ $variant_key ] = '400';
+								}
+							}
+						}
+
+						if ( 'files' === $font_key ) {
+							foreach ( $single_font as $file_key => $var ) {
+								if ( 'regular' == $file_key ) {
+									$font[ $name ][ $font_key ][ '400' ] = $var;
+									unset( $font[ $name ][ $font_key ][ 'regular' ] );
+								} else {
+									$font[ $name ][ $font_key ][ $file_key ] = $var;
 								}
 							}
 						}
@@ -142,7 +150,6 @@ if ( ! class_exists( 'BCF_Custom_Font_Families' ) ) :
 
 			return apply_filters( 'bsf_custom_font_google_fonts', self::$google_fonts );
 		}
-
 	}
 
 endif;
