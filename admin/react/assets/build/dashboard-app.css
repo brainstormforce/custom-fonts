@@ -948,6 +948,8 @@ select {
 }.text-5xl {
   font-size: 3rem;
   line-height: 1;
+}.text-\[0\.8125rem\] {
+  font-size: 0.8125rem;
 }.text-\[1\.625rem\] {
   font-size: 1.625rem;
 }.text-base {
@@ -1152,6 +1154,11 @@ select {
     padding-right: 1.5rem;
   }
 
+  .sm\:py-7 {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
   .sm\:align-middle {
     vertical-align: middle;
   }
@@ -1165,6 +1172,15 @@ select {
   .md\:min-h-screen {
     min-height: 100vh;
   }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:py-7 {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
 }@media (min-width: 1024px) {
 
   .lg\:max-w-full {
@@ -1173,6 +1189,26 @@ select {
 
   .lg\:flex-row {
     flex-direction: row;
+  }
+
+  .lg\:p-\[2em\] {
+    padding: 2em;
+  }
+
+  .lg\:px-\[2em\] {
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+  .lg\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+}@media (min-width: 1280px) {
+
+  .xl\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 }@media (max-width: 782px) {
 

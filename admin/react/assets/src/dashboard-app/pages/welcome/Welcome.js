@@ -26,14 +26,14 @@ const Welcome = () => {
 	return (
 		<div className="">
 			<div className="bg-white border-b border-slate-200">
-				<div className="max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full">
-					<div className="relative py-7">
-						<div className="flex flex-col lg:flex-row justify-between items-start">
+				<div className="max-w-3xl mx-auto lg:p-[2em] px-3 sm:px-6 lg:max-w-full">
+					<div className="relative py-7 sm:py-7 md:py-7 lg:py-0 xl:py-0">
+						<div className="flex flex-col lg:flex-row md:flex-row justify-between items-start">
 							<div>
 								<h2 className="text-[1.625rem] font-semibold mb-3.5">
 									{ __( "Custom Fonts", "custom-fonts" ) }
 								</h2>
-								<p className="text-xs">
+								<p className="text-[0.8125rem]">
 									{ __( "Manage fonts that are used on your website.", "custom-fonts" ) }
 								</p>
 							</div>
@@ -43,7 +43,7 @@ const Welcome = () => {
 										pathname: "admin.php",
 										search: `?page=bsf-custom-fonts&path=add-fonts`,
 									}}
-									className="flex text-sm text-white hover:text-white bg-primary px-3 py-2"
+									className="flex text-[0.8125rem] text-white hover:text-white bg-primary px-3 py-2"
 								>
 									{ __("Add New Font", "custom-fonts") }
 								</Link>
@@ -52,7 +52,7 @@ const Welcome = () => {
 					</div>
 				</div>
 			</div>
-			<div className="max-w-3xl mx-auto px-3 sm:px-6 lg:max-w-full">
+			<div className="max-w-3xl mx-auto px-3 lg:p-[2em] sm:px-6 lg:max-w-full">
 				{/* Search Custom Font */}
 				<SearchBar setSearchResults={ setSearchResults } setLoading={ setLoading }/>
 				{/* Font Counter and View toggle */}
@@ -117,6 +117,8 @@ const Welcome = () => {
 							search: `?page=bsf-custom-fonts&path=add-fonts`,
 						}}
 						className="button"
+						/* Need to add inline style here as exception to override default wordpress styling */
+						style={{ paddingTop: '0.375rem', paddingRight: '0.75rem', paddingBottom: '0.375rem', paddingLeft: '0.75rem' }}
 					>
 						{ __("Add New Font", "custom-fonts") }
 					</Link>
