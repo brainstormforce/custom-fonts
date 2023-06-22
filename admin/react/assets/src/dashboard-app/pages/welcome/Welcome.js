@@ -12,6 +12,17 @@ const Welcome = () => {
 	const toggleView = (value) => {
 		setActiveView(value);
 	};
+	const getFontFamiliesHeading = (searchResults) => {
+		if ( 0 === bsf_custom_fonts_admin.fontPostCount || ( searchResults && 0 === searchResults.found_posts ) ) {
+			return __("No font families found.", "custom-fonts");
+		}
+		let fontsCounter = searchResults ? searchResults.found_posts : bsf_custom_fonts_admin.fontPostCount;
+		if ( 1 === fontsCounter ) {
+			return __("1 font family", "custom-fonts");
+		} else {
+			return __(fontsCounter + " font families", "custom-fonts");
+		}
+	}
 	return (
 		<div className="">
 			<div className="bg-white border-b border-slate-200">
@@ -46,7 +57,7 @@ const Welcome = () => {
 				<SearchBar setSearchResults={ setSearchResults } setLoading={ setLoading }/>
 				{/* Font Counter and View toggle */}
 				<div className="flex justify-between items-center my-6">
-					<div className="text-base"> { searchResults ? searchResults.found_posts : bsf_custom_fonts_admin.fontPostCount } { __(" font families", "custom-fonts") } </div>
+					<div className="text-base"> { getFontFamiliesHeading(searchResults) } </div>
 					<div className="flex justify-end gap-x-7">
 						<div
 							className="cursor-pointer"
