@@ -46,6 +46,13 @@ const EditGFontVariation = (
 		return weight.replace( "italic", "" );
 	}
 
+	const getFontStyle = (weight) => {
+		if ( weight.includes('italic') ) {
+			return "italic";
+		}
+		return "normal";
+	}
+
 	return (
 		<div key={id} className="py-5">
 			<div className="flex justify-between items-center">
@@ -55,7 +62,7 @@ const EditGFontVariation = (
 						{ getFontWeightTitle(weight) }
 					</div>
 					{/* Variation Preview */}
-					<div className="text-5xl" style={{ fontFamily: font, fontWeight: getRenderFontWeight(weight), fontSize: "var(--bsf-custom-font-size)" }}>
+					<div className="text-5xl" style={{ fontFamily: font, fontStyle:getFontStyle(weight), fontWeight: getRenderFontWeight(weight), fontSize: "var(--bsf-custom-font-size)" }}>
 						{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 					</div>
 				</div>
@@ -146,9 +153,10 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 		dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
 	}, [editFontData] );
 
-	const getGoogleFontLink = (font, version) => {
+	const getGoogleFontLink = (font, weight, version) => {
 		const fontName = font.replace( / /g, "+" );
-		return `https://fonts.googleapis.com/css?family=${fontName}&ver=${version+1}`;
+		// valid URL - https://fonts.googleapis.com/css?family=Poppins:100,800&display=fallback&ver=4.1.5
+		return `https://fonts.googleapis.com/css?family=${fontName}:${weight}&display=fallback&ver=${version+1}`;
 	}
 
 	const addWeight = (e) => {
@@ -205,7 +213,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 		variations && Object.keys( variations ).map( ( key, i ) => (
 			<div key={i}>
 				<style id={`bcf-gfont-${editFontData.font_name}-variation-css`}> {variationToggleStyle} </style>
-				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(editFontData.font_name, i)} media='all' />
+				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(editFontData.font_name, variations[key], i)} media='all' />
 				<EditGFontVariation
 					key={i}
 					weight={variations[key]}

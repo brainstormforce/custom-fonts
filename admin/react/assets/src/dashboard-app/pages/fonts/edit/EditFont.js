@@ -70,7 +70,7 @@ const EditFont = ( props ) => {
 								</button>
 							</div>
 
-							<div className="grid grid-cols-12 sm:max-h-[650px] overflow-auto">
+							<div className="grid grid-cols-12 sm:max-h-[60vh] overflow-auto">
 								<style id={`bcf-font-${font}-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 								<div id="gfont-edit-variation-data" hidden={true}></div>
 								<div className="col-span-4 bg-white px-4 pt-5 pb-4 sm:p-6">

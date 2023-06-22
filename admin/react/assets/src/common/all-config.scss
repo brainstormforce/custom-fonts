@@ -9,11 +9,14 @@
 	padding-bottom: 0;
 }
 .appearance_page_bsf-custom-fonts .bcf-edit-dialog-panel {
-	top: 25%;
+	top: 20%;
     position: absolute;
-    left: 25%;
-    max-width: 60%;
+    left: 22%;
+    max-width: 65%;
     width: 100%;
+    max-height: 60vh;
+    overflow: hidden;
+    padding-right: 40px;
 }
 .border.bcf-font-list-wrap {
 	border-bottom: 0;

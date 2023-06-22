@@ -655,7 +655,6 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$theme_json_string
 			);
 
-			// $bcf_global_fse_fonts = \BCF_Admin_Helper::get_admin_settings_option( 'bcf_global_fse_fonts', array() );
 			$bcf_global_fse_fonts = array();
 
 			if ( ! is_array( $bcf_global_fse_fonts ) ) {

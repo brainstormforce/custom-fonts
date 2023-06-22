@@ -104,6 +104,21 @@ const ListItem = ({ item }) => {
 		return weight.replace( "italic", "" );
 	}
 
+	const getFontAssetLink = (type, font, weight, version) => {
+		if ( type === 'local' ) {
+			return '';
+		}
+		const fontName = font.replace( / /g, "+" );
+		return <link rel='stylesheet' id={`bcf-google-font-${version}-link`} href={`https://fonts.googleapis.com/css?family=${fontName}:${weight}&display=fallback&ver=${version+1}`} media='all' />
+	}
+
+	const getFontStyle = (style) => {
+		if ( '' === style ) {
+			return 'normal';
+		}
+		return style;
+	}
+
 	return (
 		<>
 			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors`}>
@@ -186,8 +201,9 @@ const ListItem = ({ item }) => {
 						{
 							item['fonts-data']['variations'].map(( varItem, varKey ) => (
 								<div key={varKey} className="py-5 font-variation-item">
+									{getFontAssetLink(item['font-type'], item.title, varItem.font_weight, varKey)}
 									<div className="text-sm text-neutral mb-3"> { getFontWeightTitle( varItem.font_weight ) } </div>
-									<h3 className="text-5xl text-heading" style={{  fontFamily: item.title, fontWeight: getRenderFontWeight(varItem.font_weight) }}>
+									<h3 className="text-5xl text-heading" style={{  fontFamily: item.title, fontStyle:getFontStyle(varItem.font_style), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
 										{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 									</h3>
 								</div>
