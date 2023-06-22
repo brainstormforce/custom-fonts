@@ -18,7 +18,7 @@ const Welcome = () => {
 		<div className="">
 			<div className="bg-white border-b border-slate-200">
 				<div className="max-w-3xl mx-auto lg:p-[2em] px-3 sm:px-6 lg:max-w-full">
-					<div className="relative py-7">
+					<div className="relative py-7 sm:py-7 md:py-7 lg:py-0 xl:py-0">
 						<div className="flex flex-col lg:flex-row md:flex-row justify-between items-start">
 							<div>
 								<h2 className="text-[1.625rem] font-semibold mb-3.5">
