@@ -10,6 +10,9 @@ const EditGoogleVariationItem = ({
 	const getFontWeightTitle = ( weight ) => {
 		let updatedWeight = weight,
 			oldWeight = weight;
+		if ( 'italic' === weight ) {
+			oldWeight = '400italic';
+		}
 		if ( oldWeight.includes('italic') ) {
 			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
 		}

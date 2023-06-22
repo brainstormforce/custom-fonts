@@ -10,6 +10,9 @@ const GFontVariation = (props) => {
 	const getFontWeightTitle = ( weight ) => {
 		let updatedWeight = weight,
 			oldWeight = weight;
+		if ( 'italic' === weight ) {
+			oldWeight = '400italic';
+		}
 		if ( oldWeight.includes('italic') ) {
 			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
 		}
@@ -46,10 +49,11 @@ const GFontVariation = (props) => {
 		if ( undefined === varWt ) {
 			return;
 		}
+		let style = varWt.includes('italic') ? 'italic' : 'normal';
 		variations.push( {
 			id: variations.length+1,
 			font_file: '',
-			font_style: '',
+			font_style: style,
 			font_weight: varWt
 		} );
 		dispatch( { type: 'SET_GOOGLE_FONT', payload: {
