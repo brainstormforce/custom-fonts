@@ -8,7 +8,7 @@ const CustomFontGrid = ({ searchResults, loading, activeView }) => {
 	const fontsData = useSelector((state) => state.fonts);
 	const fontPostCount = bsf_custom_fonts_admin.fontPostCount;
 
-	if ( 0 === fontPostCount ) {
+	if ( 0 == fontPostCount ) {
 		return <EmptyState/>
 	}
 

@@ -13,7 +13,7 @@ const Welcome = () => {
 		setActiveView(value);
 	};
 	const getFontFamiliesHeading = (searchResults) => {
-		if ( 0 === bsf_custom_fonts_admin.fontPostCount || ( searchResults && 0 === searchResults.found_posts ) ) {
+		if ( 0 == bsf_custom_fonts_admin.fontPostCount || ( searchResults && 0 == searchResults.found_posts ) ) {
 			return __("No font families found.", "custom-fonts");
 		}
 		let fontsCounter = searchResults ? searchResults.found_posts : bsf_custom_fonts_admin.fontPostCount;
