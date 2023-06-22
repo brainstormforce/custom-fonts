@@ -1159,6 +1159,10 @@ select {
   .md\:min-h-screen {
     min-height: 100vh;
   }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
 }@media (min-width: 1024px) {
 
   .lg\:max-w-full {

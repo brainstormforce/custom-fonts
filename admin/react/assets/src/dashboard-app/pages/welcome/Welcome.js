@@ -19,7 +19,7 @@ const Welcome = () => {
 			<div className="bg-white border-b border-slate-200">
 				<div className="max-w-3xl mx-auto p-[2em] lg:max-w-full">
 					<div className="relative">
-						<div className="flex flex-col lg:flex-row justify-between items-start">
+						<div className="flex flex-col lg:flex-row md:flex-row justify-between items-start">
 							<div>
 								<h2 className="text-[1.625rem] font-semibold mb-3.5">
 									{ __( "Custom Fonts", "custom-fonts" ) }
