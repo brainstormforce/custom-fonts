@@ -34,7 +34,7 @@ class BCF_Filesystem {
 	/**
 	 * Get an instance of WP_Filesystem.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function get_filesystem() {
 
@@ -75,7 +75,7 @@ class BCF_Filesystem {
 	/**
 	 * Method to direct.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function filesystem_method() {
 		return 'direct';
@@ -84,7 +84,7 @@ class BCF_Filesystem {
 	/**
 	 * Sets credentials to true.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function request_filesystem_credentials() {
 		return true;
@@ -100,7 +100,7 @@ BCF_Filesystem::get_instance();
 /**
  * Filesystem class
  *
- * @since x.x.x
+ * @since 2.0.0
  */
 function bcf_filesystem() {
 	return BCF_Filesystem::get_instance()->get_filesystem();

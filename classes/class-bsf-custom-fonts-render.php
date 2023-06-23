@@ -40,7 +40,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * Store the Font Weight from DB to be use for frontend rendering.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 * @var string
 		 */
 		private static $font_weight = '';
@@ -50,7 +50,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * Store the Font Display from DB to be use for frontend rendering.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 * @var string
 		 */
 		private static $font_display = '';
@@ -60,7 +60,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * Store the Font Family from DB to be use for frontend rendering.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 * @var string
 		 */
 		private static $font_family = '';
@@ -70,7 +70,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 *
 		 * Store the Font Fallback from DB to be use for frontend rendering.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 * @var string
 		 */
 		private static $font_fallback = '';
@@ -78,7 +78,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Font posts.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 * @var array
 		 */
 		private static $existing_fonts = null;
@@ -144,7 +144,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Get existing site setup fonts.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function get_existing_font_posts() {
 			if ( ! isset( self::$existing_fonts ) ) {
@@ -184,7 +184,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @param Array $fonts Selected Google Fonts in the Astra Customizer Settings.
 		 * @return Array Google fonts array which do not contain same fonts as the custom fonts.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 */
 		public function remove_custom_font_google_url( $fonts ) {
 			$custom_fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
@@ -297,7 +297,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Add Custom Font list into Astra customizer.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 * @param string $fonts_arr Array of System Fonts.
 		 * @return array $fonts_arr modified array with Custom Fonts.
 		 */
@@ -358,7 +358,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Get fonts
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @param array $font font.
 		 * @param array $font_fallback fallback fonts.
 		 */

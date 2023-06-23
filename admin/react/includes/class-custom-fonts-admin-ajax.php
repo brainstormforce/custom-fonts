@@ -3,7 +3,7 @@
  * Ajax class for font settings.
  *
  * @package     Bsf_Custom_Fonts
- * @since       x.x.x
+ * @since       2.0.0
  */
 
 // Exit if accessed directly.
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * AJAX events class to manage dashboard application requests.
  *
- * @since x.x.x
+ * @since 2.0.0
  */
 class BSF_Custom_Fonts_Admin_Ajax {
 	/**
@@ -91,7 +91,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	/**
 	 * Create the local font post.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function bcf_add_new_local_font() {
 
@@ -151,7 +151,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	/**
 	 * Create the Google font post.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function bcf_add_new_google_font() {
 
@@ -210,7 +210,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	/**
 	 * Edit the existing font post.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function bcf_edit_font() {
 
@@ -256,7 +256,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	/**
 	 * Delete the font post.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function bcf_delete_font() {
 		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );

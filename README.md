@@ -1,47 +1,100 @@
 # Custom Fonts #
-**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)
-**Donate link:** https://www.paypal.me/BrainstormForce
-**Tags:** Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography
-**Requires at least:** 4.4
-**Tested up to:** 6.2
-**Stable tag:** 1.3.7
-**License:** GPLv2 or later
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
+**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
+**Donate link:** https://www.paypal.me/BrainstormForce  
+**Tags:** Beaver Builder, Elementor, Astra, woff2, woff, ttf, svg, eot, otf, Custom Fonts, Font, Typography  
+**Requires at least:** 4.4  
+**Tested up to:** 6.2.2  
+**Stable tag:** 2.0.0  
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-Custom Fonts allows you to add more fonts that extend formatting options in your site.
+Custom Fonts is a powerful WordPress plugin that allows you to upload your custom fonts or choose from a vast collection of Google Fonts, all hosted directly on your server.
+
+Take control of your website's typography without compromising performance, privacy, or compliance!
+
 
 ## Description ##
 
-This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eot, otf) easily in your WordPress website.
+**HOST FONTS, IMPROVE WEBSITE SPEED, AND ELIMINATE PRIVACY CONCERNS** ★★★★★
 
-Currently, it works with:
+## IMPROVED SPEED AND PERFORMANCE 🚀 ##
 
-* <a href="https://wpastra.com/?utm_source=wp-repo&utm_campaign=custom-fonts&utm_medium=description">Astra Theme</a>
-* <a href="https://www.wpbeaverbuilder.com/">Beaver Builder Theme</a>
-* <a href="https://www.wpbeaverbuilder.com/">Beaver Builder Plugin</a>
-* <a href="https://elementor.com/">Elementor Page Builder</a>
+Custom Fonts empowers WordPress website owners with the ability to upload their custom fonts or choose from a vast collection of Google Fonts, all hosted directly on their server. By hosting fonts locally, you can significantly improve your website's performance and speed, as the fonts load directly from your server, reducing external requests.
 
-How does it work?
+## UPLOAD YOUR CUSTOM FONTS OR CHOOSE FROM GOOGLE FONTS 🎨 ##
 
-1. Install the plugin
-2. Upload the font files in as many formats as possible for best browser compatibility.
-3. And done. You will be able to see the fonts added in the settings of Astra / Beaver Builder / Elementor. Please refer screenshots.
+With Custom Fonts, you have the freedom to customize your website's typography to match your unique brand identity. You can easily upload your custom font files, such as .ttf or .otf, and use them throughout your website. Or, you can choose from a rich library of Google Fonts and host them locally on your server, ensuring full control over their usage.
 
-If you're not using any of the supported plugins and theme, you can write the custom CSS to apply the fonts.
+## Upload Multiple Font Variants 🆒 ##
+
+You have the flexibility to upload any number of font variants to suit your design needs. Whether it's different weights, styles, or character sets, easily manage and customize the necessary font variants. Personalize your typography to perfection and create a unique visual identity for your website.
+
+## ENHANCED PRIVACY AND GDPR COMPLIANCE 🛡️ ##
+
+Privacy is a top priority for many website owners, especially in light of data protection regulations like GDPR. By using Custom Fonts, you can self-host your fonts, eliminating any privacy concerns associated with external font services. Take full control over the fonts you use on your website and ensure compliance with privacy regulations.
+
+## FULL SITE EDITING THEME SUPPORT AND EASY INTEGRATION 🎉 ##
+
+Custom Fonts seamlessly integrates with WordPress Full Site Editing Themes, allowing you to effortlessly choose and customize fonts across your entire website. Say goodbye to limitations and enjoy the freedom to create a consistent and visually appealing typography experience for your visitors.
+
+## BEAUTIFUL AND USER-FRIENDLY INTERFACE MADE WITH REACT JS 💻 ##
+
+We take pride in providing an elegant and intuitive user interface for Custom Fonts. Built with React JS, our interface offers a seamless experience, making it effortless to upload and manage your custom fonts, select from Google Fonts, and customize typography settings to suit your needs.
+
+## COMPLETELY FREE, NO UPSELLS OR HIDDEN COSTS 🆓 ##
+
+Custom Fonts is completely free, without any upsells or hidden costs. We believe in empowering website owners with essential tools without nickel-and-diming. Enjoy full access to all the features and functionality of Custom Fonts.
+
+## SOME OF THE SUPPORTED WORDPRESS PLUGINS:
+
 
 ## Installation ##
 
-1. Upload the plugin files to the `/wp-content/plugins/custom-fonts` directory, or install the plugin through the WordPress plugins screen directly.
-2. Activate the plugin through the 'Plugins' screen in WordPress
-3. Use the Appearance -> Custom Fonts -> Add Custom Fonts name, woff2, woff, ttf, eot, otf and svg files.
+1. Upload the 'custom-fonts' folder to the '/wp-content/plugins/' directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+
+
+## Frequently Asked Questions ##
+
+### Can I upload my custom font files? ###
+
+Absolutely! Custom Fonts allows you to upload your custom font files, such as .ttf or .otf formats, and use them on your website. Simply navigate to the plugin settings, upload your font files, and customize your typography using your custom fonts.
+
+### Can I use Google Fonts with Custom Fonts? ###
+
+Yes, Custom Fonts seamlessly integrates with Google Fonts. Browse and choose from an extensive collection of Google fonts and host them locally on your server. Select the perfect font to enhance the visual appeal of your website.
+
+### Does Custom Fonts help improve website performance? ###
+
+Yes, by hosting fonts locally, Custom Fonts can improve your website's performance and speed. Fonts are loaded directly from your server, reducing external requests and enhancing overall page loading times.
+
+### Is Custom Fonts compliant with privacy regulations like GDPR? ###
+
+Absolutely! Custom Fonts allows you to host fonts locally. This ensures enhanced privacy and compliance with privacy regulations like GDPR. By hosting your fonts, you eliminate any privacy concerns associated with external font services.
+
+### Does Custom Fonts support WordPress Full Site Editing Themes? ###
+
+Yes, Custom Fonts seamlessly integrates with WordPress Full Site Editing Themes. Finally, you can choose the font that you want to use with your FSE theme!
+
+### Is the Custom Fonts Plugin Free to Use? ###
+
+Yes, Custom Fonts is completely free to use, without any upsells or limitations.
+
 
 ## Screenshots ##
 
-1. Add new custom font
-2. Select your any custom font into the Customizer of Astra Theme
+1. Upload and manage your custom font files.
+2. Choose from a vast collection of Google Fonts and host them locally.
+3. Customize typography settings and apply them to your website.
+4. Seamless integration with WordPress Full Site Editing Themes.
 
 
 ## Changelog ##
+### 2.0.0 ###
+- New: Redesigned the entire admin area with a better user experience.
+- New: Google fonts support in Custom Fonts plugin now.
+- Improvement: Custom font supports in FSE editor.
+
 ### 1.3.7 ###
 - Fix: Custom font's CSS not applying in responsive previews of WordPress block editor.
 

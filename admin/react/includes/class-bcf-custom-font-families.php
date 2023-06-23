@@ -62,7 +62,7 @@ if ( ! class_exists( 'BCF_Custom_Font_Families' ) ) :
 		/**
 		 * Get existing Google Fonts to strip from dropdown list from add new.
 		 *
-		 * @since  x.x.x
+		 * @since  2.0.0
 		 *
 		 * @return Array Array of existing Google fonts.
 		 */

@@ -75,7 +75,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Create custom post type.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function bsf_custom_fonts_post_type() {
 

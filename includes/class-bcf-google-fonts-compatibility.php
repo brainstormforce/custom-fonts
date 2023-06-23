@@ -2,7 +2,7 @@
 /**
  * BCF FSE Fonts Compatibility.
  *
- * @since x.x.x
+ * @since 2.0.0
  * @package BCF
  */
 
@@ -15,14 +15,14 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 	/**
 	 * Class BCF_Google_Fonts_Compatibility.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	final class BCF_Google_Fonts_Compatibility {
 
 		/**
 		 * Member Variable
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @var instance
 		 */
 		private static $instance;
@@ -31,7 +31,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Base path.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @var string
 		 */
 		protected $base_path;
@@ -40,7 +40,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Base URL.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @var string
 		 */
 		protected $base_url;
@@ -49,7 +49,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * The remote CSS.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @var string
 		 */
 		protected $remote_styles;
@@ -61,7 +61,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * This will change the user-agent user to make the request.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @var string
 		 */
 		protected $font_format = 'woff2';
@@ -70,7 +70,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 *  Initiator
 		 *
 		 * @return object instance.
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
@@ -83,7 +83,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Constructor
 		 *
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function __construct() {
 			if ( empty( $_GET['page'] ) || BSF_CUSTOM_FONTS_ADMIN_PAGE !== $_GET['page'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -105,7 +105,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Get the base path.
 		 *
 		 * @access public
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @return string
 		 */
 		public function get_base_path() {
@@ -119,7 +119,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Get the base URL.
 		 *
 		 * @access public
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @return string
 		 */
 		public function get_base_url() {
@@ -133,7 +133,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Save Google Fonts to locally.
 		 *
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function update_fse_theme_json() {
 
@@ -183,7 +183,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Save Google Fonts to locally.
 		 *
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function process_google_fonts_locally( $font ) {
 
@@ -242,7 +242,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 *
 		 * @return string slug.
 		 * @param string $name Font Family.
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function get_font_slug( $name ) {
 			$slug = sanitize_title( $name );
@@ -272,7 +272,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @param mixed  $font_id Font id.
 		 * @param bool   $for_theme_json Flag for Theme JSON file path.
 		 * @return array final font files.
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function get_fonts_file_url( $font_family, $font_weight, $font_style, $font_id = null, $for_theme_json = false ) {
 			$font_family_key = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
@@ -359,7 +359,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @param string $font_slug Font Slug.
 		 * @param array  $font_faces Font Faces.
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public function add_or_update_theme_font_faces( $font_name, $font_slug, $font_faces ) {
 			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
@@ -413,7 +413,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Get the filesystem.
 		 *
 		 * @access protected
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @return WP_Filesystem
 		 */
 		protected function get_filesystem() {
@@ -434,7 +434,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 *
 		 * @access public
 		 * @param string $url URL.
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @return string Returns the remote URL contents.
 		 */
 		public function get_remote_url_contents( $url ) {
@@ -475,7 +475,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Get font files from the CSS.
 		 *
 		 * @access public
-		 * @since x.x.x
+		 * @since 2.0.0
 		 * @return array Returns an array of font-families and the font-files used.
 		 */
 		public function get_remote_files_from_css() {
@@ -562,7 +562,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @param array $input_settings setting data.
 		 * @return array    The sanitized form inputs.
 		 *
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public static function sanitize_form_inputs( $input_settings = array() ) {
 			$new_settings = array();
@@ -587,7 +587,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * Delete all Spectra font files from the theme JSON.
 		 *
 		 * @return void
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public static function delete_all_theme_font_family() {
 			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
@@ -629,7 +629,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 *
 		 * @return void
 		 * @param array $font Font Data.
-		 * @since x.x.x
+		 * @since 2.0.0
 		 */
 		public static function delete_theme_font_family( $font ) {
 			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
@@ -698,7 +698,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 /**
  * Global instance for this class.
  *
- * @since x.x.x
+ * @since 2.0.0
  */
 function bcf_google_fonts_compatibility() {
 	return BCF_Google_Fonts_Compatibility::get_instance();

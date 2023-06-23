@@ -3,7 +3,7 @@
  * Class Custom_Fonts_API.
  *
  * @package BSF_Custom_Fonts
- * @since x.x.x
+ * @since 2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,7 +18,7 @@ if ( ! class_exists( 'WP_REST_Controller' ) ) {
 /**
  * Custom_Fonts_API.
  *
- * @since x.x.x
+ * @since 2.0.0
  */
 class Custom_Fonts_API extends WP_REST_Controller {
 
@@ -27,14 +27,14 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -63,7 +63,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 *
 	 * @access private
 	 * @var string $option_name DB option name.
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $option_name = 'bsf_custom_fonts_settings';
 
@@ -72,14 +72,14 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 *
 	 * @access private
 	 * @var array $bsf_custom_fonts_settings Settings array.
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $bsf_custom_fonts_settings = array();
 
 	/**
 	 * Constructor
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function __construct() {
 		self::$bsf_custom_fonts_settings = get_option( self::$option_name, array() );
@@ -90,7 +90,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	/**
 	 * Register API routes.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function register_routes() {
 		register_rest_route(
@@ -114,7 +114,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 * @param WP_REST_Request $request Full details about the request.
 	 * @return array $updated_option defaults + set DB option data.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function get_admin_settings( $request ) {
 
@@ -172,7 +172,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
 	 * @return WP_Error|boolean
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function get_permissions_check( $request ) {
 
@@ -190,7 +190,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 * @param  string $key     The sub-option key.
 	 * @param  mixed  $default Option default value if option is not available.
 	 * @return mixed            Return the option value based on provided key
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public static function get_admin_settings_option( $key, $default = false ) {
 		$value = isset( self::$bsf_custom_fonts_settings[ $key ] ) ? self::$bsf_custom_fonts_settings[ $key ] : $default;
@@ -204,7 +204,7 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	 * @param string $key       The option key.
 	 * @param mixed  $value     The value to update.
 	 * @return mixed            Return the option value based on provided key
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public static function update_admin_settings_option( $key, $value ) {
 		$admin_updated_settings         = get_option( self::$option_name, array() );

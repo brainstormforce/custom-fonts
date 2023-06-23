@@ -3,7 +3,7 @@
  * Bsf Custom Fonts Admin Loader
  *
  * @package Bsf_Custom_Fonts
- * @since x.x.x
+ * @since 2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * BSF_Custom_Font_Admin_Loader
  *
- * @since x.x.x
+ * @since 2.0.0
  */
 class BSF_Custom_Font_Admin_Loader {
 
@@ -22,14 +22,14 @@ class BSF_Custom_Font_Admin_Loader {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -44,7 +44,7 @@ class BSF_Custom_Font_Admin_Loader {
 	/**
 	 * Constructor
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function __construct() {
 		define( 'BSF_CUSTOM_FONTS_ADMIN_DIR', BSF_CUSTOM_FONTS_DIR . 'admin/react' );
@@ -56,7 +56,7 @@ class BSF_Custom_Font_Admin_Loader {
 	/**
 	 * Include required classes.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function includes() {
 		/** Post type registration */

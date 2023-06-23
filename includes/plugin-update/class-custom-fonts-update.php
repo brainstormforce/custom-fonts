@@ -113,7 +113,7 @@ class Custom_Fonts_Update {
 	/**
 	 * Update the font array according to new font weight repeater fields.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function v_1_3_0() {
 
@@ -147,7 +147,7 @@ class Custom_Fonts_Update {
 	/**
 	 * Migrate existing local fonts to new revamped dashboard app.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function v_2_0_0() {
 		// Halt if already migrated.

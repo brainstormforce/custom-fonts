@@ -3,7 +3,7 @@
  * Class Bsf_Custom_Fonts_Menu.
  *
  * @package Bsf_Custom_Fonts
- * @since x.x.x
+ * @since 2.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Bsf_Custom_Fonts_Menu.
  *
- * @since x.x.x
+ * @since 2.0.0
  */
 class Bsf_Custom_Fonts_Menu {
 
@@ -22,14 +22,14 @@ class Bsf_Custom_Fonts_Menu {
 	 *
 	 * @access private
 	 * @var null $instance
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	private static $instance;
 
 	/**
 	 * Initiator
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return object initialized object of class.
 	 */
 	public static function get_instance() {
@@ -42,7 +42,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Plugin slug
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @var string $plugin_slug
 	 */
 	public static $plugin_slug = 'bsf-custom-fonts';
@@ -58,7 +58,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Constructor
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function __construct() {
 		$this->initialize_hooks();
@@ -67,7 +67,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Init Hooks.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return void
 	 */
 	public function initialize_hooks() {
@@ -142,7 +142,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Admin settings init.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function init_admin_settings() {
 		if ( ! is_customize_preview() ) {
@@ -152,7 +152,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 *  Initialize after Astra gets loaded.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function settings_admin_scripts() {
 		if ( $this->is_custom_fonts_screen() ) {
@@ -165,7 +165,7 @@ class Bsf_Custom_Fonts_Menu {
 	 * Check BSF Custom Fonts plugin screen.
 	 *
 	 * @return bool true|false after checking plugins page.
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function is_custom_fonts_screen() {
 		if ( isset( $_GET['page'] ) && self::$plugin_slug === sanitize_text_field( $_GET['page'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -177,7 +177,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Renders the admin settings.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @return void
 	 */
 	public function render_admin_dashboard() {
@@ -195,7 +195,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Enqueues the needed CSS/JS for the builder's admin settings page.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function styles_scripts() {
 
@@ -231,7 +231,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Settings app scripts
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 * @param array $localize Variable names.
 	 */
 	public function settings_app_scripts( $localize ) {
@@ -285,7 +285,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 *  Add footer link.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function bsf_custom_fonts_admin_footer_link() {
 		$footer_text = sprintf(
