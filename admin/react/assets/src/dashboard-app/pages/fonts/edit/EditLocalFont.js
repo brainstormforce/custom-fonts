@@ -55,10 +55,16 @@ const EditLocalVariationItem = ({
 		frame.open();
 	}
 
+	const expandFileField = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		setToggleView(true)
+	}
+
 	return (
-		<div key={id} className="border border-light rounded-sm variation-file-field">
+		<div key={id} className="border border-light rounded-sm variation-file-field mb-4">
 			{!toggleView ? (
-				<div className="flex items-center justify-between p-3.5 relative">
+				<div className="flex items-center justify-between p-3.5 relative" onClick={expandFileField}>
 					<h2 className="text-sm font-semibold text-secondary">
 						{ '' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts') }
 					</h2>
@@ -100,7 +106,7 @@ const EditLocalVariationItem = ({
 				</div>
 			) : (
 				<div className="relative p-4 bg-theme-bg edit-font-variation-wrap">
-					<div className="mb-3">
+					<div className="mb-4 border-b border-light pb-4">
 						<div className="flex items-center gap-x-4">
 							<input name={`variation[${variation.id}][font_file]`} type="hidden" value={variation.font_file} />
 							<input name={`variation[${variation.id}][font_url]`} type="hidden" value={variation.font_url} />
@@ -185,7 +191,7 @@ const EditLocalVariationItem = ({
 								className="w-full text-sm text-heading"
 								htmlFor={`variation[${variation.id}][font_weight]`}
 							>
-								{__( 'Font weight:', 'custom-fonts' )}
+								{__( 'Font Weight:', 'custom-fonts' )}
 							</label>
 							<div className="mt-1.5">
 								<input
@@ -344,6 +350,12 @@ const EditLocalFont = ({fontId}) => {
 						onClick={toggleAdvanceTab}
 						className="flex items-center px-1 gap-x-2"
 					>
+						<label
+							className="text-sm text-heading"
+							htmlFor=""
+						>
+							{__( 'Advanced Options', 'custom-fonts' )}
+						</label>
 						<svg
 							width="6"
 							height="8"
@@ -361,13 +373,6 @@ const EditLocalFont = ({fontId}) => {
 								fill="#007CBA"
 							/>
 						</svg>
-
-						<label
-							className="w-full text-sm text-heading"
-							htmlFor=""
-						>
-							{__( 'Advanced Options', 'custom-fonts' )}
-						</label>
 					</div>
 					{advanceTab && (
 						<div
@@ -382,7 +387,7 @@ const EditLocalFont = ({fontId}) => {
 									className="w-full text-sm text-heading"
 									htmlFor="font_fallback"
 								>
-									{__( 'Font fallback:', 'custom-fonts' )}
+									{__( 'Font Fallback:', 'custom-fonts' )}
 								</label>
 								<div className="mt-1.5">
 									<input
@@ -408,7 +413,7 @@ const EditLocalFont = ({fontId}) => {
 									className="w-full text-sm text-heading"
 									htmlFor="font_display"
 								>
-									{__( 'Font display:', 'custom-fonts' )}
+									{__( 'Font Display:', 'custom-fonts' )}
 								</label>
 								<div className="mt-1.5">
 									<select
@@ -448,6 +453,9 @@ const EditLocalFont = ({fontId}) => {
 					className="flex items-center gap-x-1 my-5 cursor-pointer"
 					onClick={addVariationOption}
 				>
+					<div className="text-sm text-primary">
+						{__( 'Add Font Variation', 'custom-fonts' )}
+					</div>
 					<div>
 						<svg
 							width="16"
@@ -462,15 +470,13 @@ const EditLocalFont = ({fontId}) => {
 							/>
 						</svg>
 					</div>
-					<div className="text-sm text-primary">
-						{__( 'Add Font Variation', 'custom-fonts' )}
-					</div>
 				</div>
 
 				<button
 					type="button"
-					className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
+					className="bcf-save-font inline-flex dashboard-add-font-btn"
 					onClick={ updatingNewFontPost }
+					disabled={'loading' === isLoading ? true : false}
 				>
 					{__( 'Save Font', 'custom-fonts' )}
 					{ 'loading' === isLoading && (

@@ -2,7 +2,7 @@
 /**
  * Plugin Name:     Custom Fonts
  * Plugin URI:      http://www.wpastra.com/
- * Description:     Custom Fonts allows you to add more fonts that extend formatting options in your site.
+ * Description:     Upload your own custom font or choose from a vast collection of Google fonts, all hosted directly on your server. Enjoy improved performance, enhanced privacy, and full site editing theme support. Take control of your website's typography without compromising performance, privacy or compliance!
  * Author:          Brainstorm Force
  * Author URI:      http://www.brainstormforce.com
  * Text Domain:     custom-fonts

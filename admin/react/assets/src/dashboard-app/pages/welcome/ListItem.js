@@ -20,6 +20,7 @@ const ListItem = ({ item }) => {
 	const deleteFontPost = ( e ) => {
 		console.log( '***** Deleting Font *****' );
 		e.preventDefault();
+		e.stopPropagation();
 		const formData = new window.FormData();
 
 		formData.append( 'action', 'bcf_delete_font' );
@@ -73,6 +74,8 @@ const ListItem = ({ item }) => {
 	}
 
 	const setupEditFontScreen = (e) => {
+		e.stopPropagation();
+
 		const fontId = e.target.dataset.font_id;
 		const fontType = e.target.dataset.font_type;
 		const fontName = e.target.dataset.font_name;
@@ -126,9 +129,27 @@ const ListItem = ({ item }) => {
 		return style;
 	}
 
+	const expandFontItem = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		setActive(!active);
+	}
+
+	const setupDeleteFontPost = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		setCheckDelete(true)
+	}
+
+	const setupCancelDeletingFontPost = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		setCheckDelete(false);
+	}
+
 	return (
 		<>
-			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors`}>
+			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors hover:bg-white`} onClick={expandFontItem}>
 				<div className="flex items-center justify-between py-5 border-b border-light list-font-title">
 					{ getAssetDetail(item) }
 					<div className="flex items-center px-6 mobile:block">
@@ -142,7 +163,7 @@ const ListItem = ({ item }) => {
 									{__('Remove', 'custom-fonts') + ' "' + item.title + '" ' + __('font?', 'custom-fonts')}
 								</div>
 								<div
-									onClick={() => setCheckDelete(false)}
+									onClick={setupCancelDeletingFontPost}
 									className="text-neutral cursor-pointer"
 								>
 									{__('Cancel', 'custom-fonts')}
@@ -171,7 +192,7 @@ const ListItem = ({ item }) => {
 								</div>
 
 								<div
-									onClick={() => setCheckDelete(true)}
+									onClick={setupDeleteFontPost}
 									className="text-danger cursor-pointer"
 								>
 									{__('Remove', 'custom-fonts')}

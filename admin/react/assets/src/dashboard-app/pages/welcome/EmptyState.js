@@ -14,7 +14,7 @@ const EmptyState = () => {
 				{ __( 'Find your fonts here', 'custom-fonts' ) }
 			</h3>
 			<p className="text-sm mb-6">
-				{ __( 'Once you have add fonts, come back here to find it again easily', 'custom-fonts' ) }
+				{ __( 'Once you have add fonts, come back here to find them again easily.', 'custom-fonts' ) }
 			</p>
 		</div>
 	);

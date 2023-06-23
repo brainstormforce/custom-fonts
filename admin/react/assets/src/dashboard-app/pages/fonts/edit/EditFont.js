@@ -82,7 +82,7 @@ const EditFont = ( props ) => {
 								<div className="col-span-8 bg-[#F6F7F7] px-4 pt-5 pb-4 lg:p-[2em] sm:p-6">
 									<div className="border-b border-light pb-5 flex justify-between items-center">
 										<div className="text-sm text-secondary">
-											{__('Font preview', 'custom-fonts')}
+											{__('Font Preview', 'custom-fonts')}
 										</div>
 										<div className="w-[314px] pr-[20px]">
 											<RangeControl

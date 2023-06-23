@@ -288,7 +288,13 @@ class Bsf_Custom_Fonts_Menu {
 	 * @since x.x.x
 	 */
 	public function bsf_custom_fonts_admin_footer_link() {
-		return '<span id="footer-thankyou"> Thank you for using <span class="focus:text-astra-hover active:text-astra-hover hover:text-astra-hover"> ' . esc_html( 'Custom Fonts', 'custom-fonts' ) . '.</span></span>';
+		$footer_text = sprintf(
+			/* translators: 1: Custom Fonts, 2: Plugin rating link */
+			__( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'custom-fonts' ),
+			'<span class="bcf-footer-thankyou"><strong>' . esc_html__( 'Custom Fonts', 'custom-fonts' ) . '</strong>',
+			'<a href="https://wordpress.org/support/plugin/custom-fonts/reviews/?filter=5#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a></span>'
+		);
+		return $footer_text;
 	}
 }
 

@@ -144,12 +144,9 @@ const GoogleFont = () => {
 	return (
 		<div>
 			<div>
-				<p className="mb-5 text-neutral">
-					{__('Add Google fonts assets and font face definitions to your currently active theme.', 'custom-fonts')}
-				</p>
 				<div>
 					<label className="w-full text-sm text-heading" htmlFor="">
-						{__('Select font', 'custom-fonts')}
+						{__('Select Font', 'custom-fonts')}
 					</label>
 					<div className="mt-1.5">
 						<select
@@ -185,8 +182,9 @@ const GoogleFont = () => {
 				<div className="my-5">
 					<button
 						type="button"
-						className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
+						className="bcf-save-font inline-flex dashboard-add-font-btn"
 						onClick={ insertGoogleFontPost }
+						disabled={'loading' === addingFont ? true : false}
 					>
 						{__( 'Save Font', 'custom-fonts' )}
 						{ 'loading' === addingFont && (

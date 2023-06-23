@@ -12,7 +12,7 @@ Custom Fonts allows you to add more fonts that extend formatting options in your
 
 == Description ==
 
-This plugin helps you easily embed custom fonts files (woff2, woff, ttf, svg, eot, otf) easily in your WordPress website.
+Upload your own custom font or choose from a vast collection of Google fonts, all hosted directly on your server. Enjoy improved performance, enhanced privacy, and full site editing theme support. Take control of your website's typography without compromising performance, privacy or compliance!
 
 Currently, it works with:
 

@@ -127,8 +127,9 @@ const EditGoogleFont = ({fontId, fontName}) => {
 					<div className="my-5">
 						<button
 							type="button"
-							className="inline-flex px-4 py-2 border border-transparent text-sm shadow-sm text-white bg-primary focus-visible:bg-primaryDark hover:bg-primaryDark focus:outline-none"
+							className="bcf-save-font inline-flex dashboard-add-font-btn"
 							onClick={ updatingNewFontPost }
+							disabled={'loading' === isLoading ? true : false}
 						>
 							{__( 'Save Font', 'custom-fonts' )}
 							{ 'loading' === isLoading && (

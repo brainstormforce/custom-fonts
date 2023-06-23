@@ -9,7 +9,7 @@ import { __ } from "@wordpress/i18n";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
-	const [previewSize, updatePreviewSize] = useState("50");
+	const [previewSize, updatePreviewSize] = useState("30");
 
 	const toggleType = (value) => {
 		setActiveType(value);
@@ -44,7 +44,7 @@ const AddFont = () => {
 						</Link>
 						<div
 							onClick={() => toggleType("local")}
-							className={`text-base leading-8 hover:text-heading cursor-pointer px-4 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
+							className={`text-base font-medium leading-8 hover:text-heading cursor-pointer px-4 py-4 border-b-2 border-white hover:border-b-primary ${
 								activeType === "local"
 									? "text-heading border-b-primary"
 									: "text-neutral"
@@ -54,7 +54,7 @@ const AddFont = () => {
 						</div>
 						<div
 							onClick={() => toggleType("google")}
-							className={`text-base leading-8 hover:text-heading cursor-pointer px-4 pt-6 pb-6 border-b-2 border-white hover:border-b-primary ${
+							className={`text-base font-medium leading-8 hover:text-heading cursor-pointer px-4 py-4 border-b-2 border-white hover:border-b-primary ${
 								activeType === "google"
 									? "text-heading border-b-primary"
 									: "text-neutral"
@@ -68,11 +68,11 @@ const AddFont = () => {
 						{activeType === "google" && <GoogleFont />}
 					</div>
 				</div>
-				<div className="col-span-9 tablet:col-span-7 mobile:col-span-12 pt-6 pb-5 px-6 lg:px-[2em]">
+				<div className="col-span-9 tablet:col-span-7 mobile:col-span-12 pt-4 pb-5 px-6 lg:px-[2em]">
 					{/* Here will be Font Preview Section */}
-					<div className="pb-5 flex justify-between items-center tablet:block">
+					<div className="pb-3 flex justify-between items-center tablet:block">
 						<div className="text-sm text-secondary">
-							{__('Font preview', 'custom-fonts')}
+							{__('Font Preview', 'custom-fonts')}
 						</div>
 						<div className="w-[314px]">
 							<RangeControl
