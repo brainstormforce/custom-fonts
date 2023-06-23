@@ -45,11 +45,14 @@ We take pride in providing an elegant and intuitive user interface for Custom Fo
 
 Custom Fonts is completely free, without any upsells or hidden costs. We believe in empowering website owners with essential tools without nickel-and-diming. Enjoy full access to all the features and functionality of Custom Fonts.
 
-## SOME OF THE SUPPORTED WORDPRESS PRODUCTS:
-- Astra
+## SOME OF THE SUPPORTED WORDPRESS THEMES:
+- Astra WordPress Theme
+- Spectra One Theme
+- All FSE themes
+
+## SOME OF THE SUPPORTED WORDPRESS PLUGINS:
 - Spectra Page Builder
-- Spectra One
-- All FSE theme editors
+- Elementor Page Builder
 
 **Branding Guidelines**
 

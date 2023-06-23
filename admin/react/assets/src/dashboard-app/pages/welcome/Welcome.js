@@ -7,14 +7,14 @@ const Welcome = () => {
 		<div className="">
 			<div className="bg-white border-b border-slate-200">
 				<div className="max-w-3xl mx-auto px-6 py-4 lg:max-w-full">
-					<div className="relative py-7 sm:py-7 md:py-7 lg:py-0 xl:py-0">
+					<div className="relative py-0">
 						<div className="flex flex-col lg:flex-row md:flex-row justify-between items-center">
 							<div>
-								<h2 className="text-base font-medium">
+								<h2 className="text-base font-medium tablet:mb-3">
 									{ __( "Custom Fonts", "custom-fonts" ) }
 								</h2>
 							</div>
-							<div className="relative tablet:mt-4">
+							<div className="relative">
 								<Link
 									to={{
 										pathname: "admin.php",

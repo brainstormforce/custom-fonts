@@ -231,7 +231,7 @@ const ListItem = ({ item }) => {
 								<div key={varKey} className="py-5 font-variation-item">
 									{getFontAssetLink(item['font-type'], item.title, varItem.font_weight, varKey)}
 									<div className="text-sm text-neutral mb-3"> { getFontWeightTitle( varItem.font_weight ) } </div>
-									<h3 className="text-5xl text-heading" style={{  fontFamily: item.title, fontStyle:getFontStyle(item['font-type'], varItem.font_style, varItem.font_weight), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
+									<h3 className="text-3xl text-heading" style={{  fontFamily: item.title, fontStyle:getFontStyle(item['font-type'], varItem.font_style, varItem.font_weight), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
 										{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 									</h3>
 								</div>

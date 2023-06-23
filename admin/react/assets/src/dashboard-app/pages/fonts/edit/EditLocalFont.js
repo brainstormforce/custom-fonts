@@ -348,7 +348,7 @@ const EditLocalFont = ({fontId}) => {
 				<div className="mb-5">
 					<div
 						onClick={toggleAdvanceTab}
-						className="flex items-center px-1 gap-x-2"
+						className="flex items-center gap-x-2"
 					>
 						<label
 							className="text-sm text-heading"
@@ -384,7 +384,7 @@ const EditLocalFont = ({fontId}) => {
 						>
 							<div className="mb-3">
 								<label
-									className="w-full text-sm text-heading"
+									className="w-full text-[13px] text-heading"
 									htmlFor="font_fallback"
 								>
 									{__( 'Font Fallback:', 'custom-fonts' )}
@@ -410,7 +410,7 @@ const EditLocalFont = ({fontId}) => {
 							</div>
 							<div className="mb-5">
 								<label
-									className="w-full text-sm text-heading"
+									className="w-full text-[13px] text-heading"
 									htmlFor="font_display"
 								>
 									{__( 'Font Display:', 'custom-fonts' )}
