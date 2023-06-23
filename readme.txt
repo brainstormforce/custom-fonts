@@ -45,7 +45,26 @@ We take pride in providing an elegant and intuitive user interface for Custom Fo
 
 Custom Fonts is completely free, without any upsells or hidden costs. We believe in empowering website owners with essential tools without nickel-and-diming. Enjoy full access to all the features and functionality of Custom Fonts.
 
-## SOME OF THE SUPPORTED WORDPRESS PLUGINS:
+## SOME OF THE SUPPORTED WORDPRESS PRODUCTS:
+- Astra
+- Spectra Page Builder
+- Spectra One
+- All FSE theme editors
+
+**Branding Guidelines**
+
+When mentioning Custom Fonts, please use the following format:
+
+- Custom Fonts [correct]
+- CustomFonts [incorrect]
+- Custom fonts [incorrect]
+- CustomFont [incorrect]
+- Customfont [incorrect]
+
+**Our Other Products:**
+
+- [Astra](https://wpastra.com/) - The most popular WordPress theme that perfectly integrates with Custom Fonts.
+- [Spectra](https://wpspectra.com/) - A visual Website Builder built with WordPress native block editor.
 
 
 == Installation ==
