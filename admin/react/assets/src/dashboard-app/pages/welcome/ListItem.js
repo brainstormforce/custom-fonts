@@ -11,6 +11,7 @@ const ListItem = ({ item }) => {
 	const [editFontType, setEditFontType] = useState(item['font-type'] ? item['font-type'] : 'local');
 	const [editFontName, setEditFontName] = useState(item.title);
 	const [openPopup, setOpenPopup] = useState(false);
+	const [removeTitle, setRemoveTitle] = useState(__( 'Remove', 'custom-fonts'));
 
 	const updatedEditData = useSelector( ( state ) => state.editFont );
 	const [editFontData, setEditFontData] = useState(updatedEditData);
@@ -18,9 +19,10 @@ const ListItem = ({ item }) => {
 	const dispatch = useDispatch();
 
 	const deleteFontPost = ( e ) => {
-		console.log( '***** Deleting Font *****' );
 		e.preventDefault();
 		e.stopPropagation();
+
+		setRemoveTitle(__( 'Removing...', 'custom-fonts'));
 		const formData = new window.FormData();
 
 		formData.append( 'action', 'bcf_delete_font' );
@@ -176,7 +178,7 @@ const ListItem = ({ item }) => {
 									data-font_type={item['font-type']}
 									data_font_name={item.title}
 								>
-									{__('Remove', 'custom-fonts')}
+									{removeTitle}
 								</div>
 							</div>
 						) : (
@@ -231,7 +233,7 @@ const ListItem = ({ item }) => {
 								<div key={varKey} className="py-5 font-variation-item">
 									{getFontAssetLink(item['font-type'], item.title, varItem.font_weight, varKey)}
 									<div className="text-sm text-neutral mb-3 font-normal"> { getFontWeightTitle( varItem.font_weight ) } </div>
-									<h3 className="text-xl text-heading" style={{  fontFamily: item.title, fontStyle:getFontStyle(item['font-type'], varItem.font_style, varItem.font_weight), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
+									<h3 className="text-xl text-heading" style={{  fontFamily: item.title, fontSize: "1.3rem", fontStyle:getFontStyle(item['font-type'], varItem.font_style, varItem.font_weight), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
 										{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 									</h3>
 								</div>

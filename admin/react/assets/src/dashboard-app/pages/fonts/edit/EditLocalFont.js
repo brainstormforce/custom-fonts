@@ -156,7 +156,7 @@ const EditLocalVariationItem = ({
 						</div>
 
 						<div className="text-xs text-neutral mt-1.5">
-							Supported file extensions: .otf, .ttf, .woff, .woff2
+							Supported file types: .otf, .ttf, .woff, .woff2
 						</div>
 					</div>
 					<div className="grid grid-cols-2 gap-x-3">
@@ -306,7 +306,6 @@ const EditLocalFont = ({fontId}) => {
 	};
 
 	const updatingNewFontPost = ( e ) => {
-		console.log( '***** Editing New Font *****' );
 		e.preventDefault();
 
 		if ( '' === editFontData.font_name ) {

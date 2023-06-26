@@ -107,7 +107,7 @@ const GFontVariation = (props) => {
 				</div>
 				<div>
 					{ ( ! isInGoogleState ) &&
-						<button className="flex text-sm text-primary items-center py-2 px-3 border border-primary" data-font_weight={weight} onClick={addWeight}>
+						<button className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
 							<svg
 								width="16"
 								height="17"
@@ -125,7 +125,7 @@ const GFontVariation = (props) => {
 						</button>
 					}
 					{ isInGoogleState &&
-						<button className="flex text-sm text-neutral items-center py-2 px-3 border border-neutral" data-font_weight={weight} onClick={removeWeight}>
+						<button className="flex text-danger items-center components-button is-secondary border border-danger" data-font_weight={weight} onClick={removeWeight}>
 							<svg
 								width="16"
 								height="17"
@@ -136,7 +136,7 @@ const GFontVariation = (props) => {
 							>
 								<path
 									d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM4.80078 7.70005V9.30005H11.2008V7.70005H4.80078Z"
-									fill="#7E7E7E"
+									fill="rgb(230 80 84 / 1)"
 								/>
 							</svg>
 

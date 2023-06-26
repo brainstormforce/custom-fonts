@@ -57,7 +57,7 @@ const globalDataReducer = ( state = {}, action ) => {
 				trash_fonts_count: action.trash_fonts_count,
 				draft_fonts_count: action.draft_fonts_count,
 				fonts_count: action.found_posts,
-				fonts_limit_over: false, // Removed the flow count condition
+				fonts_limit_over: false, // Removed the font count condition
 			};
 		case 'UPDATE_SETTINGS_SAVED_NOTIFICATION':
 			return {

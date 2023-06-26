@@ -71,7 +71,6 @@ const EditGoogleFont = ({fontId, fontName}) => {
 	const [ isLoading, setLoading ] = useState( false );
 
 	const updatingNewFontPost = ( e ) => {
-		console.log( '***** Editing New Font *****' );
 		e.preventDefault();
 
 		setLoading( 'loading' );

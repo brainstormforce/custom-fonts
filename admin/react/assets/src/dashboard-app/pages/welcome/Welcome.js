@@ -20,7 +20,7 @@ const Welcome = () => {
 										pathname: "themes.php",
 										search: `?page=bsf-custom-fonts&path=add-fonts`,
 									}}
-									className="flex dashboard-add-font-btn-secondary"
+									className="flex components-button is-secondary"
 								>
 									{ __("Add New Font", "custom-fonts") }
 								</Link>

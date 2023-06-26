@@ -151,7 +151,7 @@ const LocalVariationItem = ({
 						</div>
 
 						<div className="text-xs text-neutral mt-1.5">
-							Supported file extensions: .otf, .ttf, .woff, .woff2
+							Supported file types: .otf, .ttf, .woff, .woff2
 						</div>
 					</div>
 					<div className="grid grid-cols-2 gap-x-3">
@@ -303,7 +303,6 @@ const LocalFont = () => {
 	};
 
 	const insertLocalFontPost = ( e ) => {
-		console.log( '***** Publishing New Font *****' );
 		e.preventDefault();
 
 		if ( '' === localFontData.font_name ) {
