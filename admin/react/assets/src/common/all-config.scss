@@ -118,6 +118,7 @@ span.font-filename {
     align-items: center;
     gap: 10px;
 }
+.bcf-font-list-wrap.skeleton-wrap > .border-b:first-child,
 .bcf-font-list-wrap > .active-state:not(:first-child) > .list-font-title,
 .bcf-font-list-wrap > .active-state .list-font-variations > .font-variation-item:not(:first-child) {
     border-top: 1px solid rgb(221 221 221 / var(--tw-border-opacity));

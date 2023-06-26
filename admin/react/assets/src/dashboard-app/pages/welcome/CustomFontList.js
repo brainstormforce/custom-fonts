@@ -2,6 +2,7 @@ import React from "react";
 import ListItem from "./ListItem";
 import { useSelector } from "react-redux";
 import EmptyState from "./EmptyState";
+import ListSkeleton from "../../SkeletonSkins";
 
 const CustomFontList = () => {
 	const fontsData = useSelector((state) => state.fonts);
@@ -9,6 +10,10 @@ const CustomFontList = () => {
 
 	if ( 0 == fontPostCount ) {
 		return <EmptyState/>
+	}
+
+	if ( null == fontsData ) {
+		return <ListSkeleton />
 	}
 
 	return (
