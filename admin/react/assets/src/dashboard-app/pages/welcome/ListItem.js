@@ -149,11 +149,11 @@ const ListItem = ({ item }) => {
 
 	return (
 		<>
-			<div className={`${active || checkDelete ? "bg-white" : ""} transition-colors hover:bg-white`} onClick={expandFontItem}>
-				<div className="flex items-center justify-between py-5 border-b border-light list-font-title">
+			<div className={`${active || checkDelete ? "bg-white active-state" : ""} bg-white transition-colors hover:bg-[#f6f7f7]`}>
+				<div className="flex items-center title-area justify-between py-5 border-b border-light list-font-title hover:cursor-pointer" onClick={expandFontItem}>
 					{ getAssetDetail(item) }
 					<div className="flex items-center px-6 mobile:block">
-						<h1 className="text-xl" style={{  fontFamily: item.title, fontWeight: "normal", fontSize: "2em" }}> {item.title} </h1>
+						<h1 className="text-xl" style={{  fontFamily: item.title, fontWeight: "normal", fontSize: "1.5rem" }}> {item.title} </h1>
 						<div className="sm:ml-3 mobile:mt-3 text-sm"> {`(${item['fonts-data']['variations'] ? item['fonts-data']['variations'].length : 0} ${__( 'variants', 'custom-fonts' )})`} </div>
 					</div>
 					<div className="flex px-6">
@@ -225,13 +225,13 @@ const ListItem = ({ item }) => {
 					</div>
 				</div>
 				{active && item['fonts-data']['variations'] && (
-					<div className="px-6 list-font-variations">
+					<div className="px-6 list-font-variations bg-[#f6f7f7]">
 						{
 							item['fonts-data']['variations'].map(( varItem, varKey ) => (
 								<div key={varKey} className="py-5 font-variation-item">
 									{getFontAssetLink(item['font-type'], item.title, varItem.font_weight, varKey)}
-									<div className="text-sm text-neutral mb-3"> { getFontWeightTitle( varItem.font_weight ) } </div>
-									<h3 className="text-3xl text-heading" style={{  fontFamily: item.title, fontStyle:getFontStyle(item['font-type'], varItem.font_style, varItem.font_weight), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
+									<div className="text-sm text-neutral mb-3 font-normal"> { getFontWeightTitle( varItem.font_weight ) } </div>
+									<h3 className="text-xl text-heading" style={{  fontFamily: item.title, fontStyle:getFontStyle(item['font-type'], varItem.font_style, varItem.font_weight), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
 										{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 									</h3>
 								</div>

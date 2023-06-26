@@ -30,13 +30,13 @@ body #wpbody-content .dashboard-add-font-btn-secondary:hover {
 	box-shadow: inset 0 0 0 1px var(--wp-components-color-accent-darker-10, var(--wp-admin-theme-color-darker-10, #006ba1));
 	color: var(--wp-components-color-accent-darker-10, var(--wp-admin-theme-color-darker-10, #006ba1));
 }
-.bg-white.transition-colors.hover\:bg-white > .border-light {
+body .active-state.transition-colors > .border-light {
     border-top: 0 !important;
 }
-.bg-white.transition-colors.hover\:bg-white {
+body .active-state.transition-colors {
     border-bottom: 1px solid rgb(221 221 221/var(--tw-border-opacity));
 }
-.bcf-font-list-wrap .bg-white.transition-colors:first-child {
+.bcf-font-list-wrap .active-state.transition-colors:first-child {
     border-top: 1px solid rgb(221 221 221/var(--tw-border-opacity));
 }
 .bcf-add-new-font-page.appearance_page_bsf-custom-fonts #wpbody-content {
@@ -113,13 +113,13 @@ span.font-filename {
 }
 .font-triggers {
     position: absolute;
-    right: 15px;
+    right: 10px;
     display: inline-flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
-.bcf-font-list-wrap > .bg-white:not(:first-child) > .list-font-title,
-.bcf-font-list-wrap > .bg-white .list-font-variations > .font-variation-item:not(:first-child) {
+.bcf-font-list-wrap > .active-state:not(:first-child) > .list-font-title,
+.bcf-font-list-wrap > .active-state .list-font-variations > .font-variation-item:not(:first-child) {
     border-top: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
 }
 .bcf-font-size-range .components-input-control__container {
@@ -172,4 +172,18 @@ span.font-filename {
 }
 .text-sm {
 	font-weight: 500;
+}
+.font-normal.text-sm {
+	font-weight: 400;
+}
+.font-triggers svg {
+	width: 25px;
+    padding: 5px;
+    cursor: pointer;
+    margin-top: -5px;
+}
+.active-state.transition-colors .title-area {
+    box-shadow: inset 5px 0 0 0 var(--wp-admin-theme-color);
+    transition: box-shadow .1s linear;
+    background-color: #e5f1f8;
 }

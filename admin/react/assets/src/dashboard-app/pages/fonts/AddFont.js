@@ -24,7 +24,7 @@ const AddFont = () => {
 					<div className="flex items-center mb-5 border-b border-light">
 						<Link
 							to={{
-								pathname: "admin.php",
+								pathname: "themes.php",
 								search: `?page=bsf-custom-fonts`,
 							}}
 							className="mr-4 cursor-pointer"
@@ -71,7 +71,7 @@ const AddFont = () => {
 				<div className="col-span-9 tablet:col-span-7 mobile:col-span-12 pt-4 pb-5 px-6 lg:px-[2em]">
 					{/* Here will be Font Preview Section */}
 					<div className="pb-3 flex justify-between items-center tablet:block">
-						<div className="text-sm text-secondary">
+						<div className="text-base font-medium text-secondary">
 							{__('Font Preview', 'custom-fonts')}
 						</div>
 						<div className="w-[314px]">

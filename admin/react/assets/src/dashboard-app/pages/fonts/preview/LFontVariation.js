@@ -44,7 +44,7 @@ const LFontVariation = (props) => {
 	return (
 		<div className="py-5">
 			<div>
-				<div className="text-sm text-neutral mb-3.5"> { getFontWeightTitle(weight) } </div>
+				<div className="text-sm font-normal text-neutral mb-3.5"> { getFontWeightTitle(weight) } </div>
 				<div className="text-5xl" style={{ fontFamily: font, fontWeight: weight, fontStyle: style, fontSize: "var(--bsf-custom-font-size)" }}>
 					{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 				</div>

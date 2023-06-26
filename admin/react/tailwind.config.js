@@ -39,6 +39,8 @@ module.exports = {
 				// => @media (max-width: 782px) { ... }
 				'mobile': {'max': '600px'},
 				// => @media (max-width: 600px) { ... }
+				'iphone': {'max': '400px'},
+				// => @media (max-width: 400px) { ... }
 			},
 			borderColor: (theme) => ({
 				...theme('colors'),

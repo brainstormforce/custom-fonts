@@ -44,7 +44,7 @@ const GoogleVariationItem = ({
 
 	return (
 		<div key={id} className="flex items-center justify-between">
-			<div className="text-sm text-heading">
+			<div className="text-sm font-normal text-heading">
 				{
 					getFontWeightTitle(variation.font_weight)
 				}
@@ -165,7 +165,7 @@ const GoogleFont = () => {
 				</div>
 				{ (googleFontData && googleFontData.variations && googleFontData.variations.length > 0) &&
 					<div className="my-5 border border-light rounded-sm p-3.5">
-						<h3 className="text-sm font-semibold text-heading">
+						<h3 className="text-base font-semibold text-heading">
 							{__('Selected Variant', 'custom-fonts')}
 						</h3>
 						<div className="mt-3.5 flex flex-col gap-y-3.5">
@@ -182,7 +182,7 @@ const GoogleFont = () => {
 				<div className="my-5">
 					<button
 						type="button"
-						className="bcf-save-font inline-flex dashboard-add-font-btn"
+						className="bcf-save-font inline-flex components-button is-primary"
 						onClick={ insertGoogleFontPost }
 						disabled={'loading' === addingFont ? true : false}
 					>

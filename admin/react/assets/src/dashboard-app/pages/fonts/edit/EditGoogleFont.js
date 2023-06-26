@@ -41,7 +41,7 @@ const EditGoogleVariationItem = ({
 	}
 
 	return (
-		<div key={id} className={`text-sm text-heading mt-3.5 edit-gfont-variation-item`} data-varweight={variation}>
+		<div key={id} className={`text-sm font-normal text-heading mt-3.5 edit-gfont-variation-item`} data-varweight={variation}>
 			{
 				getFontWeightTitle(variation)
 			}
@@ -109,7 +109,7 @@ const EditGoogleFont = ({fontId, fontName}) => {
 
 				<div className="geditfontwrapper">
 					<div className="my-5 border border-light rounded-sm p-3.5">
-						<h3 className="text-sm font-semibold text-heading">
+						<h3 className="text-base font-semibold text-heading">
 							{__('Selected Variant', 'custom-fonts')}
 						</h3>
 						<div className="flex flex-col gap-y-3.5">
@@ -127,7 +127,7 @@ const EditGoogleFont = ({fontId, fontName}) => {
 					<div className="my-5">
 						<button
 							type="button"
-							className="bcf-save-font inline-flex dashboard-add-font-btn"
+							className="bcf-save-font inline-flex components-button is-primary"
 							onClick={ updatingNewFontPost }
 							disabled={'loading' === isLoading ? true : false}
 						>

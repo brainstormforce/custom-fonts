@@ -8,7 +8,7 @@ const Welcome = () => {
 			<div className="bg-white border-b border-slate-200">
 				<div className="max-w-3xl mx-auto px-6 py-4 lg:max-w-full">
 					<div className="relative py-0">
-						<div className="flex flex-col lg:flex-row md:flex-row justify-between items-center">
+						<div className="flex iphone:flex-col lg:flex-row md:flex-row justify-between items-center">
 							<div>
 								<h2 className="text-base font-medium tablet:mb-3">
 									{ __( "Custom Fonts", "custom-fonts" ) }
@@ -17,7 +17,7 @@ const Welcome = () => {
 							<div className="relative">
 								<Link
 									to={{
-										pathname: "admin.php",
+										pathname: "themes.php",
 										search: `?page=bsf-custom-fonts&path=add-fonts`,
 									}}
 									className="flex dashboard-add-font-btn-secondary"
@@ -35,10 +35,10 @@ const Welcome = () => {
 				<div className="mt-6 text-center">
 					<Link
 						to={{
-							pathname: "admin.php",
+							pathname: "themes.php",
 							search: `?page=bsf-custom-fonts&path=add-fonts`,
 						}}
-						className="button dashboard-add-font-btn"
+						className="components-button is-primary"
 					>
 						{ __("Add New Font", "custom-fonts") }
 					</Link>

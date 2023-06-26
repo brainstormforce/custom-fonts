@@ -93,7 +93,7 @@ const LocalVariationItem = ({
 							>
 								<path
 									d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-									fill="#007CBA"
+									fill="rgb(230 80 84 / 1)"
 								/>
 							</svg>
 						)}
@@ -143,7 +143,7 @@ const LocalVariationItem = ({
 									>
 										<path
 											d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-											fill="#007CBA"
+											fill="rgb(230 80 84 / 1)"
 										/>
 									</svg>
 								)}
@@ -151,7 +151,7 @@ const LocalVariationItem = ({
 						</div>
 
 						<div className="text-xs text-neutral mt-1.5">
-							.otf, .ttf, .woff, .woff2 file extensions supported
+							Supported file extensions: .otf, .ttf, .woff, .woff2
 						</div>
 					</div>
 					<div className="grid grid-cols-2 gap-x-3">
@@ -357,7 +357,7 @@ const LocalFont = () => {
 				<div className="mb-5">
 					<div
 						onClick={toggleAdvanceTab}
-						className="flex items-center gap-x-2"
+						className="flex items-center gap-x-2 hover:cursor-pointer"
 					>
 						<label
 							className="text-sm text-heading"
@@ -483,7 +483,7 @@ const LocalFont = () => {
 
 				<button
 					type="button"
-					className="bcf-save-font inline-flex dashboard-add-font-btn"
+					className="bcf-save-font inline-flex components-button is-primary"
 					onClick={ insertLocalFontPost }
 					disabled={'loading' === addingFont ? true : false}
 				>

@@ -97,7 +97,7 @@ const GFontVariation = (props) => {
 			<div className="flex justify-between items-center">
 				<div>
 					{/* Variation Name */}
-					<div className="text-sm text-neutral mb-3.5">
+					<div className="text-sm font-normal text-neutral mb-3.5">
 						{ getFontWeightTitle(weight) }
 					</div>
 					{/* Variation Preview */}

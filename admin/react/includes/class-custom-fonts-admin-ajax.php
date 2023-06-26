@@ -54,10 +54,10 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	 */
 	public function __construct() {
 		$this->errors = array(
-			'permission' => __( 'Sorry, you are not allowed to do this operation.', 'astra' ),
-			'nonce'      => __( 'Nonce validation failed', 'astra' ),
-			'default'    => __( 'Sorry, something went wrong.', 'astra' ),
-			'invalid'    => __( 'No post data found!', 'astra' ),
+			'permission' => __( 'Sorry, you are not allowed to do this operation.', 'custom-fonts' ),
+			'nonce'      => __( 'Nonce validation failed', 'custom-fonts' ),
+			'default'    => __( 'Sorry, something went wrong.', 'custom-fonts' ),
+			'invalid'    => __( 'No post data found!', 'custom-fonts' ),
 		);
 
 		$ajax_events = array(
