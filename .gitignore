@@ -30,3 +30,6 @@ vendor/
 borders-for-default-menu.json
 defaults.json
 no-toggle-border-fix.json
+
+# Exclude build assets file
+dashboard-app.asset.php

@@ -240,21 +240,15 @@ class Bsf_Custom_Fonts_Menu {
 		$handle            = 'bsf-custom-fonts-admin-dashboard-app';
 		$build_path        = BSF_CUSTOM_FONTS_ADMIN_DIR . '/assets/build/';
 		$build_url         = BSF_CUSTOM_FONTS_ADMIN_URL . '/assets/build/';
-		$script_asset_path = $build_path . 'dashboard-app.asset.php';
-
-		$script_info = file_exists( $script_asset_path ) ? include $script_asset_path : array(  // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
-			'dependencies' => array(),
-			'version'      => BSF_CUSTOM_FONTS_VER,
-		);
 
 		wp_enqueue_media();
-		$script_dep = array_merge( $script_info['dependencies'], array( 'updates', 'wp-hooks' ) );
+		$script_dep = array( 'react', 'react-dom', 'wp-api-fetch', 'wp-components', 'wp-element', 'wp-i18n', 'updates', 'wp-hooks' );
 
 		wp_register_script(
 			$handle,
 			$build_url . 'dashboard-app.js',
 			$script_dep,
-			$script_info['version'],
+			BSF_CUSTOM_FONTS_VER,
 			true
 		);
 
