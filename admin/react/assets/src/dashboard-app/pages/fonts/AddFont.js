@@ -27,11 +27,11 @@ const AddFont = () => {
 								pathname: "themes.php",
 								search: `?page=bsf-custom-fonts`,
 							}}
-							className="mr-4 cursor-pointer"
+							className="mr-4 cursor-pointer py-3 px-0"
 						>
 							<svg
-								width="8"
-								height="12"
+								width="15"
+								height="15"
 								viewBox="0 0 8 12"
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"

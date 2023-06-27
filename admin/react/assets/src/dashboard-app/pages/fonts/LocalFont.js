@@ -482,7 +482,7 @@ const LocalFont = () => {
 
 				<button
 					type="button"
-					className="bcf-save-font inline-flex components-button is-primary"
+					className="bcf-save-font inline-flex components-button is-primary mobile:mb-5"
 					onClick={ insertLocalFontPost }
 					disabled={'loading' === addingFont ? true : false}
 				>

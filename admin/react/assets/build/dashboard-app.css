@@ -887,6 +887,9 @@ select {
   padding: 1rem;
 }.p-\[3px\] {
   padding: 3px;
+}.px-0 {
+  padding-left: 0px;
+  padding-right: 0px;
 }.px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -896,6 +899,9 @@ select {
 }.py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
+}.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }.py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -1177,6 +1183,10 @@ select {
 
   .mobile\:col-span-12 {
     grid-column: span 12 / span 12;
+  }
+
+  .mobile\:mb-5 {
+    margin-bottom: 1.25rem;
   }
 
   .mobile\:ml-2 {
