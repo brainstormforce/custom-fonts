@@ -27,7 +27,7 @@ const AddFont = () => {
 								pathname: "themes.php",
 								search: `?page=bsf-custom-fonts`,
 							}}
-							className="mr-4 cursor-pointer py-3 px-0"
+							className="mr-4 cursor-pointer py-3 px-0 focus:shadow-none focus:outline-none"
 						>
 							<svg
 								width="15"
