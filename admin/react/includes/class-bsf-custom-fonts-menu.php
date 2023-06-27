@@ -227,7 +227,6 @@ class BSF_Custom_Fonts_Menu {
 	 */
 	public function settings_app_scripts( $localize ) {
 		$handle     = 'bsf-custom-fonts-admin-dashboard-app';
-		$build_path = BSF_CUSTOM_FONTS_ADMIN_DIR . '/assets/build/';
 		$build_url  = BSF_CUSTOM_FONTS_ADMIN_URL . '/assets/build/';
 
 		wp_enqueue_media();
