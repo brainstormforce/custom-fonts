@@ -226,8 +226,8 @@ class BSF_Custom_Fonts_Menu {
 	 * @since 2.0.0
 	 */
 	public function settings_app_scripts( $localize ) {
-		$handle     = 'bsf-custom-fonts-admin-dashboard-app';
-		$build_url  = BSF_CUSTOM_FONTS_ADMIN_URL . '/assets/build/';
+		$handle    = 'bsf-custom-fonts-admin-dashboard-app';
+		$build_url = BSF_CUSTOM_FONTS_ADMIN_URL . '/assets/build/';
 
 		wp_enqueue_media();
 		$script_dep = array( 'react', 'react-dom', 'wp-api-fetch', 'wp-components', 'wp-element', 'wp-i18n', 'updates', 'wp-hooks' );
