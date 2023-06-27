@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Bsf_Custom_Fonts_Menu.
+ * Class BSF_Custom_Fonts_Menu.
  *
  * @package Bsf_Custom_Fonts
  * @since 2.0.0
@@ -11,11 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Bsf_Custom_Fonts_Menu.
+ * BSF_Custom_Fonts_Menu.
  *
  * @since 2.0.0
  */
-class Bsf_Custom_Fonts_Menu {
+class BSF_Custom_Fonts_Menu {
 
 	/**
 	 * Instance
@@ -77,8 +77,6 @@ class Bsf_Custom_Fonts_Menu {
 
 		add_filter( 'upload_mimes', array( $this, 'add_fonts_to_allowed_mimes' ) );
 		add_filter( 'wp_check_filetype_and_ext', array( $this, 'update_mime_types' ), 10, 3 );
-
-		add_action( 'after_setup_theme', array( $this, 'init_admin_settings' ), 99 );
 	}
 
 	/**
@@ -137,16 +135,6 @@ class Bsf_Custom_Fonts_Menu {
 		}
 
 		return $defaults;
-	}
-
-	/**
-	 * Admin settings init.
-	 *
-	 * @since 2.0.0
-	 */
-	public function init_admin_settings() {
-		if ( ! is_customize_preview() ) {
-		}
 	}
 
 	/**
@@ -223,7 +211,7 @@ class Bsf_Custom_Fonts_Menu {
 			'googleFonts'         => BCF_Custom_Font_Families::get_google_fonts(),
 			'existingGoogleFonts' => BCF_Custom_Font_Families::get_existing_google_fonts(),
 			'fontPostCount'       => wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE )->publish,
-			'googleFontAPI'       => 'https://fonts.googleapis.com/css?family'
+			'googleFontAPI'       => 'https://fonts.googleapis.com/css?family',
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );
@@ -231,15 +219,16 @@ class Bsf_Custom_Fonts_Menu {
 
 	/**
 	 * Settings app scripts
+	 *
 	 * @param array $localize Variable names.
 	 *
 	 * @return void
 	 * @since 2.0.0
 	 */
 	public function settings_app_scripts( $localize ) {
-		$handle            = 'bsf-custom-fonts-admin-dashboard-app';
-		$build_path        = BSF_CUSTOM_FONTS_ADMIN_DIR . '/assets/build/';
-		$build_url         = BSF_CUSTOM_FONTS_ADMIN_URL . '/assets/build/';
+		$handle     = 'bsf-custom-fonts-admin-dashboard-app';
+		$build_path = BSF_CUSTOM_FONTS_ADMIN_DIR . '/assets/build/';
+		$build_url  = BSF_CUSTOM_FONTS_ADMIN_URL . '/assets/build/';
 
 		wp_enqueue_media();
 		$script_dep = array( 'react', 'react-dom', 'wp-api-fetch', 'wp-components', 'wp-element', 'wp-i18n', 'updates', 'wp-hooks' );
@@ -294,4 +283,4 @@ class Bsf_Custom_Fonts_Menu {
 	}
 }
 
-Bsf_Custom_Fonts_Menu::get_instance();
+BSF_Custom_Fonts_Menu::get_instance();

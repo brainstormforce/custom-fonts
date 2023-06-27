@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Custom_Fonts_API.
+ * Class Custom_Fonts_API_Init.
  *
  * @package BSF_Custom_Fonts
  * @since 2.0.0
@@ -16,11 +16,11 @@ if ( ! class_exists( 'WP_REST_Controller' ) ) {
 }
 
 /**
- * Custom_Fonts_API.
+ * Custom_Fonts_API_Init.
  *
  * @since 2.0.0
  */
-class Custom_Fonts_API extends WP_REST_Controller {
+class Custom_Fonts_API_Init extends WP_REST_Controller {
 
 	/**
 	 * Instance
@@ -213,4 +213,4 @@ class Custom_Fonts_API extends WP_REST_Controller {
 	}
 }
 
-Custom_Fonts_API::get_instance();
+Custom_Fonts_API_Init::get_instance();

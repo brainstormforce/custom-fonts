@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Return image media ID on basis of file URL.
+ *
  * @param string $url file url.
  * @since 2.0.0
  * @return string
@@ -28,6 +29,7 @@ function bcf_get_media_image_id_by_url( $url ) {
 
 /**
  * Create css for font-face
+ *
  * @param array $font selected font from custom font list.
  *
  * @return array Font data.
@@ -111,6 +113,7 @@ function bcf_prepare_backward_font_data( $font ) {
 
 /**
  * Sanitize data recursively, eg: font-face data.
+ *
  * @param array $data Data to sanitize.
  *
  * @return array
@@ -289,10 +292,10 @@ function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data )
 /**
  * Retrieve font-face CSS for assigned $post_id.
  *
- * @param int $post_id
+ * @param int   $post_id
  * @param array $font_data
- * @param bool $force_update
- * @param bool $is_google_font
+ * @param bool  $force_update
+ * @param bool  $is_google_font
  *
  * @since 2.0.0
  * @return string css

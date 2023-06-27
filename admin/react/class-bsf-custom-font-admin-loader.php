@@ -63,13 +63,13 @@ class BSF_Custom_Font_Admin_Loader {
 		require_once BSF_CUSTOM_FONTS_DIR . '/includes/class-bsf-custom-fonts-posttype.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 
 		/* Ajax init */
-		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-custom-fonts-admin-ajax.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
+		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-bsf-custom-fonts-admin-ajax.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 
 		/* Font families */
 		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-bcf-custom-font-families.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 
 		/* Setup Menu */
-		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-custom-fonts-menu.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
+		require_once BSF_CUSTOM_FONTS_ADMIN_DIR . '/includes/class-bsf-custom-fonts-menu.php'; // phpcs:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound -- Not a template file so loading in a normal way.
 	}
 }
 

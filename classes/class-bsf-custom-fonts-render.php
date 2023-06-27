@@ -307,8 +307,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$query_posts = $this->get_existing_font_posts();
 
 			foreach ( $query_posts as $key => $post_id ) {
-				$font_data            = get_post_meta( $post_id, 'fonts-data', true );
-				$font_type            = get_post_meta( $post_id, 'font-type', true );
+				$font_data = get_post_meta( $post_id, 'fonts-data', true );
+				$font_type = get_post_meta( $post_id, 'font-type', true );
 				if ( 'google' !== $font_type ) {
 					$custom_fonts_weights = array();
 					if ( ! empty( $font_data['variations'] ) ) {
@@ -338,8 +338,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$query_posts = $this->get_existing_font_posts();
 
 			foreach ( $query_posts as $key => $post_id ) {
-				$font_data            = get_post_meta( $post_id, 'fonts-data', true );
-				$font_type            = get_post_meta( $post_id, 'font-type', true );
+				$font_data = get_post_meta( $post_id, 'fonts-data', true );
+				$font_type = get_post_meta( $post_id, 'font-type', true );
 				if ( 'google' !== $font_type ) {
 					$custom_fonts_weights = array( 'Default' );
 					if ( ! empty( $font_data['variations'] ) ) {

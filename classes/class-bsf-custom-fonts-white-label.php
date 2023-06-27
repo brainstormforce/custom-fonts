@@ -73,7 +73,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 */
 		public function action_links( $links = array() ) {
 
-			$admin_base = 'themes.php';
+			$admin_base   = 'themes.php';
 			$action_links = array(
 				'settings' => '<a href="' . esc_url( admin_url( $admin_base . '?page=' . BSF_CUSTOM_FONTS_ADMIN_PAGE ) ) . '" aria-label="' . esc_attr__( 'visit the plugin settings page', 'custom-fonts' ) . '">' . esc_html__( 'Settings', 'custom-fonts' ) . '</a>',
 			);

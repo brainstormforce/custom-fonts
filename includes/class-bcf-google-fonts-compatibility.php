@@ -181,6 +181,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 		/**
 		 * Save Google Fonts to locally.
+		 *
 		 * @param mixed $font Font data.
 		 *
 		 * @return void
@@ -634,6 +635,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 */
 		public static function delete_theme_font_family( $font ) {
 			if ( function_exists( 'wp_is_block_theme' ) && wp_is_block_theme() ) {
+				// @codingStandardsIgnoreStart
 				// Construct updated theme.json.
 				$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
 
@@ -649,14 +651,15 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				}
 				$theme_json_raw['settings']['typography']['fontFamilies'] = $font_families;
 
-				$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
+				$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); // PHPCompatibility.Constants.NewConstants.json_unescaped_unicodeFound
 				$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
 
 				// Write the new theme.json to the theme folder.
-				file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions
+				file_put_contents( // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions, WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
 					get_stylesheet_directory() . '/theme.json',
 					$theme_json_string
 				);
+				// @codingStandardsIgnoreEnd
 
 				$bcf_global_fse_fonts = array();
 
