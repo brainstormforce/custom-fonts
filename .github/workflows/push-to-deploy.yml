@@ -9,6 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
+
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14.x
+
+    - name: Build Assets
+      run: npm install && npm run build-package
+
     - name: WordPress Plugin Deploy
       uses: Nikschavan/action-wordpress-plugin-deploy@develop
       env:

@@ -1,11 +1,10 @@
 module.exports = function( grunt ) {
 
 	'use strict';
+	var pkg = grunt.file.readJSON('package.json');
 	var banner = '/**\n * <%= pkg.homepage %>\n * Copyright (c) <%= grunt.template.today("yyyy") %>\n * This file is generated automatically. Do not edit.\n */\n';
 	// Project configuration
 	grunt.initConfig( {
-
-		pkg: grunt.file.readJSON( 'package.json' ),
 
 		rtlcss: {
             options: {
@@ -68,6 +67,75 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		clean: {
+			main: ["custom-fonts"],
+			zip: ["*.zip"]
+		},
+
+		copy: {
+			main: {
+				options: {
+					mode: true
+				},
+				src: [
+					'**',
+					'*.zip',
+					'!node_modules/**',
+					'!admin/react/node_modules/**',
+					'!admin/react/package.json',
+					'!admin/react/package-lock.json',
+					'!admin/react/postcss.config.js',
+					'!admin/react/tailwind.config.js',
+					'!admin/react/webpack.config.js',
+					'!.git/**',
+					'!.wordpress-org/**',
+					'!bin/**',
+					'!.gitlab-ci.yml',
+					'!bin/**',
+					'!tests/**',
+					'!phpunit.xml.dist',
+					'!*.sh',
+					'!*.map',
+					'!Gruntfile.js',
+					'!package.json',
+					'!.gitignore',
+					'!.distignore',
+					'!.editorconfig',
+					'!tailwind.config.js',
+					'!webpack.config.js',
+					'!postcss.config.js',
+					'!phpunit.xml',
+					'!README.md',
+					'!codesniffer.ruleset.xml',
+					'!vendor/**',
+					'!composer.json',
+					'!composer.lock',
+					'!package-lock.json',
+					'!phpcs.xml',
+					'!phpcs.xml.dist',
+					'!admin/react/assets/src/**',
+				],
+				dest: 'custom-fonts/'
+			}
+		},
+
+		compress: {
+			main: {
+				options: {
+					archive: 'custom-fonts-' + pkg.version + '.zip',
+					mode: 'zip'
+				},
+				files: [
+					{
+						src: [
+							'./custom-fonts/**'
+						]
+
+					}
+				]
+			}
+		},
+
 		json2php: {
 			options: {
 				// Task-specific options go here.
@@ -86,12 +154,16 @@ module.exports = function( grunt ) {
 
 	grunt.loadNpmTasks( 'grunt-wp-i18n' );
 	grunt.loadNpmTasks( 'grunt-wp-readme-to-markdown' );
-    grunt.loadNpmTasks('grunt-rtlcss');
-    grunt.loadNpmTasks('grunt-json2php');
+    grunt.loadNpmTasks( 'grunt-rtlcss' );
+    grunt.loadNpmTasks( 'grunt-json2php' );
+	grunt.loadNpmTasks( 'grunt-contrib-copy' );
+    grunt.loadNpmTasks( 'grunt-contrib-compress' );
+    grunt.loadNpmTasks( 'grunt-contrib-clean' );
 
 	grunt.registerTask( 'i18n', ['addtextdomain', 'makepot'] );
 	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
-    grunt.registerTask('rtl', ['rtlcss']);
+    grunt.registerTask( 'rtl', ['rtlcss'] );
+	grunt.registerTask( 'release', ['clean:zip', 'copy', 'compress', 'clean:main'] );
 
 	// Update google Fonts.
 	grunt.registerTask('download-google-fonts', function () {
