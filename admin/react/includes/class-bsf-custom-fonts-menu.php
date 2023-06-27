@@ -156,7 +156,7 @@ class BSF_Custom_Fonts_Menu {
 	 * @since 2.0.0
 	 */
 	public function is_custom_fonts_screen() {
-		if ( isset( $_GET['page'] ) && self::$plugin_slug === sanitize_text_field( $_GET['page'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( isset( $_GET['page'] ) && sanitize_text_field( $_GET['page'] ) === self::$plugin_slug ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return true;
 		}
 		return false;

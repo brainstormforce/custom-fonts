@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function bcf_get_media_image_id_by_url( $url ) {
 	global $wpdb;
-	$image = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) );
+	$image = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $url ) ); // phpcs:ignore WordPress.DB.PreparedSQLPlaceholders.QuotedSimplePlaceholder
 	if ( ! empty( $image ) ) {
 		return $image[0];
 	}
@@ -50,7 +50,7 @@ function bcf_prepare_backward_font_data( $font ) {
 				isset( $temp_arr[ $counter ]['font_file'] ) && '' !== $temp_arr[ $counter ]['font_file'] &&
 				isset( $temp_arr[ $counter ]['font_weight'] ) && '' !== $temp_arr[ $counter ]['font_weight']
 			) {
-				$counter = $counter + 1;
+				$counter = $counter + 1; // phpcs:ignore Squiz.Operators.IncrementDecrementUsage.Found
 			}
 
 			$consider_counter = false;
@@ -206,7 +206,7 @@ function bcf_get_font_file_extension( $font_url ) {
  *
  * @param string $font_family Font family name.
  * @param array  $font_data Font data.
- * @Param array  $variation_data Font variation data.
+ * @param array  $variation_data Font variation data.
  *
  * @return string
  * @since 2.0.0
@@ -292,10 +292,10 @@ function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data )
 /**
  * Retrieve font-face CSS for assigned $post_id.
  *
- * @param int   $post_id
- * @param array $font_data
- * @param bool  $force_update
- * @param bool  $is_google_font
+ * @param int   $post_id Post ID.
+ * @param array $font_data Font data.
+ * @param bool  $force_update Force update.
+ * @param bool  $is_google_font Is Google font.
  *
  * @since 2.0.0
  * @return string css

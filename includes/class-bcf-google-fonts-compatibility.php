@@ -400,6 +400,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				// Overwrite the previous fontFamilies with the new ones.
 				$theme_json_raw['settings']['typography']['fontFamilies'] = $theme_font_families;
 
+				// @codingStandardsIgnoreStart
 				$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 				$theme_json_string = preg_replace( '~(?:^|\G)\h{4}~m', "\t", $theme_json );
 
@@ -408,6 +409,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 					get_stylesheet_directory() . '/theme.json',
 					$theme_json_string
 				);
+				// @codingStandardsIgnoreEnd
 			}
 		}
 
@@ -613,6 +615,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 					);
 				}
 
+				// @codingStandardsIgnoreStart
 				$theme_json_raw['settings']['typography']['fontFamilies'] = $font_families;
 
 				$theme_json        = wp_json_encode( $theme_json_raw, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
@@ -623,6 +626,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 					get_stylesheet_directory() . '/theme.json',
 					$theme_json_string
 				);
+				// @codingStandardsIgnoreEnd
 			}
 		}
 
