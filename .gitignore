@@ -32,4 +32,4 @@ defaults.json
 no-toggle-border-fix.json
 
 # Exclude build assets file
-dashboard-app.asset.php
+admin/react/assets/build/dashboard-app.asset.php
