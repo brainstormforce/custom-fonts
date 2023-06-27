@@ -195,6 +195,7 @@ class Bsf_Custom_Fonts_Menu {
 	/**
 	 * Enqueues the needed CSS/JS for the builder's admin settings page.
 	 *
+	 * @return void
 	 * @since 2.0.0
 	 */
 	public function styles_scripts() {
@@ -222,6 +223,7 @@ class Bsf_Custom_Fonts_Menu {
 			'googleFonts'         => BCF_Custom_Font_Families::get_google_fonts(),
 			'existingGoogleFonts' => BCF_Custom_Font_Families::get_existing_google_fonts(),
 			'fontPostCount'       => wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE )->publish,
+			'googleFontAPI'       => 'https://fonts.googleapis.com/css?family'
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );
@@ -229,9 +231,10 @@ class Bsf_Custom_Fonts_Menu {
 
 	/**
 	 * Settings app scripts
-	 *
-	 * @since 2.0.0
 	 * @param array $localize Variable names.
+	 *
+	 * @return void
+	 * @since 2.0.0
 	 */
 	public function settings_app_scripts( $localize ) {
 		$handle            = 'bsf-custom-fonts-admin-dashboard-app';

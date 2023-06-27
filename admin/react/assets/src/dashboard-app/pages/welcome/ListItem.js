@@ -104,7 +104,7 @@ const ListItem = ({ item }) => {
 			return <style id={`bcf-custom-font-${fontItem.id}-css`}> {fontItem['fonts-face']} </style>
 		} else {
 			const fontName = fontItem.title.replace( / /g, "+" );
-			return <link rel="stylesheet" id={`bcf-custom-font-${fontItem.id}-css`} href={`https://fonts.googleapis.com/css?family=${fontName}&ver=${fontItem.id}`} media="all"></link>
+			return <link rel="stylesheet" id={`bcf-custom-font-${fontItem.id}-css`} href={`${bsf_custom_fonts_admin.googleFontAPI}=${fontName}&ver=${fontItem.id}`} media="all"></link>
 		}
 	}
 
@@ -117,7 +117,7 @@ const ListItem = ({ item }) => {
 			return '';
 		}
 		const fontName = font.replace( / /g, "+" );
-		return <link rel='stylesheet' id={`bcf-google-font-${version}-link`} href={`https://fonts.googleapis.com/css?family=${fontName}:${weight}&display=fallback&ver=${version+1}`} media='all' />
+		return <link rel='stylesheet' id={`bcf-google-font-${version}-link`} href={`${bsf_custom_fonts_admin.googleFontAPI}=${fontName}:${weight}&display=fallback&ver=${version+1}`} media='all' />
 	}
 
 	const getFontStyle = (type, style, weight) => {

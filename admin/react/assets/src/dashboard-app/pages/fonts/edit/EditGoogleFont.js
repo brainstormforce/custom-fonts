@@ -56,7 +56,7 @@ const EditGoogleFont = ({fontId, fontName}) => {
 	let toBeEditFont = {};
 	let variations = null;
 	restAllData.forEach(function(individualFont) {
-		if ( editFontId === individualFont.id ) {
+		if ( editFontId === individualFont.id && undefined !== bsf_custom_fonts_admin.googleFonts[individualFont.title] ) {
 			const gFontData = bsf_custom_fonts_admin.googleFonts[individualFont.title];
 			variations = gFontData[0] ? gFontData[0] : [];
 			toBeEditFont = individualFont;

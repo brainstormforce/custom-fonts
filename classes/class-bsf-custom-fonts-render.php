@@ -144,6 +144,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		/**
 		 * Get existing site setup fonts.
 		 *
+		 * @return mixed
 		 * @since 2.0.0
 		 */
 		public function get_existing_font_posts() {

@@ -20,7 +20,7 @@ const GooglePreviewItem = () => {
 	const getGoogleFontLink = (font, weight, version) => {
 		const fontName = font.replace( / /g, "+" );
 		// valid URL - https://fonts.googleapis.com/css?family=Poppins:100,800&display=fallback&ver=4.1.5
-		return `https://fonts.googleapis.com/css?family=${fontName}:${weight}&display=fallback&ver=${version+1}`;
+		return `${bsf_custom_fonts_admin.googleFontAPI}=${fontName}:${weight}&display=fallback&ver=${version+1}`;
 	}
 
 	const checkWeightPresentInState = (weight) => {

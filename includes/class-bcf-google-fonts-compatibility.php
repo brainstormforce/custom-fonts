@@ -181,6 +181,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 		/**
 		 * Save Google Fonts to locally.
+		 * @param mixed $font Font data.
 		 *
 		 * @return void
 		 * @since 2.0.0
@@ -595,7 +596,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
 
 				// Overwrite the previous fontFamilies with the new ones.
-				$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
+				$font_families = ( ! isset( $theme_json_raw['settings']['typography']['fontFamilies'] ) ) ? array() : $theme_json_raw['settings']['typography']['fontFamilies'];
 
 				if ( ! empty( $font_families ) && is_array( $font_families ) ) {
 					$font_families = array_values(
@@ -637,7 +638,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$theme_json_raw = json_decode( file_get_contents( get_stylesheet_directory() . '/theme.json' ), true );
 
 				// Overwrite the previous fontFamilies with the new ones.
-				$font_families = $theme_json_raw['settings']['typography']['fontFamilies'];
+				$font_families = ( ! isset( $theme_json_raw['settings']['typography']['fontFamilies'] ) ) ? array() : $theme_json_raw['settings']['typography']['fontFamilies'];
 				if ( ! empty( $font_families ) && is_array( $font_families ) ) {
 					foreach ( $font_families as $key => $value ) {
 						if ( $font['fontFamily'] === $value['fontFamily'] && ! empty( $value['fontFace'] ) && is_array( $value['fontFace'] ) ) {

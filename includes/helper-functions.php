@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Return image media ID on basis of file URL.
- *
+ * @param string $url file url.
  * @since 2.0.0
  * @return string
  */
@@ -28,9 +28,10 @@ function bcf_get_media_image_id_by_url( $url ) {
 
 /**
  * Create css for font-face
- *
- * @since 2.0.0
  * @param array $font selected font from custom font list.
+ *
+ * @return array Font data.
+ * @since 2.0.0
  */
 function bcf_prepare_backward_font_data( $font ) {
 	$fonts     = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
@@ -110,7 +111,9 @@ function bcf_prepare_backward_font_data( $font ) {
 
 /**
  * Sanitize data recursively, eg: font-face data.
+ * @param array $data Data to sanitize.
  *
+ * @return array
  * @since 2.0.0
  */
 function bcf_sanitize_text_field_recursive( $data ) {
@@ -127,6 +130,10 @@ function bcf_sanitize_text_field_recursive( $data ) {
 /**
  * Get font source as per the asked type.
  *
+ * @param string $font_type Font type.
+ * @param string $font_url Font URL.
+ *
+ * @return string
  * @since 2.0.0
  */
 function bcf_get_font_src( $font_type, $font_url ) {
@@ -156,6 +163,8 @@ function bcf_get_font_src( $font_type, $font_url ) {
 
 /**
  * Get the file extension of font file.
+ *
+ * @param string $font_url Font URL.
  *
  * @return mixed
  * @since 2.0.0
@@ -192,6 +201,11 @@ function bcf_get_font_file_extension( $font_url ) {
 /**
  * Based on the font post data create font-face CSS.
  *
+ * @param string $font_family Font family name.
+ * @param array  $font_data Font data.
+ * @Param array  $variation_data Font variation data.
+ *
+ * @return string
  * @since 2.0.0
  */
 function bcf_prepare_gfont_face_css( $font_family, $font_data, $variation_data ) {
@@ -233,6 +247,11 @@ function bcf_prepare_gfont_face_css( $font_family, $font_data, $variation_data )
 /**
  * Based on the post-meta create font-face CSS.
  *
+ * @param string $font_family Font family name.
+ * @param array  $font_data   Font data.
+ * @param array  $variation_data Font variation data.
+ *
+ * @return string
  * @since 2.0.0
  */
 function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data ) {
@@ -269,6 +288,11 @@ function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data )
 
 /**
  * Retrieve font-face CSS for assigned $post_id.
+ *
+ * @param int $post_id
+ * @param array $font_data
+ * @param bool $force_update
+ * @param bool $is_google_font
  *
  * @since 2.0.0
  * @return string css

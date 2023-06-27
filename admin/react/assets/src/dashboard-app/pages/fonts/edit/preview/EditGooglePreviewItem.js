@@ -126,7 +126,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	let toBeEditFont = {};
 	let variations = null;
 	restAllData.forEach(function(individualFont) {
-		if ( editFontId === individualFont.id ) {
+		if ( editFontId === individualFont.id && undefined !== bsf_custom_fonts_admin.googleFonts[individualFont.title] ) {
 			const gFontData = bsf_custom_fonts_admin.googleFonts[individualFont.title];
 			variations = gFontData[0] ? gFontData[0] : [];
 			toBeEditFont = individualFont;
@@ -145,8 +145,8 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	useEffect( () => {
 		let newStyle = '';
 		Object.keys( editFontData.variations ).map( ( index ) => {
-			const varwt = (editFontData.variations[index].font_weight).toString();
-			newStyle += `.gvariations-wrapper > [data-varweight='${varwt}'] { display: block }`;
+			const variationWeight = (editFontData.variations[index].font_weight).toString();
+			newStyle += `.gvariations-wrapper > [data-varweight='${variationWeight}'] { display: block }`;
 		});
 		setVariationToggleStyle( newStyle );
 
@@ -159,7 +159,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	const getGoogleFontLink = (font, weight, version) => {
 		const fontName = font.replace( / /g, "+" );
 		// valid URL - https://fonts.googleapis.com/css?family=Poppins:100,800&display=fallback&ver=4.1.5
-		return `https://fonts.googleapis.com/css?family=${fontName}:${weight}&display=fallback&ver=${version+1}`;
+		return `${bsf_custom_fonts_admin.googleFontAPI}=${fontName}:${weight}&display=fallback&ver=${version+1}`;
 	}
 
 	const addWeight = (e) => {

@@ -2,7 +2,7 @@
 /**
  * Bsf Custom Fonts Taxonomy
  *
- * @since  1.0.0
+ * @since  2.0.0
  * @package Bsf_Custom_Fonts
  */
 
@@ -19,7 +19,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Instance of BSF_Custom_Fonts_Posttype
 		 *
-		 * @since  1.0.0
+		 * @since  2.0.0
 		 * @var (Object) BSF_Custom_Fonts_Posttype
 		 */
 		private static $instance = null;
@@ -27,7 +27,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Fonts
 		 *
-		 * @since  1.0.0
+		 * @since  2.0.0
 		 * @var (string) $fonts
 		 */
 		public static $fonts = null;
@@ -35,7 +35,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Capability required for this menu to be displayed
 		 *
-		 * @since  1.0.0
+		 * @since  2.0.0
 		 * @var (string) $capability
 		 */
 		public static $capability = 'edit_theme_options';
@@ -43,7 +43,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Register Taxonomy
 		 *
-		 * @since  1.0.0
+		 * @since  2.0.0
 		 * @var (string) $register_taxonomy
 		 */
 		public static $register_taxonomy_slug = 'bsf_custom_fonts';
@@ -51,7 +51,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Instance of Bsf_Custom_Fonts_Admin.
 		 *
-		 * @since  1.0.0
+		 * @since  2.0.0
 		 *
 		 * @return object Class object.
 		 */
@@ -66,7 +66,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Constructor.
 		 *
-		 * @since  1.0.0
+		 * @since  2.0.0
 		 */
 		public function __construct() {
 			add_action( 'init', array( $this, 'bsf_custom_fonts_post_type' ) );
@@ -115,7 +115,7 @@ if ( ! class_exists( 'BSF_Custom_Fonts_Posttype' ) ) :
 		/**
 		 * Default fonts
 		 *
-		 * @since 1.0.0
+		 * @since 2.0.0
 		 * @param array $fonts fonts array of fonts.
 		 */
 		protected static function default_args( $fonts ) {
