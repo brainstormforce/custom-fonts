@@ -4,7 +4,7 @@
   "main": "Gruntfile.js",
   "author": "Brainstorm Force",
   "workspaces": [
-    "admin/react/assets/src"
+    "admin/react"
   ],
   "devDependencies": {
     "grunt": "^1.5.3",
@@ -26,7 +26,6 @@
     "release": "rm -rf custom-fonts && npm run build-package && grunt release"
   },
   "dependencies": {
-    "request": "^2.88.2",
-    "webpack-cli": "^5.1.4"
+    "request": "^2.88.2"
   }
 }
