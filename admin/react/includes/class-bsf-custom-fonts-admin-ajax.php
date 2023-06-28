@@ -280,6 +280,11 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
+		if ( BSF_CUSTOM_FONTS_POST_TYPE !== get_post_type( $font_id ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'invalid' ) );
+			wp_send_json_error( $response_data );
+		}
+
 		$delete_post_response = wp_delete_post( $font_id );
 
 		if ( ! is_object( $delete_post_response ) ) {
