@@ -177,8 +177,6 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
-		$font_face = bcf_google_fonts_compatibility()->process_google_fonts_locally( $font_data );
-
 		// Create post object.
 		$new_font_post = array(
 			'post_title'  => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
@@ -188,6 +186,12 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		// Insert the post into the database.
 		$font_post_id = wp_insert_post( $new_font_post );
+
+		if ( 'google' === $font_type ) {
+			$font_face = bcf_google_fonts_compatibility()->process_google_fonts_locally( $font_data );
+		} else {
+			$font_face = bcf_get_font_face_css( $font_post_id, $font_data, true, false );
+		}
 
 		if ( is_wp_error( $font_post_id ) ) {
 			$response_data = array( 'message' => $font_post_id->get_error_message() );
@@ -238,7 +242,11 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			wp_send_json_error( $response_data );
 		}
 
-		$font_face = bcf_google_fonts_compatibility()->process_google_fonts_locally( $font_data );
+		if ( 'google' === $font_type ) {
+			$font_face = bcf_google_fonts_compatibility()->process_google_fonts_locally( $font_data );
+		} else {
+			$font_face = bcf_get_font_face_css( $font_id, $font_data, true, false );
+		}
 
 		update_post_meta( $font_id, 'fonts-data', $font_data );
 		update_post_meta( $font_id, 'fonts-face', $font_face );
