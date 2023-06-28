@@ -42,9 +42,9 @@ const ListItem = ({ item }) => {
 		} );
 	};
 
-	const getFontWeightTitle = ( weight ) => {
+	const getFontWeightTitle = ( weight, type, style ) => {
 		let updatedWeight = weight,
-			oldWeight = weight;
+			oldWeight = ( 'google' === type ) ? weight : style;
 		if ( 'italic' === weight ) {
 			oldWeight = '400italic';
 		}
@@ -241,7 +241,7 @@ const ListItem = ({ item }) => {
 							item['fonts-data']['variations'].map(( varItem, varKey ) => (
 								<div key={varKey} className="py-5 font-variation-item">
 									{getFontAssetLink(item['font-type'], item.title, varItem.font_weight, varKey)}
-									<div className="text-sm text-neutral mb-3 font-normal"> { getFontWeightTitle( varItem.font_weight ) } </div>
+									<div className="text-sm text-neutral mb-3 font-normal"> { getFontWeightTitle( varItem.font_weight, item['font-type'], varItem.font_style ) } </div>
 									<h3 className="text-xl text-heading" style={{  fontFamily: item.title, fontSize: "1.3rem", fontStyle:getFontStyle(item['font-type'], varItem.font_style, varItem.font_weight), fontWeight: getRenderFontWeight(varItem.font_weight) }}>
 										{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 									</h3>
