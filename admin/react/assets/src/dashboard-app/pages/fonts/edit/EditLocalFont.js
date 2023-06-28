@@ -169,7 +169,7 @@ const EditLocalVariationItem = ({
 								className="w-full text-sm text-heading"
 								htmlFor={`variation[${variation.id}][font_style]`}
 							>
-								{__('Font style:', 'custom-fonts' )}
+								{__('Font Style:', 'custom-fonts' )}
 							</label>
 							<div className="mt-1.5">
 								<select

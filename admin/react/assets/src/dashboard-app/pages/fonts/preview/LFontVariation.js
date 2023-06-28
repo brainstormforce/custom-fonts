@@ -8,7 +8,7 @@ const LFontVariation = (props) => {
 		return;
 	}
 
-	const getFontWeightTitle = ( weight ) => {
+	const getFontWeightTitle = ( weight, style ) => {
 		let updatedWeight = weight,
 			oldWeight = weight;
 		if ( 'italic' === weight ) {
@@ -16,6 +16,9 @@ const LFontVariation = (props) => {
 		}
 		if ( oldWeight.includes('italic') ) {
 			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
+		}
+		if ( 'italic' === style || 'oblique' === style ) {
+			updatedWeight = `${updatedWeight} Italic`;
 		}
 		switch ( weight ) {
 			case '100':
@@ -35,16 +38,16 @@ const LFontVariation = (props) => {
 			case '800':
 				return __( 'Extra Bold ', 'custom-fonts' ) + updatedWeight;
 			case '900':
-				return __( 'Black ', 'custom-fonts' ) + updatedWeight;
+				return __( 'Ultra-Bold ', 'custom-fonts' ) + updatedWeight;
 			default:
-				return __( 'Weight ', 'custom-fonts' ) + updatedWeight;
+				return updatedWeight;
 		}
 	}
 
 	return (
 		<div className="py-5">
 			<div>
-				<div className="text-sm font-normal text-neutral mb-3.5"> { getFontWeightTitle(weight) } </div>
+				<div className="text-sm font-normal text-neutral mb-3.5"> { getFontWeightTitle(weight, style) } </div>
 				<div className="text-5xl" style={{ fontFamily: font, fontWeight: weight, fontStyle: style, fontSize: "var(--bsf-custom-font-size)" }}>
 					{__('How vexingly quick daft zebras jump!', 'custom-fonts')}
 				</div>

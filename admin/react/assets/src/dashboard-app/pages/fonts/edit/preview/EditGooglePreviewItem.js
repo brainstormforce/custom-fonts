@@ -39,9 +39,9 @@ const EditGFontVariation = (
 			case '800':
 				return __( 'Extra Bold ', 'custom-fonts' ) + updatedWeight;
 			case '900':
-				return __( 'Black ', 'custom-fonts' ) + updatedWeight;
+				return __( 'Ultra-Bold ', 'custom-fonts' ) + updatedWeight;
 			default:
-				return __( 'Weight ', 'custom-fonts' ) + updatedWeight;
+				return updatedWeight;
 		}
 	}
 
