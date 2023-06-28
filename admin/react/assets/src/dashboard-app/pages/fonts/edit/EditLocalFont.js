@@ -477,7 +477,7 @@ const EditLocalFont = ({fontId}) => {
 
 				<button
 					type="button"
-					className="bcf-save-font inline-flex components-button is-primary"
+					className="bcf-save-font inline-flex components-button is-primary mb-5"
 					onClick={ updatingNewFontPost }
 					disabled={'loading' === isLoading ? true : false}
 				>
