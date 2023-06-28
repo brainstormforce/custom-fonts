@@ -18,7 +18,11 @@ const LFontVariation = (props) => {
 			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
 		}
 		if ( 'italic' === style || 'oblique' === style ) {
-			updatedWeight = `${updatedWeight} Italic`;
+			if ( 'italic' === style ) {
+				updatedWeight = `${updatedWeight} Italic`;
+			} else {
+				updatedWeight = `${updatedWeight} Oblique`;
+			}
 		}
 		switch ( weight ) {
 			case '100':
