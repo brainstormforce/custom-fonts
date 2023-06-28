@@ -195,6 +195,7 @@ const LocalVariationItem = ({
 								<select
 									name={`variation[${variation.id}][font_weight]`}
 									value={variation.font_weight}
+									className="w-full"
 									onChange={(event) =>
 										handleVariationChange(
 											event,

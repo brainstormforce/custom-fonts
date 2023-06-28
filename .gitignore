@@ -32,4 +32,4 @@ defaults.json
 no-toggle-border-fix.json
 
 # Large dist directory - Build files can be in MBs, let's not increase size of the git repo
-admin/react/assets/build/
+admin/dashboard/assets/build/

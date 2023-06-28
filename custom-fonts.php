@@ -69,7 +69,7 @@ if ( is_admin() ) {
 	/**
 	 * Admin dashboard app.
 	 */
-	require_once BSF_CUSTOM_FONTS_DIR . 'admin/react/class-bsf-custom-font-admin-loader.php';
+	require_once BSF_CUSTOM_FONTS_DIR . 'admin/dashboard/class-bsf-custom-font-admin-loader.php';
 }
 
 // BSF Analytics library.

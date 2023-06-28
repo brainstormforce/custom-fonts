@@ -19,12 +19,12 @@ module.exports = function( grunt ) {
                 files: [
 					{
                         expand: true,
-                        cwd: 'admin/react/assets/build',
+                        cwd: 'admin/dashboard/assets/build',
                         src: [
                             '*.css',
                             '!*-rtl.css',
                         ],
-                        dest: 'admin/react/assets/build',
+                        dest: 'admin/dashboard/assets/build',
                         ext: '-rtl.css'
                     },
                 ]
@@ -81,12 +81,12 @@ module.exports = function( grunt ) {
 					'**',
 					'*.zip',
 					'!node_modules/**',
-					'!admin/react/node_modules/**',
-					'!admin/react/package.json',
-					'!admin/react/package-lock.json',
-					'!admin/react/postcss.config.js',
-					'!admin/react/tailwind.config.js',
-					'!admin/react/webpack.config.js',
+					'!admin/dashboard/node_modules/**',
+					'!admin/dashboard/package.json',
+					'!admin/dashboard/package-lock.json',
+					'!admin/dashboard/postcss.config.js',
+					'!admin/dashboard/tailwind.config.js',
+					'!admin/dashboard/webpack.config.js',
 					'!.git/**',
 					'!.wordpress-org/**',
 					'!bin/**',
@@ -113,7 +113,7 @@ module.exports = function( grunt ) {
 					'!package-lock.json',
 					'!phpcs.xml',
 					'!phpcs.xml.dist',
-					'!admin/react/assets/src/**',
+					'!admin/dashboard/assets/src/**',
 				],
 				dest: 'custom-fonts/'
 			}

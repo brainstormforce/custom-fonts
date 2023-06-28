@@ -65,105 +65,105 @@ msgstr ""
 msgid "Learn More."
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:40
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:40
 msgid "Thin 100"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:41
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:41
 msgid "Extra Light 200"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:42
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:42
 msgid "Light 300"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:43
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:43
 msgid "Regular 400"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:44
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:44
 msgid "Medium 500"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:45
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:45
 msgid "Semi-Bold 600"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:46
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:46
 msgid "Bold 700"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:47
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:47
 msgid "Extra-Bold 800"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:48
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:48
 msgid "Ultra-Bold 900"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:49
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:49
 msgid "Thin 100 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:50
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:50
 msgid "Extra Light 200 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:51
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:51
 msgid "Light 300 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:52
-#: admin/react/includes/class-bcf-custom-font-families.php:53
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:52
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:53
 msgid "Regular 400 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:54
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:54
 msgid "Medium 500 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:55
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:55
 msgid "Semi-Bold 600 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:56
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:56
 msgid "Bold 700 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:57
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:57
 msgid "Extra-Bold 800 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bcf-custom-font-families.php:58
+#: admin/dashboard/includes/class-bcf-custom-font-families.php:58
 msgid "Ultra-Bold 900 Italic"
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:57
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:57
 msgid "Sorry, you are not allowed to do this operation."
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:58
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:58
 msgid "Nonce validation failed"
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:59
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:59
 msgid "Sorry, something went wrong."
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:60
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:60
 msgid "No post data found!"
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:146
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:205
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:146
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:205
 msgid "Successfully created the Font!"
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:251
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:251
 msgid "Successfully updated the Font!"
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-admin-ajax.php:291
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:291
 msgid "Successfully deleted the Font!"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgstr ""
 msgid "Custom Fonts"
 msgstr ""
 
-#: admin/react/includes/class-bsf-custom-fonts-menu.php:277
+#: admin/dashboard/includes/class-bsf-custom-fonts-menu.php:277
 #. translators: 1: Custom Fonts, 2: Plugin rating link
 msgid ""
 "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your "

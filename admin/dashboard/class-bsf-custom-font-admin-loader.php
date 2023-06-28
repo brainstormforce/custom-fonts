@@ -47,8 +47,8 @@ class BSF_Custom_Font_Admin_Loader {
 	 * @since 2.0.0
 	 */
 	public function __construct() {
-		define( 'BSF_CUSTOM_FONTS_ADMIN_DIR', BSF_CUSTOM_FONTS_DIR . 'admin/react' );
-		define( 'BSF_CUSTOM_FONTS_ADMIN_URL', BSF_CUSTOM_FONTS_URI . 'admin/react' );
+		define( 'BSF_CUSTOM_FONTS_ADMIN_DIR', BSF_CUSTOM_FONTS_DIR . 'admin/dashboard' );
+		define( 'BSF_CUSTOM_FONTS_ADMIN_URL', BSF_CUSTOM_FONTS_URI . 'admin/dashboard' );
 
 		$this->includes();
 	}

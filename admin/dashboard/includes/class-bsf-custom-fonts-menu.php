@@ -215,7 +215,7 @@ class BSF_Custom_Fonts_Menu {
 			'fontWeightList'      => BCF_Custom_Font_Families::get_font_weight_list(),
 		);
 
-		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );
+		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_dashboard_admin_localize', $localize ) );
 	}
 
 	/**

@@ -4,7 +4,7 @@
   "main": "Gruntfile.js",
   "author": "Brainstorm Force",
   "workspaces": [
-    "admin/react"
+    "admin/dashboard"
   ],
   "devDependencies": {
     "grunt": "^1.5.3",
@@ -21,7 +21,7 @@
     "grunt-contrib-copy": "^1.0.0"
   },
   "scripts": {
-    "build": "cd admin/react && npm install && wp-scripts build && cd ../..",
+    "build": "cd admin/dashboard && npm install && wp-scripts build && cd ../..",
     "build-package": "npm run build && grunt rtl",
     "release": "rm -rf custom-fonts && npm run build-package && grunt release"
   },
