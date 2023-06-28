@@ -75,6 +75,10 @@ class Custom_Fonts_Update {
 			$this->v_1_3_0();
 		}
 
+		if ( version_compare( $db_version, '2.0.0', '<=' ) ) {
+			$this->v_2_0_0();
+		}
+
 		$this->update_db_version();
 
 		do_action( 'custom_fonts_update_after' );
@@ -94,7 +98,7 @@ class Custom_Fonts_Update {
 			)
 		);
 
-		if ( ! empty( $terms ) ) {
+		if ( ! empty( $terms ) && class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) {
 			foreach ( $terms as $term ) {
 				$font_links = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 
@@ -109,7 +113,7 @@ class Custom_Fonts_Update {
 	/**
 	 * Update the font array according to new font weight repeater fields.
 	 *
-	 * @since x.x.x
+	 * @since 2.0.0
 	 */
 	public function v_1_3_0() {
 
@@ -120,7 +124,7 @@ class Custom_Fonts_Update {
 			)
 		);
 
-		if ( ! empty( $terms ) ) {
+		if ( ! empty( $terms ) && class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) {
 			foreach ( $terms as $term ) {
 				$font_links = Bsf_Custom_Fonts_Taxonomy::get_font_links( $term->term_id );
 
@@ -138,6 +142,45 @@ class Custom_Fonts_Update {
 				Bsf_Custom_Fonts_Taxonomy::update_font_links( $new_font_arr, $term->term_id );
 			}
 		}
+	}
+
+	/**
+	 * Migrate existing local fonts to new revamped dashboard app.
+	 *
+	 * @since 2.0.0
+	 */
+	public function v_2_0_0() {
+		// Halt if already migrated.
+		$is_already_migrated = get_option( 'bcf_custom_fonts_2_0_migration', false );
+		if ( true === $is_already_migrated ) {
+			return;
+		}
+
+		$fonts = Bsf_Custom_Fonts_Taxonomy::get_fonts();
+		foreach ( $fonts as $load_font_name => $load_font ) {
+			$font_data = bcf_prepare_backward_font_data( $load_font_name );
+
+			// Create post object.
+			$new_font_post = array(
+				'post_title'  => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
+				'post_status' => 'publish',
+				'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
+			);
+
+			// Insert the post into the database.
+			$font_post_id = wp_insert_post( $new_font_post );
+
+			if ( is_wp_error( $font_post_id ) ) {
+				return;
+			}
+
+			$font_face = bcf_get_font_face_css( $font_post_id, $font_data, true );
+
+			update_post_meta( $font_post_id, 'fonts-data', $font_data );
+			update_post_meta( $font_post_id, 'fonts-face', $font_face );
+			update_post_meta( $font_post_id, 'font-type', 'local' );
+		}
+		update_option( 'bcf_custom_fonts_2_0_migration', true );
 	}
 
 	/**
@@ -165,6 +208,6 @@ class Custom_Fonts_Update {
 	private function update_db_version() {
 		update_option( '_custom_fonts_db_version', BSF_CUSTOM_FONTS_VER );
 	}
-
 }
+
 Custom_Fonts_Update::get_instance();

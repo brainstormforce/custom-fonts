@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.appearance_page_bsf-custom-fonts #wpbody-content {
+	padding-bottom: 10px;
+}
+.appearance_page_bsf-custom-fonts #wpbody-content .components-button {
+	line-height: 36px;
+}
+.appearance_page_bsf-custom-fonts #wpbody-content button.components-button.is-secondary,
+.appearance_page_bsf-custom-fonts #wpbody-content button.components-button.is-secondary:hover,
+.appearance_page_bsf-custom-fonts #wpbody-content button.components-button.is-secondary:focus {
+	background-color: transparent;
+}
+body.appearance_page_bsf-custom-fonts input,
+body.appearance_page_bsf-custom-fonts select,
+body.appearance_page_bsf-custom-fonts button.font-file-uploader.btn {
+    border-color: rgb(221 221 221 / 1);
+}
+button.text-danger.components-button.is-secondary,
+button.text-danger.components-button.is-secondary:hover,
+button.text-danger.components-button.is-secondary:focus {
+    color: rgb(230 80 84 / var(--tw-text-opacity));
+}
+button.border-danger.components-button.is-secondary,
+button.border-danger.components-button.is-secondary:hover,
+button.border-danger.components-button.is-secondary:active {
+    box-shadow: inset 0 0 0 1px rgb(230 80 84);
+}
+body .active-state.transition-colors > .border-light {
+    border-top: 0 !important;
+}
+body .active-state.transition-colors {
+    border-bottom: 1px solid rgb(221 221 221/1);
+}
+.bcf-font-list-wrap .active-state.transition-colors:first-child {
+    border-top: 1px solid rgb(221 221 221/1);
+}
+.bcf-add-new-font-page.appearance_page_bsf-custom-fonts #wpbody-content {
+	padding-bottom: 0;
+}
+button.bcf-save-font[disabled] {
+	opacity: 0.8;
+}
+.appearance_page_bsf-custom-fonts .bcf-edit-dialog-panel {
+	top: 20%;
+    position: absolute;
+    left: 22%;
+    max-width: 65%;
+    width: 100%;
+    max-height: 60vh;
+    overflow: hidden;
+    padding-right: 40px;
+}
+.border.bcf-font-list-wrap {
+	border-bottom: 0;
+    border-top: 0;
+}
+.bcf-font-list-wrap .transition-colors:last-child > div.border-b {
+    border-bottom-width: 1px;
+}
+.bcf-font-list-wrap .transition-colors:first-child > div.border-b {
+    border-top-width: 1px;
+}
+.bcf-add-new-font-page #wpfooter, .bcf-add-new-font-page .clear {
+    display: none;
+}
+.bsf-cf-menu-page-wrapper {
+	font-family: 'Inter';
+	font-style: normal;
+}
+.appearance_page_bsf-custom-fonts #wpcontent {
+	padding-left: 0;
+}
+.bsf-custom-font-dashboard-app {
+	input, select {
+		border: 1px solid #dddddd;
+		border-radius: 2px;
+		height: 30px;
+	}
+	input[type=file] {
+		border: 0;
+	}
+}
+.bsf-custom-font-search input {
+	border: 0;
+	background: transparent;
+	padding: 18px 0;
+}
+.bsf-custom-font-search input:focus {
+	outline: none;
+	border: 0;
+	border-color: transparent;
+	box-shadow: none;
+}
+button.font-file-uploader.btn {
+	border: 1px solid #767676;
+	margin: 0px;
+	padding: 1px 6px;
+	border-radius: 2px;
+	line-height: 1.6;
+}
+span.font-filename {
+	margin-left: -10px;
+	margin-left: -10px;
+    width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.font-triggers {
+    position: absolute;
+    right: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.bcf-font-list-wrap.skeleton-wrap > .border-b:first-child,
+.bcf-font-list-wrap > .active-state:not(:first-child) > .list-font-title,
+.bcf-font-list-wrap > .active-state .list-font-variations > .font-variation-item:not(:first-child) {
+    border-top: 1px solid rgb(221 221 221 / 1);
+}
+.bcf-font-size-range .components-input-control__container {
+    position: relative;
+}
+.bcf-font-size-range .components-input-control__container .components-input-control__backdrop:before {
+    position: absolute;
+    content: "PX";
+    right: 4px;
+    padding-left: 4px;
+    border-left: 1px solid #949494;
+    font-weight: 600;
+    top: -1px;
+    color: #949494;
+    font-size: 11px;
+    line-height: 30px;
+}
+.bcf-font-size-range .components-input-control__container input::-webkit-outer-spin-button,
+.bcf-font-size-range .components-input-control__container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.bcf-font-size-range .components-input-control__container input[type=number] {
+  -moz-appearance: textfield;
+}
+.edit-font-variation-wrap select {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.font-file-uploader:focus-visible {
+    outline: none;
+}
+.edit-gfont-variation-item, #bcf-google-font-selection option:disabled {
+    display: none;
+}
+.local-fonts-preview-wrapper, .google-fonts-preview-wrapper {
+    border: none;
+}
+#wpbody-content > .notice {
+    margin-bottom: 20px;
+}
+.bcf-footer-thankyou {
+	font-size: 13px;
+    margin: 0;
+    line-height: 1.55;
+}
+.bcf-footer-thankyou a {
+	color: #2271b1;
+	text-decoration: underline;
+}
+.text-sm {
+	font-weight: 500;
+}
+.font-normal.text-sm {
+	font-weight: 400;
+}
+.font-triggers svg {
+	width: 25px;
+    padding: 5px;
+    cursor: pointer;
+    margin-top: -5px;
+}
+.active-state.transition-colors .title-area {
+    box-shadow: inset 5px 0 0 0 var(--wp-admin-theme-color);
+    transition: box-shadow .1s linear;
+    background-color: #e5f1f8;
+}

@@ -221,8 +221,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 
 	}
 
-
-
 	/**
 	 *  Kicking this off by calling 'get_instance()' method
 	 */

@@ -53,6 +53,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 		 */
 		public function __construct() {
 
+			add_action( 'plugin_action_links_' . BSF_CUSTOM_FONTS_BASE, array( $this, 'action_links' ) );
 			add_filter( 'all_plugins', array( $this, 'plugins_page' ) );
 			add_filter( 'astra_addon_branding_options', __CLASS__ . '::settings' );
 			add_action( 'astra_pro_white_label_add_form', __CLASS__ . '::add_white_lavel_form' );
@@ -62,6 +63,22 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_White_Label' ) ) :
 				// Display the link with the plugin meta.
 				add_filter( 'plugin_row_meta', array( $this, 'plugin_links' ), 10, 4 );
 			}
+		}
+
+		/**
+		 * Show action links on the plugin screen.
+		 *
+		 * @param   mixed $links Plugin Action links.
+		 * @return  array
+		 */
+		public function action_links( $links = array() ) {
+
+			$admin_base   = 'themes.php';
+			$action_links = array(
+				'settings' => '<a href="' . esc_url( admin_url( $admin_base . '?page=' . BSF_CUSTOM_FONTS_ADMIN_PAGE ) ) . '" aria-label="' . esc_attr__( 'visit the plugin settings page', 'custom-fonts' ) . '">' . esc_html__( 'Settings', 'custom-fonts' ) . '</a>',
+			);
+
+			return array_merge( $action_links, $links );
 		}
 
 		/**
