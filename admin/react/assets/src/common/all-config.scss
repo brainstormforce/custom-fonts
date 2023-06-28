@@ -13,6 +13,11 @@
 .appearance_page_bsf-custom-fonts #wpbody-content button.components-button.is-secondary:focus {
 	background-color: transparent;
 }
+body.appearance_page_bsf-custom-fonts input,
+body.appearance_page_bsf-custom-fonts select,
+body.appearance_page_bsf-custom-fonts button.font-file-uploader.btn {
+    border-color: rgb(221 221 221 / 1);
+}
 button.text-danger.components-button.is-secondary,
 button.text-danger.components-button.is-secondary:hover,
 button.text-danger.components-button.is-secondary:focus {
@@ -27,10 +32,10 @@ body .active-state.transition-colors > .border-light {
     border-top: 0 !important;
 }
 body .active-state.transition-colors {
-    border-bottom: 1px solid rgb(221 221 221/var(--tw-border-opacity));
+    border-bottom: 1px solid rgb(221 221 221/1);
 }
 .bcf-font-list-wrap .active-state.transition-colors:first-child {
-    border-top: 1px solid rgb(221 221 221/var(--tw-border-opacity));
+    border-top: 1px solid rgb(221 221 221/1);
 }
 .bcf-add-new-font-page.appearance_page_bsf-custom-fonts #wpbody-content {
 	padding-bottom: 0;
@@ -114,7 +119,7 @@ span.font-filename {
 .bcf-font-list-wrap.skeleton-wrap > .border-b:first-child,
 .bcf-font-list-wrap > .active-state:not(:first-child) > .list-font-title,
 .bcf-font-list-wrap > .active-state .list-font-variations > .font-variation-item:not(:first-child) {
-    border-top: 1px solid rgb(221 221 221 / var(--tw-border-opacity));
+    border-top: 1px solid rgb(221 221 221 / 1);
 }
 .bcf-font-size-range .components-input-control__container {
     position: relative;

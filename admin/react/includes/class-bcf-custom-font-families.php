@@ -35,27 +35,17 @@ if ( ! class_exists( 'BCF_Custom_Font_Families' ) ) :
 		 * @since 2.0.0
 		 * @return array
 		 */
-		public static function font_variant_labels() {
+		public static function get_font_weight_list() {
 			return array(
-				'100'       => __( 'Thin 100', 'custom-fonts' ),
-				'200'       => __( 'Extra Light 200', 'custom-fonts' ),
-				'300'       => __( 'Light 300', 'custom-fonts' ),
-				'400'       => __( 'Regular 400', 'custom-fonts' ),
-				'500'       => __( 'Medium 500', 'custom-fonts' ),
-				'600'       => __( 'Semi-Bold 600', 'custom-fonts' ),
-				'700'       => __( 'Bold 700', 'custom-fonts' ),
-				'800'       => __( 'Extra-Bold 800', 'custom-fonts' ),
-				'900'       => __( 'Ultra-Bold 900', 'custom-fonts' ),
-				'100italic' => __( 'Thin 100 Italic', 'custom-fonts' ),
-				'200italic' => __( 'Extra Light 200 Italic', 'custom-fonts' ),
-				'300italic' => __( 'Light 300 Italic', 'custom-fonts' ),
-				'400italic' => __( 'Regular 400 Italic', 'custom-fonts' ),
-				'italic'    => __( 'Regular 400 Italic', 'custom-fonts' ),
-				'500italic' => __( 'Medium 500 Italic', 'custom-fonts' ),
-				'600italic' => __( 'Semi-Bold 600 Italic', 'custom-fonts' ),
-				'700italic' => __( 'Bold 700 Italic', 'custom-fonts' ),
-				'800italic' => __( 'Extra-Bold 800 Italic', 'custom-fonts' ),
-				'900italic' => __( 'Ultra-Bold 900 Italic', 'custom-fonts' ),
+				'100'       => __( '100 Thin', 'custom-fonts' ),
+				'200'       => __( '200 Extra Light', 'custom-fonts' ),
+				'300'       => __( '300 Light', 'custom-fonts' ),
+				'400'       => __( '400 Regular', 'custom-fonts' ),
+				'500'       => __( '500 Medium', 'custom-fonts' ),
+				'600'       => __( '600 Semi-Bold', 'custom-fonts' ),
+				'700'       => __( '700 Bold', 'custom-fonts' ),
+				'800'       => __( '800 Extra-Bold', 'custom-fonts' ),
+				'900'       => __( '900 Ultra-Bold', 'custom-fonts' ),
 			);
 		}
 

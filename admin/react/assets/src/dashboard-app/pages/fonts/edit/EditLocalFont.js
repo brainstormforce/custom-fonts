@@ -61,6 +61,10 @@ const EditLocalVariationItem = ({
 		setToggleView(true)
 	}
 
+	const weightSelections = Object.entries( bsf_custom_fonts_admin.fontWeightList ).map( ( [ weight, label ] ) => {
+		return( <option value={weight} key={weight}> { label } </option> )
+	} );
+
 	return (
 		<div key={id} className="border border-light rounded-sm variation-file-field mb-4">
 			{!toggleView ? (
@@ -194,8 +198,7 @@ const EditLocalVariationItem = ({
 								{__( 'Font Weight:', 'custom-fonts' )}
 							</label>
 							<div className="mt-1.5">
-								<input
-									type="text"
+								<select
 									name={`variation[${variation.id}][font_weight]`}
 									value={variation.font_weight}
 									onChange={(event) =>
@@ -205,8 +208,9 @@ const EditLocalVariationItem = ({
 											"font_weight"
 										)
 									}
-									className="w-full"
-								/>
+								>
+									{weightSelections}
+								</select>
 							</div>
 						</div>
 					</div>
@@ -284,7 +288,7 @@ const EditLocalFont = ({fontId}) => {
 			font_file: '',
 			font_url: '',
 			font_style: 'normal',
-			font_weight: '',
+			font_weight: '400',
 		};
 		const updatedVariations = [...editFontData.variations, newVariation];
 

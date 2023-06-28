@@ -212,6 +212,7 @@ class BSF_Custom_Fonts_Menu {
 			'existingGoogleFonts' => BCF_Custom_Font_Families::get_existing_google_fonts(),
 			'fontPostCount'       => wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE )->publish,
 			'googleFontAPI'       => 'https://fonts.googleapis.com/css?family',
+			'fontWeightList'      => BCF_Custom_Font_Families::get_font_weight_list(),
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_react_admin_localize', $localize ) );
