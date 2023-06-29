@@ -283,7 +283,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$font_data  = get_post_meta( $font_id, 'fonts-data', true );
 				$fonts_link = '';
 				foreach ( $font_data['variations'] as $key => $var_arr ) {
-					if ( $font_weight === $var_arr['font_weight'] ) {
+					if ( ! empty( $var_arr['font_weight'] ) && $font_weight === $var_arr['font_weight'] ) {
 						$fonts_link = $var_arr['font_url'];
 						break;
 					}
