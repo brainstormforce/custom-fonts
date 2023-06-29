@@ -105,7 +105,16 @@ function bcf_prepare_backward_font_data( $font ) {
 			}
 		}
 
-		$font_data['variations'] = $temp_arr;
+		$final_font_arr = array();
+		if ( ! empty( $temp_arr ) ) {
+			foreach ( $temp_arr as $index => $data ) {
+				if ( ! empty( $data['font_weight'] ) ) {
+					$final_font_arr[] = $data;
+				}
+			}
+		}
+
+		$font_data['variations'] = $final_font_arr;
 	}
 
 	return $font_data;
