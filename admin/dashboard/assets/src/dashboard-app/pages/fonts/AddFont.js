@@ -3,6 +3,7 @@ import LocalFont from "./LocalFont";
 import GoogleFont from "./GoogleFont";
 import { Link } from "react-router-dom";
 import { RangeControl } from "@wordpress/components";
+import { useSelector } from "react-redux";
 import GooglePreviewItem from "./preview/GooglePreviewItem";
 import LocalPreviewItem from "./preview/LocalPreviewItem";
 import { __ } from "@wordpress/i18n";
@@ -14,7 +15,10 @@ const AddFont = () => {
 	const toggleType = (value) => {
 		setActiveType(value);
 	};
+	const localFont = useSelector( ( state ) => state.localFont ) || '';
+	const googleFontState = useSelector( ( state ) => state.googleFont ) || '';
 
+	 
 	return (
 		<div>
 			<div className="grid grid-cols-12">
@@ -72,7 +76,9 @@ const AddFont = () => {
 					{/* Here will be Font Preview Section */}
 					<div className="pb-3 flex justify-between items-center tablet:block">
 						<div className="text-base font-medium text-secondary">
-							{__('Font Preview', 'custom-fonts')}
+							{activeType === "local" ? localFont.font_name? `${__('Font Preview of', 'custom-fonts')} ${localFont.font_name}`: __('Font Preview', 'custom-fonts'):null}
+							{activeType === "google" ?  googleFontState.font_name? `${__('Font Preview of', 'custom-fonts')} ${googleFontState.font_name}`: __('Font Preview', 'custom-fonts'):null}
+							
 						</div>
 						<div className="w-[314px]">
 							<RangeControl
