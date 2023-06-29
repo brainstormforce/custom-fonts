@@ -153,6 +153,20 @@ const ListItem = ({ item }) => {
 		e.preventDefault();
 		e.stopPropagation();
 		setActive(!active);
+
+		var i, accordianBoxes,boxParentElement,variationList;
+		accordianBoxes = document.getElementsByClassName("fontview-accordian-box");
+		for (i = 0; i < accordianBoxes.length; i++) {
+			accordianBoxes[i].className = accordianBoxes[i].className.replace("active-state", "");
+		}
+		boxParentElement = e.currentTarget.parentElement
+		boxParentElement.className += " active-state";
+
+		variationList = document.getElementsByClassName("list-font-variations");
+		for (i = 0; i < variationList.length; i++) {
+			variationList[i].style.display = "none";
+		}
+		boxParentElement.querySelector(".list-font-variations").style.display = "block";
 	}
 
 	const setupDeleteFontPost = (e) => {
@@ -169,7 +183,7 @@ const ListItem = ({ item }) => {
 
 	return (
 		<>
-			<div className={`${active || checkDelete ? "bg-white active-state" : ""} bg-white transition-colors hover:bg-[#f6f7f7]`}>
+			<div className={`bg-white transition-colors fontview-accordian-box hover:bg-[#f6f7f7]`}>
 				<div className="flex items-center title-area justify-between py-5 border-b border-light list-font-title hover:cursor-pointer" onClick={expandFontItem}>
 					{ getAssetDetail(item) }
 					<div className="flex items-center px-6 mobile:block">
@@ -244,7 +258,7 @@ const ListItem = ({ item }) => {
 						</div>
 					</div>
 				</div>
-				{active && item['fonts-data']['variations'] && (
+				{ item['fonts-data']['variations'] ? (
 					<div className="px-6 list-font-variations bg-[#f6f7f7]">
 						{
 							item['fonts-data']['variations'].map(( varItem, varKey ) => (
@@ -258,7 +272,7 @@ const ListItem = ({ item }) => {
 							))
 						}
 					</div>
-				)}
+				):null}
 			</div>
 
 			{

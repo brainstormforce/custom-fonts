@@ -116,6 +116,9 @@ span.font-filename {
     align-items: center;
     gap: 10px;
 }
+.list-font-variations{
+    display: none;
+}
 .bcf-font-list-wrap.skeleton-wrap > .border-b:first-child,
 .bcf-font-list-wrap > .active-state:not(:first-child) > .list-font-title,
 .bcf-font-list-wrap > .active-state .list-font-variations > .font-variation-item:not(:first-child) {
