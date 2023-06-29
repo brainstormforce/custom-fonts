@@ -152,7 +152,7 @@ class Custom_Fonts_Update {
 	public function v_2_0_0() {
 		// Halt if already migrated.
 		$is_already_migrated = get_option( 'bcf_custom_fonts_2_0_migration', false );
-		if ( true === $is_already_migrated ) {
+		if ( false !== $is_already_migrated ) {
 			return;
 		}
 
