@@ -9,6 +9,9 @@ const LFontVariation = (props) => {
 	}
 
 	const getFontWeightTitle = ( weight, style ) => {
+		if ( undefined === weight ) {
+			weight = '400';
+		}
 		let updatedWeight = weight,
 			oldWeight = weight;
 		if ( 'italic' === weight ) {

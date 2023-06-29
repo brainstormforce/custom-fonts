@@ -13,6 +13,9 @@ const EditGFontVariation = (
 	}
 ) => {
 	const getFontWeightTitle = ( weight ) => {
+		if ( undefined === weight ) {
+			weight = '400';
+		}
 		let updatedWeight = weight,
 			oldWeight = weight;
 		if ( 'italic' === weight ) {
@@ -55,10 +58,19 @@ const EditGFontVariation = (
 	}
 
 	const getRenderFontWeight = (weight) => {
-		return weight.replace( "italic", "" );
+		if ( undefined === weight ) {
+			weight = '400';
+		}
+		if ( weight.includes('italic') ) {
+			return weight.replace( "italic", "" );
+		}
+		return weight;
 	}
 
 	const getFontStyle = (weight) => {
+		if ( undefined === weight ) {
+			weight = '400';
+		}
 		if ( weight.includes('italic') ) {
 			return "italic";
 		}

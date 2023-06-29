@@ -129,6 +129,9 @@ Yes, Custom Fonts is completely free to use, without any upsells or limitations.
 
 
 == Changelog ==
+= 2.0.1 =
+- Fix: Edit Custom font screen blanks on expanding font from admin list view.
+
 = 2.0.0 =
 - New: Redesigned the entire admin area with a better user experience.
 - New: Google fonts support in Custom Fonts plugin now.

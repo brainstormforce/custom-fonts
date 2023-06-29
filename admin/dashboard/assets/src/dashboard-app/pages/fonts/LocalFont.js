@@ -194,7 +194,7 @@ const LocalVariationItem = ({
 							<div className="mt-1.5">
 								<select
 									name={`variation[${variation.id}][font_weight]`}
-									value={variation.font_weight}
+									value={ undefined === variation.font_weight ? '400' : variation.font_weight }
 									className="w-full"
 									onChange={(event) =>
 										handleVariationChange(

@@ -43,6 +43,9 @@ const ListItem = ({ item }) => {
 	};
 
 	const getFontWeightTitle = ( weight, type, style ) => {
+		if ( undefined === weight ) {
+			weight = '400';
+		}
 		let updatedWeight = weight,
 			oldWeight = ( 'google' === type ) ? weight : style;
 		if ( 'italic' === weight ) {
@@ -118,7 +121,13 @@ const ListItem = ({ item }) => {
 	}
 
 	const getRenderFontWeight = (weight) => {
-		return weight.replace( "italic", "" );
+		if ( undefined === weight ) {
+			weight = '400';
+		}
+		if ( weight.includes('italic') ) {
+			return weight.replace( "italic", "" );
+		}
+		return weight;
 	}
 
 	const getFontAssetLink = (type, font, weight, version) => {
@@ -131,7 +140,7 @@ const ListItem = ({ item }) => {
 
 	const getFontStyle = (type, style, weight) => {
 		let considerStyler = ( '' === type || 'local' === type ) ? style : weight;
-		if ( '' === considerStyler ) {
+		if ( undefined === considerStyler || '' === considerStyler ) {
 			return 'normal';
 		}
 		if ( considerStyler.includes('italic') ) {
