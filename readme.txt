@@ -149,6 +149,7 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 == Changelog ==
 = 2.0.1 =
 - Fix: Edit Custom font screen blanks on expanding font from admin list view.
+- Fix: PHP error undefined index 'font_weight' on the frontend.
 
 = 2.0.0 =
 - New: Redesigned the entire admin area with a better user experience.
