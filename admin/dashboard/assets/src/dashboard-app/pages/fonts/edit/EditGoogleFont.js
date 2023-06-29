@@ -8,6 +8,9 @@ const EditGoogleVariationItem = ({
 	variation
 }) => {
 	const getFontWeightTitle = ( weight ) => {
+		if ( undefined === weight ) {
+			weight = '400';
+		}
 		let updatedWeight = weight,
 			oldWeight = weight;
 		if ( 'italic' === weight ) {

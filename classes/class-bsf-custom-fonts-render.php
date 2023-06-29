@@ -313,7 +313,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					$custom_fonts_weights = array();
 					if ( ! empty( $font_data['variations'] ) ) {
 						foreach ( $font_data['variations'] as $var_key => $var_data ) {
-							array_push( $custom_fonts_weights, $var_data['font_weight'] );
+							if ( ! empty( $var_data['font_weight'] ) ) {
+								array_push( $custom_fonts_weights, $var_data['font_weight'] );
+							}
 						}
 					}
 					$fonts_arr[ $font_data['font_name'] ] = array(
