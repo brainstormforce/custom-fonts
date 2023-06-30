@@ -257,7 +257,7 @@ class BSF_Custom_Fonts_Menu {
 
 		wp_enqueue_script( $handle );
 
-		wp_set_script_translations( $handle, 'bsf-custom-fonts' );
+		wp_set_script_translations( $handle, 'custom-fonts' );
 
 		wp_enqueue_style( 'bsf-custom-fonts-admin-google-fonts' );
 		wp_enqueue_style( $handle );
