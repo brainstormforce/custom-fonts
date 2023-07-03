@@ -1,5 +1,6 @@
 import { __ } from "@wordpress/i18n";
 import React from "react";
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const EmptyState = () => {
 	return (
