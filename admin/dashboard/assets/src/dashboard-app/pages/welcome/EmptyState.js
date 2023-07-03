@@ -6,7 +6,7 @@ const EmptyState = () => {
 	return (
 		<div className="inline text-center">
 			<span className="text-center mb-6">
-				\{
+				{
 					Custom_Fonts_Icons[
 					"play"
 					]
