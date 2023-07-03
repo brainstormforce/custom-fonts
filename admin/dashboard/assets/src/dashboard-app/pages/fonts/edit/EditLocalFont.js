@@ -361,23 +361,7 @@ const EditLocalFont = ({fontId}) => {
 						>
 							{__( 'Advanced Options', 'custom-fonts' )}
 						</label>
-						<svg
-							width="6"
-							height="8"
-							viewBox="0 0 6 8"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							className={
-								advanceTab
-									? "rotate-90"
-									: "" + "transition-transform duration-300"
-							}
-						>
-							<path
-								d="M0.400391 0.800049L5.20039 4.02405L0.400391 7.20005L0.400391 0.800049Z"
-								fill="#007CBA"
-							/>
-						</svg>
+						{Custom_Fonts_Icons['chevron']}
 					</div>
 					{advanceTab && (
 						<div
@@ -462,18 +446,7 @@ const EditLocalFont = ({fontId}) => {
 						{__( 'Add Font Variation', 'custom-fonts' )}
 					</div>
 					<div>
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 16 16"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M7.9998 0.800049C3.9998 0.800049 0.799805 4.00005 0.799805 8.00005C0.799805 12 3.9998 15.2 7.9998 15.2C11.9998 15.2 15.1998 12 15.1998 8.00005C15.1998 4.00005 11.9998 0.800049 7.9998 0.800049ZM7.9998 13.6C4.8798 13.6 2.3998 11.12 2.3998 8.00005C2.3998 4.88005 4.8798 2.40005 7.9998 2.40005C11.1198 2.40005 13.5998 4.88005 13.5998 8.00005C13.5998 11.12 11.1198 13.6 7.9998 13.6ZM8.7998 4.80005H7.1998V7.20005H4.7998V8.80005H7.1998V11.2H8.7998V8.80005H11.1998V7.20005H8.7998V4.80005Z"
-								fill="#007CBA"
-							/>
-						</svg>
+						{Custom_Fonts_Icons['arrow2']}
 					</div>
 				</div>
 
