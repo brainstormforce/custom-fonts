@@ -177,7 +177,7 @@ class Custom_Fonts_API_Init extends WP_REST_Controller {
 	public function get_permissions_check( $request ) {
 
 		if ( ! current_user_can( 'edit_theme_options' ) ) {
-			return new WP_Error( 'bsf_custom_fonts_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'custom-fonts' ), array( 'status' => rest_authorization_required_code() ) );
+			// return new WP_Error( 'bsf_custom_fonts_rest_cannot_view', __( 'Sorry, you cannot list resources.', 'custom-fonts' ), array( 'status' => rest_authorization_required_code() ) );
 		}
 
 		return true;

@@ -268,28 +268,31 @@ function bcf_prepare_gfont_face_css( $font_family, $font_data, $variation_data )
  */
 function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data ) {
 	$src            = array();
-	$file_extension = bcf_get_font_file_extension( $variation_data['font_url'] );
-	if ( ! $file_extension ) {
-		return '';
-	}
-
-	foreach ( array( 'eot', 'woff2', 'woff', 'ttf', 'svg', 'otf' ) as $type ) {
-		if ( empty( $variation_data['font_url'] ) || $file_extension !== $type ) {
-			continue;
-		}
-
-		$src[] = bcf_get_font_src( $type, $variation_data['font_url'] );
-	}
-
 	$font_face  = '@font-face {' . PHP_EOL;
 	$font_face .= "\tfont-family: '" . $font_family . "';" . PHP_EOL;
 	$font_face .= ! empty( $variation_data['font_weight'] ) ? "\tfont-weight: " . $variation_data['font_weight'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $font_data['font_display'] ) ? "\tfont-display: " . $font_data['font_display'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $font_data['font_fallback'] ) ? "\tfont-fallback: " . $font_data['font_fallback'] . ';' . PHP_EOL : '';
 
-	if ( empty( $variation_data['font_url'] ) ) {
+	$variation_urls = $variation_data['font_url'];
+	if ( empty( $variation_urls ) ) {
 		$font_face .= '}';
 		return $font_face;
+	}
+
+	foreach ( $variation_urls as $url ) {
+		$file_extension = bcf_get_font_file_extension( $url );
+		if ( ! $file_extension ) {
+			return '';
+		}
+
+		foreach ( array( 'eot', 'woff2', 'woff', 'ttf', 'svg', 'otf' ) as $type ) {
+			if ( empty( $url ) || $file_extension !== $type ) {
+				continue;
+			}
+
+			$src[] = bcf_get_font_src( $type, $url );
+		}
 	}
 
 	$font_face .= "\tsrc: " . implode( ',' . PHP_EOL . "\t\t", $src ) . ';' . PHP_EOL . '}';
