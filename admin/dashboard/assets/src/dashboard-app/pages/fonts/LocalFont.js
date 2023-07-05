@@ -65,41 +65,14 @@ const LocalVariationItem = ({
 			{!toggleView ? (
 				<div className="flex items-center justify-between p-3.5 relative" onClick={expandFileField}>
 					<h2 className="text-sm font-semibold text-secondary">
-						{ '' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts') }
+						{'' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts')}
 					</h2>
 					<div className="flex items-center justify-end gap-x-4 font-triggers">
-						<svg
-							onClick={() => setToggleView(true)}
-							width="12"
-							height="8"
-							viewBox="0 0 12 8"
-							className="arrow-icon h-[40px]"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M2.00039 0.800049L6.00039 4.80005L10.0004 0.800049L11.6004 1.60005L6.00039 7.20005L0.400391 1.60005L2.00039 0.800049Z"
-								fill="#7E7E7E"
-							/>
-						</svg>
-
+						{Custom_Fonts_Icons['removeWeight']}
 						{localDataLength > 1 && (
-							<svg
-								width="16"
-								height="16"
-								viewBox="0 0 16 16"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								className="cursor-pointer remove-icon h-[40px]"
-								onClick={() =>
-									handleVariationRemove(variation.id)
-								}
-							>
-								<path
-									d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-									fill="rgb(230 80 84 / 1)"
-								/>
-							</svg>
+							<span onClick={() => handleVariationRemove(variation.id)}>
+								{Custom_Fonts_Icons['removeVariation3']}
+							</span>
 						)}
 					</div>
 				</div>
@@ -117,46 +90,16 @@ const LocalVariationItem = ({
 							>
 								{ __( "Choose File", 'custom-fonts' ) }
 							</button>
-							<span className="font-filename"> { '' !== fontFileName ? fontFileName : __( 'No file chosen', 'custom-fonts' ) } </span>
-							<div className="font-triggers">
-								<svg
-									onClick={() => setToggleView(false)}
-									width="12"
-									height="8"
-									viewBox="0 0 12 8"
-									className="arrow-icon h-[40px]"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M2.00039 7.19995L6.00039 3.19995L10.0004 7.19995L11.6004 6.39995L6.00039 0.799951L0.400391 6.39995L2.00039 7.19995Z"
-										fill="#7E7E7E"
-									/>
-								</svg>
-								{localDataLength > 1 && (
-									<svg
-										width="16"
-										height="16"
-										viewBox="0 0 16 16"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-										className="cursor-pointer remove-icon h-[40px]"
-										onClick={() =>
-											handleVariationRemove(variation.id)
-										}
-									>
-										<path
-											d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-											fill="rgb(230 80 84 / 1)"
-										/>
-									</svg>
-								)}
+								<span className="font-filename"> {'' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts')} </span>
+								<div className="font-triggers">
+									{Custom_Fonts_Icons['arrowIcon']}
+									{localDataLength > 1 && Custom_Fonts_Icons['removeVariation3']}
+								</div>
 							</div>
-						</div>
 
-						<div className="text-xs text-neutral mt-1.5">
-							Supported file types: .otf, .ttf, .woff, .woff2
-						</div>
+							<div className="text-xs text-neutral mt-1.5">
+								Supported file types: .otf, .ttf, .woff, .woff2
+							</div>
 					</div>
 					<div className="grid grid-cols-2 gap-x-3">
 						<div className="col-span-1">
@@ -359,33 +302,11 @@ const LocalFont = () => {
 					</div>
 				</div>
 				<div className="mb-5">
-					<div
-						onClick={toggleAdvanceTab}
-						className="flex items-center gap-x-2 hover:cursor-pointer"
-					>
-						<label
-							className="text-sm text-heading"
-							htmlFor=""
-						>
-							{__( 'Advanced Options', 'custom-fonts' )}
+					<div onClick={toggleAdvanceTab} className="flex items-center gap-x-2 hover:cursor-pointer">
+						<label className="text-sm text-heading" htmlFor="">
+							{__('Advanced Options', 'custom-fonts')}
 						</label>
-						<svg
-							width="6"
-							height="8"
-							viewBox="0 0 6 8"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							className={
-								advanceTab
-									? "rotate-90"
-									: "" + "transition-transform duration-300"
-							}
-						>
-							<path
-								d="M0.400391 0.800049L5.20039 4.02405L0.400391 7.20005L0.400391 0.800049Z"
-								fill="#007CBA"
-							/>
-						</svg>
+						{Custom_Fonts_Icons['AdvancedOptionIcon']}
 					</div>
 					{advanceTab && (
 						<div
@@ -470,18 +391,7 @@ const LocalFont = () => {
 						{__( 'Add Font Variation', 'custom-fonts' )}
 					</div>
 					<div>
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 16 16"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M7.9998 0.800049C3.9998 0.800049 0.799805 4.00005 0.799805 8.00005C0.799805 12 3.9998 15.2 7.9998 15.2C11.9998 15.2 15.1998 12 15.1998 8.00005C15.1998 4.00005 11.9998 0.800049 7.9998 0.800049ZM7.9998 13.6C4.8798 13.6 2.3998 11.12 2.3998 8.00005C2.3998 4.88005 4.8798 2.40005 7.9998 2.40005C11.1198 2.40005 13.5998 4.88005 13.5998 8.00005C13.5998 11.12 11.1198 13.6 7.9998 13.6ZM8.7998 4.80005H7.1998V7.20005H4.7998V8.80005H7.1998V11.2H8.7998V8.80005H11.1998V7.20005H8.7998V4.80005Z"
-								fill="#007CBA"
-							/>
-						</svg>
+						{Custom_Fonts_Icons['AddFontVariation']}
 					</div>
 				</div>
 

@@ -6,6 +6,7 @@ import EditGoogleFont from "./EditGoogleFont";
 import { RangeControl } from "@wordpress/components";
 import EditGooglePreviewItem from "./preview/EditGooglePreviewItem";
 import EditLocalPreviewItem from "./preview/EditLocalPreviewItem";
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const EditFont = ( props ) => {
 	const {
@@ -59,18 +60,17 @@ const EditFont = ( props ) => {
 					>
 						<Dialog.Panel className="bcf-edit-dialog-panel">
 						<div className="inline-block align-bottom bg-white rounded-lg text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-[100%] sm:max-h-[50%] sm:w-full">
-							<div className="bcf-edit-modal-close-wrapper absolute right-[-15px] p-0 top-[-15px] w-[25px] h-[25px]">
-								<button
-									type="button"
-									className="mt-3 inline-flex justify-center border shadow-none border-slate-200 padding-[5px] bg-[#F6F7F7] text-base font-medium text-slate-800 focus:bg-[#F6F7F7] hover:bg-[#F6F7F7] focus:outline-none sm:mt-0 sm:text-xs bold border-none w-[20px] h-[20px] p-[3px] rounded-full shadow-md"
-									onClick={ onCancelClick }
-									ref={ cancelButtonRef }
-								>
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="12" aria-hidden="true" focusable="false" className='mr-[2px]'><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
-								</button>
-							</div>
-
-							<div className="grid grid-cols-12 sm:max-h-[60vh] overflow-auto">
+								<div className="bcf-edit-modal-close-wrapper absolute right-[-15px] p-0 top-[-15px] w-[25px] h-[25px]">
+									<button
+										type="button"
+										className="mt-3 inline-flex justify-center border shadow-none border-slate-200 padding-[5px] bg-[#F6F7F7] text-base font-medium text-slate-800 focus:bg-[#F6F7F7] hover:bg-[#F6F7F7] focus:outline-none sm:mt-0 sm:text-xs bold border-none w-[20px] h-[20px] p-[3px] rounded-full shadow-md"
+										onClick={onCancelClick}
+										ref={cancelButtonRef}
+									>
+										{Custom_Fonts_Icons['cancelButton']}
+									</button>
+								</div>
+								<div className="grid grid-cols-12 sm:max-h-[60vh] overflow-auto">
 								<style id={`bcf-font-${font}-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 								<div id="gfont-edit-variation-data" hidden={true}></div>
 								<div className="col-span-4 bg-white px-4 pt-5 pb-4 lg:p-[2em] sm:p-6">

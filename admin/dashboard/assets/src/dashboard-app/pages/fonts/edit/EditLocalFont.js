@@ -74,38 +74,14 @@ const EditLocalVariationItem = ({
 						{ '' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts') }
 					</h2>
 					<div className="flex items-center justify-end gap-x-4 font-triggers">
-						<svg
-							onClick={() => setToggleView(true)}
-							width="12"
-							height="8"
-							viewBox="0 0 12 8"
-							className="arrow-icon h-[40px]"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M2.00039 0.800049L6.00039 4.80005L10.0004 0.800049L11.6004 1.60005L6.00039 7.20005L0.400391 1.60005L2.00039 0.800049Z"
-								fill="#7E7E7E"
-							/>
-						</svg>
+						<span onClick={() => setToggleView(true)}>
+							{Custom_Fonts_Icons['arrowIcon2']}
+						</span>
 
 						{localDataLength > 1 && (
-							<svg
-								width="16"
-								height="16"
-								viewBox="0 0 16 16"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								className="cursor-pointer remove-icon h-[40px]"
-								onClick={() =>
-									handleVariationRemove(variation.id)
-								}
-							>
-								<path
-									d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-									fill="rgb(230 80 84 / 1)"
-								/>
-							</svg>
+							<span onClick={() => handleVariationRemove(variation.id)}>
+								{Custom_Fonts_Icons['removeIcon']}
+							</span>
 						)}
 					</div>
 				</div>
@@ -123,42 +99,19 @@ const EditLocalVariationItem = ({
 							>
 								{ __( "Choose File", 'custom-fonts' ) }
 							</button>
-							<span className="font-filename"> { '' !== fontFileName ? fontFileName : __( 'No file chosen', 'custom-fonts' ) } </span>
-							<div className="font-triggers">
-								<svg
-									onClick={() => setToggleView(false)}
-									width="12"
-									height="8"
-									viewBox="0 0 12 8"
-									className="arrow-icon h-[40px]"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M2.00039 7.19995L6.00039 3.19995L10.0004 7.19995L11.6004 6.39995L6.00039 0.799951L0.400391 6.39995L2.00039 7.19995Z"
-										fill="#7E7E7E"
-									/>
-								</svg>
-								{localDataLength > 1 && (
-									<svg
-										width="16"
-										height="16"
-										viewBox="0 0 16 16"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-										className="cursor-pointer remove-icon h-[40px]"
-										onClick={() =>
-											handleVariationRemove(variation.id)
-										}
-									>
-										<path
-											d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-											fill="rgb(230 80 84 / 1)"
-										/>
-									</svg>
-								)}
+								<span className="font-filename"> {'' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts')} </span>
+								<div className="font-triggers">
+									<span onClick={() => setToggleView(false)}>
+										{Custom_Fonts_Icons['arrowIcon']}
+									</span>
+									{localDataLength > 1 && (
+										<span onClick={() => handleVariationRemove(variation.id)}>
+											{Custom_Fonts_Icons['removeVariation']}
+										</span>
+									)}
+								</div>
+
 							</div>
-						</div>
 
 						<div className="text-xs text-neutral mt-1.5">
 							Supported file types: .otf, .ttf, .woff, .woff2
