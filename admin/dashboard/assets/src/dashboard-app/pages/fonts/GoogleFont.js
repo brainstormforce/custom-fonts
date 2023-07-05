@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
 import { useSelector } from 'react-redux';
 import apiFetch from '@wordpress/api-fetch';
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const GoogleVariationItem = ({
 	id,
@@ -62,22 +63,9 @@ const GoogleVariationItem = ({
 				}
 			</div>
 			<div>
-				<svg
-					width="16"
-					height="16"
-					viewBox="0 0 16 16"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-					onClick={() =>
-						handleVariationRemove(variation.id)
-					}
-				>
-					<path
-						d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-						fill="rgb(230 80 84 / 1)"
-					/>
-				</svg>
+				{Custom_Fonts_Icons['removeVariation']}
 			</div>
+
 		</div>
 	);
 };
@@ -198,12 +186,7 @@ const GoogleFont = () => {
 						disabled={'loading' === addingFont ? true : false}
 					>
 						{__( 'Save Font', 'custom-fonts' )}
-						{ 'loading' === addingFont && (
-							<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-								<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-								<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-							</svg>
-						) }
+						{ 'loading' === addingFont && Custom_Fonts_Icons['saveFont'] }
 					</button>
 				</div>
 			</div>
