@@ -170,7 +170,7 @@ const LocalVariationItem = ({
 							</div>
 						</div>
 						{
-							fontFileName.length >= 1 && (
+							( Array.isArray( fontFileName ) && fontFileName.length >= 1 ) && (
 								fontFileName.map(( file, index ) => (
 									<div className="text-xs text-neutral mt-1.5" key={index}>
 										{ `${__( 'File name ', 'custom-fonts' )} ${index + 1}: ${ getFileName(file) }` }

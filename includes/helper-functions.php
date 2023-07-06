@@ -280,18 +280,33 @@ function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data )
 		return $font_face;
 	}
 
-	foreach ( $variation_urls as $url ) {
-		$file_extension = bcf_get_font_file_extension( $url );
+	if ( is_array( $variation_urls ) && ! empty( $variation_urls ) ) {
+		foreach ( $variation_urls as $url ) {
+			$file_extension = bcf_get_font_file_extension( $url );
+			if ( ! $file_extension ) {
+				return '';
+			}
+
+			foreach ( array( 'eot', 'woff2', 'woff', 'ttf', 'svg', 'otf' ) as $type ) {
+				if ( empty( $url ) || $file_extension !== $type ) {
+					continue;
+				}
+
+				$src[] = bcf_get_font_src( $type, $url );
+			}
+		}
+	} else {
+		$file_extension = bcf_get_font_file_extension( $variation_urls );
 		if ( ! $file_extension ) {
 			return '';
 		}
 
 		foreach ( array( 'eot', 'woff2', 'woff', 'ttf', 'svg', 'otf' ) as $type ) {
-			if ( empty( $url ) || $file_extension !== $type ) {
+			if ( empty( $variation_urls ) || $file_extension !== $type ) {
 				continue;
 			}
 
-			$src[] = bcf_get_font_src( $type, $url );
+			$src[] = bcf_get_font_src( $type, $variation_urls );
 		}
 	}
 
