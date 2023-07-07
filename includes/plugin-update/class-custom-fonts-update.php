@@ -207,6 +207,7 @@ class Custom_Fonts_Update {
 
 					update_post_meta( $font_post_id, 'fonts-data', $font_data );
 					update_post_meta( $font_post_id, 'fonts-face', $font_face );
+					update_post_meta( $font_post_id, 'font-type', 'local' );
 				}
 			}
 		}
