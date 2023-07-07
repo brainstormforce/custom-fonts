@@ -141,16 +141,16 @@ function bcf_prepare_backward_font_data( $font ) {
  * @return array Passed Font meta data.
  * @since x.x.x
  */
-function bcf_make_font_file_meta_as_array( $font_meta_data ) {
+function bcf_make_font_url_meta_as_array( $font_meta_data ) {
 	$variation_data = ! empty( $font_meta_data['variations'] ) ? $font_meta_data['variations'] : array();
 	if ( ! empty( $variation_data ) ) {
 		foreach ( $variation_data as $index => $data ) {
-			if ( is_string( $data['font_file'] ) ) {
-				$font_meta_data['variations'][ $index ]['font_file'] = array( $data['font_file'] );
-			} elseif ( is_array( $data['font_file'] ) ) {
-				$font_meta_data['variations'][ $index ]['font_file'] = $data['font_file'];
+			if ( is_string( $data['font_url'] ) ) {
+				$font_meta_data['variations'][ $index ]['font_url'] = array( $data['font_url'] );
+			} elseif ( is_array( $data['font_url'] ) ) {
+				$font_meta_data['variations'][ $index ]['font_url'] = $data['font_url'];
 			} else {
-				$font_meta_data['variations'][ $index ]['font_file'] = array();
+				$font_meta_data['variations'][ $index ]['font_url'] = array();
 			}
 		}
 	}

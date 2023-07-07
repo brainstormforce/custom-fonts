@@ -178,7 +178,7 @@ class Custom_Fonts_Update {
 							update_post_meta( $font_post_id, 'fonts-face', $font_face );
 						} else {
 							$font_metadata = get_post_meta( $font_post_id, 'fonts-data', true );
-							$font_data     = bcf_make_font_file_meta_as_array( $font_metadata );
+							$font_data     = bcf_make_font_url_meta_as_array( $font_metadata );
 							$font_face     = bcf_get_font_face_css( $font_post_id, $font_data, true );
 
 							update_post_meta( $font_post_id, 'fonts-data', $font_data );
@@ -216,7 +216,7 @@ class Custom_Fonts_Update {
 			// Fixing v2.0.0 <> v2.0.2 migration case.
 			foreach ( $all_font_posts as $font_post => $font_post_id ) {
 				$font_metadata = get_post_meta( $font_post_id, 'fonts-data', true );
-				$font_data     = bcf_make_font_file_meta_as_array( $font_metadata );
+				$font_data     = bcf_make_font_url_meta_as_array( $font_metadata );
 				$font_face     = bcf_get_font_face_css( $font_post_id, $font_data, true );
 
 				update_post_meta( $font_post_id, 'fonts-data', $font_data );
