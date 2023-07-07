@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: typography, fonts, custom fonts, Google Fonts, performance, privacy, full site editing, adobe fonts, GDPR
 Requires at least: 5.0
 Tested up to: 6.2.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,6 +147,10 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 == Changelog ==
+= 2.0.2 =
+- Improvement: Added multiple font file selection for single font weight.
+- Fix: Frontend fonts, weights broken when multiple font files attached in old version for single font-weight.
+
 = 2.0.1 =
 - Fix: Edit Custom font screen blanks on expanding font from admin list view.
 - Fix: PHP error undefined index 'font_weight' on the frontend.
