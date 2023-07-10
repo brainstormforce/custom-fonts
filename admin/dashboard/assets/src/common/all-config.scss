@@ -186,3 +186,11 @@ span.font-filename {
     transition: box-shadow .1s linear;
     background-color: #e5f1f8;
 }
+
+/* Styles for screens with a maximum width of 1377px */
+
+@media (max-width: 1377px) {
+    .font-text{
+        font-size: 12px;
+         }
+  }
