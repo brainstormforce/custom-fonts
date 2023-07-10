@@ -149,7 +149,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 ## Changelog ##
 ### 2.0.2 ###
 - Improvement: Added multiple font file selection for single font weight.
-- Fix: Frontend fonts, weights broken when multiple font files attached in old version for single font-weight.
+- Fix: Frontend fonts messed up after 2.0 update.
+- Fix: Pre added multiple font files for single weight were missed after 2.0.
+- Fix: Fonts are not listed under Beaver Builder editor typography settings.
 
 ### 2.0.1 ###
 - Fix: Edit Custom font screen blanks on expanding font from admin list view.
