@@ -239,7 +239,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			$custom_fonts = array();
 			if ( ! empty( $fonts ) ) {
 				foreach ( $fonts as $key => $post_id ) {
-					$font_family_name = get_the_title( $post_id );
+					$font_family_name                  = get_the_title( $post_id );
 					$custom_fonts[ $font_family_name ] = array(
 						'fallback' => 'Verdana, Arial, sans-serif',
 						'weights'  => array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ),

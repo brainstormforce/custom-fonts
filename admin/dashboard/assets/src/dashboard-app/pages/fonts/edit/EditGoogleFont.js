@@ -8,6 +8,7 @@ const EditGoogleVariationItem = ({
 	id,
 	variation
 }) => {
+
 	return (
 		<div key={id} className={`text-sm font-normal text-heading mt-3.5 edit-gfont-variation-item`} data-varweight={variation}>
 			{

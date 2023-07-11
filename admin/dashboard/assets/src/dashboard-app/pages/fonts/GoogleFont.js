@@ -9,6 +9,7 @@ const GoogleVariationItem = ({
 	variation,
 	handleVariationRemove
 }) => {
+  
 	return (
 		<div key={id} className="flex items-center justify-between">
 			<div className="text-sm font-normal text-heading">

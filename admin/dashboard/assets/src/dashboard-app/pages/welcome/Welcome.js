@@ -1,6 +1,6 @@
 import CustomFontList from "./CustomFontList";
 import { Link } from "react-router-dom";
-import { __ } from "@wordpress/i18n";
+import { __, _x } from "@wordpress/i18n";
 
 const Welcome = () => {
 	return (
@@ -11,7 +11,7 @@ const Welcome = () => {
 						<div className="flex iphone:flex-col lg:flex-row md:flex-row justify-between items-center">
 							<div>
 								<h2 className="text-base font-medium tablet:mb-3">
-									{ __( "Custom Fonts", "custom-fonts" ) }
+									{ _x( "Custom Fonts", "Page title", "custom-fonts" ) }
 								</h2>
 							</div>
 							<div className="relative">

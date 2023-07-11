@@ -85,7 +85,7 @@ class BSF_Custom_Fonts_Menu {
 	 * @since 1.0.0
 	 */
 	public function register_custom_fonts_menu() {
-		$title = apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) );
+		$title = apply_filters( 'bsf_custom_fonts_menu_title', _x( 'Custom Fonts', 'Menu title', 'custom-fonts' ) );
 		add_theme_page(
 			$title,
 			$title,
@@ -257,7 +257,7 @@ class BSF_Custom_Fonts_Menu {
 
 		wp_enqueue_script( $handle );
 
-		wp_set_script_translations( $handle, 'bsf-custom-fonts' );
+		wp_set_script_translations( $handle, 'custom-fonts' );
 
 		wp_enqueue_style( 'bsf-custom-fonts-admin-google-fonts' );
 		wp_enqueue_style( $handle );
@@ -276,7 +276,7 @@ class BSF_Custom_Fonts_Menu {
 		$footer_text = sprintf(
 			/* translators: 1: Custom Fonts, 2: Plugin rating link */
 			__( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'custom-fonts' ),
-			'<span class="bcf-footer-thankyou"><strong>' . esc_html__( 'Custom Fonts', 'custom-fonts' ) . '</strong>',
+			'<span class="bcf-footer-thankyou"><strong> Custom Fonts </strong>',
 			'<a href="https://wordpress.org/support/plugin/custom-fonts/reviews/?filter=5#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a></span>'
 		);
 		return $footer_text;

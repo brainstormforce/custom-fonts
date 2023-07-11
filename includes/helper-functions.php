@@ -139,7 +139,7 @@ function bcf_prepare_backward_font_data( $font ) {
  * @param array $font_meta_data Meta font data.
  *
  * @return array Passed Font meta data.
- * @since x.x.x
+ * @since 2.0.2
  */
 function bcf_make_font_url_meta_as_array( $font_meta_data ) {
 	$variation_data = ! empty( $font_meta_data['variations'] ) ? $font_meta_data['variations'] : array();

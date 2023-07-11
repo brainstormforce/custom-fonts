@@ -12,6 +12,7 @@ const EditGFontVariation = (
 		removeWeight
 	}
 ) => {
+
 	const getRenderFontWeight = (weight) => {
 		if ( undefined === weight ) {
 			weight = '400';

@@ -36,7 +36,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Edit repeater field initial count
 		 *
-		 * @since  x.x.x
+		 * @since  1.0.0
 		 * @var (string) $edit_repeater_field_count
 		 */
 		protected static $edit_repeater_field_count = 0;
@@ -249,7 +249,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Edit Taxonomy data
 		 *
-		 * @since x.x.x
+		 * @since 1.0.0
 		 * @param string $key Font array repeater fields key.
 		 * @param string $value Font array repeater fields value.
 		 */
@@ -313,7 +313,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Add font fallback field
 		 *
-		 * @since x.x.x
+		 * @since 1.0.0
 		 * @param int    $id current term id.
 		 * @param string $title font type title.
 		 * @param string $description title font type description.
@@ -378,7 +378,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Select default repeater edit field.
 		 *
-		 * @since x.x.x
+		 * @since 1.0.0
 		 *
 		 * @param string $id Id of the field.
 		 * @param string $title Title of the field.
@@ -488,7 +488,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 		/**
 		 * Add Taxonomy data field
 		 *
-		 * @since x.x.x
+		 * @since 1.0.0
 		 * @param int    $id current term id.
 		 * @param string $title font type title.
 		 * @param string $description title font type description.
