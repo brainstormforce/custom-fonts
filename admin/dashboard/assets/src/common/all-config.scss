@@ -186,3 +186,11 @@ span.font-filename {
     transition: box-shadow .1s linear;
     background-color: #e5f1f8;
 }
+.media-modal-content .media-frame-router .media-router:after {
+    content: "(Use Shift for multiple selection.)";
+    font-size: 14px;
+    font-style: italic;
+    vertical-align: middle;
+    font-weight: 500;
+    margin-left: 20px;
+}

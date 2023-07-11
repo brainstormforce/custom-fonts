@@ -36,9 +36,6 @@ const LocalPreviewItem = () => {
 		return previewNameToggleCSS;
 	}
 
-	console.log(fontName)
-	console.log("@@@@@@@@@@@@@@@@@")
-
 	return (
 		<div className="local-fonts-preview-wrapper">
 			<style id={`bcf-local-font-css`}> {`${getLocalFontStyle(fontName, variations)} ${getPreviewTitleToggleCSS()}` } </style>

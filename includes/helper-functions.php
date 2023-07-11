@@ -36,72 +36,84 @@ function bcf_get_media_image_id_by_url( $url ) {
  * @since 2.0.0
  */
 function bcf_prepare_backward_font_data( $font ) {
-	$fonts     = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
-	$font_data = array();
-	$temp_arr  = array();
-	$counter   = 0;
+	$fonts              = Bsf_Custom_Fonts_Taxonomy::get_links_by_name( $font );
+	$font_data          = array();
+	$temp_arr           = array();
+	$counter            = 0;
+	$font_wt_loop_count = 0;
 
-	foreach ( $fonts as $font_key => $font_value ) {
+	foreach ( $fonts as $font_key => $font_data_array ) {
 		$font_data['font_name'] = $font_key;
-		foreach ( $font_value as $key => $value ) {
-			if ( isset( $temp_arr[ $counter ]['id'] ) && '' !== $temp_arr[ $counter ]['id'] &&
-				isset( $temp_arr[ $counter ]['font_style'] ) && '' !== $temp_arr[ $counter ]['font_style'] &&
-				isset( $temp_arr[ $counter ]['font_url'] ) && '' !== $temp_arr[ $counter ]['font_url'] &&
-				isset( $temp_arr[ $counter ]['font_file'] ) && '' !== $temp_arr[ $counter ]['font_file'] &&
-				isset( $temp_arr[ $counter ]['font_weight'] ) && '' !== $temp_arr[ $counter ]['font_weight']
-			) {
-				$counter = $counter + 1; // phpcs:ignore Squiz.Operators.IncrementDecrementUsage.Found
+
+		foreach ( $font_data_array as $key => $value ) {
+			if ( 7 === $font_wt_loop_count ) { // 7 is all array font repeater keys count - weight, eot, woff, woff2, ttf, svg, otf.
+				$font_wt_loop_count = 0;
+				$counter++;
 			}
 
-			$consider_counter = false;
-
+			$temp_arr[ $counter ]['id']         = $counter + 1;
+			$temp_arr[ $counter ]['font_style'] = 'normal';
 			if ( strpos( $key, 'display' ) !== false ) {
 				$font_data['font_display'] = $value;
-				$consider_counter          = true;
+				continue;
 			}
 			if ( strpos( $key, 'fallback' ) !== false ) {
 				$font_data['font_fallback'] = $value;
-				$consider_counter           = true;
+				continue;
 			}
+
 			if ( strpos( $key, 'weight' ) !== false ) {
 				$temp_arr[ $counter ]['font_weight'] = $value;
-				$consider_counter                    = true;
+				$font_wt_loop_count++;
+				continue;
 			}
-
-			if ( strpos( $key, 'font_woff_2' ) !== false && $value ) {
-				$consider_counter                  = true;
-				$temp_arr[ $counter ]['font_url']  = esc_url( $value );
-				$temp_arr[ $counter ]['font_file'] = bcf_get_media_image_id_by_url( $value );
+			if ( strpos( $key, 'font_woff_2' ) !== false ) {
+				$font_wt_loop_count++;
+				if ( $value ) {
+					$temp_arr[ $counter ]['font_url'][] = esc_url( $value );
+					$temp_arr[ $counter ]['font_file']  = bcf_get_media_image_id_by_url( $value );
+				}
+				continue;
 			}
-			if ( strpos( $key, 'font_woff-' ) !== false && $value ) {
-				$consider_counter                  = true;
-				$temp_arr[ $counter ]['font_url']  = esc_url( $value );
-				$temp_arr[ $counter ]['font_file'] = bcf_get_media_image_id_by_url( $value );
+			if ( strpos( $key, 'font_woff-' ) !== false ) {
+				$font_wt_loop_count++;
+				if ( $value ) {
+					$temp_arr[ $counter ]['font_url'][] = esc_url( $value );
+					$temp_arr[ $counter ]['font_file']  = bcf_get_media_image_id_by_url( $value );
+				}
+				continue;
 			}
-			if ( strpos( $key, 'font_ttf-' ) !== false && $value ) {
-				$consider_counter                  = true;
-				$temp_arr[ $counter ]['font_url']  = esc_url( $value );
-				$temp_arr[ $counter ]['font_file'] = bcf_get_media_image_id_by_url( $value );
+			if ( strpos( $key, 'font_ttf-' ) !== false ) {
+				$font_wt_loop_count++;
+				if ( $value ) {
+					$temp_arr[ $counter ]['font_url'][] = esc_url( $value );
+					$temp_arr[ $counter ]['font_file']  = bcf_get_media_image_id_by_url( $value );
+				}
+				continue;
 			}
-			if ( strpos( $key, 'font_eot-' ) !== false && $value ) {
-				$consider_counter                  = true;
-				$temp_arr[ $counter ]['font_url']  = esc_url( $value );
-				$temp_arr[ $counter ]['font_file'] = bcf_get_media_image_id_by_url( $value );
+			if ( strpos( $key, 'font_eot-' ) !== false ) {
+				$font_wt_loop_count++;
+				if ( $value ) {
+					$temp_arr[ $counter ]['font_url'][] = esc_url( $value );
+					$temp_arr[ $counter ]['font_file']  = bcf_get_media_image_id_by_url( $value );
+				}
+				continue;
 			}
-			if ( strpos( $key, 'font_svg-' ) !== false && $value ) {
-				$consider_counter                  = true;
-				$temp_arr[ $counter ]['font_url']  = esc_url( $value );
-				$temp_arr[ $counter ]['font_file'] = bcf_get_media_image_id_by_url( $value );
+			if ( strpos( $key, 'font_svg-' ) !== false ) {
+				$font_wt_loop_count++;
+				if ( $value ) {
+					$temp_arr[ $counter ]['font_url'][] = esc_url( $value );
+					$temp_arr[ $counter ]['font_file']  = bcf_get_media_image_id_by_url( $value );
+				}
+				continue;
 			}
-			if ( strpos( $key, 'font_otf-' ) !== false && $value ) {
-				$consider_counter                  = true;
-				$temp_arr[ $counter ]['font_url']  = esc_url( $value );
-				$temp_arr[ $counter ]['font_file'] = bcf_get_media_image_id_by_url( $value );
-			}
-
-			if ( true === $consider_counter ) {
-				$temp_arr[ $counter ]['id']         = $counter + 1;
-				$temp_arr[ $counter ]['font_style'] = 'normal';
+			if ( strpos( $key, 'font_otf-' ) !== false ) {
+				$font_wt_loop_count++;
+				if ( $value ) {
+					$temp_arr[ $counter ]['font_url'][] = esc_url( $value );
+					$temp_arr[ $counter ]['font_file']  = bcf_get_media_image_id_by_url( $value );
+				}
+				continue;
 			}
 		}
 
@@ -118,6 +130,31 @@ function bcf_prepare_backward_font_data( $font ) {
 	}
 
 	return $font_data;
+}
+
+/**
+ * Make font_file variation meta as array, whereas previously it was string type.
+ * Case: 2.0.0 to 2.0.2 update.
+ *
+ * @param array $font_meta_data Meta font data.
+ *
+ * @return array Passed Font meta data.
+ * @since x.x.x
+ */
+function bcf_make_font_url_meta_as_array( $font_meta_data ) {
+	$variation_data = ! empty( $font_meta_data['variations'] ) ? $font_meta_data['variations'] : array();
+	if ( ! empty( $variation_data ) ) {
+		foreach ( $variation_data as $index => $data ) {
+			if ( is_string( $data['font_url'] ) ) {
+				$font_meta_data['variations'][ $index ]['font_url'] = array( $data['font_url'] );
+			} elseif ( is_array( $data['font_url'] ) ) {
+				$font_meta_data['variations'][ $index ]['font_url'] = $data['font_url'];
+			} else {
+				$font_meta_data['variations'][ $index ]['font_url'] = array();
+			}
+		}
+	}
+	return $font_meta_data;
 }
 
 /**
@@ -267,29 +304,47 @@ function bcf_prepare_gfont_face_css( $font_family, $font_data, $variation_data )
  * @since 2.0.0
  */
 function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data ) {
-	$src            = array();
-	$file_extension = bcf_get_font_file_extension( $variation_data['font_url'] );
-	if ( ! $file_extension ) {
-		return '';
-	}
-
-	foreach ( array( 'eot', 'woff2', 'woff', 'ttf', 'svg', 'otf' ) as $type ) {
-		if ( empty( $variation_data['font_url'] ) || $file_extension !== $type ) {
-			continue;
-		}
-
-		$src[] = bcf_get_font_src( $type, $variation_data['font_url'] );
-	}
-
+	$src        = array();
 	$font_face  = '@font-face {' . PHP_EOL;
 	$font_face .= "\tfont-family: '" . $font_family . "';" . PHP_EOL;
 	$font_face .= ! empty( $variation_data['font_weight'] ) ? "\tfont-weight: " . $variation_data['font_weight'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $font_data['font_display'] ) ? "\tfont-display: " . $font_data['font_display'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $font_data['font_fallback'] ) ? "\tfont-fallback: " . $font_data['font_fallback'] . ';' . PHP_EOL : '';
 
-	if ( empty( $variation_data['font_url'] ) ) {
+	$variation_urls = $variation_data['font_url'];
+	if ( empty( $variation_urls ) ) {
 		$font_face .= '}';
 		return $font_face;
+	}
+
+	if ( is_array( $variation_urls ) && ! empty( $variation_urls ) ) {
+		foreach ( $variation_urls as $url ) {
+			$file_extension = bcf_get_font_file_extension( $url );
+			if ( ! $file_extension ) {
+				return '';
+			}
+
+			foreach ( array( 'eot', 'woff2', 'woff', 'ttf', 'svg', 'otf' ) as $type ) {
+				if ( empty( $url ) || $file_extension !== $type ) {
+					continue;
+				}
+
+				$src[] = bcf_get_font_src( $type, $url );
+			}
+		}
+	} else {
+		$file_extension = bcf_get_font_file_extension( $variation_urls );
+		if ( ! $file_extension ) {
+			return '';
+		}
+
+		foreach ( array( 'eot', 'woff2', 'woff', 'ttf', 'svg', 'otf' ) as $type ) {
+			if ( empty( $variation_urls ) || $file_extension !== $type ) {
+				continue;
+			}
+
+			$src[] = bcf_get_font_src( $type, $variation_urls );
+		}
 	}
 
 	$font_face .= "\tsrc: " . implode( ',' . PHP_EOL . "\t\t", $src ) . ';' . PHP_EOL . '}';
