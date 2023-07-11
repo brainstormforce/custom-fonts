@@ -59,8 +59,7 @@ function getFontWeightTitle( weight, type = '', style = '' ) {
 }
 
 function getLocalFontStyle(fontName, variations) {
-    console.log(fontName)
-    console.log(variations)
+  
     let defaultFont = `@font-face {\r\n\tfont-family: '${fontName}';\r\n\tfont-style: normal;`;
     let srcFont = '';
 
