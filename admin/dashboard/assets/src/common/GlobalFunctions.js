@@ -3,10 +3,6 @@ import { __ } from "@wordpress/i18n";
 
 function getFontWeightTitle( weight, type = '', style = '' ) {
 
-    console.log(type)
-    console.log(weight)
-    console.log(style)
-
     if ( undefined === weight ) {
         weight = '400';
     }
