@@ -17,7 +17,7 @@ const EditGoogleVariationItem = ({
 			oldWeight = '400italic';
 		}
 		if ( oldWeight.includes('italic') ) {
-			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
+			updatedWeight = `${oldWeight.replace('italic', '')} ` + __( 'Italic', 'custom-fonts' );
 		}
 		switch ( weight ) {
 			case '100':

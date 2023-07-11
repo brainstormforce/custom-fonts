@@ -17,30 +17,48 @@ const EditLocalPreviewItem = (fontId) => {
 	const variations = editFont.variations;
 	const fontName = editFont.font_name;
 
+	const getSrcFormat = ( fontUrl ) => {
+		let format = '';
+		if (fontUrl.includes('.woff2')) {
+			format = 'format(\'woff2\')';
+		} else if (fontUrl.includes('.woff')) {
+			format = 'format(\'woff\')';
+		} else if (fontUrl.includes('.svg')) {
+			format = 'format(\'svg\')';
+		} else if (fontUrl.includes('.ttf')) {
+			format = 'format(\'truetype\')';
+		} else if (fontUrl.includes('.otf')) {
+			format = 'format(\'OpenType\')';
+		} else if (fontUrl.includes('.eot')) {
+			format = 'url(\'' + fontUrl + '?#iefix\') format(\'embedded-opentype\')';
+		} else {
+			// Do nothing.
+		}
+		return format;
+	}
+
 	const getLocalFontStyle = () => {
-		let defaultFont = `@font-face {\r\n\tfont-family: '${fontName}';\r\n\tfont-style: normal;`;
+		let defaultFont = `@font-face {\r\n\tfont-family: '${fontName}';`;
 		let srcFont = '';
 
 		variations.map((variation) => {
 			let fontUrl = variation.font_url,
 				weight = variation.font_weight,
-				src = 'url(\'' + fontUrl + '\') ';
-			if (fontUrl.includes('.woff2')) {
-				src += 'format(\'woff2\')';
-			} else if (fontUrl.includes('.woff')) {
-				src += 'format(\'woff\')';
-			} else if (fontUrl.includes('.svg')) {
-				src += 'format(\'svg\')';
-			} else if (fontUrl.includes('.ttf')) {
-				src += 'format(\'truetype\')';
-			} else if (fontUrl.includes('.otf')) {
-				src += 'format(\'OpenType\')';
-			} else if (fontUrl.includes('.eot')) {
-				src = 'url(\'' + fontUrl + '?#iefix\') format(\'embedded-opentype\')';
+				style = '' === variation.font_style ? 'normal' : variation.font_style,
+				src = '';
+			if ( Array.isArray( fontUrl ) ) {
+				fontUrl.map((url, index) => {
+					src += ' url(\'' + url + '\') ';
+					src += getSrcFormat( url );
+					if ( index !== fontUrl.length - 1 ) {
+						src += ','; // Add comma if not last item.
+					}
+				});
 			} else {
-				// Do nothing.
+				src += 'url(\'' + fontUrl + '\') ';
+				src += getSrcFormat( fontUrl );
 			}
-			srcFont += `${defaultFont}\r\n\tfont-weight: ${weight};\r\n\tsrc: ${src};\r\n}\r\n`;
+			srcFont += `${defaultFont}\r\n\tfont-style: ${style};\r\n\tfont-weight: ${weight};\r\n\tsrc: ${src};\r\n}\r\n`;
 		});
 
 		return srcFont;
