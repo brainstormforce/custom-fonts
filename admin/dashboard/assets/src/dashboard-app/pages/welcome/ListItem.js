@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { __ } from "@wordpress/i18n";
+import { __, sprintf } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
 import EditFont from "../fonts/edit/EditFont";
 import { useSelector, useDispatch } from 'react-redux';
@@ -52,7 +52,7 @@ const ListItem = ({ item }) => {
 			oldWeight = '400italic';
 		}
 		if ( oldWeight.includes('italic') ) {
-			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
+			updatedWeight = `${oldWeight.replace('italic', '')} ` + __( 'Italic', 'custom-fonts' );
 		}
 		switch ( weight ) {
 			case '100':
@@ -180,7 +180,13 @@ const ListItem = ({ item }) => {
 						{checkDelete ? (
 							<div className="flex gap-x-6">
 								<div className="text-secondary cursor-pointer">
-									{__('Remove', 'custom-fonts') + ' "' + item.title + '" ' + __('font?', 'custom-fonts')}
+									{
+										sprintf(
+											/* translators: %s: Font name. */
+											__( 'Remove "%s" font?', 'custom-fonts' ),
+											item.title
+										)
+									}
 								</div>
 								<div
 									onClick={setupCancelDeletingFontPost}
