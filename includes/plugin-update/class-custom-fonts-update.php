@@ -150,7 +150,7 @@ class Custom_Fonts_Update {
 	 * 2. v1.3.7 <> v2.0.2
 	 * 3. v2.0.0 <> v2.0.2 && v2.0.1 <> v2.0.2
 	 *
-	 * @since x.x.x
+	 * @since 2.0.2
 	 */
 	public function v_2_0_2() {
 		$is_already_migrated_2_0_2 = get_option( 'bcf_custom_fonts_2_0_2_migration', false ); // Check if already migrated.
