@@ -152,6 +152,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 - Fix: Frontend fonts messed up after 2.0 update.
 - Fix: Pre added multiple font files for single weight were missed after 2.0.
 - Fix: Fonts are not listed under Beaver Builder editor typography settings.
+- Fix: Text domains load correctly for JavaScript translations. (Props - https://github.com/pedro-mendonca)
+- Fix: Used proper sprintf in hard concatenated string for translation. (Props - https://github.com/pedro-mendonca)
+- Fix: Added translation for hardcoded 'Italic' suffix. (Props - https://github.com/pedro-mendonca)
 
 = 2.0.1 =
 - Fix: Edit Custom font screen blanks on expanding font from admin list view.

@@ -277,7 +277,7 @@ class BSF_Custom_Fonts_Menu {
 			/* translators: 1: Custom Fonts, 2: Plugin rating link */
 			__( 'Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!', 'custom-fonts' ),
 			/* translators: Plugin brand name, do not translate. */
-			'<span class="bcf-footer-thankyou"><strong>' . esc_html__( 'Custom Fonts', 'custom-fonts' ) . '</strong>',
+			'<span class="bcf-footer-thankyou"><strong> Custom Fonts </strong>',
 			'<a href="https://wordpress.org/support/plugin/custom-fonts/reviews/?filter=5#new-post" target="_blank">&#9733;&#9733;&#9733;&#9733;&#9733;</a></span>'
 		);
 		return $footer_text;
