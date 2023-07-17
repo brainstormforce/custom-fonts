@@ -184,7 +184,7 @@ const EditLocalVariationItem = ({
 						</div>
 					</div>
 					<div className="grid grid-cols-2 gap-x-3">
-						<div className="col-span-1">
+						<div className="cßol-span-1">
 							<label
 								className="w-full text-sm text-heading"
 								htmlFor={`variation[${variation.id}][font_style]`}
