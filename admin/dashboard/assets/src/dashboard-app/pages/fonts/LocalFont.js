@@ -359,7 +359,7 @@ const LocalFont = () => {
 		} ).then( (response) => {
 			if ( response.success ) {
 				setTimeout( () => {
-					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
+					window.location.reload();
 				}, 500 );
 			}
 			setAddingFont( false );
