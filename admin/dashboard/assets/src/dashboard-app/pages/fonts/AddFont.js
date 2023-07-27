@@ -23,10 +23,6 @@ const AddFont = () => {
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
 						<Link
-							to={{
-								pathname: "themes.php",
-								search: `?page=bsf-custom-fonts`,
-							}}
 							onClick={() => window.location = `${ bsf_custom_fonts_admin.app_base_url }`}
 							className="mr-4 cursor-pointer py-3 px-0 focus:shadow-none focus:outline-none"
 						>
