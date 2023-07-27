@@ -206,7 +206,8 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		 * Send the response.
 		 */
 		$response_data = array(
-			'message' => __( 'Successfully created the Font!', 'custom-fonts' ),
+			'message' => __( 'Successfully created the Font! ', 'custom-fonts' ),
+			"fontId" =>  $font_post_id,
 		);
 		wp_send_json_success( $response_data );
 	}

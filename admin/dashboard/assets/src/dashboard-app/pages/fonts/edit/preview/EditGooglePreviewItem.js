@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
 import { useSelector, useDispatch } from 'react-redux';
+import { addFontToDB, deleteFontFromDB, editFontToDB } from "../../../../../utils/useApis";
 
 const EditGFontVariation = (
 	{
@@ -9,7 +10,8 @@ const EditGFontVariation = (
 		font,
 		isInGoogleState,
 		addWeight,
-		removeWeight
+		removeWeight,
+		disable
 	}
 ) => {
 	const getFontWeightTitle = ( weight ) => {
@@ -92,7 +94,7 @@ const EditGFontVariation = (
 				</div>
 				<div>
 					{ ( ! isInGoogleState ) &&
-						<button className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
+						<button disabled={disable} className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
 							<svg
 								width="16"
 								height="17"
@@ -111,7 +113,7 @@ const EditGFontVariation = (
 						</button>
 					}
 					{ isInGoogleState &&
-						<button className="flex text-danger components-button is-secondary border border-danger" data-font_weight={weight} onClick={removeWeight}>
+						<button disabled={disable} className="flex text-danger components-button is-secondary border border-danger" data-font_weight={weight} onClick={removeWeight}>
 							<svg
 								width="16"
 								height="17"
@@ -143,6 +145,14 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	const [variationToggleStyle, setVariationToggleStyle] = useState('');
 
 	const restAllData = useSelector( ( state ) => state.fonts );
+	const isDbUpdateRequired = useSelector( ( state ) => state.isDbUpdateRequired);
+
+	useEffect(() =>{
+		if(isDbUpdateRequired && editFontData){
+			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData) : deleteFontFromDB(dispatch, fontId);
+		}
+		
+	}, [isDbUpdateRequired])
 
 	let toBeEditFont = {};
 	let variations = null;
@@ -202,6 +212,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 			...editFontData,
 			variations: variations,
 		});
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
 	}
 
 	const removeWeight = (e) => {
@@ -215,6 +226,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 			...editFontData,
 			variations: newVariation,
 		});
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
 	}
 
 	const checkWeightPresentInState = (weight) => {
@@ -246,6 +258,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 					isInGoogleState={checkWeightPresentInState(variations[key])}
 					addWeight={addWeight}
 					removeWeight={removeWeight}
+					disable={isDbUpdateRequired}
 				/>
 			</div>
 		) )

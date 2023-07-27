@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 const EditGoogleVariationItem = ({
 	id,
 	variation
+
 }) => {
 	const getFontWeightTitle = ( weight ) => {
 		if ( undefined === weight ) {
@@ -66,7 +67,7 @@ const EditGoogleFont = ({fontId, fontName}) => {
 	const editFontId = parseInt( fontId );
 
 	let toBeEditFont = {};
-	let variations = null;
+	let variations = [];
 	restAllData.forEach(function(individualFont) {
 		if ( editFontId === individualFont.id && undefined !== bsf_custom_fonts_admin.googleFonts[individualFont.title] ) {
 			const gFontData = bsf_custom_fonts_admin.googleFonts[individualFont.title];
@@ -135,7 +136,7 @@ const EditGoogleFont = ({fontId, fontName}) => {
 						</div>
 					</div>
 
-					<div className="my-5">
+					{/* <div className="my-5">
 						<button
 							type="button"
 							className="bcf-save-font inline-flex components-button is-primary mb-5"
@@ -150,7 +151,7 @@ const EditGoogleFont = ({fontId, fontName}) => {
 								</svg>
 							) }
 						</button>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>

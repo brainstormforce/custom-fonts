@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
 
 const GFontVariation = (props) => {
-	const { weight, font, isInGoogleState } = props;
+	const { weight, font, isInGoogleState, disable } = props;
 	const googleFont = useSelector( ( state ) => state.googleFont );
 	const dispatch = useDispatch();
 
@@ -74,6 +74,7 @@ const GFontVariation = (props) => {
 			"font_display": googleFont.font_display,
 			"variations": variations
 		} } );
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
 	}
 
 	const removeWeight = (e) => {
@@ -90,6 +91,8 @@ const GFontVariation = (props) => {
 			"font_display": googleFont.font_display ? googleFont.font_display : '',
 			"variations": updatedVariations
 		} } );
+
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
 	}
 
 	const getRenderFontWeight = (weight) => {
@@ -128,7 +131,7 @@ const GFontVariation = (props) => {
 				</div>
 				<div>
 					{ ( ! isInGoogleState ) &&
-						<button className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
+						<button disabled={disable} className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
 							<svg
 								width="16"
 								height="17"
@@ -146,7 +149,7 @@ const GFontVariation = (props) => {
 						</button>
 					}
 					{ isInGoogleState &&
-						<button className="flex text-danger items-center components-button is-secondary border border-danger" data-font_weight={weight} onClick={removeWeight}>
+						<button disabled={disable} className="flex text-danger items-center components-button is-secondary border border-danger" data-font_weight={weight} onClick={removeWeight}>
 							<svg
 								width="16"
 								height="17"

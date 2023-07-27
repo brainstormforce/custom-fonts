@@ -6,6 +6,8 @@ import EditGoogleFont from "./EditGoogleFont";
 import { RangeControl } from "@wordpress/components";
 import EditGooglePreviewItem from "./preview/EditGooglePreviewItem";
 import EditLocalPreviewItem from "./preview/EditLocalPreviewItem";
+import globalDataStore from '@Admin/store/globalDataStore';
+import setInitialState  from '@Utils/setInitialState';
 
 const EditFont = ( props ) => {
 	const {
@@ -22,6 +24,7 @@ const EditFont = ( props ) => {
 
 	const onCancelClick = () => {
 		setOpenPopup( ! openPopup );
+		setInitialState( globalDataStore );
 	};
 
 	useEffect( () => {

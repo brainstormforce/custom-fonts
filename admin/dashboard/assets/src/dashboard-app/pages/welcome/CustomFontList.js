@@ -6,9 +6,9 @@ import ListSkeleton from "../../SkeletonSkins";
 
 const CustomFontList = () => {
 	const fontsData = useSelector((state) => state.fonts);
-	const fontPostCount = bsf_custom_fonts_admin.fontPostCount;
+	//const fontPostCount = bsf_custom_fonts_admin.fontPostCount;
 
-	if ( 0 == fontPostCount ) {
+	if ( fontsData && fontsData.length === 0 ) {
 		return <EmptyState/>
 	}
 
