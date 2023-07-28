@@ -54,10 +54,6 @@ export const addFontToDB = ( dispatch, googleFontData, cb ) => {
         if ( response.success ) {
             dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
             cb(response.data.fontId);
-            // setTimeout( () => {
-            // 	window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
-            // }, 500 );
-            //dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully Activated!', 'astra' ) } );
         }
     } );
 };

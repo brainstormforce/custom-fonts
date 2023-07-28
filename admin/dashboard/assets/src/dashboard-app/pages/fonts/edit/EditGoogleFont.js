@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 const EditGoogleVariationItem = ({
 	id,
 	variation
-
 }) => {
 	const getFontWeightTitle = ( weight ) => {
 		if ( undefined === weight ) {
