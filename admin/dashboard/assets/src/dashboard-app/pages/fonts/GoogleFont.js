@@ -137,41 +137,6 @@ const GoogleFont = () => {
 		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
 	};
 
-	// const insertGoogleFontPost = ( e=null ) => {
-	// 	e && e.preventDefault();
-
-	// 	if ( '' === googleFontData.font_name ) {
-	// 		window.alert(
-	// 			__( 'Make sure to provide valid details.', 'custom-fonts' )
-	// 		);
-	// 		return;
-	// 	}
-
-	// 	setAddingFont( 'loading' );
-	// 	const formData = new window.FormData();
-
-	// 	formData.append( 'action', 'bcf_add_new_google_font' );
-	// 	formData.append( 'security', bsf_custom_fonts_admin.add_font_nonce );
-	// 	formData.append( 'font_type', 'google' );
-	// 	formData.append( 'font_data', JSON.stringify( googleFontData ) );
-
-	// 	apiFetch( {
-	// 		url: bsf_custom_fonts_admin.ajax_url,
-	// 		method: 'POST',
-	// 		body: formData,
-	// 	} ).then( (response) => {
-	// 		if ( response.success ) {
-	// 			dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-	// 			setFontId(response.data.fontId);
-	// 			// setTimeout( () => {
-	// 			// 	window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
-	// 			// }, 500 );
-	// 			//dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully Activated!', 'astra' ) } );
-	// 		}
-	// 		setAddingFont( false );
-	// 	} );
-	// };
-
 	return (
 		<div>
 			<div>
