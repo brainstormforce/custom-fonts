@@ -123,52 +123,6 @@ const GoogleFont = () => {
 		} } );
 	}
 
-	// const deleteFontFromDB = () => {
-	// 	setAddingFont( 'loading' );
-	// 	const formData = new window.FormData();
-
-	// 	formData.append( 'action', 'bcf_delete_font' );
-	// 	formData.append( 'security', bsf_custom_fonts_admin.delete_font_nonce );
-	// 	formData.append( 'font_id', fontId );
-
-	// 	apiFetch( {
-	// 		url: bsf_custom_fonts_admin.ajax_url,
-	// 		method: 'POST',
-	// 		body: formData,
-	// 	} ).then( (response) => {
-	// 		if ( response.success ) {
-	// 			dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-	// 		}
-	// 		setAddingFont( false );
-	// 	} );
-	// }
-
-	// const editFontToDB = () => {
-	// 	console.log(fontsData, " ......... fontsData");
-	// 	console.log(googleFontData, " ......... googleFontData");
-	// 	setAddingFont( 'loading' );
-	// 	const formData = new window.FormData();
-
-	// 	formData.append( 'action', 'bcf_edit_font' );
-	// 	formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
-	// 	formData.append( 'font_type', 'google' );
-	// 	formData.append( 'font_id', fontId );
-	// 	formData.append( 'font_data', JSON.stringify( googleFontData ) );
-
-	// 	apiFetch( {
-	// 		url: bsf_custom_fonts_admin.ajax_url,
-	// 		method: 'POST',
-	// 		body: formData,
-	// 	} ).then( (response) => {
-	// 		if ( response.success ) {
-	// 				//dispatch that banner
-	// 				console.log(... 'edit successful');
-	// 				dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-	// 		}
-	// 		setAddingFont( false );
-	// 	} );
-	// }
-
 	const handleVariationRemove = (id) => {
 		const updatedVariations = googleFontData.variations.filter(
 			(variation) => variation.id !== id
