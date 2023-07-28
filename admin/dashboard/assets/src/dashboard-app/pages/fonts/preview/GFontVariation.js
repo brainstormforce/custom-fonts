@@ -131,7 +131,7 @@ const GFontVariation = (props) => {
 				</div>
 				<div>
 					{ ( ! isInGoogleState ) &&
-						<button disabled={disable} className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
+						<button disabled={disable} style={{boxShadow: 'inset 0 0 0 1px'}} className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
 							<svg
 								width="16"
 								height="17"

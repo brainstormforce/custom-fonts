@@ -1,6 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 
-export const editFontToDB = (dispatch, fontId, googleFontData) => {
+export const editFontToDB = (dispatch, fontId, googleFontData, cb) => {
     //setAddingFont( 'loading' );
     const formData = new window.FormData();
     formData.append( 'action', 'bcf_edit_font' );
@@ -17,11 +17,12 @@ export const editFontToDB = (dispatch, fontId, googleFontData) => {
         if ( response.success ) {
                 //dispatch that banner
                 dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
+                if(cb) cb(response.data.fontId);
         }
     } );
 }
 
-export const deleteFontFromDB = (dispatch, fontId) => {
+export const deleteFontFromDB = (dispatch, fontId, cb) => {
     const formData = new window.FormData();
 
     formData.append( 'action', 'bcf_delete_font' );
@@ -35,6 +36,7 @@ export const deleteFontFromDB = (dispatch, fontId) => {
     } ).then( (response) => {
         if ( response.success ) {
             dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
+            if(cb) cb(response.data.fontId);
         }
     } );
 }
@@ -53,7 +55,7 @@ export const addFontToDB = ( dispatch, googleFontData, cb ) => {
     } ).then( (response) => {
         if ( response.success ) {
             dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-            cb(response.data.fontId);
+            if(cb) cb(response.data.fontId);
         }
     } );
 };

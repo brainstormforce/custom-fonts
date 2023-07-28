@@ -4,6 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { useSelector } from 'react-redux';
 import apiFetch from '@wordpress/api-fetch';
 import { editFontToDB, deleteFontFromDB, addFontToDB } from "../../../utils/useApis";
+import { Snackbar } from "@wordpress/components";
 
 const GoogleVariationItem = ({
 	id,
@@ -96,11 +97,22 @@ const GoogleFont = () => {
 	const [gFont, setGFont] = useState('');
 	const [ addingFont, setAddingFont ] = useState( false );
 	const [fontId, setFontId] = useState(null);
+	const [showMessage, setShowMessage] = useState('');
+
+	const styleSnack = {
+  		paddingTop: '20px'
+	}
+
+	const fontUpdated = (message, fId) => {
+		if(fId) setFontId(fId);
+		setShowMessage(message);
+		setTimeout(() => setShowMessage(''), 2000);
+	}
 
 	useEffect(() =>{
 		if(isDbUpdateRequired && googleFontData){
-			if(fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData) : deleteFontFromDB(dispatch, fontId);
-			else googleFontData.variations.length === 1 ? addFontToDB(dispatch, googleFontData, (fId) => {setFontId(fId)}): null;
+			if(fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData, () => {fontUpdated('Font Updated Successfully!')}) : deleteFontFromDB(dispatch, fontId, () => {fontUpdated('Font Updated Successfully!')});
+			else googleFontData.variations.length === 1 ? addFontToDB(dispatch, googleFontData, (fId) => {fontUpdated('Font Updated Successfully!', fId)}): null;
 		}
 		
 	}, [isDbUpdateRequired])
@@ -176,6 +188,7 @@ const GoogleFont = () => {
 						</div>
 					</div>
 				}
+				{showMessage.length > 0 ? <div style={styleSnack}><Snackbar>{showMessage}</Snackbar></div> : null}
 			</div>
 		</div>
 	);
