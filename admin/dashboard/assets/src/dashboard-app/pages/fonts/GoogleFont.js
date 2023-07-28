@@ -97,16 +97,6 @@ const GoogleFont = () => {
 	const [ addingFont, setAddingFont ] = useState( false );
 	const [fontId, setFontId] = useState(null);
 
-	// const addFontToDB = useCallback(() =>{
-	// 	if(googleFontData){
-	// 		// if(googleFontData.variations.length === 1) insertGoogleFontPost();
-	// 		// else if(googleFontData.variations.length > 1) editFontToDB();
-	// 		if(fontId) googleFontData.variations.length !== 0 ? editFontToDB() : insertGoogleFontPost();
-	// 		else googleFontData.variations.length === 0 ? insertGoogleFontPost(): null;
-	// 	}
-	// 	//googleFontData && googleFontData.variations.length === 1 && insertGoogleFontPost();
-	// }, [googleFontData]);
-
 	useEffect(() =>{
 		if(isDbUpdateRequired && googleFontData){
 			if(fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData) : deleteFontFromDB(dispatch, fontId);
