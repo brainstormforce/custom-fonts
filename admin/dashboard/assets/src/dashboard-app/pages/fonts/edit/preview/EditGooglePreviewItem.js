@@ -169,9 +169,6 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	}
 
 	const [editFontData, setEditGoogleFontData] = useState( editingFontData );
-	if ( null === variations ) {
-		return;
-	}
 
 	useEffect( () => {
 		let newStyle = '';
@@ -186,6 +183,10 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 
 		dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
 	}, [editFontData] );
+	
+	if ( null === variations ) {
+		return;
+	}
 
 	const getGoogleFontLink = (font, weight, version) => {
 		const fontName = font.replace( / /g, "+" );
