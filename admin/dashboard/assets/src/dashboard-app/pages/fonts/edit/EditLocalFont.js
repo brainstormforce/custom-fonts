@@ -241,11 +241,12 @@ const EditLocalVariationItem = ({
 	);
 };
 
-const EditLocalFont = ({fontId}) => {
+const EditLocalFont = ({fontId, fontName}) => {
 	const [advanceTab, setAdvanceTab] = useState(false);
 	const dispatch = useDispatch();
 	const restAllData = useSelector( ( state ) => state.fonts );
 	const editFontId = parseInt( fontId );
+	//const [fontName, setFontName] = useState(fontName);
 
 	const toggleAdvanceTab = () => {
 		setAdvanceTab(!advanceTab);
@@ -372,6 +373,8 @@ const EditLocalFont = ({fontId}) => {
 				<p className="mb-5 text-xl font-semibold">
 					{__( 'Edit Font', 'custom-fonts' )}
 				</p>
+				<input className="w-full" type="text" onChange={(e) => handleInputChange(e,"font_name")} value={editFontData.font_name}></input>
+				<p>&nbsp;</p>
 				<div className="mb-5">
 					<div
 						onClick={toggleAdvanceTab}
