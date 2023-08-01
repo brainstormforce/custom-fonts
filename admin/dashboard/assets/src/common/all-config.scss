@@ -73,10 +73,8 @@ button.bcf-save-font[disabled] {
         animation-name: slideIn;
         animation-duration: 1.5s;
         animation-timing-function: ease;
-        /* Optional animation-delay if you want a delay before slide-in */
-        /* animation-delay: 2s; */
-        animation-fill-mode: forwards; /* Keeps the end state of the animation after it's done */
-        padding-top: 20px; /* Removed the quotes around 20px */
+        animation-fill-mode: forwards; 
+        padding-top: 20px;
         position: fixed;
         bottom: 20px;
         left: -50%;
