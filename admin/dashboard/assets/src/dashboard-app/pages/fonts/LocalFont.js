@@ -263,9 +263,6 @@ const LocalFont = () => {
 		],
 	});
 	const [ addingFont, setAddingFont ] = useState( false );
-	const styleSnack = {
-		paddingTop: '20px'
-  	}
 
 	useEffect(() => {
 		dispatch( { type: 'SET_LOCAL_FONT', payload: localFontData } );
@@ -535,7 +532,7 @@ const LocalFont = () => {
 						</svg>
 					) }
 				</button>
-				{showMessage.length>0 ? <div style={styleSnack}><Snackbar>{showMessage}</Snackbar></div> : null}
+				{showMessage.length>0 ? <div className="snack-bar-saved"><Snackbar>{showMessage}</Snackbar></div> : null}
 			</div>
 		</div>
 	);

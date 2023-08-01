@@ -99,10 +99,6 @@ const GoogleFont = () => {
 	const [fontId, setFontId] = useState(null);
 	const [showMessage, setShowMessage] = useState('');
 
-	const styleSnack = {
-  		paddingTop: '20px'
-	}
-
 	const fontUpdated = (message, fId) => {
 		if(fId) setFontId(fId);
 		setShowMessage(message);
@@ -188,7 +184,7 @@ const GoogleFont = () => {
 						</div>
 					</div>
 				}
-				{showMessage.length > 0 ? <div style={styleSnack}><Snackbar>{showMessage}</Snackbar></div> : null}
+				{showMessage.length > 0 ? <div className="snack-bar-saved"><Snackbar>{showMessage}</Snackbar></div> : null}
 			</div>
 		</div>
 	);

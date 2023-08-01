@@ -69,7 +69,34 @@ button.bcf-save-font[disabled] {
 .bsf-cf-menu-page-wrapper {
 	font-family: 'Inter';
 	font-style: normal;
+    .snack-bar-saved{
+        animation-name: slideIn;
+        animation-duration: 1.5s;
+        animation-timing-function: ease;
+        /* Optional animation-delay if you want a delay before slide-in */
+        /* animation-delay: 2s; */
+        animation-fill-mode: forwards; /* Keeps the end state of the animation after it's done */
+        padding-top: 20px; /* Removed the quotes around 20px */
+        position: fixed;
+        bottom: 20px;
+        left: -50%;
+        .components-snackbar{
+            background-color: #696969;
+            animation-delay: 1.5s;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+    }
 }
+
+@keyframes slideIn {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 180px;
+    }
+  }
+
 .appearance_page_bsf-custom-fonts #wpcontent {
 	padding-left: 0;
 }
