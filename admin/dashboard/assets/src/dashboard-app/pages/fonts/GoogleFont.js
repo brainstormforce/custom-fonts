@@ -117,7 +117,7 @@ const GoogleFont = () => {
 
 		if (fId) setFontId(fId);
 		setShowMessage(message);
-		setTimeout(() => setShowMessage(''), 3000);
+		setTimeout(() => setShowMessage(''), 3000);	
 	}
 
 	useEffect(() => {
@@ -198,7 +198,10 @@ const GoogleFont = () => {
 						</div>
 					</div>
 				}
-				{showMessage.length > 0 ? <div className="snack-bar-saved"><Snackbar>{showMessage}</Snackbar></div> : null}
+				{showMessage.length > 0 ? <div className={showMessage.length > 0 ? `snack-bar-${showMessage.toLowerCase().includes('added') ? 'added' : 'removed'}` : ''}>
+					<Snackbar>{showMessage}</Snackbar>
+				</div>
+					: null}
 			</div>
 		</div>
 	);
