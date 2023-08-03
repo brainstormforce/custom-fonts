@@ -99,22 +99,36 @@ const GoogleFont = () => {
 	const [fontId, setFontId] = useState(null);
 	const [showMessage, setShowMessage] = useState('');
 
-	const fontUpdated = (message, fId) => {
-		if(fId) setFontId(fId);
+	const fontUpdated = (operationType, fId) => {
+		let message;
+		switch (operationType) {
+			case 'add':
+				message = 'Font Added Successfully!';
+				break;
+			case 'edit':
+				message = 'Font Updated Successfully!';
+				break;
+			case 'delete':
+				message = 'Font Removed Successfully!';
+				break;
+			default:
+				message = '';
+		}
+
+		if (fId) setFontId(fId);
 		setShowMessage(message);
 		setTimeout(() => setShowMessage(''), 2000);
 	}
 
-	useEffect(() =>{
-		if(isDbUpdateRequired && googleFontData){
-			if(fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData, () => {fontUpdated('Font Updated Successfully!')}) : deleteFontFromDB(dispatch, fontId, () => {fontUpdated('Font Updated Successfully!')});
-			else googleFontData.variations.length === 1 ? addFontToDB(dispatch, googleFontData, (fId) => {fontUpdated('Font Updated Successfully!', fId)}): null;
+	useEffect(() => {
+		if (isDbUpdateRequired && googleFontData) {
+			if (fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData, () => { fontUpdated('edit') }) : deleteFontFromDB(dispatch, fontId, () => { fontUpdated('delete') });
+			else googleFontData.variations.length === 1 ? addFontToDB(dispatch, googleFontData, (fId) => { fontUpdated('add', fId) }) : null;
 		}
-		
 	}, [isDbUpdateRequired])
 
-	function handleGoogleFontChange( e ) {
-		setGFont( e.target.value );
+	function handleGoogleFontChange(e) {
+		setGFont(e.target.value);
 		setFontId(null);
 
 		const changeEvent = new CustomEvent( 'bcf:googleFontSelection:change', {
