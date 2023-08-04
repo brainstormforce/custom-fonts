@@ -124,6 +124,20 @@ button.bcf-save-font[disabled] {
     left: -50%;
 }
 
+.bcf-edit-dialog-panel .snack-bar-added .components-snackbar, .bcf-edit-dialog-panel .snack-bar-removed .components-snackbar {
+    bottom: 10%;
+    animation-duration: 1s;
+    animation-name: slideInSmall;
+}
+
+.bcf-edit-dialog-panel .is-secondary{
+    box-shadow: inset 0 0 0 1px var(--wp-components-color-accent,var(--wp-admin-theme-color,#007cba)) !important;
+}
+
+.bcf-edit-dialog-panel .border-danger{
+    box-shadow: inset 0 0 0 1px rgb(230, 80, 84) !important;
+}
+
 
 @keyframes slideIn {
     0% {
@@ -132,6 +146,16 @@ button.bcf-save-font[disabled] {
 
     100% {
         left: 180px;
+    }
+}
+
+@keyframes slideInSmall {
+    0% {
+        left: -20%;
+    }
+
+    100% {
+        left: 2%;
     }
 }
 
