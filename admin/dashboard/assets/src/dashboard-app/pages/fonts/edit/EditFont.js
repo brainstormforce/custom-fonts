@@ -65,7 +65,7 @@ const EditFont = ( props ) => {
 							<div className="bcf-edit-modal-close-wrapper absolute right-[-15px] p-0 top-[-15px] w-[25px] h-[25px]">
 								<button
 									type="button"
-									className="mt-3 inline-flex justify-center border shadow-none border-slate-200 padding-[5px] bg-[#F6F7F7] text-base font-medium text-slate-800 focus:bg-[#F6F7F7] hover:bg-[#F6F7F7] focus:outline-none sm:mt-0 sm:text-xs bold border-none w-[20px] h-[20px] p-[3px] rounded-full shadow-md"
+									className="mt-3 inline-flex justify-center border border-slate-200 padding-[5px] bg-[#F6F7F7] text-base font-medium text-slate-800 focus:bg-[#F6F7F7] hover:bg-[#F6F7F7] focus:outline-none sm:mt-0 sm:text-xs bold border-none w-[20px] h-[20px] p-[3px] rounded-full shadow-md"
 									onClick={ onCancelClick }
 									ref={ cancelButtonRef }
 								>
