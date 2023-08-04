@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { __ } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
 import { useSelector } from 'react-redux';
+import { Snackbar } from "@wordpress/components";
 
 const EditGoogleVariationItem = ({
 	id,
@@ -61,9 +62,10 @@ const EditGoogleVariationItem = ({
 	);
 };
 
-const EditGoogleFont = ({fontId, fontName}) => {
+const EditGoogleFont = ({fontId, fontName, fontUpdateAction, setFontUpdateAction}) => {
 	const restAllData = useSelector( ( state ) => state.fonts );
 	const editFontId = parseInt( fontId );
+	const [showMessage, setShowMessage] = useState('');
 
 	let toBeEditFont = {};
 	let variations = [];
@@ -74,6 +76,12 @@ const EditGoogleFont = ({fontId, fontName}) => {
 			toBeEditFont = individualFont;
 		}
 	});
+
+	useEffect( () => {
+		setTimeout(() => {
+			//setFontUpdateAction('');
+		}, 3000)
+	}, [fontUpdateAction])
 
 	let editingFontData = {};
 	if ( undefined === toBeEditFont['fonts-data'] || ! toBeEditFont['fonts-data'].length ) {
@@ -135,6 +143,10 @@ const EditGoogleFont = ({fontId, fontName}) => {
 						</div>
 					</div>
 				</div>
+
+				{fontUpdateAction.length > 0 ? <div className={fontUpdateAction === 'edit' ? 'snack-bar-added' : 'snack-bar-removed'}>
+					<Snackbar>{fontUpdateAction === 'edit' ? 'Font Updated Successfully!' : 'Font Deleted Successfully!'}</Snackbar>
+				</div>: null}
 			</div>
 		</div>
 	);

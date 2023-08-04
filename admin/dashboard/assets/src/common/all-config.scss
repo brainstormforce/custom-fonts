@@ -92,14 +92,14 @@ button.bcf-save-font[disabled] {
 }
 
 /* New styles for the added notification */
-.bsf-cf-menu-page-wrapper .snack-bar-added .components-snackbar {
+    .snack-bar-added .components-snackbar {
     background-color: #e0f4e0;
     color: black;
     font-size: 16px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     border-left: 5px solid green;
     animation-name: slideIn;
-    animation-duration: 1.5s;
+    animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
     padding: 20px;
@@ -109,13 +109,13 @@ button.bcf-save-font[disabled] {
 }
 
 /* New styles for the removed notification */
-.bsf-cf-menu-page-wrapper .snack-bar-removed .components-snackbar {
+.snack-bar-removed .components-snackbar {
     background-color: #ffebeb;
     color: black;
     border-left: 5px solid red;
     font-size: 16px;
     animation-name: slideIn;
-    animation-duration: 1.5s;
+    animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
     padding: 20px;

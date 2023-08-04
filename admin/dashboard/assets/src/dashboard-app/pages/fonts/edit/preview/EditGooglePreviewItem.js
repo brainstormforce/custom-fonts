@@ -137,7 +137,7 @@ const EditGFontVariation = (
 	);
 };
 
-const EditGooglePreviewItem = ( { fontId, fontName } ) => {
+const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 	const dispatch = useDispatch();
 	const editFontId = parseInt( fontId );
 
@@ -149,10 +149,17 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 
 	useEffect(() =>{
 		if(isDbUpdateRequired && editFontData){
-			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData) : deleteFontFromDB(dispatch, fontId);
+			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData, fontUpdated('edit')) : deleteFontFromDB(dispatch, fontId, fontUpdated('delete') );
 		}
 		
 	}, [isDbUpdateRequired])
+
+	const fontUpdated = (action) => {
+		if(action === 'delete'){
+			dispatch( { type: 'SET_EDIT_FONT', payload: null } );
+		}
+		onFontUpdated(action);
+	}
 
 	let toBeEditFont = {};
 	let variations = null;

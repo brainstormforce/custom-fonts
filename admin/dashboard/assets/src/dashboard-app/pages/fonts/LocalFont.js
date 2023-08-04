@@ -271,7 +271,7 @@ const LocalFont = () => {
 	const fontUpdated = (message, fId) => {
 		if(fId) setFontId(fId);
 		setShowMessage(message);
-		setTimeout(() => setShowMessage(''), 3000);
+		setTimeout(() => setShowMessage(''), 5000);
 	}
 
 	const handleInputChange = (event, property) => {
