@@ -121,10 +121,34 @@ return array(
 		),
 	),
 	array(
+		'Agdasima' => array(
+			'variants' => array( 'regular', '700' ),
+			'files'    => array(
+				'700'     => 'http://fonts.gstatic.com/s/agdasima/v2/PN_0Rfyxp2f1fUCgAPCGgBzT1PzTz2Mi.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/agdasima/v2/PN_zRfyxp2f1fUCgAMg6rzjb_-Da.ttf',
+			),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
 		'Aguafina Script' => array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/aguafinascript/v17/If2QXTv_ZzSxGIO30LemWEOmt1bHqs4pgicOrg.ttf' ),
 			'category' => 'handwriting',
+		),
+	),
+	array(
+		'Akatab' => array(
+			'variants' => array( 'regular', '500', '600', '700', '800', '900' ),
+			'files'    => array(
+				'500'     => 'http://fonts.gstatic.com/s/akatab/v7/VuJzdNrK3Z7gqJE3rKXdPKNiaRpFvg.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/akatab/v7/VuJzdNrK3Z7gqJE3gKLdPKNiaRpFvg.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/akatab/v7/VuJzdNrK3Z7gqJE35KPdPKNiaRpFvg.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/akatab/v7/VuJzdNrK3Z7gqJE3-KDdPKNiaRpFvg.ttf',
+				'900'     => 'http://fonts.gstatic.com/s/akatab/v7/VuJzdNrK3Z7gqJE33KHdPKNiaRpFvg.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/akatab/v7/VuJwdNrK3Z7gqJEPWIz5NIh-YA.ttf',
+			),
+			'category' => 'sans-serif',
 		),
 	),
 	array(
@@ -309,14 +333,26 @@ return array(
 	),
 	array(
 		'Aleo' => array(
-			'variants' => array( '300', '300italic', 'regular', 'italic', '700', '700italic' ),
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
 			'files'    => array(
-				'300'       => 'http://fonts.gstatic.com/s/aleo/v11/c4mg1nF8G8_syKbr9DVDno985KM.ttf',
-				'700'       => 'http://fonts.gstatic.com/s/aleo/v11/c4mg1nF8G8_syLbs9DVDno985KM.ttf',
-				'300italic' => 'http://fonts.gstatic.com/s/aleo/v11/c4mi1nF8G8_swAjxeDdJmq159KOnWA.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/aleo/v11/c4mv1nF8G8_s8ArD0D1ogoY.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/aleo/v11/c4mh1nF8G8_swAjJ1B9tkoZl_Q.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/aleo/v11/c4mi1nF8G8_swAjxaDBJmq159KOnWA.ttf',
+				'100'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KJ3G2P9HI4qCBtJ.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KL3GmP9HI4qCBtJ.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KIpGmP9HI4qCBtJ.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KJFGmP9HI4qCBtJ.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KKpHWP9HI4qCBtJ.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KKQHWP9HI4qCBtJ.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KL3HWP9HI4qCBtJ.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KLeHWP9HI4qCBtJ.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/aleo/v12/c4m61nF8G8_s6gHhIOX0IYBo_KJ3GmP9HI4qCBtJ.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WYu_FooIDQtJbok.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WQu-FooIDQtJbok.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WdW-FooIDQtJbok.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WYu-FooIDQtJbok.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_Wbm-FooIDQtJbok.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WVW5FooIDQtJbok.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WWy5FooIDQtJbok.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WQu5FooIDQtJbok.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/aleo/v12/c4m81nF8G8_swAjT3z2dShrG-7e_WSK5FooIDQtJbok.ttf',
 			),
 			'category' => 'serif',
 		),
@@ -1434,6 +1470,13 @@ return array(
 		),
 	),
 	array(
+		'Bacasime Antique' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/bacasimeantique/v1/tDbX2pGXkFYEykldjZSrmI6T_XWZOwStSUrV_BE.ttf' ),
+			'category' => 'serif',
+		),
+	),
+	array(
 		'Bad Script' => array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/badscript/v16/6NUT8F6PJgbFWQn47_x7lOwuzd1AZtw.ttf' ),
@@ -1647,7 +1690,7 @@ return array(
 	array(
 		'Bangers' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/bangers/v21/FeVQS0BTqb0h60ACL5la2bxii28.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/bangers/v24/FeVQS0BTqb0h60ACL5la2bxii28.ttf' ),
 			'category' => 'display',
 		),
 	),
@@ -1754,8 +1797,8 @@ return array(
 		'Baskervville' => array(
 			'variants' => array( 'regular', 'italic' ),
 			'files'    => array(
-				'regular' => 'http://fonts.gstatic.com/s/baskervville/v14/YA9Ur0yU4l_XOrogbkun3kQgt5OohvbJ9A.ttf',
-				'italic'  => 'http://fonts.gstatic.com/s/baskervville/v14/YA9Kr0yU4l_XOrogbkun3kQQtZmspPPZ9Mlt.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/baskervville/v16/YA9Ur0yU4l_XOrogbkun3kQgt5OohvbJ9A.ttf',
+				'italic'  => 'http://fonts.gstatic.com/s/baskervville/v16/YA9Kr0yU4l_XOrogbkun3kQQtZmspPPZ9Mlt.ttf',
 			),
 			'category' => 'serif',
 		),
@@ -1824,6 +1867,17 @@ return array(
 		'Bebas Neue' => array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/bebasneue/v10/JTUSjIg69CK48gW7PXooxW5rygbi49c.ttf' ),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Belanosima' => array(
+			'variants' => array( 'regular', '600', '700' ),
+			'files'    => array(
+				'600'     => 'http://fonts.gstatic.com/s/belanosima/v1/3y9n6bI8ejDo_3MfCDSL_Nh1M3pqn5cdJ-4.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/belanosima/v1/3y9n6bI8ejDo_3MfCDSL_Lx0M3pqn5cdJ-4.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/belanosima/v1/3y9k6bI8ejDo_3MfCDSLxABbF3JBg54.ttf',
+			),
 			'category' => 'sans-serif',
 		),
 	),
@@ -2284,6 +2338,13 @@ return array(
 		),
 	),
 	array(
+		'Borel' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/borel/v2/6qLOKZsftAPisgshYyMnOjwE.ttf' ),
+			'category' => 'handwriting',
+		),
+	),
+	array(
 		'Bowlby One' => array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/bowlbyone/v19/taiPGmVuC4y96PFeqp8smo6C_Z0wcK4.ttf' ),
@@ -2598,6 +2659,13 @@ return array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/cantoraone/v19/gyB4hws1JdgnKy56GB_JX6zdZ4vZVbgZ.ttf' ),
 			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Caprasimo' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/caprasimo/v1/esDT31JQOPuXIUGBp72klZUCGpG-GQ.ttf' ),
+			'category' => 'display',
 		),
 	),
 	array(
@@ -3492,14 +3560,26 @@ return array(
 	),
 	array(
 		'DM Sans' => array(
-			'variants' => array( 'regular', 'italic', '500', '500italic', '700', '700italic' ),
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
 			'files'    => array(
-				'500'       => 'http://fonts.gstatic.com/s/dmsans/v11/rP2Cp2ywxg089UriAWCrOB-sClQX6Cg.ttf',
-				'700'       => 'http://fonts.gstatic.com/s/dmsans/v11/rP2Cp2ywxg089UriASitOB-sClQX6Cg.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/dmsans/v11/rP2Hp2ywxg089UriOZSCHBeHFl0.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/dmsans/v11/rP2Fp2ywxg089UriCZaIGDWCBl0O8Q.ttf',
-				'500italic' => 'http://fonts.gstatic.com/s/dmsans/v11/rP2Ap2ywxg089UriCZaw7BymDnYS-Cjk6Q.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/dmsans/v11/rP2Ap2ywxg089UriCZawpBqmDnYS-Cjk6Q.ttf',
+				'100'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAop1hTmf3ZGMZpg.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAIpxhTmf3ZGMZpg.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwA_JxhTmf3ZGMZpg.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAkJxhTmf3ZGMZpg.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAfJthTmf3ZGMZpg.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTmf3ZGMZpg.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAIpthTmf3ZGMZpg.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAC5thTmf3ZGMZpg.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/dmsans/v14/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhTmf3ZGMZpg.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat-JDG3zRmYJpso5.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat8JDW3zRmYJpso5.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat_XDW3zRmYJpso5.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat-JDW3zRmYJpso5.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat-7DW3zRmYJpso5.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat9XCm3zRmYJpso5.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat9uCm3zRmYJpso5.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat8JCm3zRmYJpso5.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/dmsans/v14/rP2rp2ywxg089UriCZaSExd86J3t9jz86Mvy4qCRAL19DksVat8gCm3zRmYJpso5.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -3520,6 +3600,24 @@ return array(
 			'files'    => array(
 				'regular' => 'http://fonts.gstatic.com/s/dmseriftext/v12/rnCu-xZa_krGokauCeNq1wWyafOPXHIJErY.ttf',
 				'italic'  => 'http://fonts.gstatic.com/s/dmseriftext/v12/rnCw-xZa_krGokauCeNq1wWyWfGFWFAMArZKqQ.ttf',
+			),
+			'category' => 'serif',
+		),
+	),
+	array(
+		'Dai Banna SIL' => array(
+			'variants' => array( '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic' ),
+			'files'    => array(
+				'300'       => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-lwj0AJWmpwGyJ2uEoA4I7tYKoDsrKOgMX95A.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-lwj0AJWmpwGyJ2uEoA4I7tdqpDsrKOgMX95A.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-lwj0AJWmpwGyJ2uEoA4I7tfauDsrKOgMX95A.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-lwj0AJWmpwGyJ2uEoA4I7tZKvDsrKOgMX95A.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-jwj0AJWmpwGyJ2uEoA4I7vSyygsjAPiES55D3Vg.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-4wj0AJWmpwGyJ2uEoA4I7jS6AKsLhJgo.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-mwj0AJWmpwGyJ2uEoA4I7vSyKLuDkNgoO7g.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-jwj0AJWmpwGyJ2uEoA4I7vSyy2snAPiES55D3Vg.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-jwj0AJWmpwGyJ2uEoA4I7vSyy9s7APiES55D3Vg.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/daibannasil/v2/lW-jwj0AJWmpwGyJ2uEoA4I7vSyyks_APiES55D3Vg.ttf',
 			),
 			'category' => 'serif',
 		),
@@ -4418,20 +4516,20 @@ return array(
 		'Figtree' => array(
 			'variants' => array( '300', 'regular', '500', '600', '700', '800', '900', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
 			'files'    => array(
-				'300'       => 'http://fonts.gstatic.com/s/figtree/v4/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_chQF5ewkEU4HTy.ttf',
-				'500'       => 'http://fonts.gstatic.com/s/figtree/v4/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_dNQF5ewkEU4HTy.ttf',
-				'600'       => 'http://fonts.gstatic.com/s/figtree/v4/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_ehR15ewkEU4HTy.ttf',
-				'700'       => 'http://fonts.gstatic.com/s/figtree/v4/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR15ewkEU4HTy.ttf',
-				'800'       => 'http://fonts.gstatic.com/s/figtree/v4/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_f_R15ewkEU4HTy.ttf',
-				'900'       => 'http://fonts.gstatic.com/s/figtree/v4/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_fWR15ewkEU4HTy.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/figtree/v4/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_d_QF5ewkEU4HTy.ttf',
-				'300italic' => 'http://fonts.gstatic.com/s/figtree/v4/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A-gdyEU25WTybO8.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/figtree/v4/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A7YdyEU25WTybO8.ttf',
-				'500italic' => 'http://fonts.gstatic.com/s/figtree/v4/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A4QdyEU25WTybO8.ttf',
-				'600italic' => 'http://fonts.gstatic.com/s/figtree/v4/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A2gayEU25WTybO8.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/figtree/v4/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A1EayEU25WTybO8.ttf',
-				'800italic' => 'http://fonts.gstatic.com/s/figtree/v4/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3AzYayEU25WTybO8.ttf',
-				'900italic' => 'http://fonts.gstatic.com/s/figtree/v4/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3Ax8ayEU25WTybO8.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/figtree/v5/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_chQF5ewkEU4HTy.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/figtree/v5/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_dNQF5ewkEU4HTy.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/figtree/v5/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_ehR15ewkEU4HTy.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/figtree/v5/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_eYR15ewkEU4HTy.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/figtree/v5/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_f_R15ewkEU4HTy.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/figtree/v5/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_fWR15ewkEU4HTy.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/figtree/v5/_Xmz-HUzqDCFdgfMsYiV_F7wfS-Bs_d_QF5ewkEU4HTy.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/figtree/v5/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A-gdyEU25WTybO8.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/figtree/v5/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A7YdyEU25WTybO8.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/figtree/v5/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A4QdyEU25WTybO8.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/figtree/v5/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A2gayEU25WTybO8.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/figtree/v5/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3A1EayEU25WTybO8.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/figtree/v5/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3AzYayEU25WTybO8.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/figtree/v5/_Xm9-HUzqDCFdgfMm4GnA4aZFrUvtOK3Ax8ayEU25WTybO8.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -4682,13 +4780,13 @@ return array(
 		'Frank Ruhl Libre' => array(
 			'variants' => array( '300', 'regular', '500', '600', '700', '800', '900' ),
 			'files'    => array(
-				'300'     => 'http://fonts.gstatic.com/s/frankruhllibre/v19/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw6bYVqQPxR2EUR_.ttf',
-				'500'     => 'http://fonts.gstatic.com/s/frankruhllibre/v19/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw73YVqQPxR2EUR_.ttf',
-				'600'     => 'http://fonts.gstatic.com/s/frankruhllibre/v19/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw4bZlqQPxR2EUR_.ttf',
-				'700'     => 'http://fonts.gstatic.com/s/frankruhllibre/v19/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw4iZlqQPxR2EUR_.ttf',
-				'800'     => 'http://fonts.gstatic.com/s/frankruhllibre/v19/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw5FZlqQPxR2EUR_.ttf',
-				'900'     => 'http://fonts.gstatic.com/s/frankruhllibre/v19/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw5sZlqQPxR2EUR_.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/frankruhllibre/v19/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw7FYVqQPxR2EUR_.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/frankruhllibre/v20/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw6bYVqQPxR2EUR_.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/frankruhllibre/v20/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw73YVqQPxR2EUR_.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/frankruhllibre/v20/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw4bZlqQPxR2EUR_.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/frankruhllibre/v20/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw4iZlqQPxR2EUR_.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/frankruhllibre/v20/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw5FZlqQPxR2EUR_.ttf',
+				'900'     => 'http://fonts.gstatic.com/s/frankruhllibre/v20/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw5sZlqQPxR2EUR_.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/frankruhllibre/v20/j8_96_fAw7jrcalD7oKYNX0QfAnPcbzNEEB7OoicBw7FYVqQPxR2EUR_.ttf',
 			),
 			'category' => 'serif',
 		),
@@ -5442,7 +5540,7 @@ return array(
 	array(
 		'Gulzar' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/gulzar/v8/Wnz6HAc9eB3HB2ILYTwZqg_MPQ.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/gulzar/v9/Wnz6HAc9eB3HB2ILYTwZqg_MPQ.ttf' ),
 			'category' => 'serif',
 		),
 	),
@@ -5536,6 +5634,23 @@ return array(
 		'Hanalei Fill' => array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/hanaleifill/v22/fC1mPYtObGbfyQznIaQzPQiMVwLBplm9aw.ttf' ),
+			'category' => 'display',
+		),
+	),
+	array(
+		'Handjet' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900' ),
+			'files'    => array(
+				'100'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmbUkUsEHFAH2A.ttf',
+				'200'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHbmaUkUsEHFAH2A.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHWeaUkUsEHFAH2A.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHQuaUkUsEHFAH2A.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHeedUkUsEHFAH2A.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHd6dUkUsEHFAH2A.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHbmdUkUsEHFAH2A.ttf',
+				'900'     => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHZCdUkUsEHFAH2A.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/handjet/v17/oY1n8eXHq7n1OnbQrOY_2FrEwYEMLlcdP1mCtZaLaTutCwcIhGZ0lGU0akFcO3XFHTmaUkUsEHFAH2A.ttf',
+			),
 			'category' => 'display',
 		),
 	),
@@ -6383,7 +6498,7 @@ return array(
 	array(
 		'Joan' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/joan/v2/ZXupe1oZsqWRbRdH8X1p_Ng.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/joan/v5/ZXupe1oZsqWRbRdH8X1p_Ng.ttf' ),
 			'category' => 'serif',
 		),
 	),
@@ -6669,24 +6784,24 @@ return array(
 		'Kanit' => array(
 			'variants' => array( '100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic' ),
 			'files'    => array(
-				'100'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKX-Go6G5tXcr72GwWKcaxALFs.ttf',
-				'200'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr5aOiWgX6BJNUJy.ttf',
-				'300'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr4-OSWgX6BJNUJy.ttf',
-				'500'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr5mOCWgX6BJNUJy.ttf',
-				'600'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr5KPyWgX6BJNUJy.ttf',
-				'700'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr4uPiWgX6BJNUJy.ttf',
-				'800'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr4yPSWgX6BJNUJy.ttf',
-				'900'       => 'http://fonts.gstatic.com/s/kanit/v13/nKKU-Go6G5tXcr4WPCWgX6BJNUJy.ttf',
-				'100italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKV-Go6G5tXcraQI2GAdY5FPFtrGw.ttf',
-				'200italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKS-Go6G5tXcraQI82hVaRrMFJyAu4.ttf',
-				'300italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKS-Go6G5tXcraQI6miVaRrMFJyAu4.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/kanit/v13/nKKZ-Go6G5tXcoaSEQGodLxA.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/kanit/v13/nKKX-Go6G5tXcraQGwWKcaxALFs.ttf',
-				'500italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKS-Go6G5tXcraQI_GjVaRrMFJyAu4.ttf',
-				'600italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKS-Go6G5tXcraQI92kVaRrMFJyAu4.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKS-Go6G5tXcraQI7mlVaRrMFJyAu4.ttf',
-				'800italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKS-Go6G5tXcraQI6WmVaRrMFJyAu4.ttf',
-				'900italic' => 'http://fonts.gstatic.com/s/kanit/v13/nKKS-Go6G5tXcraQI4GnVaRrMFJyAu4.ttf',
+				'100'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKX-Go6G5tXcr72GwWKcaxALFs.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr5aOiWgX6BJNUJy.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr4-OSWgX6BJNUJy.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr5mOCWgX6BJNUJy.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr5KPyWgX6BJNUJy.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr4uPiWgX6BJNUJy.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr4yPSWgX6BJNUJy.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/kanit/v15/nKKU-Go6G5tXcr4WPCWgX6BJNUJy.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKV-Go6G5tXcraQI2GAdY5FPFtrGw.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKS-Go6G5tXcraQI82hVaRrMFJyAu4.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKS-Go6G5tXcraQI6miVaRrMFJyAu4.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/kanit/v15/nKKZ-Go6G5tXcoaSEQGodLxA.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/kanit/v15/nKKX-Go6G5tXcraQGwWKcaxALFs.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKS-Go6G5tXcraQI_GjVaRrMFJyAu4.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKS-Go6G5tXcraQI92kVaRrMFJyAu4.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKS-Go6G5tXcraQI7mlVaRrMFJyAu4.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKS-Go6G5tXcraQI6WmVaRrMFJyAu4.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/kanit/v15/nKKS-Go6G5tXcraQI4GnVaRrMFJyAu4.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -7625,6 +7740,30 @@ return array(
 		),
 	),
 	array(
+		'Lisu Bosa' => array(
+			'variants' => array( '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic' ),
+			'files'    => array(
+				'200'       => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFtErkv240fsdmJRJQXX2DGRdbY1P1Sbg.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFtErkv240fsdmJRJQXO2PGRdbY1P1Sbg.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFtErkv240fsdmJRJQXY2LGRdbY1P1Sbg.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFtErkv240fsdmJRJQXT2XGRdbY1P1Sbg.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFtErkv240fsdmJRJQXK2TGRdbY1P1Sbg.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFtErkv240fsdmJRJQXN2fGRdbY1P1Sbg.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFtErkv240fsdmJRJQXE2bGRdbY1P1Sbg.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFzErkv240fsdmJRJQflXkuRNzc9vhCblye.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFzErkv240fsdmJRJQflXlKR9zc9vhCblye.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFoErkv240fsdmJRJQvl0viTf3E3Q.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFuErkv240fsdmJRJQflUHmb_jU3eRL.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFzErkv240fsdmJRJQflXkSRtzc9vhCblye.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFzErkv240fsdmJRJQflXk-Qdzc9vhCblye.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFzErkv240fsdmJRJQflXlaQNzc9vhCblye.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFzErkv240fsdmJRJQflXlGQ9zc9vhCblye.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/lisubosa/v2/3XFzErkv240fsdmJRJQflXliQtzc9vhCblye.ttf',
+			),
+			'category' => 'serif',
+		),
+	),
+	array(
 		'Literata' => array(
 			'variants' => array( '200', '300', 'regular', '500', '600', '700', '800', '900', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
 			'files'    => array(
@@ -7787,6 +7926,30 @@ return array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/luckiestguy/v18/_gP_1RrxsjcxVyin9l9n_j2RStR3qDpraA.ttf' ),
 			'category' => 'display',
+		),
+	),
+	array(
+		'Lugrasimo' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/lugrasimo/v2/qkBXXvoF_s_eT9c7Y7ae5JRLkAXbMQ.ttf' ),
+			'category' => 'handwriting',
+		),
+	),
+	array(
+		'Lumanosimo' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/lumanosimo/v2/K2F0fZBYg_JDSEZHEfO8AoqKAyLzfWo.ttf' ),
+			'category' => 'handwriting',
+		),
+	),
+	array(
+		'Lunasima' => array(
+			'variants' => array( 'regular', '700' ),
+			'files'    => array(
+				'700'     => 'http://fonts.gstatic.com/s/lunasima/v1/wEO5EBvPh9RSOj7JFDSZVPoP_k4XiKvO.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/lunasima/v1/wEO-EBvPh9RSOj7JFAwle94H1VIe.ttf',
+			),
+			'category' => 'sans-serif',
 		),
 	),
 	array(
@@ -8264,13 +8427,13 @@ return array(
 		'Material Symbols Outlined' => array(
 			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700' ),
 			'files'    => array(
-				'100'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v120/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHeembd5zrTgt.ttf',
-				'200'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v120/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDAvHOembd5zrTgt.ttf',
-				'300'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v120/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDDxHOembd5zrTgt.ttf',
-				'500'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v120/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCdHOembd5zrTgt.ttf',
-				'600'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v120/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBxG-embd5zrTgt.ttf',
-				'700'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v120/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBIG-embd5zrTgt.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v120/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOembd5zrTgt.ttf',
+				'100'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v129/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHeembd5zrTgt.ttf',
+				'200'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v129/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDAvHOembd5zrTgt.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v129/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDDxHOembd5zrTgt.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v129/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCdHOembd5zrTgt.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v129/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBxG-embd5zrTgt.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v129/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDBIG-embd5zrTgt.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/materialsymbolsoutlined/v129/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOembd5zrTgt.ttf',
 			),
 			'category' => 'monospace',
 		),
@@ -8279,13 +8442,13 @@ return array(
 		'Material Symbols Rounded' => array(
 			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700' ),
 			'files'    => array(
-				'100'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v119/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIekXxKJKJBjAa8.ttf',
-				'200'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v119/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rAelXxKJKJBjAa8.ttf',
-				'300'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v119/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rNmlXxKJKJBjAa8.ttf',
-				'500'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v119/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rLWlXxKJKJBjAa8.ttf',
-				'600'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v119/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rFmiXxKJKJBjAa8.ttf',
-				'700'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v119/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rGCiXxKJKJBjAa8.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v119/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIelXxKJKJBjAa8.ttf',
+				'100'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v128/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIekXxKJKJBjAa8.ttf',
+				'200'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v128/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rAelXxKJKJBjAa8.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v128/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rNmlXxKJKJBjAa8.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v128/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rLWlXxKJKJBjAa8.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v128/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rFmiXxKJKJBjAa8.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v128/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rGCiXxKJKJBjAa8.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/materialsymbolsrounded/v128/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIelXxKJKJBjAa8.ttf',
 			),
 			'category' => 'monospace',
 		),
@@ -8294,13 +8457,13 @@ return array(
 		'Material Symbols Sharp' => array(
 			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700' ),
 			'files'    => array(
-				'100'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v116/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxOLozCOJ1H7-knk.ttf',
-				'200'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v116/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxMLojCOJ1H7-knk.ttf',
-				'300'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v116/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxPVojCOJ1H7-knk.ttf',
-				'500'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v116/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxO5ojCOJ1H7-knk.ttf',
-				'600'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v116/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxNVpTCOJ1H7-knk.ttf',
-				'700'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v116/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxNspTCOJ1H7-knk.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/materialsymbolssharp/v116/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxOLojCOJ1H7-knk.ttf',
+				'100'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v125/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxOLozCOJ1H7-knk.ttf',
+				'200'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v125/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxMLojCOJ1H7-knk.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v125/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxPVojCOJ1H7-knk.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v125/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxO5ojCOJ1H7-knk.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v125/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxNVpTCOJ1H7-knk.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/materialsymbolssharp/v125/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxNspTCOJ1H7-knk.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/materialsymbolssharp/v125/gNNBW2J8Roq16WD5tFNRaeLQk6-SHQ_R00k4c2_whPnoY9ruReaU4bHmz74m0ZkGH-VBYe1x0TV6x4yFH8F-H5OdzEL3sVTgJtfbYxOLojCOJ1H7-knk.ttf',
 			),
 			'category' => 'monospace',
 		),
@@ -8941,15 +9104,15 @@ return array(
 		'Murecho' => array(
 			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900' ),
 			'files'    => array(
-				'100'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMpr5HWZLCpUOaM6.ttf',
-				'200'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMrr5XWZLCpUOaM6.ttf',
-				'300'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMo15XWZLCpUOaM6.ttf',
-				'500'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMpZ5XWZLCpUOaM6.ttf',
-				'600'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMq14nWZLCpUOaM6.ttf',
-				'700'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMqM4nWZLCpUOaM6.ttf',
-				'800'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMrr4nWZLCpUOaM6.ttf',
-				'900'     => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMrC4nWZLCpUOaM6.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/murecho/v10/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMpr5XWZLCpUOaM6.ttf',
+				'100'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMpr5HWZLCpUOaM6.ttf',
+				'200'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMrr5XWZLCpUOaM6.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMo15XWZLCpUOaM6.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMpZ5XWZLCpUOaM6.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMq14nWZLCpUOaM6.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMqM4nWZLCpUOaM6.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMrr4nWZLCpUOaM6.ttf',
+				'900'     => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMrC4nWZLCpUOaM6.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/murecho/v11/q5uYsoq3NOBn_I-ggCJg98TBOoNFCMpr5XWZLCpUOaM6.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -9059,6 +9222,13 @@ return array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/nanumpenscript/v19/daaDSSYiLGqEal3MvdA_FOL_3FkN2z7-aMFCcTU.ttf' ),
 			'category' => 'handwriting',
+		),
+	),
+	array(
+		'Narnoor' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/narnoor/v4/cIf9MaFWuVo-UTyPxCmrYGkHgIs.ttf' ),
+			'category' => 'serif',
 		),
 	),
 	array(
@@ -9332,24 +9502,24 @@ return array(
 		'Noto Sans' => array(
 			'variants' => array( '100', '100italic', '200', '200italic', '300', '300italic', 'regular', 'italic', '500', '500italic', '600', '600italic', '700', '700italic', '800', '800italic', '900', '900italic' ),
 			'files'    => array(
-				'100'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0OIpQlx3QUlC5A4PNjhjRFSfiM7HBj.ttf',
-				'200'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0NIpQlx3QUlC5A4PNjKhVlY9aA5Wl6PQ.ttf',
-				'300'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0NIpQlx3QUlC5A4PNjThZlY9aA5Wl6PQ.ttf',
-				'500'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0NIpQlx3QUlC5A4PNjFhdlY9aA5Wl6PQ.ttf',
-				'600'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0NIpQlx3QUlC5A4PNjOhBlY9aA5Wl6PQ.ttf',
-				'700'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0NIpQlx3QUlC5A4PNjXhFlY9aA5Wl6PQ.ttf',
-				'800'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0NIpQlx3QUlC5A4PNjQhJlY9aA5Wl6PQ.ttf',
-				'900'       => 'http://fonts.gstatic.com/s/notosans/v28/o-0NIpQlx3QUlC5A4PNjZhNlY9aA5Wl6PQ.ttf',
-				'100italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0MIpQlx3QUlC5A4PNr4AwhQ_yu6WBjJLE.ttf',
-				'200italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0TIpQlx3QUlC5A4PNr4AyNYtyEx2xqPaif.ttf',
-				'300italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0TIpQlx3QUlC5A4PNr4AzpYdyEx2xqPaif.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/notosans/v28/o-0IIpQlx3QUlC5A4PNb4j5Ba_2c7A.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/notosans/v28/o-0OIpQlx3QUlC5A4PNr4DRFSfiM7HBj.ttf',
-				'500italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0TIpQlx3QUlC5A4PNr4AyxYNyEx2xqPaif.ttf',
-				'600italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0TIpQlx3QUlC5A4PNr4AydZ9yEx2xqPaif.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0TIpQlx3QUlC5A4PNr4Az5ZtyEx2xqPaif.ttf',
-				'800italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0TIpQlx3QUlC5A4PNr4AzlZdyEx2xqPaif.ttf',
-				'900italic' => 'http://fonts.gstatic.com/s/notosans/v28/o-0TIpQlx3QUlC5A4PNr4AzBZNyEx2xqPaif.ttf',
+				'100'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0OIpQlx3QUlC5A4PNjhjRFSfiM7HBj.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0NIpQlx3QUlC5A4PNjKhVlY9aA5Wl6PQ.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0NIpQlx3QUlC5A4PNjThZlY9aA5Wl6PQ.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0NIpQlx3QUlC5A4PNjFhdlY9aA5Wl6PQ.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0NIpQlx3QUlC5A4PNjOhBlY9aA5Wl6PQ.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0NIpQlx3QUlC5A4PNjXhFlY9aA5Wl6PQ.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0NIpQlx3QUlC5A4PNjQhJlY9aA5Wl6PQ.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/notosans/v30/o-0NIpQlx3QUlC5A4PNjZhNlY9aA5Wl6PQ.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0MIpQlx3QUlC5A4PNr4AwhQ_yu6WBjJLE.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0TIpQlx3QUlC5A4PNr4AyNYtyEx2xqPaif.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0TIpQlx3QUlC5A4PNr4AzpYdyEx2xqPaif.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/notosans/v30/o-0IIpQlx3QUlC5A4PNb4j5Ba_2c7A.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/notosans/v30/o-0OIpQlx3QUlC5A4PNr4DRFSfiM7HBj.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0TIpQlx3QUlC5A4PNr4AyxYNyEx2xqPaif.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0TIpQlx3QUlC5A4PNr4AydZ9yEx2xqPaif.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0TIpQlx3QUlC5A4PNr4Az5ZtyEx2xqPaif.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0TIpQlx3QUlC5A4PNr4AzlZdyEx2xqPaif.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/notosans/v30/o-0TIpQlx3QUlC5A4PNr4AzBZNyEx2xqPaif.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -9381,7 +9551,7 @@ return array(
 	array(
 		'Noto Sans Anatolian Hieroglyphs' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansanatolianhieroglyphs/v14/ijw9s4roRME5LLRxjsRb8A0gKPSWq4BbDmHHu6j2pEtUJzZWXybIymc5QYo.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansanatolianhieroglyphs/v16/ijw9s4roRME5LLRxjsRb8A0gKPSWq4BbDmHHu6j2pEtUJzZWXybIymc5QYo.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9496,7 +9666,7 @@ return array(
 	array(
 		'Noto Sans Brahmi' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansbrahmi/v15/vEFK2-VODB8RrNDvZSUmQQIIByV18tK1W77HtMo.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansbrahmi/v18/vEFK2-VODB8RrNDvZSUmQQIIByV18tK1W77HtMo.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9534,7 +9704,7 @@ return array(
 	array(
 		'Noto Sans Carian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanscarian/v15/LDIpaoiONgYwA9Yc6f0gUILeMIOgs7ob9yGLmfI.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanscarian/v16/LDIpaoiONgYwA9Yc6f0gUILeMIOgs7ob9yGLmfI.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9603,7 +9773,7 @@ return array(
 	array(
 		'Noto Sans Cuneiform' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanscuneiform/v15/bMrrmTWK7YY-MF22aHGGd7H8PhJtvBDWgb9JlRQueeQ.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanscuneiform/v17/bMrrmTWK7YY-MF22aHGGd7H8PhJtvBDWgb9JlRQueeQ.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9615,9 +9785,16 @@ return array(
 		),
 	),
 	array(
+		'Noto Sans Cypro Minoan' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanscyprominoan/v1/2Eb2L_dtDUlkNmPHB_UVtEzp3ZlPGqZ_4nAGq9eSf8_eQSE.ttf' ),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
 		'Noto Sans Deseret' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansdeseret/v15/MwQsbgPp1eKH6QsAVuFb9AZM6MMr2Vq9ZnJSZtQG.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansdeseret/v17/MwQsbgPp1eKH6QsAVuFb9AZM6MMr2Vq9ZnJSZtQG.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9666,15 +9843,18 @@ return array(
 	),
 	array(
 		'Noto Sans Duployan' => array(
-			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansduployan/v16/gokzH7nwAEdtF9N8-mdTDx_X9JM5wsvrFsIn6WYDvA.ttf' ),
+			'variants' => array( 'regular', '700' ),
+			'files'    => array(
+				'700'     => 'http://fonts.gstatic.com/s/notosansduployan/v17/gokwH7nwAEdtF9N8-mdTDx_X9JM5wsvTqu0D4U0ftZS-Iw.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/notosansduployan/v17/gokzH7nwAEdtF9N8-mdTDx_X9JM5wsvrFsIn6WYDvA.ttf',
+			),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Egyptian Hieroglyphs' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansegyptianhieroglyphs/v26/vEF42-tODB8RrNDvZSUmRhcQHzx1s7y_F9-j3qSzEcbEYindSVK8xRg7iw.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansegyptianhieroglyphs/v28/vEF42-tODB8RrNDvZSUmRhcQHzx1s7y_F9-j3qSzEcbEYindSVK8xRg7iw.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9729,14 +9909,14 @@ return array(
 	array(
 		'Noto Sans Glagolitic' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansglagolitic/v15/1q2ZY4-BBFBst88SU_tOj4J-4yuNF_HI4ERK4Amu7nM1.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansglagolitic/v17/1q2ZY4-BBFBst88SU_tOj4J-4yuNF_HI4ERK4Amu7nM1.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Gothic' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansgothic/v15/TuGKUUVzXI5FBtUq5a8bj6wRbzxTFMX40kFQRx0.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansgothic/v16/TuGKUUVzXI5FBtUq5a8bj6wRbzxTFMX40kFQRx0.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9767,7 +9947,7 @@ return array(
 	array(
 		'Noto Sans Gunjala Gondi' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansgunjalagondi/v15/bWto7e7KfBziStx7lIzKPrcSMwcEnCv6DW7n5hcVXYMTK4q1.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansgunjalagondi/v17/bWto7e7KfBziStx7lIzKPrcSMwcEnCv6DW7n5hcVXYMTK4q1.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9824,7 +10004,7 @@ return array(
 	array(
 		'Noto Sans Hatran' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanshatran/v15/A2BBn4Ne0RgnVF3Lnko-0sOBIfL_mM83r1nwzDs.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanshatran/v16/A2BBn4Ne0RgnVF3Lnko-0sOBIfL_mM83r1nwzDs.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9919,7 +10099,7 @@ return array(
 	array(
 		'Noto Sans Kaithi' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanskaithi/v16/buEtppS9f8_vkXadMBJJu0tWjLwjQi0KdoZIKlo.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanskaithi/v18/buEtppS9f8_vkXadMBJJu0tWjLwjQi0KdoZIKlo.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -9986,7 +10166,7 @@ return array(
 	array(
 		'Noto Sans Khudawadi' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanskhudawadi/v16/fdNi9t6ZsWBZ2k5ltHN73zZ5hc8HANlHIjRnVVXz9MY.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanskhudawadi/v18/fdNi9t6ZsWBZ2k5ltHN73zZ5hc8HANlHIjRnVVXz9MY.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10041,14 +10221,14 @@ return array(
 	array(
 		'Noto Sans Linear A' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanslineara/v16/oPWS_l16kP4jCuhpgEGmwJOiA18FZj22zmHQAGQicw.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanslineara/v18/oPWS_l16kP4jCuhpgEGmwJOiA18FZj22zmHQAGQicw.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Linear B' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanslinearb/v15/HhyJU4wt9vSgfHoORYOiXOckKNB737IV3BkFTq4EPw.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanslinearb/v17/HhyJU4wt9vSgfHoORYOiXOckKNB737IV3BkFTq4EPw.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10074,14 +10254,14 @@ return array(
 	array(
 		'Noto Sans Lydian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanslydian/v15/c4m71mVzGN7s8FmIukZJ1v4ZlcPReUPXMoIjEQI.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanslydian/v17/c4m71mVzGN7s8FmIukZJ1v4ZlcPReUPXMoIjEQI.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Mahajani' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmahajani/v15/-F6sfiVqLzI2JPCgQBnw60Agp0JrvD5Fh8ARHNh4zg.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmahajani/v17/-F6sfiVqLzI2JPCgQBnw60Agp0JrvD5Fh8ARHNh4zg.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10112,14 +10292,14 @@ return array(
 	array(
 		'Noto Sans Manichaean' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmanichaean/v15/taiVGntiC4--qtsfi4Jp9-_GkPZZCcrfekqCNTtFCtdX.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmanichaean/v17/taiVGntiC4--qtsfi4Jp9-_GkPZZCcrfekqCNTtFCtdX.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Marchen' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmarchen/v17/aFTO7OZ_Y282EP-WyG6QTOX_C8WZMHhPk652ZaHk.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmarchen/v19/aFTO7OZ_Y282EP-WyG6QTOX_C8WZMHhPk652ZaHk.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10183,7 +10363,7 @@ return array(
 	array(
 		'Noto Sans Meroitic' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmeroitic/v16/IFS5HfRJndhE3P4b5jnZ3ITPvC6i00UDgDhTiKY9KQ.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansmeroitic/v17/IFS5HfRJndhE3P4b5jnZ3ITPvC6i00UDgDhTiKY9KQ.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10266,7 +10446,7 @@ return array(
 	array(
 		'Noto Sans Nabataean' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansnabataean/v15/IFS4HfVJndhE3P4b5jnZ34DfsjO330dNoBJ9hK8kMK4.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansnabataean/v16/IFS4HfVJndhE3P4b5jnZ34DfsjO330dNoBJ9hK8kMK4.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10318,7 +10498,7 @@ return array(
 	array(
 		'Noto Sans Ogham' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansogham/v15/kmKlZqk1GBDGN0mY6k5lmEmww4hrt5laQxcoCA.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansogham/v17/kmKlZqk1GBDGN0mY6k5lmEmww4hrt5laQxcoCA.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10344,42 +10524,42 @@ return array(
 	array(
 		'Noto Sans Old Italic' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansolditalic/v15/TuGOUUFzXI5FBtUq5a8bh68BJxxEVam7tWlRdRhtCC4d.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansolditalic/v16/TuGOUUFzXI5FBtUq5a8bh68BJxxEVam7tWlRdRhtCC4d.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Old North Arabian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldnortharabian/v15/esDF30BdNv-KYGGJpKGk2tNiMt7Jar6olZDyNdr81zBQmUo_xw4ABw.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldnortharabian/v16/esDF30BdNv-KYGGJpKGk2tNiMt7Jar6olZDyNdr81zBQmUo_xw4ABw.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Old Permic' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldpermic/v16/snf1s1q1-dF8pli1TesqcbUY4Mr-ElrwKLdXgv_dKYB5.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldpermic/v17/snf1s1q1-dF8pli1TesqcbUY4Mr-ElrwKLdXgv_dKYB5.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Old Persian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldpersian/v15/wEOjEAbNnc5caQTFG18FHrZr9Bp6-8CmIJ_tqOlQfx9CjA.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldpersian/v16/wEOjEAbNnc5caQTFG18FHrZr9Bp6-8CmIJ_tqOlQfx9CjA.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Old Sogdian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldsogdian/v15/3JnjSCH90Gmq2mrzckOBBhFhdrMst48aURt7neIqM-9uyg.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldsogdian/v16/3JnjSCH90Gmq2mrzckOBBhFhdrMst48aURt7neIqM-9uyg.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Old South Arabian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldsoutharabian/v15/3qT5oiOhnSyU8TNFIdhZTice3hB_HWKsEnF--0XCHiKx1OtDT9HwTA.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansoldsoutharabian/v16/3qT5oiOhnSyU8TNFIdhZTice3hB_HWKsEnF--0XCHiKx1OtDT9HwTA.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10431,7 +10611,7 @@ return array(
 	array(
 		'Noto Sans Palmyrene' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanspalmyrene/v15/ZgNPjOdKPa7CHqq0h37c_ASCWvH93SFCPnK5ZpdNtcA.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanspalmyrene/v16/ZgNPjOdKPa7CHqq0h37c_ASCWvH93SFCPnK5ZpdNtcA.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10452,14 +10632,14 @@ return array(
 	array(
 		'Noto Sans Phoenician' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansphoenician/v15/jizFRF9Ksm4Bt9PvcTaEkIHiTVtxmFtS5X7Jot-p5561.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansphoenician/v17/jizFRF9Ksm4Bt9PvcTaEkIHiTVtxmFtS5X7Jot-p5561.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
 	array(
 		'Noto Sans Psalter Pahlavi' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanspsalterpahlavi/v15/rP2Vp3K65FkAtHfwd-eISGznYihzggmsicPfud3w1G3KsUQBct4.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanspsalterpahlavi/v16/rP2Vp3K65FkAtHfwd-eISGznYihzggmsicPfud3w1G3KsUQBct4.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10473,7 +10653,7 @@ return array(
 	array(
 		'Noto Sans Runic' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansrunic/v15/H4c_BXWPl9DZ0Xe_nHUaus7W68WWaxpvHtgIYg.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansrunic/v17/H4c_BXWPl9DZ0Xe_nHUaus7W68WWaxpvHtgIYg.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10494,7 +10674,7 @@ return array(
 	array(
 		'Noto Sans Samaritan' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanssamaritan/v15/buEqppe9f8_vkXadMBJJo0tSmaYjFkxOUo5jNlOVMzQ.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanssamaritan/v16/buEqppe9f8_vkXadMBJJo0tSmaYjFkxOUo5jNlOVMzQ.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10515,7 +10695,7 @@ return array(
 	array(
 		'Noto Sans Shavian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansshavian/v15/CHy5V_HZE0jxJBQlqAeCKjJvQBNF4EFQSplv2Cwg.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansshavian/v17/CHy5V_HZE0jxJBQlqAeCKjJvQBNF4EFQSplv2Cwg.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10553,7 +10733,7 @@ return array(
 	array(
 		'Noto Sans Sogdian' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanssogdian/v15/taiQGn5iC4--qtsfi4Jp6eHPnfxQBo--Pm6KHidM.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanssogdian/v16/taiQGn5iC4--qtsfi4Jp6eHPnfxQBo--Pm6KHidM.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10572,7 +10752,7 @@ return array(
 	array(
 		'Noto Sans Soyombo' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanssoyombo/v15/RWmSoL-Y6-8q5LTtXs6MF6q7xsxgY0FrIFOcK25W.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanssoyombo/v17/RWmSoL-Y6-8q5LTtXs6MF6q7xsxgY0FrIFOcK25W.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10632,6 +10812,23 @@ return array(
 				'800'     => 'http://fonts.gstatic.com/s/notosanssyriac/v16/Ktk7AKuMeZjqPnXgyqribqzQqgW0LYiVqV7dXcP0C-XD88aJyZfUL_FC.ttf',
 				'900'     => 'http://fonts.gstatic.com/s/notosanssyriac/v16/Ktk7AKuMeZjqPnXgyqribqzQqgW0LYiVqV7dXcP0C-Xq88aJyZfUL_FC.ttf',
 				'regular' => 'http://fonts.gstatic.com/s/notosanssyriac/v16/Ktk7AKuMeZjqPnXgyqribqzQqgW0LYiVqV7dXcP0C-VD9MaJyZfUL_FC.ttf',
+			),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Noto Sans Syriac Eastern' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900' ),
+			'files'    => array(
+				'100'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPi-eszCL5ep1QPQ.ttf',
+				'200'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPq-fszCL5ep1QPQ.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPnGfszCL5ep1QPQ.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPh2fszCL5ep1QPQ.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPvGYszCL5ep1QPQ.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPsiYszCL5ep1QPQ.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPq-YszCL5ep1QPQ.ttf',
+				'900'     => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPoaYszCL5ep1QPQ.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/notosanssyriaceastern/v1/Noac6Vj_wIWFbTTCrYmvy8AjVU8aslWRHHvRYxS-Ro3yS0FDacnHPi-fszCL5ep1QPQ.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -10717,7 +10914,7 @@ return array(
 	array(
 		'Noto Sans Tamil Supplement' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanstamilsupplement/v19/DdTz78kEtnooLS5rXF1DaruiCd_bFp_Ph4sGcn7ax_vsAeMkeq1x.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanstamilsupplement/v21/DdTz78kEtnooLS5rXF1DaruiCd_bFp_Ph4sGcn7ax_vsAeMkeq1x.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10811,7 +11008,7 @@ return array(
 	array(
 		'Noto Sans Tirhuta' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanstirhuta/v15/t5t6IQYRNJ6TWjahPR6X-M-apUyby7uGUBsTrn5P.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosanstirhuta/v16/t5t6IQYRNJ6TWjahPR6X-M-apUyby7uGUBsTrn5P.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -10826,6 +11023,18 @@ return array(
 		'Noto Sans Vai' => array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notosansvai/v17/NaPecZTSBuhTirw6IaFn_UrURMTsDIRSfr0.ttf' ),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Noto Sans Vithkuqi' => array(
+			'variants' => array( 'regular', '500', '600', '700' ),
+			'files'    => array(
+				'500'     => 'http://fonts.gstatic.com/s/notosansvithkuqi/v1/jVyi7m77CXvQswd6WjYu9E1wN6cih2TSchUEkQgw3KTnvZxSgKM7vmn0BLE.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/notosansvithkuqi/v1/jVyi7m77CXvQswd6WjYu9E1wN6cih2TSchUEkQgw3KTnvXBVgKM7vmn0BLE.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/notosansvithkuqi/v1/jVyi7m77CXvQswd6WjYu9E1wN6cih2TSchUEkQgw3KTnvUlVgKM7vmn0BLE.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/notosansvithkuqi/v1/jVyi7m77CXvQswd6WjYu9E1wN6cih2TSchUEkQgw3KTnva5SgKM7vmn0BLE.ttf',
+			),
 			'category' => 'sans-serif',
 		),
 	),
@@ -11137,6 +11346,13 @@ return array(
 		),
 	),
 	array(
+		'Noto Serif Khitan Small Script' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notoserifkhitansmallscript/v1/jizzRFVKsm4Bt9PrbSzC4KLlQUF5lRJg5j-l5PvyhfTdd4TsZ8lb39iddA.ttf' ),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
 		'Noto Serif Khmer' => array(
 			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900' ),
 			'files'    => array(
@@ -11179,6 +11395,13 @@ return array(
 				'900'     => 'http://fonts.gstatic.com/s/notoseriflao/v23/3y9C6bYwcCjmsU8JEzCMxEwQfEBLk3f0rlSqCdaM_LlSNZ59oNw0BWH8VUoNrvOjlmyhHHQ.ttf',
 				'regular' => 'http://fonts.gstatic.com/s/notoseriflao/v23/3y9C6bYwcCjmsU8JEzCMxEwQfEBLk3f0rlSqCdaM_LlSNZ59oNw0BWH8VeMKrvOjlmyhHHQ.ttf',
 			),
+			'category' => 'serif',
+		),
+	),
+	array(
+		'Noto Serif Makasar' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notoserifmakasar/v1/memjYbqtyH-NiZpFH_9zcvB_PqkfY9S7j4HTVSmevw.ttf' ),
 			'category' => 'serif',
 		),
 	),
@@ -11237,6 +11460,13 @@ return array(
 				'700'     => 'http://fonts.gstatic.com/s/notoseriforiya/v4/MjQQmj56u-r69izk_LDqWN7w0cYByutv9qeWYrvLaxo7-3y-v039MF1j.ttf',
 				'regular' => 'http://fonts.gstatic.com/s/notoseriforiya/v4/MjQQmj56u-r69izk_LDqWN7w0cYByutv9qeWYrvLaxrc_Hy-v039MF1j.ttf',
 			),
+			'category' => 'serif',
+		),
+	),
+	array(
+		'Noto Serif Ottoman Siyaq' => array(
+			'variants' => array( 'regular' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/notoserifottomansiyaq/v1/fC1yPZ9IYnzRhTrrc4s8cSvYI0eozzaFOQ01qoHLJrgA00kAdA.ttf' ),
 			'category' => 'serif',
 		),
 	),
@@ -11384,13 +11614,25 @@ return array(
 		),
 	),
 	array(
+		'Noto Serif Vithkuqi' => array(
+			'variants' => array( 'regular', '500', '600', '700' ),
+			'files'    => array(
+				'500'     => 'http://fonts.gstatic.com/s/notoserifvithkuqi/v1/YA94r1OY7FjTf5szakutkndpw9HH-4a4z9pklvg1IQSNcRW-dW2Cqy9A4teH.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/notoserifvithkuqi/v1/YA94r1OY7FjTf5szakutkndpw9HH-4a4z9pklvg1IQSNcRVScm2Cqy9A4teH.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/notoserifvithkuqi/v1/YA94r1OY7FjTf5szakutkndpw9HH-4a4z9pklvg1IQSNcRVrcm2Cqy9A4teH.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/notoserifvithkuqi/v1/YA94r1OY7FjTf5szakutkndpw9HH-4a4z9pklvg1IQSNcRWMdW2Cqy9A4teH.ttf',
+			),
+			'category' => 'serif',
+		),
+	),
+	array(
 		'Noto Serif Yezidi' => array(
 			'variants' => array( 'regular', '500', '600', '700' ),
 			'files'    => array(
-				'500'     => 'http://fonts.gstatic.com/s/notoserifyezidi/v16/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspD6SEkrlGJgmVCqg.ttf',
-				'600'     => 'http://fonts.gstatic.com/s/notoserifyezidi/v16/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspDBSYkrlGJgmVCqg.ttf',
-				'700'     => 'http://fonts.gstatic.com/s/notoserifyezidi/v16/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspDPCYkrlGJgmVCqg.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/notoserifyezidi/v16/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspD2yEkrlGJgmVCqg.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/notoserifyezidi/v21/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspD6SEkrlGJgmVCqg.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/notoserifyezidi/v21/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspDBSYkrlGJgmVCqg.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/notoserifyezidi/v21/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspDPCYkrlGJgmVCqg.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/notoserifyezidi/v21/XLYPIYr5bJNDGYxLBibeHZAn3B5KJENnQjbfhMSVZspD2yEkrlGJgmVCqg.ttf',
 			),
 			'category' => 'serif',
 		),
@@ -11522,7 +11764,7 @@ return array(
 	array(
 		'Nuosu SIL' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/nuosusil/v6/8vIK7wM3wmRn_kc4uAjeFGxbO_zo-w.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/nuosusil/v8/8vIK7wM3wmRn_kc4uAjeFGxbO_zo-w.ttf' ),
 			'category' => 'serif',
 		),
 	),
@@ -12282,20 +12524,20 @@ return array(
 		'Plus Jakarta Sans' => array(
 			'variants' => array( '200', '300', 'regular', '500', '600', '700', '800', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic' ),
 			'files'    => array(
-				'200'       => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KU7NShXUEKi4Rw.ttf',
-				'300'       => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_907NShXUEKi4Rw.ttf',
-				'500'       => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_m07NShXUEKi4Rw.ttf',
-				'600'       => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_d0nNShXUEKi4Rw.ttf',
-				'700'       => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_TknNShXUEKi4Rw.ttf',
-				'800'       => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUnNShXUEKi4Rw.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_qU7NShXUEKi4Rw.ttf',
-				'200italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ2lCR_QMq2oR82k.ttf',
-				'300italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ17CR_QMq2oR82k.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0lCR_QMq2oR82k.ttf',
-				'500italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0XCR_QMq2oR82k.ttf',
-				'600italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ37Dh_QMq2oR82k.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ3CDh_QMq2oR82k.ttf',
-				'800italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v7/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ2lDh_QMq2oR82k.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KU7NShXUEKi4Rw.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_907NShXUEKi4Rw.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_m07NShXUEKi4Rw.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_d0nNShXUEKi4Rw.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_TknNShXUEKi4Rw.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_KUnNShXUEKi4Rw.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIbaomQNQcsA88c7O9yZ4KMCoOg4IA6-91aHEjcWuA_qU7NShXUEKi4Rw.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ2lCR_QMq2oR82k.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ17CR_QMq2oR82k.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0lCR_QMq2oR82k.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ0XCR_QMq2oR82k.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ37Dh_QMq2oR82k.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ3CDh_QMq2oR82k.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/plusjakartasans/v8/LDIZaomQNQcsA88c7O9yZ4KMCoOg4KozySKCdSNG9OcqYQ2lDh_QMq2oR82k.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -12686,6 +12928,32 @@ return array(
 				'regular' => 'http://fonts.gstatic.com/s/qwitchergrypen/v3/pxicypclp9tDilN9RrC5BSI1dZmrSGNAom-wpw.ttf',
 			),
 			'category' => 'handwriting',
+		),
+	),
+	array(
+		'REM' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
+			'files'    => array(
+				'100'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPMLrrToUbIqIfBU.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPELqrToUbIqIfBU.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPJzqrToUbIqIfBU.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPPDqrToUbIqIfBU.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPBztrToUbIqIfBU.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPCXtrToUbIqIfBU.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPELtrToUbIqIfBU.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPGvtrToUbIqIfBU.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/rem/v2/WnzgHAIoSDyHbRjfsYumpRvUPMLqrToUbIqIfBU.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpRXgeaKiNbBVWkw.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpxXkeaKiNbBVWkw.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpG3keaKiNbBVWkw.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpRXkeaKiNbBVWkw.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpd3keaKiNbBVWkw.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpm34eaKiNbBVWkw.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpon4eaKiNbBVWkw.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqpxX4eaKiNbBVWkw.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/rem/v2/WnzmHAIoSDytZCogaeLNP7XTKQqp7H4eaKiNbBVWkw.ttf',
+			),
+			'category' => 'sans-serif',
 		),
 	),
 	array(
@@ -13325,20 +13593,20 @@ return array(
 		'Rubik' => array(
 			'variants' => array( '300', 'regular', '500', '600', '700', '800', '900', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
 			'files'    => array(
-				'300'       => 'http://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UE80V4bVkA.ttf',
-				'500'       => 'http://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-NYi1UE80V4bVkA.ttf',
-				'600'       => 'http://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-1UE80V4bVkA.ttf',
-				'700'       => 'http://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UE80V4bVkA.ttf',
-				'800'       => 'http://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-h4-1UE80V4bVkA.ttf',
-				'900'       => 'http://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UE80V4bVkA.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/rubik/v26/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UE80V4bVkA.ttf',
-				'300italic' => 'http://fonts.gstatic.com/s/rubik/v26/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8sDE0UwdYPFkJ1O.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/rubik/v26/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8tdE0UwdYPFkJ1O.ttf',
-				'500italic' => 'http://fonts.gstatic.com/s/rubik/v26/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8tvE0UwdYPFkJ1O.ttf',
-				'600italic' => 'http://fonts.gstatic.com/s/rubik/v26/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8uDFEUwdYPFkJ1O.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/rubik/v26/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8u6FEUwdYPFkJ1O.ttf',
-				'800italic' => 'http://fonts.gstatic.com/s/rubik/v26/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8vdFEUwdYPFkJ1O.ttf',
-				'900italic' => 'http://fonts.gstatic.com/s/rubik/v26/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8v0FEUwdYPFkJ1O.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-WYi1UE80V4bVkA.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-NYi1UE80V4bVkA.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-1UE80V4bVkA.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-4I-1UE80V4bVkA.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-h4-1UE80V4bVkA.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-ro-1UE80V4bVkA.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/rubik/v28/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-B4i1UE80V4bVkA.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/rubik/v28/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8sDE0UwdYPFkJ1O.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/rubik/v28/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8tdE0UwdYPFkJ1O.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/rubik/v28/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8tvE0UwdYPFkJ1O.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/rubik/v28/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8uDFEUwdYPFkJ1O.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/rubik/v28/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8u6FEUwdYPFkJ1O.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/rubik/v28/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8vdFEUwdYPFkJ1O.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/rubik/v28/iJWbBXyIfDnIV7nEt3KSJbVDV49rz8v0FEUwdYPFkJ1O.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -13886,7 +14154,7 @@ return array(
 	array(
 		'Secular One' => array(
 			'variants' => array( 'regular' ),
-			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/secularone/v11/8QINdiTajsj_87rMuMdKypDlMul7LJpK.ttf' ),
+			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/secularone/v12/8QINdiTajsj_87rMuMdKypDlMul7LJpK.ttf' ),
 			'category' => 'sans-serif',
 		),
 	),
@@ -13906,11 +14174,13 @@ return array(
 	),
 	array(
 		'Sen' => array(
-			'variants' => array( 'regular', '700', '800' ),
+			'variants' => array( 'regular', '500', '600', '700', '800' ),
 			'files'    => array(
-				'700'     => 'http://fonts.gstatic.com/s/sen/v7/6xKudSxYI9__J9CoKkH1JHUQSQ.ttf',
-				'800'     => 'http://fonts.gstatic.com/s/sen/v7/6xKudSxYI9__O9OoKkH1JHUQSQ.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/sen/v7/6xKjdSxYI9_Hm_-MImrpLQ.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/sen/v9/6xK0dSxYI9_dkN18-vZKK2EISBi5H47KlD9q78A.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/sen/v9/6xK0dSxYI9_dkN18-vZKK2EISPS-H47KlD9q78A.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/sen/v9/6xK0dSxYI9_dkN18-vZKK2EISM2-H47KlD9q78A.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/sen/v9/6xK0dSxYI9_dkN18-vZKK2EISKq-H47KlD9q78A.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/sen/v9/6xK0dSxYI9_dkN18-vZKK2EISCq5H47KlD9q78A.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -14103,11 +14373,11 @@ return array(
 		'Signika' => array(
 			'variants' => array( '300', 'regular', '500', '600', '700' ),
 			'files'    => array(
-				'300'     => 'http://fonts.gstatic.com/s/signika/v20/vEFO2_JTCgwQ5ejvMV0O96D01E8J0tIJHJbGhs_cfKe1.ttf',
-				'500'     => 'http://fonts.gstatic.com/s/signika/v20/vEFO2_JTCgwQ5ejvMV0O96D01E8J0tJlHJbGhs_cfKe1.ttf',
-				'600'     => 'http://fonts.gstatic.com/s/signika/v20/vEFO2_JTCgwQ5ejvMV0O96D01E8J0tKJG5bGhs_cfKe1.ttf',
-				'700'     => 'http://fonts.gstatic.com/s/signika/v20/vEFO2_JTCgwQ5ejvMV0O96D01E8J0tKwG5bGhs_cfKe1.ttf',
-				'regular' => 'http://fonts.gstatic.com/s/signika/v20/vEFO2_JTCgwQ5ejvMV0O96D01E8J0tJXHJbGhs_cfKe1.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/signika/v25/vEF72_JTCgwQ5ejvMV0Ox_Kg1UwJ0tKfX4zNpD8E4ASzH1r93zuYzTMngt4xjw.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/signika/v25/vEF72_JTCgwQ5ejvMV0Ox_Kg1UwJ0tKfX4zNpD8E4ASzH1r9szuYzTMngt4xjw.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/signika/v25/vEF72_JTCgwQ5ejvMV0Ox_Kg1UwJ0tKfX4zNpD8E4ASzH1r9XzyYzTMngt4xjw.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/signika/v25/vEF72_JTCgwQ5ejvMV0Ox_Kg1UwJ0tKfX4zNpD8E4ASzH1r9ZjyYzTMngt4xjw.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/signika/v25/vEF72_JTCgwQ5ejvMV0Ox_Kg1UwJ0tKfX4zNpD8E4ASzH1r9gTuYzTMngt4xjw.ttf',
 			),
 			'category' => 'sans-serif',
 		),
@@ -14560,10 +14830,10 @@ return array(
 		'Space Mono' => array(
 			'variants' => array( 'regular', 'italic', '700', '700italic' ),
 			'files'    => array(
-				'700'       => 'http://fonts.gstatic.com/s/spacemono/v12/i7dMIFZifjKcF5UAWdDRaPpZYFKQHwyVd3U.ttf',
-				'regular'   => 'http://fonts.gstatic.com/s/spacemono/v12/i7dPIFZifjKcF5UAWdDRUEZ2RFq7AwU.ttf',
-				'italic'    => 'http://fonts.gstatic.com/s/spacemono/v12/i7dNIFZifjKcF5UAWdDRYER8QHi-EwWMbg.ttf',
-				'700italic' => 'http://fonts.gstatic.com/s/spacemono/v12/i7dSIFZifjKcF5UAWdDRYERE_FeaGy6QZ3WfYg.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/spacemono/v13/i7dMIFZifjKcF5UAWdDRaPpZYFKQHwyVd3U.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/spacemono/v13/i7dPIFZifjKcF5UAWdDRUEZ2RFq7AwU.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/spacemono/v13/i7dNIFZifjKcF5UAWdDRYER8QHi-EwWMbg.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/spacemono/v13/i7dSIFZifjKcF5UAWdDRYERE_FeaGy6QZ3WfYg.ttf',
 			),
 			'category' => 'monospace',
 		),
@@ -15048,6 +15318,20 @@ return array(
 				'regular' => 'http://fonts.gstatic.com/s/teko/v16/LYjNdG7kmE0gTaR3pCtBtVs.ttf',
 			),
 			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Tektur' => array(
+			'variants' => array( 'regular', '500', '600', '700', '800', '900' ),
+			'files'    => array(
+				'500'     => 'http://fonts.gstatic.com/s/tektur/v1/XoHN2YHtS7q969kXCjzlV0aSkS_o8OacmTe0TYlYFot8TrwcVYtOY8P7TWd0.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/tektur/v1/XoHN2YHtS7q969kXCjzlV0aSkS_o8OacmTe0TYlYFot8TrzwUotOY8P7TWd0.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/tektur/v1/XoHN2YHtS7q969kXCjzlV0aSkS_o8OacmTe0TYlYFot8TrzJUotOY8P7TWd0.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/tektur/v1/XoHN2YHtS7q969kXCjzlV0aSkS_o8OacmTe0TYlYFot8TryuUotOY8P7TWd0.ttf',
+				'900'     => 'http://fonts.gstatic.com/s/tektur/v1/XoHN2YHtS7q969kXCjzlV0aSkS_o8OacmTe0TYlYFot8TryHUotOY8P7TWd0.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/tektur/v1/XoHN2YHtS7q969kXCjzlV0aSkS_o8OacmTe0TYlYFot8TrwuVYtOY8P7TWd0.ttf',
+			),
+			'category' => 'display',
 		),
 	),
 	array(
@@ -15755,6 +16039,28 @@ return array(
 		),
 	),
 	array(
+		'Victor Mono' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic' ),
+			'files'    => array(
+				'100'       => 'http://fonts.gstatic.com/s/victormono/v1/Yq6H-LGQWyfv-LGy7lEO09xRn-T81AVB_tCyO8_NhNyOV0Y9bQ.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/victormono/v1/Yq6H-LGQWyfv-LGy7lEO09xRn-T81AVB_tCyu87NhNyOV0Y9bQ.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/victormono/v1/Yq6H-LGQWyfv-LGy7lEO09xRn-T81AVB_tCyZc7NhNyOV0Y9bQ.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/victormono/v1/Yq6H-LGQWyfv-LGy7lEO09xRn-T81AVB_tCyCc7NhNyOV0Y9bQ.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/victormono/v1/Yq6H-LGQWyfv-LGy7lEO09xRn-T81AVB_tCy5cnNhNyOV0Y9bQ.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/victormono/v1/Yq6H-LGQWyfv-LGy7lEO09xRn-T81AVB_tCy3MnNhNyOV0Y9bQ.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/victormono/v1/Yq6H-LGQWyfv-LGy7lEO09xRn-T81AVB_tCyO87NhNyOV0Y9bQ.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/victormono/v1/Yq6B-LGQWyfv-LGy7lEO0_ZYrRskvW7bUNen840lxtaKdUMtba8p.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/victormono/v1/Yq6B-LGQWyfv-LGy7lEO0_ZYrRskvW7bUNen842lx9aKdUMtba8p.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/victormono/v1/Yq6B-LGQWyfv-LGy7lEO0_ZYrRskvW7bUNen8417x9aKdUMtba8p.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/victormono/v1/Yq6B-LGQWyfv-LGy7lEO0_ZYrRskvW7bUNen840lx9aKdUMtba8p.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/victormono/v1/Yq6B-LGQWyfv-LGy7lEO0_ZYrRskvW7bUNen840Xx9aKdUMtba8p.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/victormono/v1/Yq6B-LGQWyfv-LGy7lEO0_ZYrRskvW7bUNen8437wNaKdUMtba8p.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/victormono/v1/Yq6B-LGQWyfv-LGy7lEO0_ZYrRskvW7bUNen843CwNaKdUMtba8p.ttf',
+			),
+			'category' => 'monospace',
+		),
+	),
+	array(
 		'Vidaloka' => array(
 			'variants' => array( 'regular' ),
 			'files'    => array( 'regular' => 'http://fonts.gstatic.com/s/vidaloka/v18/7cHrv4c3ipenMKlEass8yn4hnCci.ttf' ),
@@ -16111,6 +16417,75 @@ return array(
 				'700italic' => 'http://fonts.gstatic.com/s/ysabeau/v1/kmKsZqEiBAXLcnuMlD9_3CYscnjwsKZeSzl0KcW-xrOiIUw.ttf',
 				'800italic' => 'http://fonts.gstatic.com/s/ysabeau/v1/kmKsZqEiBAXLcnuMlD9_3CYscnjwsKZeS150KcW-xrOiIUw.ttf',
 				'900italic' => 'http://fonts.gstatic.com/s/ysabeau/v1/kmKsZqEiBAXLcnuMlD9_3CYscnjwsKZeS3d0KcW-xrOiIUw.ttf',
+			),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Ysabeau Infant' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
+			'files'    => array(
+				'100'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYFo4HK5ChLwKH6A.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYlo8HK5ChLwKH6A.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYSI8HK5ChLwKH6A.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYJI8HK5ChLwKH6A.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYyIgHK5ChLwKH6A.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQY8YgHK5ChLwKH6A.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYlogHK5ChLwKH6A.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYv4gHK5ChLwKH6A.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-ClzpqOkkV94kBTQVdX1EWI9B0V-HEmd9JmTQYFo8HK5ChLwKH6A.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3szvaZqlDQeX6Dc5.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3sxvaJqlDQeX6Dc5.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3syxaJqlDQeX6Dc5.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3szvaJqlDQeX6Dc5.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3szdaJqlDQeX6Dc5.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3swxb5qlDQeX6Dc5.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3swIb5qlDQeX6Dc5.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3sxvb5qlDQeX6Dc5.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/ysabeauinfant/v1/hv-AlzpqOkkV94kBTQVdX1EWI_p9ZR4c8LTTNzMN3sxGb5qlDQeX6Dc5.ttf',
+			),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Ysabeau Office' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900', '100italic', '200italic', '300italic', 'italic', '500italic', '600italic', '700italic', '800italic', '900italic' ),
+			'files'    => array(
+				'100'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbh6IfYSfpQj7IGQ.ttf',
+				'200'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbB6MfYSfpQj7IGQ.ttf',
+				'300'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPb2aMfYSfpQj7IGQ.ttf',
+				'500'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbtaMfYSfpQj7IGQ.ttf',
+				'600'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbWaQfYSfpQj7IGQ.ttf',
+				'700'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbYKQfYSfpQj7IGQ.ttf',
+				'800'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbB6QfYSfpQj7IGQ.ttf',
+				'900'       => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbLqQfYSfpQj7IGQ.ttf',
+				'regular'   => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDImapaZKhM9RuQIp8FmdYrPPNjFm07hbpKNlPPbh6MfYSfpQj7IGQ.ttf',
+				'100italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-D3Iy3tYDvYGbGh.ttf',
+				'200italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-B3Ii3tYDvYGbGh.ttf',
+				'300italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-CpIi3tYDvYGbGh.ttf',
+				'italic'    => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-D3Ii3tYDvYGbGh.ttf',
+				'500italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-DFIi3tYDvYGbGh.ttf',
+				'600italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-ApJS3tYDvYGbGh.ttf',
+				'700italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-AQJS3tYDvYGbGh.ttf',
+				'800italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-B3JS3tYDvYGbGh.ttf',
+				'900italic' => 'http://fonts.gstatic.com/s/ysabeauoffice/v1/LDIkapaZKhM9RuQIp8FmdYrPPPLMqbE5B_kXOvTOT-BeJS3tYDvYGbGh.ttf',
+			),
+			'category' => 'sans-serif',
+		),
+	),
+	array(
+		'Ysabeau SC' => array(
+			'variants' => array( '100', '200', '300', 'regular', '500', '600', '700', '800', '900' ),
+			'files'    => array(
+				'100'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw98U1qEZ4EOmsT5.ttf',
+				'200'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw_8UlqEZ4EOmsT5.ttf',
+				'300'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw8iUlqEZ4EOmsT5.ttf',
+				'500'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw9OUlqEZ4EOmsT5.ttf',
+				'600'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw-iVVqEZ4EOmsT5.ttf',
+				'700'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw-bVVqEZ4EOmsT5.ttf',
+				'800'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw_8VVqEZ4EOmsT5.ttf',
+				'900'     => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw_VVVqEZ4EOmsT5.ttf',
+				'regular' => 'http://fonts.gstatic.com/s/ysabeausc/v1/Noai6Uro3JCIKAbW46nMorJZyP7kKRflbw98UlqEZ4EOmsT5.ttf',
 			),
 			'category' => 'sans-serif',
 		),

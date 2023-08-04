@@ -97,22 +97,12 @@ const GoogleFont = () => {
 	const [ addingFont, setAddingFont ] = useState( false );
 	const [fontId, setFontId] = useState(null);
 
-	// const addFontToDB = useCallback(() =>{
-	// 	if(googleFontData){
-	// 		// if(googleFontData.variations.length === 1) insertGoogleFontPost();
-	// 		// else if(googleFontData.variations.length > 1) editFontToDB();
-	// 		if(fontId) googleFontData.variations.length !== 0 ? editFontToDB() : insertGoogleFontPost();
-	// 		else googleFontData.variations.length === 0 ? insertGoogleFontPost(): null;
-	// 	}
-	// 	//googleFontData && googleFontData.variations.length === 1 && insertGoogleFontPost();
-	// }, [googleFontData]);
-
 	useEffect(() =>{
 		if(isDbUpdateRequired && googleFontData){
 			if(fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData) : deleteFontFromDB(dispatch, fontId);
 			else googleFontData.variations.length === 1 ? addFontToDB(dispatch, googleFontData, (fId) => {setFontId(fId)}): null;
 		}
-		
+
 	}, [isDbUpdateRequired])
 
 	function handleGoogleFontChange( e ) {
@@ -133,52 +123,6 @@ const GoogleFont = () => {
 		} } );
 	}
 
-	// const deleteFontFromDB = () => {
-	// 	setAddingFont( 'loading' );
-	// 	const formData = new window.FormData();
-
-	// 	formData.append( 'action', 'bcf_delete_font' );
-	// 	formData.append( 'security', bsf_custom_fonts_admin.delete_font_nonce );
-	// 	formData.append( 'font_id', fontId );
-
-	// 	apiFetch( {
-	// 		url: bsf_custom_fonts_admin.ajax_url,
-	// 		method: 'POST',
-	// 		body: formData,
-	// 	} ).then( (response) => {
-	// 		if ( response.success ) {
-	// 			dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-	// 		}
-	// 		setAddingFont( false );
-	// 	} );
-	// }
-
-	// const editFontToDB = () => {
-	// 	console.log(fontsData, " ......... fontsData");
-	// 	console.log(googleFontData, " ......... googleFontData");
-	// 	setAddingFont( 'loading' );
-	// 	const formData = new window.FormData();
-
-	// 	formData.append( 'action', 'bcf_edit_font' );
-	// 	formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
-	// 	formData.append( 'font_type', 'google' );
-	// 	formData.append( 'font_id', fontId );
-	// 	formData.append( 'font_data', JSON.stringify( googleFontData ) );
-
-	// 	apiFetch( {
-	// 		url: bsf_custom_fonts_admin.ajax_url,
-	// 		method: 'POST',
-	// 		body: formData,
-	// 	} ).then( (response) => {
-	// 		if ( response.success ) {
-	// 				//dispatch that banner
-	// 				console.log(... 'edit successful');
-	// 				dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-	// 		}
-	// 		setAddingFont( false );
-	// 	} );
-	// }
-
 	const handleVariationRemove = (id) => {
 		const updatedVariations = googleFontData.variations.filter(
 			(variation) => variation.id !== id
@@ -192,41 +136,6 @@ const GoogleFont = () => {
 		} } );
 		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
 	};
-
-	// const insertGoogleFontPost = ( e=null ) => {
-	// 	e && e.preventDefault();
-
-	// 	if ( '' === googleFontData.font_name ) {
-	// 		window.alert(
-	// 			__( 'Make sure to provide valid details.', 'custom-fonts' )
-	// 		);
-	// 		return;
-	// 	}
-
-	// 	setAddingFont( 'loading' );
-	// 	const formData = new window.FormData();
-
-	// 	formData.append( 'action', 'bcf_add_new_google_font' );
-	// 	formData.append( 'security', bsf_custom_fonts_admin.add_font_nonce );
-	// 	formData.append( 'font_type', 'google' );
-	// 	formData.append( 'font_data', JSON.stringify( googleFontData ) );
-
-	// 	apiFetch( {
-	// 		url: bsf_custom_fonts_admin.ajax_url,
-	// 		method: 'POST',
-	// 		body: formData,
-	// 	} ).then( (response) => {
-	// 		if ( response.success ) {
-	// 			dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-	// 			setFontId(response.data.fontId);
-	// 			// setTimeout( () => {
-	// 			// 	window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
-	// 			// }, 500 );
-	// 			//dispatch( {type: 'UPDATE_SETTINGS_SAVED_NOTIFICATION', payload: __( 'Successfully Activated!', 'astra' ) } );
-	// 		}
-	// 		setAddingFont( false );
-	// 	} );
-	// };
 
 	return (
 		<div>
@@ -267,22 +176,6 @@ const GoogleFont = () => {
 						</div>
 					</div>
 				}
-				{/* <div className="my-5">
-					<button
-						type="button"
-						className="bcf-save-font inline-flex components-button is-primary"
-						onClick={ insertGoogleFontPost }
-						disabled={'loading' === addingFont ? true : false}
-					>
-						{__( 'Save Font', 'custom-fonts' )}
-						{ 'loading' === addingFont && (
-							<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-								<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-								<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-							</svg>
-						) }
-					</button>
-				</div> */}
 			</div>
 		</div>
 	);

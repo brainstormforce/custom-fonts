@@ -161,6 +161,7 @@ class Custom_Fonts_API_Init extends WP_REST_Controller {
 				'active_fonts_count' => isset( $bsf_custom_font_posts->publish ) ? intval( $bsf_custom_font_posts->publish ) : 0,
 				'trash_fonts_count'  => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
 				'draft_fonts_count'  => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
+				'optionPreload'		 => get_option( 'bcf_preloading_fonts', false ),
 			)
 		);
 

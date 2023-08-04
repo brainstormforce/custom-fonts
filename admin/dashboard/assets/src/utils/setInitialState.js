@@ -12,6 +12,7 @@ const setInitialState = ( store ) => {
 			trash_fonts_count : data.trash_fonts_count,
 			draft_fonts_count : data.draft_fonts_count,
 			isDbUpdateRequired: false,
+			optionPreload: data.optionPreload,
 		};
 
 		store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );
