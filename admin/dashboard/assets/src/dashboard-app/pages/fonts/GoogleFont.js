@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
 import { useSelector } from 'react-redux';
-import apiFetch from '@wordpress/api-fetch';
 import { editFontToDB, deleteFontFromDB, addFontToDB } from "../../../utils/useApis";
 
 const GoogleVariationItem = ({
@@ -89,12 +88,10 @@ const GoogleVariationItem = ({
 const GoogleFont = () => {
 	const googleFontData = useSelector( ( state ) => state.googleFont );
 	const isDbUpdateRequired = useSelector( ( state ) => state.isDbUpdateRequired);
-	const fontsData = useSelector((state) => state.fonts);
 
 	const googleFonts = bsf_custom_fonts_admin.googleFonts;
 	const dispatch = useDispatch();
 	const [gFont, setGFont] = useState('');
-	const [ addingFont, setAddingFont ] = useState( false );
 	const [fontId, setFontId] = useState(null);
 
 	useEffect(() =>{

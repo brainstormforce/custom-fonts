@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
 import { useSelector, useDispatch } from 'react-redux';
-import { addFontToDB, deleteFontFromDB, editFontToDB } from "../../../../../utils/useApis";
+import { deleteFontFromDB, editFontToDB } from "../../../../../utils/useApis";
 
 const EditGFontVariation = (
 	{
@@ -151,7 +151,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 		if(isDbUpdateRequired && editFontData){
 			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData) : deleteFontFromDB(dispatch, fontId);
 		}
-		
+
 	}, [isDbUpdateRequired])
 
 	let toBeEditFont = {};

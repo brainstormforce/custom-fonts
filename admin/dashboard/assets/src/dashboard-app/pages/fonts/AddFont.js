@@ -6,6 +6,7 @@ import { RangeControl } from "@wordpress/components";
 import GooglePreviewItem from "./preview/GooglePreviewItem";
 import LocalPreviewItem from "./preview/LocalPreviewItem";
 import { __ } from "@wordpress/i18n";
+import { useSelector } from "react-redux";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
@@ -14,6 +15,9 @@ const AddFont = () => {
 	const toggleType = (value) => {
 		setActiveType(value);
 	};
+
+	const localFont = useSelector( ( state ) => state.localFont ) || '';
+	const googleFontState = useSelector( ( state ) => state.googleFont ) || '';
 
 	return (
 		<div>
@@ -73,7 +77,8 @@ const AddFont = () => {
 					{/* Here will be Font Preview Section */}
 					<div className="pb-3 flex justify-between items-center tablet:block">
 						<div className="text-base font-medium text-secondary">
-							{__('Font Preview', 'custom-fonts')}
+							{ activeType === "local" ? localFont.font_name ? localFont.font_name : __('Font Preview', 'custom-fonts') : null }
+							{ activeType === "google" ?  googleFontState.font_name ? googleFontState.font_name : __('Font Preview', 'custom-fonts') : null }
 						</div>
 						<div className="w-[314px]">
 							<RangeControl
