@@ -106,7 +106,7 @@ const GoogleFont = () => {
 				message = __( 'Font Added Successfully!', 'custom-fonts' );
 				break;
 			case 'edit':
-				message = 'Font Updated Successfully!';
+				message = __( 'Font Updated Successfully!', 'custom-fonts' );
 				break;
 			case 'delete':
 				message = 'Font Removed Successfully!';
