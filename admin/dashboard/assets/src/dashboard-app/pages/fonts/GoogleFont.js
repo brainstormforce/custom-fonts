@@ -103,7 +103,7 @@ const GoogleFont = () => {
 		let message;
 		switch (operationType) {
 			case 'add':
-				message = 'Font Added Successfully!';
+				message = __( 'Font Added Successfully!', 'custom-fonts' );
 				break;
 			case 'edit':
 				message = 'Font Updated Successfully!';
