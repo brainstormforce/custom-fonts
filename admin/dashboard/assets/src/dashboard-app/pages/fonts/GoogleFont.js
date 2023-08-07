@@ -109,7 +109,7 @@ const GoogleFont = () => {
 				message = __( 'Font Updated Successfully!', 'custom-fonts' );
 				break;
 			case 'delete':
-				message = 'Font Removed Successfully!';
+				message = __( 'Font Removed Successfully!', 'custom-fonts' );
 				setFontId(null);
 				break;
 			default:
