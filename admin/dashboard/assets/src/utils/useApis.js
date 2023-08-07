@@ -1,7 +1,6 @@
 import apiFetch from '@wordpress/api-fetch';
 
 export const editFontToDB = (dispatch, fontId, googleFontData, cb) => {
-    //setAddingFont( 'loading' );
     const formData = new window.FormData();
     formData.append( 'action', 'bcf_edit_font' );
     formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
