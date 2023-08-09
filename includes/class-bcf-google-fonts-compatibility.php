@@ -175,7 +175,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 							'fontStyle'   => $font_style,
 							'fontWeight'  => $font_weight,
 							'src'         => $final_font_files_flat,
-						);	
+						);
 					}
 					$this->add_or_update_theme_font_faces( $font_family, $font_slug, $new_font_faces );
 				}
