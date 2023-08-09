@@ -164,15 +164,18 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 								$local
 							);
 						}
-
+						$final_font_files_flat = array_reduce($final_font_files, function ($carry, $item) {
+							return array_merge($carry, is_array($item) ? $item : [$item]);
+						}, []);
+						
 						// Add each variant as one font face.
 						$new_font_faces[] = array(
 							'fontFamily'  => $font_family,
 							'fontStretch' => '',
 							'fontStyle'   => $font_style,
 							'fontWeight'  => $font_weight,
-							'src'         => $final_font_files,
-						);
+							'src'         => $final_font_files_flat,
+						);	
 					}
 					$this->add_or_update_theme_font_faces( $font_family, $font_slug, $new_font_faces );
 				}
