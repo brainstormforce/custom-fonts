@@ -194,3 +194,25 @@ span.font-filename {
     font-weight: 500;
     margin-left: 20px;
 }
+
+// Overriding WordPress default button colours to match figma design.
+
+.components-button.is-primary {
+    background-color: #2271b1;
+}
+
+.components-button.is-primary:hover {
+    background-color: #1c5f95 !important;
+}
+
+.components-button.is-secondary {
+    box-shadow: 0 0 0 1px #007CBA;
+    color: #007CBA;
+}
+.components-button.is-secondary:hover {
+    box-shadow: 0 0 0 1px #026fa6 !important;
+}
+
+// .css-1bg57fb{
+//     color: #026fa6 !important;
+// }
