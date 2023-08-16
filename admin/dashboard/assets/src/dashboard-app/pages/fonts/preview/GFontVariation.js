@@ -148,8 +148,8 @@ const GFontVariation = (props) => {
 								disable
 									? addTitle === "Removing..."
 										? {
-											color: "rgb(230 80 84)",
-											borderColor: "rgb(230 80 84)",
+											color: "#3858E9",  // by removing time
+											borderColor: "#3858E9",
 											boxShadow: "inset 0 0 0 1px",
 										}
 										: {
@@ -215,8 +215,8 @@ const GFontVariation = (props) => {
 								disable
 									? removeTitle === "Adding..."
 										? {
-											color: "rgb(0, 124, 186)",
-											borderColor: "rgb(0, 124, 186)",
+											color: "#3858E9",
+											borderColor: "#3858E9", // Updated border color
 											boxShadow: "inset 0 0 0 1px",
 										}
 										: {
@@ -246,7 +246,7 @@ const GFontVariation = (props) => {
 										cx="12"
 										cy="12"
 										r="10"
-										stroke="rgb(0, 124, 186)"
+										stroke="#3858E9"
 										strokeWidth="4"
 									></circle>
 									<path
