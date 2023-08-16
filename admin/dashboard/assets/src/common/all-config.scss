@@ -81,11 +81,12 @@ button.bcf-save-font[disabled] {
         left: -50%;
 
         .components-snackbar {
-            background-color: #e0f4e0;
-            color: black;
-            font-size: 16px;
+            background-color: #ffffff;
+            color: #3C434A;
+            font-size: 12px;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-            border-left: 5px solid green;
+            border-left: 5px solid #00A32A;
+            padding: 10px 50px 10px 10px;
             animation-delay: 1.5s;
         }
     }
@@ -93,16 +94,16 @@ button.bcf-save-font[disabled] {
 
 /* New styles for the added notification */
     .snack-bar-added .components-snackbar {
-    background-color: #e0f4e0;
-    color: black;
-    font-size: 16px;
+    background-color: #ffffff;
+    color: #3C434A;
+    font-size: 12px;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    border-left: 5px solid green;
+    border-left: 5px solid #00A32A;
     animation-name: slideIn;
     animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-    padding: 20px;
+    padding: 10px 50px 10px 10px;
     position: fixed;
     bottom: 20px;
     left: -50%;
@@ -110,15 +111,15 @@ button.bcf-save-font[disabled] {
 
 /* New styles for the removed notification */
 .snack-bar-removed .components-snackbar {
-    background-color: #ffebeb;
-    color: black;
-    border-left: 5px solid red;
-    font-size: 16px;
+    background-color: #ffffff;
+    color: #3C434A;
+    border-left: 5px solid rgb(185, 3, 3);
+    font-size: 12px;
     animation-name: slideIn;
     animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
-    padding: 20px;
+    padding: 10px 50px 10px 10px;
     position: fixed;
     bottom: 20px;
     left: -50%;
@@ -157,6 +158,14 @@ button.bcf-save-font[disabled] {
     100% {
         left: 2%;
     }
+}
+
+// .wp-button-color {
+//     background:#f96c7b 
+// }
+
+.text-primary{
+    color: #3858E9;
 }
 
 .appearance_page_bsf-custom-fonts #wpcontent {
@@ -283,3 +292,27 @@ span.font-filename {
     font-weight: 500;
     margin-left: 20px;
 }
+
+
+.plus-icon {
+    width: 16px;
+    height: 16px;
+    fill: #007CBA; 
+  }
+  
+  .loading-icon {
+    width: 16px;
+    height: 16px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+
+
+  .disabled-svg {
+    fill: gray;
+  }
