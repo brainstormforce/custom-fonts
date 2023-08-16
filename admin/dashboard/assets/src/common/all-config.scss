@@ -34,6 +34,10 @@ body .active-state.transition-colors > .border-light {
 body .active-state.transition-colors {
     border-bottom: 1px solid rgb(221 221 221/1);
 }
+.border-b-primary{
+    border-color: #3858E9 ;
+}
+
 .bcf-font-list-wrap .active-state.transition-colors:first-child {
     border-top: 1px solid rgb(221 221 221/1);
 }
@@ -185,4 +189,8 @@ span.font-filename {
     box-shadow: inset 5px 0 0 0 var(--wp-admin-theme-color);
     transition: box-shadow .1s linear;
     background-color: #e5f1f8;
+}
+
+.text-primary {
+    color: #3858E9;
 }
