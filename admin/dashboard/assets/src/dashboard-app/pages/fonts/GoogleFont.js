@@ -90,6 +90,7 @@ const GoogleVariationItem = ({
 const GoogleFont = () => {
 	const googleFontData = useSelector( ( state ) => state.googleFont );
 	const isDbUpdateRequired = useSelector( ( state ) => state.isDbUpdateRequired);
+	const editType = useSelector( ( state ) => state.editType);
 	const fontsData = useSelector((state) => state.fonts);
 
 	const googleFonts = bsf_custom_fonts_admin.googleFonts;
@@ -106,7 +107,8 @@ const GoogleFont = () => {
 				message = __( 'Font Added Successfully!', 'custom-fonts' );
 				break;
 			case 'edit':
-				message = __( 'Font Updated Successfully!', 'custom-fonts' );
+				if(editType === 'remove') message = __( 'Variation Removed Successfully!', 'custom-fonts' );
+				else message = __( 'Font Updated Successfully!', 'custom-fonts' );
 				break;
 			case 'delete':
 				message = __( 'Font Removed Successfully!', 'custom-fonts' );
@@ -157,7 +159,7 @@ const GoogleFont = () => {
 			"font_display": googleFontData.font_display ? googleFontData.font_display : '',
 			"variations": updatedVariations
 		} } );
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'remove'} } );
 	};
 
 	return (

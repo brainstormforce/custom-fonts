@@ -258,7 +258,7 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 
 	useEffect(() =>{
 		if(isDbUpdateRequired && editFontData){
-			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData, fontUpdated('edit')) : deleteFontFromDB(dispatch, fontId, fontUpdated('delete') );
+			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData, fontUpdated.bind(this, 'edit')) : deleteFontFromDB(dispatch, fontId, fontUpdated.bind(this, 'delete') );
 		}
 		
 	}, [isDbUpdateRequired])
@@ -329,7 +329,7 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 			...editFontData,
 			variations: variations,
 		});
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'add'} } );
 	}
 
 	const removeWeight = (e) => {
@@ -343,7 +343,7 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 			...editFontData,
 			variations: newVariation,
 		});
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'remove'} } );
 	}
 
 	const checkWeightPresentInState = (weight) => {

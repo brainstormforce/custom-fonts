@@ -15,7 +15,7 @@ export const editFontToDB = (dispatch, fontId, googleFontData, cb) => {
     } ).then( (response) => {
         if ( response.success ) {
                 //dispatch that banner
-                dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
+                dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
                 if(cb) cb(response.data.fontId);
         }
     } );
@@ -34,7 +34,7 @@ export const deleteFontFromDB = (dispatch, fontId, cb) => {
         body: formData,
     } ).then( (response) => {
         if ( response.success ) {
-            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
+            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
             if(cb) cb(response.data.fontId);
         }
     } );
@@ -53,7 +53,7 @@ export const addFontToDB = ( dispatch, googleFontData, cb ) => {
         body: formData,
     } ).then( (response) => {
         if ( response.success ) {
-            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
+            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
             if(cb) cb(response.data.fontId);
         }
     } );

@@ -76,16 +76,19 @@ const GFontVariation = (props) => {
 			id: variations.length+1,
 			font_file: '',
 			font_style: style,
-			font_weight: varWt
-		} );
-		dispatch( { type: 'SET_GOOGLE_FONT', payload: {
-			"font_name": googleFont.font_name,
-			"font_fallback": googleFont.font_fallback,
-			"font_display": googleFont.font_display,
-			"variations": variations
-		} } );
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
-	}
+      font_weight: varWt,
+    });
+    dispatch({
+      type: "SET_GOOGLE_FONT",
+      payload: {
+        font_name: googleFont.font_name,
+        font_fallback: googleFont.font_fallback,
+        font_display: googleFont.font_display,
+        variations: variations,
+      },
+    });
+    dispatch({ type: "IS_DB_UPDATE_REQUIRED", payload: {isDbUpdateRequired: true, editType: 'add' }});
+  };
 
 	const removeWeight = (e) => {
 		e.preventDefault();
@@ -96,15 +99,18 @@ const GFontVariation = (props) => {
 			(variation) => variation.font_weight !== weight
 		);
 
-		dispatch( { type: 'SET_GOOGLE_FONT', payload: {
-			"font_name": googleFont.font_name ? googleFont.font_name : '',
-			"font_fallback": googleFont.font_fallback ? googleFont.font_fallback : '',
-			"font_display": googleFont.font_display ? googleFont.font_display : '',
-			"variations": updatedVariations
-		} } );
+    dispatch({
+      type: "SET_GOOGLE_FONT",
+      payload: {
+        font_name: googleFont.font_name ? googleFont.font_name : "",
+        font_fallback: googleFont.font_fallback ? googleFont.font_fallback : "",
+        font_display: googleFont.font_display ? googleFont.font_display : "",
+        variations: updatedVariations,
+      },
+    });
 
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
-	}
+    dispatch({ type: "IS_DB_UPDATE_REQUIRED", payload: { isDbUpdateRequired: true, editType: 'remove' }});
+  };
 
 	const getRenderFontWeight = (weight) => {
 		if ( undefined === weight ) {

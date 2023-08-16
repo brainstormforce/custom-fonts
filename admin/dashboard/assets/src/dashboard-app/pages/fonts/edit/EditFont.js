@@ -33,7 +33,6 @@ const EditFont = ( props ) => {
 	}, [ openPopup ] );
 
 	const onFontUpdated = (action) => {
-		console.log(action, " ...... action");
 		setFontUpdateAction(action);
 	}
 
