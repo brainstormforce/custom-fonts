@@ -366,7 +366,7 @@ const LocalFont = () => {
 			body: formData,
 		} ).then( (response) => {
 			if ( response.success ) {
-				fontUpdated('Font Updated Successfully!');
+				fontUpdated('Variation Added Successfully!');
 			}
 			setAddingFont( false );
 		} );

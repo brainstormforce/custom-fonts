@@ -108,7 +108,7 @@ const GoogleFont = () => {
 				break;
 			case 'edit':
 				if(editType === 'remove') message = __( 'Variation Removed Successfully!', 'custom-fonts' );
-				else message = __( 'Font Updated Successfully!', 'custom-fonts' );
+				else message = __( 'Variation Added Successfully!', 'custom-fonts' );
 				break;
 			case 'delete':
 				message = __( 'Font Removed Successfully!', 'custom-fonts' );
