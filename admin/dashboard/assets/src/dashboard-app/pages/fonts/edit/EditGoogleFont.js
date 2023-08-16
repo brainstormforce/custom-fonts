@@ -146,7 +146,7 @@ const EditGoogleFont = ({fontId, fontName, fontUpdateAction, setFontUpdateAction
 				</div>
 
 				{fontUpdateAction.length > 0 ? <div className={fontUpdateAction === 'edit' && editType === 'add' ? 'snack-bar-added' : 'snack-bar-removed'}>
-					<Snackbar>{fontUpdateAction === 'edit' ? editType === 'add' ? __('Font Updated Successfully!', 'custom-fonts') : __('Variation Removed Successfully!', 'custom-fonts') : __('Font Removed Successfully!', 'custom-fonts')}</Snackbar>
+					<Snackbar>{fontUpdateAction === 'edit' ? editType === 'add' ? __('Variation Added Successfully!', 'custom-fonts') : __('Variation Removed Successfully!', 'custom-fonts') : __('Font Removed Successfully!', 'custom-fonts')}</Snackbar>
 				</div> : null}
 			</div>
 		</div>
