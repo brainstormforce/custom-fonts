@@ -80,7 +80,7 @@ const EditLocalVariationItem = ({
 
 						{localDataLength > 1 && (
 							<span onClick={() => handleVariationRemove(variation.id)}>
-								{Custom_Fonts_Icons['removeIcon']}
+								{Custom_Fonts_Icons['removeVariation3']}
 							</span>
 						)}
 					</div>
