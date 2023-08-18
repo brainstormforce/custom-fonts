@@ -71,23 +71,35 @@ button.bcf-save-font[disabled] {
     font-style: normal;
 
     .snack-bar-saved {
-        animation-name: slideIn;
-        animation-duration: 1.5s;
-        animation-timing-function: ease;
-        animation-fill-mode: forwards;
-        padding: 20px;
-        position: fixed;
-        bottom: 20px;
-        left: -50%;
+        // animation-name: slideIn;
+        // animation-duration: 1.5s;
+        // animation-timing-function: ease;
+        // animation-fill-mode: forwards;
+        // padding: 20px;
+        // position: fixed;
+        // top: 7%;
+        // left: 50% !important;
 
         .components-snackbar {
+            // background-color: #e0f4e0;
+            // color: black;
+            // font-size: 16px;
+            // box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            // border-left: 5px solid green;
             background-color: #ffffff;
             color: #3C434A;
             font-size: 12px;
             box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
             border-left: 5px solid #00A32A;
+            //animation-delay: 1.5s;
+            animation-name: slideIn;
+            animation-duration: 0.5s;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
             padding: 10px 50px 10px 10px;
-            animation-delay: 1.5s;
+            position: fixed;
+            top: 7%;
+            left: 55% !important;
         }
     }
 }
@@ -105,8 +117,8 @@ button.bcf-save-font[disabled] {
     animation-fill-mode: forwards;
     padding: 10px 50px 10px 10px;
     position: fixed;
-    bottom: 20px;
-    left: -50%;
+    top: 7%;
+    left: 55%;
 }
 
 /* New styles for the removed notification */
@@ -121,14 +133,15 @@ button.bcf-save-font[disabled] {
     animation-fill-mode: forwards;
     padding: 10px 50px 10px 10px;
     position: fixed;
-    bottom: 20px;
-    left: -50%;
+    top: 7%;
+    left: 55%;
 }
 
 .bcf-edit-dialog-panel .snack-bar-added .components-snackbar, .bcf-edit-dialog-panel .snack-bar-removed .components-snackbar {
-    bottom: 10%;
+    bottom: 12% !important;
     animation-duration: 1s;
     animation-name: slideInSmall;
+    top: 80%;
 }
 
 // .bcf-edit-dialog-panel .is-secondary{
@@ -142,17 +155,17 @@ button.bcf-save-font[disabled] {
 
 @keyframes slideIn {
     0% {
-        left: -100%;
+        top: -100%;
     }
 
     100% {
-        left: 180px;
+        top: 7%;
     }
 }
 
 @keyframes slideInSmall {
     0% {
-        left: -20%;
+        left: -100%;
     }
 
     100% {
@@ -297,7 +310,7 @@ span.font-filename {
 .plus-icon {
     width: 16px;
     height: 16px;
-    fill: #007CBA; 
+    fill: #007CBA; /* Change to your desired color */
   }
   
   .loading-icon {
@@ -311,6 +324,9 @@ span.font-filename {
     100% { transform: rotate(360deg); }
   }
   
+  #add-font-container .border-b-primary, #add-font-container .border-b-2:hover {
+    border-bottom-color: #3858E9;
+  }
 
 
   .disabled-svg {
