@@ -93,7 +93,11 @@ const LocalVariationItem = ({
 								<span className="font-filename"> {'' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts')} </span>
 								<div className="font-triggers">
 									{Custom_Fonts_Icons['arrowIcon']}
-									{localDataLength > 1 && Custom_Fonts_Icons['removeVariation3']}
+									{localDataLength > 1 && (
+										<div onClick={() => handleVariationRemove(variation.id)}>
+											{Custom_Fonts_Icons['removelocal']}
+										</div>
+									)}
 								</div>
 							</div>
 
