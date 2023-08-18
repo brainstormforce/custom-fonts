@@ -13,10 +13,14 @@ const EditLocalVariationItem = ({
 }) => {
 	const [toggleView, setToggleView] = useState(false);
 
-	const getFileName = ( url ) => {
+	const getFileName = (url) => {
+		if (typeof url !== 'string') {
+			return null; 
+		}
+	
 		const parts = url.split('/');
 		return parts.at(-1);
-	}
+	};
 
 	const [fontFileName, setFontFileName] = useState(variation.font_url ? getFileName(variation.font_url) : '');
 
