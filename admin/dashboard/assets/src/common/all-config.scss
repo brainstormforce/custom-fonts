@@ -89,7 +89,6 @@ button.bcf-save-font[disabled] {
             background-color: #ffffff;
             color: #3C434A;
             font-size: 12px;
-            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
             border-left: 5px solid #00A32A;
             //animation-delay: 1.5s;
             animation-name: slideIn;
@@ -109,7 +108,6 @@ button.bcf-save-font[disabled] {
     background-color: #ffffff;
     color: #3C434A;
     font-size: 12px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     border-left: 5px solid #00A32A;
     animation-name: slideIn;
     animation-duration: 0.5s;
@@ -117,7 +115,7 @@ button.bcf-save-font[disabled] {
     animation-fill-mode: forwards;
     padding: 10px 50px 10px 10px;
     position: fixed;
-    top: 7%;
+    top: 6%;
     left: 55%;
 }
 
@@ -159,7 +157,7 @@ button.bcf-save-font[disabled] {
     }
 
     100% {
-        top: 7%;
+        top: 6%;
     }
 }
 
