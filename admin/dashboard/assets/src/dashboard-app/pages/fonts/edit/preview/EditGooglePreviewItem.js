@@ -234,7 +234,6 @@ const EditGFontVariation = (
                 </svg>
               )}
 
-              {/* <span className="ml-2" data-font_weight={weight}>{__('Remove', 'custom-fonts')}</span> */}
               <span className="ml-2" data-font_weight={weight}>
                 {removeTitle}
               </span>
