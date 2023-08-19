@@ -80,7 +80,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Taxonomy' ) ) :
 		public static function create_custom_fonts_taxonomies() {
 			// Taxonomy: bsf_custom_fonts.
 			$labels = array(
-				'name'              => apply_filters( 'bsf_custom_fonts_menu_title', __( 'Custom Fonts', 'custom-fonts' ) ),
+				'name'              => apply_filters( 'bsf_custom_fonts_menu_title', _x( 'Custom Fonts', 'Menu title', 'custom-fonts' ) ),
 				'singular_name'     => __( 'Font', 'custom-fonts' ),
 				'menu_name'         => _x( 'Custom Fonts', 'Admin menu name', 'custom-fonts' ),
 				'search_items'      => __( 'Search Fonts', 'custom-fonts' ),

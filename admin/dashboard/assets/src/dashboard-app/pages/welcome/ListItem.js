@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { __ } from "@wordpress/i18n";
+import { __, sprintf } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
 import EditFont from "../fonts/edit/EditFont";
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,6 +18,16 @@ const ListItem = ({ item }) => {
 	const [editFontData, setEditFontData] = useState(updatedEditData);
 
 	const dispatch = useDispatch();
+
+	useEffect( () => {
+		if ( openPopup ) {
+			setEditFontData( editFontData );
+			dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
+		} else {
+			setEditFontData( null );
+			dispatch( { type: 'SET_EDIT_FONT', payload: null } );
+		}
+	}, [openPopup] );
 
 	const deleteFontPost = ( e ) => {
 		e.preventDefault();
@@ -53,7 +63,7 @@ const ListItem = ({ item }) => {
 			oldWeight = '400italic';
 		}
 		if ( oldWeight.includes('italic') ) {
-			updatedWeight = `${oldWeight.replace('italic', '')} Italic`;
+			updatedWeight = `${oldWeight.replace('italic', '')} ` + __( 'Italic', 'custom-fonts' );
 		}
 		switch ( weight ) {
 			case '100':
@@ -100,16 +110,6 @@ const ListItem = ({ item }) => {
 		setEditFontType(fontType);
 		setEditFontName(fontName);
 	}
-
-	useEffect( () => {
-		if ( openPopup ) {
-			setEditFontData( editFontData );
-			dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
-		} else {
-			setEditFontData( null );
-			dispatch( { type: 'SET_EDIT_FONT', payload: null } );
-		}
-	}, [openPopup] );
 
 	const getAssetDetail = ( fontItem ) => {
 		const fontType = fontItem['font-type'] ? fontItem['font-type'] : 'local';
@@ -174,14 +174,20 @@ const ListItem = ({ item }) => {
 				<div className="flex items-center title-area justify-between py-5 border-b border-light list-font-title hover:cursor-pointer" onClick={expandFontItem}>
 					{ getAssetDetail(item) }
 					<div className="flex items-center px-6 mobile:block">
-						<h1 className="text-xl" style={{  fontFamily: item.title, fontWeight: "normal", fontSize: "1.5rem" }}> {item.title} </h1>
+					<h1 className="text-xl" style={{ fontFamily: item.title, fontWeight: "normal", fontSize: "1.5rem" }}> {item['fonts-data'].font_name} </h1>
 						<div className="sm:ml-3 mobile:mt-3 text-sm"> {`(${item['fonts-data']['variations'] ? item['fonts-data']['variations'].length : 0} ${__( 'variants', 'custom-fonts' )})`} </div>
 					</div>
 					<div className="flex px-6">
 						{checkDelete ? (
 							<div className="flex gap-x-6">
 								<div className="text-secondary cursor-pointer">
-									{__('Remove', 'custom-fonts') + ' "' + item.title + '" ' + __('font?', 'custom-fonts')}
+									{
+										sprintf(
+											/* translators: %s: Font name. */
+											__( 'Remove "%s" font?', 'custom-fonts' ),
+											item.title
+										)
+									}
 								</div>
 								<div
 									onClick={setupCancelDeletingFontPost}

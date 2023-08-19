@@ -12,7 +12,7 @@ const LocalVariationItem = ({
 	handleVariationChange,
 }) => {
 	const [toggleView, setToggleView] = useState(true);
-	const [fontFileName, setFontFileName] = useState('');
+	const [fontFileName, setFontFileName] = useState([]);
 
 	let frame;
 	const fontFileUploader = (event) => {
@@ -30,19 +30,31 @@ const LocalVariationItem = ({
 			button: {
 				text: __( 'Use Font', 'custom-fonts' ),
 			},
-			multiple: false, // Set to true to allow multiple files to be selected
+			multiple: true, // Set to true to allow multiple files to be selected
 		})
 
 		// When an image is selected in the media frame...
 		frame.on( 'select', function() {
 			// Get media attachment details from the frame state
-			let attachment = frame.state().get('selection').first().toJSON();
-			setFontFileName( attachment.filename );
+			var attachments = frame.state().get('selection').map(
+				function( attachment ) {
+					attachment.toJSON();
+					return attachment;
+				}
+			);
+
+			//loop through the array and do things with each attachment
+			let fontFileNames = [];
+			for (let i = 0; i < attachments.length; ++i) {
+				fontFileNames.push(attachments[i].attributes.url);
+			}
+
+			setFontFileName( fontFileNames );
 			handleVariationChange(
 				event,
 				variation.id,
 				"font_file",
-				attachment
+				fontFileNames
 			);
 		});
 
@@ -60,12 +72,17 @@ const LocalVariationItem = ({
 		return( <option value={weight} key={weight}> { label } </option> )
 	} );
 
+	const getFileName = (url) => {
+		let fileName = url.split('/').pop();
+		return fileName;
+	}
+
 	return (
 		<div key={id} className="border border-light rounded-sm variation-file-field mb-4">
 			{!toggleView ? (
 				<div className="flex items-center justify-between p-3.5 relative" onClick={expandFileField}>
 					<h2 className="text-sm font-semibold text-secondary">
-						{'' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts')}
+						{ fontFileName.length >= 1 ? __( 'Font files chosen', 'custom-fonts' ) : __('No file chosen', 'custom-fonts') }
 					</h2>
 					<div className="flex items-center justify-end gap-x-4 font-triggers">
 						{Custom_Fonts_Icons['removeWeight']}
@@ -90,16 +107,25 @@ const LocalVariationItem = ({
 							>
 								{ __( "Choose File", 'custom-fonts' ) }
 							</button>
-								<span className="font-filename"> {'' !== fontFileName ? fontFileName : __('No file chosen', 'custom-fonts')} </span>
-								<div className="font-triggers">
+							<span className="font-filename"> { fontFileName.length >= 1 ? __( 'Chosen files:', 'custom-fonts' ) : __( 'No file chosen', 'custom-fonts' ) } </span>
+							<div className="font-triggers">
 									{Custom_Fonts_Icons['arrowIcon']}
 									{localDataLength > 1 && Custom_Fonts_Icons['removeVariation3']}
 								</div>
 							</div>
 
-							<div className="text-xs text-neutral mt-1.5">
-								Supported file types: .otf, .ttf, .woff, .woff2
-							</div>
+							{
+                ( Array.isArray( fontFileName ) && fontFileName.length >= 1 ) && (
+                  fontFileName.map(( file, index ) => (
+                    <div className="text-xs text-neutral mt-1.5" key={index}>
+                      { `${__( 'File ', 'custom-fonts' )} ${index + 1}: ${ getFileName(file) }` }
+                    </div>
+                  ))
+                )
+              }
+              <div className="text-xs text-neutral mt-1.5 italic">
+                {`${__( 'Supported file types: ', 'custom-fonts' )} .otf, .ttf, .woff, .woff2`}
+              </div>
 					</div>
 					<div className="grid grid-cols-2 gap-x-3">
 						<div className="col-span-1">
@@ -194,14 +220,17 @@ const LocalFont = () => {
 		}));
 	};
 
-	const handleVariationChange = (event, id, property, attachment = '') => {
+	const handleVariationChange = (event, id, property, attachment = []) => {
 		const updatedVariations = localFontData.variations.map((variation) => {
 			if (variation.id === id) {
-				if( '' !== attachment ) {
+				if( attachment.length > 0 ) {
+					let attachmentDetails = [];
+					attachment.map(( file, index ) => (
+						attachmentDetails.push(file)
+					));
 					return {
 						...variation,
-						['font_file']: attachment.id,
-						['font_url']: attachment.url,
+						['font_url']: attachmentDetails,
 					};
 				} else {
 					return {
