@@ -64,6 +64,12 @@ const globalDataReducer = ( state = {}, action ) => {
 				...state,
 				settingsSavedNotification: action.payload,
 			};
+		case 'IS_DB_UPDATE_REQUIRED':
+			return {
+				...state,
+				isDbUpdateRequired: action.payload.isDbUpdateRequired,
+				editType: action.payload.editType === '' ? state.editType : action.payload.editType
+			};
 		default:
 			return state;
 	}

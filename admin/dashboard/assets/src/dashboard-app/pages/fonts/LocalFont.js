@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch } from 'react-redux';
 import apiFetch from '@wordpress/api-fetch';
+import { Snackbar } from "@wordpress/components";
 
 const LocalVariationItem = ({
 	id,
@@ -242,6 +243,7 @@ const LocalVariationItem = ({
 
 const LocalFont = () => {
 	const [advanceTab, setAdvanceTab] = useState(false);
+	const [showMessage, setShowMessage] = useState('');
 	const dispatch = useDispatch();
 	const toggleAdvanceTab = () => {
 		setAdvanceTab(!advanceTab);
@@ -265,6 +267,12 @@ const LocalFont = () => {
 	useEffect(() => {
 		dispatch( { type: 'SET_LOCAL_FONT', payload: localFontData } );
 	}, [localFontData]);
+
+	const fontUpdated = (message, fId) => {
+		if(fId) setFontId(fId);
+		setShowMessage(message);
+		setTimeout(() => setShowMessage(''), 5000);
+	}
 
 	const handleInputChange = (event, property) => {
 		const value = event.target.value;
@@ -358,9 +366,7 @@ const LocalFont = () => {
 			body: formData,
 		} ).then( (response) => {
 			if ( response.success ) {
-				setTimeout( () => {
-					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
-				}, 500 );
+				fontUpdated('Variation Added Successfully!');
 			}
 			setAddingFont( false );
 		} );
@@ -526,6 +532,7 @@ const LocalFont = () => {
 						</svg>
 					) }
 				</button>
+				{showMessage.length>0 ? <div className="snack-bar-saved"><Snackbar>{showMessage}</Snackbar></div> : null}
 			</div>
 		</div>
 	);
