@@ -126,23 +126,23 @@ const EditGFontVariation = (
               }
               className={
                 addTitle === "Removing..."
-                  ? "flex text-danger items-center components-button is-secondary border border-danger"
-                  : "flex items-center components-button is-secondary"
-              }
-              data-font_weight={weight}
-              onClick={(e) => {setRemoveTitle("Adding..."); addWeight(e)}}
-            >
+									? "flex text-danger items-center components-button is-secondary border border-danger"
+									: "flex items-center components-button is-secondary"
+							}
+							data-font_weight={weight}
+							onClick={(e) => { setRemoveTitle("Adding..."); addWeight(e) }}
+						>
 							{addTitle === "Removing..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
 								<span data-font_weight={weight}>
 									{Custom_Fonts_Icons['iconsquare']}
 								</span>
-              )}
-              <span className="ml-2" data-font_weight={weight}>
-                {addTitle}
-              </span>
-            </button>
-          )}
-          {isInGoogleState && (
+							)}
+							<span className="ml-2" data-font_weight={weight}>
+								{addTitle}
+							</span>
+						</button>
+					)}
+					{isInGoogleState && (
             <button
               disabled={disable}
               style={
@@ -157,14 +157,14 @@ const EditGFontVariation = (
                         color: "grey",
                         borderColor: "grey",
                         boxShadow: "inset 0 0 0 1px",
-                      }
-                  : { boxShadow: "inset 0 0 0 1px" }
-              }
-              className={
-                removeTitle === "Adding..."
-                  ? "flex items-center components-button is-secondary"
-                  : "flex text-danger items-center components-button is-secondary border border-danger"
-              }
+										}
+									: { boxShadow: "inset 0 0 0 1px" }
+							}
+							className={
+								removeTitle === "Adding..."
+									? "flex items-center components-button is-secondary"
+									: "flex text-danger items-center components-button is-secondary border border-danger"
+							}
 							data-font_weight={weight}
 							onClick={(e) => { setAddTitle("Removing..."); removeWeight(e) }}
 						>
@@ -178,8 +178,8 @@ const EditGFontVariation = (
 								{removeTitle}
 							</span>
 						</button>
-          )}
-        </div>
+					)}
+				</div>
 			</div>
 		</div>
 	);
@@ -282,7 +282,7 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 		else {
 			return;
 		}
-	
+
 		const newVariation = editFontData.variations.filter(
 			(variation) => variation.font_weight != varWt
 		);
@@ -291,17 +291,17 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 			...editFontData,
 			variations: newVariation,
 		});
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'remove'} } );
+		dispatch({ type: 'IS_DB_UPDATE_REQUIRED', payload: { isDbUpdateRequired: true, editType: 'remove' } });
 	}
 
 	const checkWeightPresentInState = (weight) => {
-		if ( ! editFontData.variations.length ) {
+		if (!editFontData.variations.length) {
 			return false;
 		}
 
 		const new_obs = [];
-		Object.keys( editFontData.variations ).map( ( index ) => {
-			new_obs.push( editFontData.variations[index].font_weight );
+		Object.keys(editFontData.variations).map((index) => {
+			new_obs.push(editFontData.variations[index].font_weight);
 		})
 
 		if ( new_obs.includes(weight) ) {

@@ -86,14 +86,14 @@ const EditLocalVariationItem = ({
 						{ fontFileName.length >= 1 ? __( 'Font files chosen', 'custom-fonts' ) : __('No file chosen', 'custom-fonts') }
 					</h2>
 					<div className="flex items-center justify-end gap-x-4 font-triggers">
-					<span onClick={() => setToggleView(true)}>
-    {Custom_Fonts_Icons['arrowIcon2']}
-</span>
+						<span onClick={() => setToggleView(true)}>
+							{Custom_Fonts_Icons['arrowIcon2']}
+						</span>
 
 						{localDataLength > 1 && (
 							<span onClick={() => handleVariationRemove(variation.id)}>
-							{Custom_Fonts_Icons['localremove']}
-						</span>
+								{Custom_Fonts_Icons['localremove']}
+							</span>
 						)}
 					</div>
 				</div>
@@ -111,17 +111,17 @@ const EditLocalVariationItem = ({
 							>
 								{ __( "Choose File", 'custom-fonts' ) }
 							</button>
-							<span className="font-filename"> { fontFileName.length >= 1 ? __( 'Font files:', 'custom-fonts' ) : __( 'No file chosen', 'custom-fonts' ) } </span>
-							<div className="font-triggers">
+								<span className="font-filename"> {fontFileName.length >= 1 ? __('Font files:', 'custom-fonts') : __('No file chosen', 'custom-fonts')} </span>
+								<div className="font-triggers">
 									<span onClick={() => setToggleView(false)}>
 										{Custom_Fonts_Icons['deopdownarrow2']}
 									</span>
-								{localDataLength > 1 && (
-									<span onClick={() => handleVariationRemove(variation.id)}>
-									{Custom_Fonts_Icons['localremove']}
-								</span>
-								)}
-							</div>
+									{localDataLength > 1 && (
+										<span onClick={() => handleVariationRemove(variation.id)}>
+											{Custom_Fonts_Icons['localremove']}
+										</span>
+									)}
+								</div>
 						</div>
 						{
 							( Array.isArray( fontFileName ) && fontFileName.length >= 1 ) && (
@@ -336,7 +336,7 @@ const EditLocalFont = ({fontId}) => {
 							className="text-sm text-heading"
 							htmlFor=""
 						>
-							{__( 'Advanced Options', 'custom-fonts' )}
+							{__('Advanced Options', 'custom-fonts')}
 						</label>
 						{Custom_Fonts_Icons['smallarrow']}
 					</div>
@@ -420,21 +420,21 @@ const EditLocalFont = ({fontId}) => {
 					onClick={addVariationOption}
 				>
 					<div className="text-sm text-primary">
-						{__( 'Add Font Variation', 'custom-fonts' )}
+						{__('Add Font Variation', 'custom-fonts')}
 					</div>
 					<div>
-					{Custom_Fonts_Icons["plusicon2"]}
+						{Custom_Fonts_Icons["plusicon2"]}
 					</div>
 				</div>
 
 				<button
 					type="button"
 					className="bcf-save-font inline-flex components-button is-primary mb-5"
-					onClick={ updatingNewFontPost }
+					onClick={updatingNewFontPost}
 					disabled={'loading' === isLoading ? true : false}
 				>
-					{__( 'Save Font', 'custom-fonts' )}
-					{ 'loading' === isLoading && Custom_Fonts_Icons['loadingSpinner'] }
+					{__('Save Font', 'custom-fonts')}
+					{'loading' === isLoading && Custom_Fonts_Icons['loadingSpinner']}
 
 				</button>
 			</div>

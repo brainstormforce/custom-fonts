@@ -68,9 +68,9 @@ const GoogleVariationItem = ({
 				}
 			</div>
 			<div>
-			<span onClick={() => (disable ? doNothing() : handleVariationRemove(variation.id))}>
-    {Custom_Fonts_Icons['VariationRemoveIcon']}
-</span>
+				<span onClick={() => (disable ? doNothing() : handleVariationRemove(variation.id))}>
+					{Custom_Fonts_Icons['VariationRemoveIcon']}
+				</span>
 			</div>
 		</div>
 	);

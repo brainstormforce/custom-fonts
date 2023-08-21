@@ -86,14 +86,14 @@ const LocalVariationItem = ({
 						{ fontFileName.length >= 1 ? __( 'Font files chosen', 'custom-fonts' ) : __('No file chosen', 'custom-fonts') }
 					</h2>
 					<div className="flex items-center justify-end gap-x-4 font-triggers">
-					<span onClick={() => setToggleView(true)}>
-    {Custom_Fonts_Icons['arrowIcon2']}
-</span>
+						<span onClick={() => setToggleView(true)}>
+							{Custom_Fonts_Icons['arrowIcon2']}
+						</span>
 
 						{localDataLength > 1 && (
 							<span onClick={() => handleVariationRemove(variation.id)}>
-							{Custom_Fonts_Icons['localremove']}
-						</span>
+								{Custom_Fonts_Icons['localremove']}
+							</span>
 						)}
 					</div>
 				</div>
@@ -111,17 +111,17 @@ const LocalVariationItem = ({
 							>
 								{ __( "Choose File", 'custom-fonts' ) }
 							</button>
-							<span className="font-filename"> { fontFileName.length >= 1 ? __( 'Chosen files:', 'custom-fonts' ) : __( 'No file chosen', 'custom-fonts' ) } </span>
-							<div className="font-triggers">
-							<span onClick={() => setToggleView(false)}>
-    {Custom_Fonts_Icons['deopdownarrow2']}
-</span>
-								{localDataLength > 1 && (
-									<span onClick={() => handleVariationRemove(variation.id)}>
-									{Custom_Fonts_Icons['localremove']}
-								</span>
-								)}
-							</div>
+								<span className="font-filename"> {fontFileName.length >= 1 ? __('Chosen files:', 'custom-fonts') : __('No file chosen', 'custom-fonts')} </span>
+								<div className="font-triggers">
+									<span onClick={() => setToggleView(false)}>
+										{Custom_Fonts_Icons['deopdownarrow2']}
+									</span>
+									{localDataLength > 1 && (
+										<span onClick={() => handleVariationRemove(variation.id)}>
+											{Custom_Fonts_Icons['localremove']}
+										</span>
+									)}
+								</div>
 						</div>
 						{
 							( Array.isArray( fontFileName ) && fontFileName.length >= 1 ) && (
@@ -353,7 +353,7 @@ const LocalFont = () => {
 							className="text-sm text-heading"
 							htmlFor=""
 						>
-							{__( 'Advanced Options', 'custom-fonts' )}
+							{__('Advanced Options', 'custom-fonts')}
 						</label>
 						{Custom_Fonts_Icons['smallarrow']}
 					</div>
@@ -437,7 +437,7 @@ const LocalFont = () => {
 					onClick={addVariationOption}
 				>
 					<div className="text-sm text-primary">
-						{__( 'Add Font Variation', 'custom-fonts' )}
+						{__('Add Font Variation', 'custom-fonts')}
 					</div>
 					<div>
 						{Custom_Fonts_Icons["plusicon2"]}
@@ -450,10 +450,10 @@ const LocalFont = () => {
 					onClick={ insertLocalFontPost }
 					disabled={'loading' === addingFont ? true : false}
 				>
-					{__( 'Save Font', 'custom-fonts' )}
-					{ 'loading' === addingFont && Custom_Fonts_Icons['loadingSpinner'] }
+					{__('Save Font', 'custom-fonts')}
+					{'loading' === addingFont && Custom_Fonts_Icons['loadingSpinner']}
 				</button>
-				{showMessage.length>0 ? <div className="snack-bar-saved"><Snackbar>{showMessage}</Snackbar></div> : null}
+				{showMessage.length > 0 ? <div className="snack-bar-saved"><Snackbar>{showMessage}</Snackbar></div> : null}
 			</div>
 		</div>
 	);

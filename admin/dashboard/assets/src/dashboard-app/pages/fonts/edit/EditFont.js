@@ -73,12 +73,12 @@ const EditFont = ( props ) => {
 								<button
 									type="button"
 									className="mt-3 inline-flex justify-center border shadow-none border-slate-200 padding-[5px] bg-[#F6F7F7] text-base font-medium text-slate-800 focus:bg-[#F6F7F7] hover:bg-[#F6F7F7] focus:outline-none sm:mt-0 sm:text-xs bold border-none w-[20px] h-[20px] p-[3px] rounded-full shadow-md"
-									onClick={ onCancelClick }
-									ref={ cancelButtonRef }
-								>
-									    {Custom_Fonts_Icons['checkmarkIcon']}
-								</button>
-							</div>
+										onClick={onCancelClick}
+										ref={cancelButtonRef}
+									>
+										{Custom_Fonts_Icons['checkmarkIcon']}
+									</button>
+								</div>
 
 							<div className="grid grid-cols-12 sm:max-h-[60vh] overflow-auto">
 								<style id={`bcf-font-${font}-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>

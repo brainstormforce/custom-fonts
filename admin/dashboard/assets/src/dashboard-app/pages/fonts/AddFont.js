@@ -25,10 +25,10 @@ const AddFont = () => {
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
 						<Link
-							onClick={() => window.location = `${ bsf_custom_fonts_admin.app_base_url }`}
+							onClick={() => window.location = `${bsf_custom_fonts_admin.app_base_url}`}
 							className="mr-4 cursor-pointer py-3 px-0 focus:shadow-none focus:outline-none"
 						>
-							    {Custom_Fonts_Icons['arrowbacksave']}
+							{Custom_Fonts_Icons['arrowbacksave']}
 						</Link>
 						<div
 							onClick={() => toggleType("local")}

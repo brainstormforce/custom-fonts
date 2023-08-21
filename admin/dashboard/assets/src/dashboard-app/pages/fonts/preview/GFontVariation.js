@@ -212,8 +212,8 @@ const GFontVariation = (props) => {
 						>
 							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner4']) : (
 								<span data-font_weight={weight}>
-								{Custom_Fonts_Icons['iconsquare2']}
-							</span>
+									{Custom_Fonts_Icons['iconsquare2']}
+								</span>
 							)}
 
 							<span className="ml-2" data-font_weight={weight}>

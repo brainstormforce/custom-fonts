@@ -9,7 +9,7 @@ const EmptyState = () => {
 				{Custom_Fonts_Icons["play"]}
 			</span>
 			<h3 className="text-base font-semibold mt-6 mb-1">
-				{ __( 'Find your fonts here', 'custom-fonts' ) }
+				{__('Find your fonts here', 'custom-fonts')}
 			</h3>
 			<p className="text-sm mb-6">
 				{ __( 'Once you have add fonts, come back here to find them again easily.', 'custom-fonts' ) }
