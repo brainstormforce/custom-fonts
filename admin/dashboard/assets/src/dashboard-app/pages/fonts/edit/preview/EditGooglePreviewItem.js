@@ -250,30 +250,39 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 	}
 
 	const addWeight = (e) => {
-		const varWt = (e.target.dataset.font_weight).toString();
-
-		const variations = editFontData.variations;
-		if ( undefined === varWt ) {
+		let varWt;
+		if (e.target.dataset.font_weight) {
+			varWt = e.target.dataset.font_weight.toString();
+		}
+		else {
 			return;
 		}
+
+		const variations = editFontData.variations;
 		let style = varWt.includes('italic') ? 'italic' : 'normal';
-		variations.push( {
-			id: (variations.length+1).toString(),
+		variations.push({
+			id: (variations.length + 1).toString(),
 			font_file: '',
 			font_style: style,
 			font_weight: varWt
-		} );
+		});
 
 		setEditGoogleFontData({
 			...editFontData,
 			variations: variations,
 		});
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'add'} } );
+		dispatch({ type: 'IS_DB_UPDATE_REQUIRED', payload: { isDbUpdateRequired: true, editType: 'add' } });
 	}
 
 	const removeWeight = (e) => {
-		const varWt = (e.target.dataset.font_weight).toString();
-
+		let varWt;
+		if (e.target.dataset.font_weight) {
+			varWt = e.target.dataset.font_weight.toString();
+		}
+		else {
+			return;
+		}
+	
 		const newVariation = editFontData.variations.filter(
 			(variation) => variation.font_weight != varWt
 		);
