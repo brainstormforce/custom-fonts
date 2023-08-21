@@ -8,6 +8,8 @@ import EditGooglePreviewItem from "./preview/EditGooglePreviewItem";
 import EditLocalPreviewItem from "./preview/EditLocalPreviewItem";
 import globalDataStore from '@Admin/store/globalDataStore';
 import setInitialState  from '@Utils/setInitialState';
+import Custom_Fonts_Icons from "@Common/svg-icons";
+
 
 const EditFont = ( props ) => {
 	const {
@@ -74,7 +76,7 @@ const EditFont = ( props ) => {
 									onClick={ onCancelClick }
 									ref={ cancelButtonRef }
 								>
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="12" aria-hidden="true" focusable="false" className='mr-[2px]'><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
+									    {Custom_Fonts_Icons['checkmarkIcon']}
 								</button>
 							</div>
 
