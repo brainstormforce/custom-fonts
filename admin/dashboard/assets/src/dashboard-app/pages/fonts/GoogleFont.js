@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
 import { useSelector } from 'react-redux';
 import { editFontToDB, deleteFontFromDB, addFontToDB } from "../../../utils/useApis";
+import { Snackbar } from "@wordpress/components";
 
 const GoogleVariationItem = ({
 	id,
@@ -88,22 +89,45 @@ const GoogleVariationItem = ({
 const GoogleFont = () => {
 	const googleFontData = useSelector( ( state ) => state.googleFont );
 	const isDbUpdateRequired = useSelector( ( state ) => state.isDbUpdateRequired);
-
+	const editType = useSelector( ( state ) => state.editType);
 	const googleFonts = bsf_custom_fonts_admin.googleFonts;
 	const dispatch = useDispatch();
 	const [gFont, setGFont] = useState('');
 	const [fontId, setFontId] = useState(null);
+	const [showMessage, setShowMessage] = useState('');
 
-	useEffect(() =>{
-		if(isDbUpdateRequired && googleFontData){
-			if(fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData) : deleteFontFromDB(dispatch, fontId);
-			else googleFontData.variations.length === 1 ? addFontToDB(dispatch, googleFontData, (fId) => {setFontId(fId)}): null;
+	const fontUpdated = (operationType, fId) => {
+		let message;
+		switch (operationType) {
+			case 'add':
+				message = __( 'Font Added Successfully!', 'custom-fonts' );
+				break;
+			case 'edit':
+				if(editType === 'remove') message = __( 'Variation Removed Successfully!', 'custom-fonts' );
+				else message = __( 'Variation Added Successfully!', 'custom-fonts' );
+				break;
+			case 'delete':
+				message = __( 'Font Removed Successfully!', 'custom-fonts' );
+				setFontId(null);
+				break;
+			default:
+				message = '';
 		}
 
+	if (fId) setFontId(fId);
+		setShowMessage(message);
+		setTimeout(() => setShowMessage(''), 5000);	
+	}
+
+	useEffect(() => {
+		if (isDbUpdateRequired && googleFontData) {
+			if (fontId) googleFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, googleFontData, () => { fontUpdated('edit') }) : deleteFontFromDB(dispatch, fontId, () => { fontUpdated('delete') });
+			else googleFontData.variations.length === 1 ? addFontToDB(dispatch, googleFontData, (fId) => { fontUpdated('add', fId) }) : null;
+		}
 	}, [isDbUpdateRequired])
 
-	function handleGoogleFontChange( e ) {
-		setGFont( e.target.value );
+	function handleGoogleFontChange(e) {
+		setGFont(e.target.value);
 		setFontId(null);
 
 		const changeEvent = new CustomEvent( 'bcf:googleFontSelection:change', {
@@ -131,7 +155,7 @@ const GoogleFont = () => {
 			"font_display": googleFontData.font_display ? googleFontData.font_display : '',
 			"variations": updatedVariations
 		} } );
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'remove'} } );
 	};
 
 	return (
@@ -173,6 +197,9 @@ const GoogleFont = () => {
 						</div>
 					</div>
 				}
+				{ showMessage.length > 0 ? <div className={showMessage.length > 0 ? `snack-bar-${showMessage.toLowerCase().includes('added') || showMessage.toLowerCase().includes('updated') ? 'added' : 'removed'}` : ''}>
+					<Snackbar>{showMessage}</Snackbar>
+				</div> : null }
 			</div>
 		</div>
 	);

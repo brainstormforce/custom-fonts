@@ -20,6 +20,7 @@ const EditFont = ( props ) => {
 
 	const [ open, setOpen ] = useState( openPopup );
 	const [ previewSize, setPreviewSize ] = useState( '20' );
+	const [fontUpdateAction, setFontUpdateAction] = useState('');
 	const cancelButtonRef = useRef( null );
 
 	const onCancelClick = () => {
@@ -30,6 +31,10 @@ const EditFont = ( props ) => {
 	useEffect( () => {
 		setOpen( openPopup );
 	}, [ openPopup ] );
+
+	const onFontUpdated = (action) => {
+		setFontUpdateAction(action);
+	}
 
 	return (
 		<Transition.Root show={ open } as={ Fragment }>
@@ -79,7 +84,7 @@ const EditFont = ( props ) => {
 								<div className="col-span-4 bg-white px-4 pt-5 pb-4 lg:p-[2em] sm:p-6">
 									<div>
 										{fontType === "local" && <EditLocalFont fontId={font} fontName={fontName} />}
-										{fontType === "google" && <EditGoogleFont fontId={font} fontName={fontName} />}
+										{fontType === "google" && <EditGoogleFont fontId={font} fontName={fontName} fontUpdateAction={fontUpdateAction} setFontUpdateAction={setFontUpdateAction} />}
 									</div>
 								</div>
 								<div className="col-span-8 bg-[#F6F7F7] px-4 pt-5 pb-4 lg:p-[2em] sm:p-6">
@@ -101,7 +106,7 @@ const EditFont = ( props ) => {
 									<div className="py-5 divide-y">
 										<div>
 											{fontType === "local" && <EditLocalPreviewItem fontId={font} fontName={fontName} />}
-											{fontType === "google" && <EditGooglePreviewItem fontId={font} fontName={fontName} />}
+											{fontType === "google" && <EditGooglePreviewItem fontId={font} fontName={fontName} onFontUpdated={onFontUpdated}/>}
 										</div>
 									</div>
 								</div>

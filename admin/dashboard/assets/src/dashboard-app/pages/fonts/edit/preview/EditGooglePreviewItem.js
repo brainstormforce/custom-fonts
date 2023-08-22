@@ -14,6 +14,17 @@ const EditGFontVariation = (
 		disable
 	}
 ) => {
+
+	const [removeTitle, setRemoveTitle] = useState("Remove");
+	const [addTitle, setAddTitle] = useState("Add");
+
+	useEffect(() => {
+		if (!disable) {
+		  setRemoveTitle("Remove");
+		  setAddTitle("Add");
+		}
+	  }, [disable]);
+
 	const getFontWeightTitle = ( weight ) => {
 		if ( undefined === weight ) {
 			weight = '400';
@@ -93,51 +104,148 @@ const EditGFontVariation = (
 					</div>
 				</div>
 				<div>
-					{ ( ! isInGoogleState ) &&
-						<button disabled={disable} className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
-							<svg
-								width="16"
-								height="17"
-								viewBox="0 0 16 17"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								data-font_weight={weight}
-								onClick={addWeight}
-							>
-								<path
-									d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM8.80078 5.30005H7.20078V7.70005H4.80078V9.30005H7.20078V11.7H8.80078V9.30005H11.2008V7.70005H8.80078V5.30005Z"
-									fill="#007CBA"
-								/>
-							</svg>
-							<span className="ml-2" data-font_weight={weight}>{__('Add', 'custom-fonts')}</span>
-						</button>
-					}
-					{ isInGoogleState &&
-						<button disabled={disable} className="flex text-danger components-button is-secondary border border-danger" data-font_weight={weight} onClick={removeWeight}>
-							<svg
-								width="16"
-								height="17"
-								viewBox="0 0 16 17"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								data-font_weight={weight}
-								onClick={removeWeight}
-							>
-								<path
-									d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM4.80078 7.70005V9.30005H11.2008V7.70005H4.80078Z"
-									fill="rgb(230 80 84 / 1)"
-								/>
-							</svg>
-							<span className="ml-2" data-font_weight={weight}>{__('Remove', 'custom-fonts')}</span>
-						</button>
-					}
-				</div>
+          {!isInGoogleState && (
+            <button
+              disabled={disable}
+              style={
+                disable
+                  ? addTitle === "Removing..."
+                    ? {
+                        color: "#3858E9",
+                        borderColor: "#3858E9",
+                        boxShadow: "inset 0 0 0 1px",
+                      }
+                    : {
+                        color: "grey",
+                        borderColor: "grey",
+                        boxShadow: "inset 0 0 0 1px",
+                      }
+                  : { boxShadow: "inset 0 0 0 1px" }
+              }
+              className={
+                addTitle === "Removing..."
+                  ? "flex text-danger items-center components-button is-secondary border border-danger"
+                  : "flex items-center components-button is-secondary"
+              }
+              data-font_weight={weight}
+              onClick={(e) => {setRemoveTitle("Adding..."); addWeight(e)}}
+            >
+              {addTitle === "Removing..." ? (
+                <svg
+                  className="animate-spin -mr-1 ml-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="rgb(230 80 84)"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="#3858E9"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              ) : (
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  data-font_weight={weight}
+                >
+                  <path
+                    d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM8.80078 5.30005H7.20078V7.70005H4.80078V9.30005H7.20078V11.7H8.80078V9.30005H11.2008V7.70005H8.80078V5.30005Z"
+                    fill={disable ? "grey" : "#007CBA"}
+                  />
+                </svg>
+              )}
+              <span className="ml-2" data-font_weight={weight}>
+                {addTitle}
+              </span>
+            </button>
+          )}
+          {isInGoogleState && (
+            <button
+              disabled={disable}
+              style={
+                disable
+                  ? removeTitle === "Adding..."
+                    ? {
+                        color: "#3858E9",
+                        borderColor: "#3858E9",
+                        boxShadow: "inset 0 0 0 1px",
+                      }
+                    : {
+                        color: "grey",
+                        borderColor: "grey",
+                        boxShadow: "inset 0 0 0 1px",
+                      }
+                  : { boxShadow: "inset 0 0 0 1px" }
+              }
+              className={
+                removeTitle === "Adding..."
+                  ? "flex items-center components-button is-secondary"
+                  : "flex text-danger items-center components-button is-secondary border border-danger"
+              }
+              data-font_weight={weight}
+              onClick={(e) => {setAddTitle("Removing..."); removeWeight(e)}}
+            >
+              {removeTitle === "Adding..." ? (
+                <svg
+                  className="animate-spin -mr-1 ml-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="rgb(0, 124, 186)"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="#3858E9"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              ) : (
+                <svg
+                  width="16"
+                  height="17"
+                  viewBox="0 0 16 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  data-font_weight={weight}
+                >
+                  <path
+                    d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM4.80078 7.70005V9.30005H11.2008V7.70005H4.80078Z"
+                    fill={disable ? "grey" : "rgb(230 80 84 / 1)"}
+                  />
+                </svg>
+              )}
+
+              <span className="ml-2" data-font_weight={weight}>
+                {removeTitle}
+              </span>
+            </button>
+          )}
+        </div>
 			</div>
 		</div>
 	);
 };
 
-const EditGooglePreviewItem = ( { fontId, fontName } ) => {
+const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 	const dispatch = useDispatch();
 	const editFontId = parseInt( fontId );
 
@@ -149,10 +257,17 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 
 	useEffect(() =>{
 		if(isDbUpdateRequired && editFontData){
-			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData) : deleteFontFromDB(dispatch, fontId);
+			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData, fontUpdated.bind(this, 'edit')) : deleteFontFromDB(dispatch, fontId, fontUpdated.bind(this, 'delete') );
 		}
 
 	}, [isDbUpdateRequired])
+
+	const fontUpdated = (action) => {
+		if(action === 'delete'){
+			dispatch( { type: 'SET_EDIT_FONT', payload: null } );
+		}
+		onFontUpdated(action);
+	}
 
 	let toBeEditFont = {};
 	let variations = null;
@@ -169,9 +284,6 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 	}
 
 	const [editFontData, setEditGoogleFontData] = useState( editingFontData );
-	if ( null === variations ) {
-		return;
-	}
 
 	useEffect( () => {
 		let newStyle = '';
@@ -186,6 +298,10 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 
 		dispatch( { type: 'SET_EDIT_FONT', payload: editFontData } );
 	}, [editFontData] );
+	
+	if ( null === variations ) {
+		return;
+	}
 
 	const getGoogleFontLink = (font, weight, version) => {
 		const fontName = font.replace( / /g, "+" );
@@ -212,7 +328,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 			...editFontData,
 			variations: variations,
 		});
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'add'} } );
 	}
 
 	const removeWeight = (e) => {
@@ -226,7 +342,7 @@ const EditGooglePreviewItem = ( { fontId, fontName } ) => {
 			...editFontData,
 			variations: newVariation,
 		});
-		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: true } );
+		dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: true, editType:'remove'} } );
 	}
 
 	const checkWeightPresentInState = (weight) => {

@@ -372,6 +372,8 @@ const EditLocalFont = ({fontId}) => {
 				<p className="mb-5 text-xl font-semibold">
 					{__( 'Edit Font', 'custom-fonts' )}
 				</p>
+				<input className="w-full" type="text" onChange={(e) => handleInputChange(e,"font_name")} value={editFontData.font_name}></input>
+				<p>&nbsp;</p>
 				<div className="mb-5">
 					<div
 						onClick={toggleAdvanceTab}

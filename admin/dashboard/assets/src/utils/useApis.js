@@ -7,8 +7,7 @@ import apiFetch from '@wordpress/api-fetch';
  * @param {object} googleFontData
  * @return {void}
  */
-export const editFontToDB = (dispatch, fontId, googleFontData) => {
-    //setAddingFont( 'loading' );
+export const editFontToDB = (dispatch, fontId, googleFontData, cb) => {
     const formData = new window.FormData();
     formData.append( 'action', 'bcf_edit_font' );
     formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
@@ -23,7 +22,8 @@ export const editFontToDB = (dispatch, fontId, googleFontData) => {
     } ).then( (response) => {
         if ( response.success ) {
                 //dispatch that banner
-                dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
+                dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
+                if(cb) cb(response.data.fontId);
         }
     } );
 }
@@ -34,7 +34,7 @@ export const editFontToDB = (dispatch, fontId, googleFontData) => {
  * @param {string} fontId
  * @return {void}
  */
-export const deleteFontFromDB = (dispatch, fontId) => {
+export const deleteFontFromDB = (dispatch, fontId, cb) => {
     const formData = new window.FormData();
 
     formData.append( 'action', 'bcf_delete_font' );
@@ -47,7 +47,8 @@ export const deleteFontFromDB = (dispatch, fontId) => {
         body: formData,
     } ).then( (response) => {
         if ( response.success ) {
-            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
+            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
+            if(cb) cb(response.data.fontId);
         }
     } );
 }
@@ -72,8 +73,8 @@ export const addFontToDB = ( dispatch, googleFontData, cb ) => {
         body: formData,
     } ).then( (response) => {
         if ( response.success ) {
-            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', isDbUpdateRequired: false } );
-            cb(response.data.fontId);
+            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
+            if(cb) cb(response.data.fontId);
         }
     } );
 };

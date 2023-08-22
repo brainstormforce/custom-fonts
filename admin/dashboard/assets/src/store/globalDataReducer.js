@@ -72,7 +72,8 @@ const globalDataReducer = ( state = {}, action ) => {
 		case 'IS_DB_UPDATE_REQUIRED':
 			return {
 				...state,
-				isDbUpdateRequired: action.isDbUpdateRequired,
+				isDbUpdateRequired: action.payload.isDbUpdateRequired,
+				editType: action.payload.editType === '' ? state.editType : action.payload.editType
 			};
 		default:
 			return state;
