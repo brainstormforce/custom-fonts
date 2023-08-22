@@ -114,9 +114,9 @@ const GoogleFont = () => {
 				message = '';
 		}
 
-	if (fId) setFontId(fId);
+		if (fId) setFontId(fId);
 		setShowMessage(message);
-		setTimeout(() => setShowMessage(''), 5000);	
+		setTimeout(() => setShowMessage(''), 5000);
 	}
 
 	useEffect(() => {

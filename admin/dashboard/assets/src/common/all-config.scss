@@ -292,28 +292,23 @@ input:checked + .settings-toggle-bg {
 .switch-toggle-label {
 	pointer-events: none;
 }
-
 .plus-icon {
     width: 16px;
     height: 16px;
     fill: #007CBA; /* Change to your desired color */
-  }
-  
-  .loading-icon {
-    width: 16px;
-    height: 16px;
-    animation: spin 2s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  
-  #add-font-container .border-b-primary, #add-font-container .border-b-2:hover {
-    border-bottom-color: #3858E9;
-  }
-
-  .disabled-svg {
-    fill: gray;
-  }
+}
+.loading-icon {
+	width: 16px;
+	height: 16px;
+	animation: spin 2s linear infinite;
+}
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+#add-font-container .border-b-primary, #add-font-container .border-b-2:hover {
+	border-bottom-color: #3858E9;
+}
+.disabled-svg {
+	fill: gray;
+}
