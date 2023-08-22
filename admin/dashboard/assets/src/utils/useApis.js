@@ -1,5 +1,12 @@
 import apiFetch from '@wordpress/api-fetch';
 
+/**
+ * Edit font to DB.
+ * @param {object} dispatch
+ * @param {string} fontId
+ * @param {object} googleFontData
+ * @return {void}
+ */
 export const editFontToDB = (dispatch, fontId, googleFontData, cb) => {
     const formData = new window.FormData();
     formData.append( 'action', 'bcf_edit_font' );
@@ -21,6 +28,12 @@ export const editFontToDB = (dispatch, fontId, googleFontData, cb) => {
     } );
 }
 
+/**
+ * Delete font to DB.
+ * @param {object} dispatch
+ * @param {string} fontId
+ * @return {void}
+ */
 export const deleteFontFromDB = (dispatch, fontId, cb) => {
     const formData = new window.FormData();
 
@@ -40,6 +53,13 @@ export const deleteFontFromDB = (dispatch, fontId, cb) => {
     } );
 }
 
+/**
+ * Add font to DB.
+ * @param {object} dispatch
+ * @param {function} cb
+ * @param {object} googleFontData
+ * @return {void}
+ */
 export const addFontToDB = ( dispatch, googleFontData, cb ) => {
     const formData = new window.FormData();
     formData.append( 'action', 'bcf_add_new_google_font' );

@@ -137,6 +137,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 */
 		public function update_fse_theme_json() {
 
+			$font_srcs = array();
 			$all_fonts = Bsf_Custom_Fonts_Render::get_instance()->get_existing_font_posts();
 
 			if ( empty( $all_fonts ) || ! is_array( $all_fonts ) ) {
@@ -158,11 +159,13 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 						// Convert paths to URLs.
 						foreach ( $final_font_files as $remote => $local ) {
-							$final_font_files[ $remote ] = str_replace(
+							$font_url                    = str_replace(
 								$this->get_base_path(),
 								$this->get_base_url(),
 								$local
 							);
+							$final_font_files[ $remote ] = $font_url;
+							$font_srcs[]                 = $font_url;
 						}
 
 						// Add each variant as one font face.
@@ -174,9 +177,12 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 							'src'         => $final_font_files,
 						);
 					}
+
 					$this->add_or_update_theme_font_faces( $font_family, $font_slug, $new_font_faces );
 				}
 			}
+
+			update_option( 'bcf_font_urls', $font_srcs );
 		}
 
 		/**
@@ -283,8 +289,8 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$font_data  = get_post_meta( $font_id, 'fonts-data', true );
 				$fonts_link = '';
 				foreach ( $font_data['variations'] as $key => $var_arr ) {
-					if ( ! empty( $var_arr['font_weight'] ) && $font_weight === $var_arr['font_weight'] ) {
-						$fonts_link = $var_arr['font_url'];
+					if ( ! empty( $var_arr['font_weight'] ) && $font_weight === $var_arr['font_weight'] && ! empty( $var_arr['font_url'][0] ) ) {
+						$fonts_link = $var_arr['font_url'][0];
 						break;
 					}
 				}

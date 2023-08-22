@@ -132,7 +132,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'fl_builder_font_families_system', array( $this, 'bb_custom_fonts' ) );
 
 			// Add font files style.
-			add_action( 'wp_head', array( $this, 'add_style' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
 			add_action( 'init', array( $this, 'add_block_assets_style' ) );
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
@@ -294,6 +294,26 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					</style>
 				<?php
 			}
+		}
+
+		/**
+		 * Enqueue Styles for frontend for preloading.
+		 *
+		 * @since x.x.x
+		 */
+		public function preload_styles() {
+			$font_urls = get_option( 'bcf_font_urls', array() );
+
+			if ( true === (bool) get_option( 'bcf_preloading_fonts', false ) && ! empty( $font_urls ) ) {
+				$font_format = apply_filters( 'bcf_preloading_fonts_format', 'woff2' );
+				foreach ( $font_urls as $key => $local_url ) {
+					if ( $local_url ) {
+						echo '<link rel="preload" href="' . esc_url( $local_url ) . '" as="font" type="font/' . esc_attr( $font_format ) . '" crossorigin>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Preparing HTML link tag.
+					}
+				}
+			}
+
+			$this->add_style();
 		}
 
 		/**

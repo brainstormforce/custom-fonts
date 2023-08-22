@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { __ } from "@wordpress/i18n";
-import apiFetch from '@wordpress/api-fetch';
 import { useSelector } from 'react-redux';
 import { Snackbar } from "@wordpress/components";
 
@@ -88,37 +87,6 @@ const EditGoogleFont = ({fontId, fontName, fontUpdateAction, setFontUpdateAction
 	if ( undefined === toBeEditFont['fonts-data'] || ! toBeEditFont['fonts-data'].length ) {
 		editingFontData = toBeEditFont['fonts-data'];
 	}
-
-	const [ isLoading, setLoading ] = useState( false );
-
-	const updatingNewFontPost = ( e ) => {
-		e.preventDefault();
-
-		setLoading( 'loading' );
-		const formData = new window.FormData();
-		const editFontStringifiedData = document.getElementById('gfont-edit-variation-data').innerHTML;
-
-		formData.append( 'action', 'bcf_edit_font' );
-		formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
-		formData.append( 'font_type', 'google' );
-		formData.append( 'font_id', fontId );
-		formData.append( 'font_data', editFontStringifiedData );
-
-		apiFetch( {
-			url: bsf_custom_fonts_admin.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( (response) => {
-			if ( response.success ) {
-				setTimeout( () => {
-					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
-				}, 500 );
-			}
-			setLoading( false );
-		} );
-	};
-
-	let variationCount = 0;
 
 	return (
 		<div>
