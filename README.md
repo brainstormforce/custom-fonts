@@ -25,9 +25,11 @@ Custom Fonts enables you to upload your own custom fonts or choose from a vast c
 
 By hosting fonts locally, you can significantly improve your website's performance. As the fonts load directly from your server, it reduces external requests, significantly reducing page load times.
 
+[Try it out on a free dummy site](https://bsf.io/custom-fonts-demo)
+
 ## UPLOAD YOUR CUSTOM FONTS OR CHOOSE FROM GOOGLE FONTS 🎨 ##
 
-With Custom Fonts, you have the freedom to customize your website typography to match your unique brand identity.
+With Custom Fonts, you have the freedom to customize your website typography to match your unique brand identity!
 
 You can easily upload your own custom font files, such as .ttf or .otf, and use them throughout your website. Or, you can choose from a rich library of Google Fonts and host them locally on your server, ensuring full control over their use.
 
