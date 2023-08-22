@@ -159,13 +159,13 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 						// Convert paths to URLs.
 						foreach ( $final_font_files as $remote => $local ) {
-							$font_url = str_replace(
+							$font_url                    = str_replace(
 								$this->get_base_path(),
 								$this->get_base_url(),
 								$local
 							);
 							$final_font_files[ $remote ] = $font_url;
-							$font_srcs[] = $font_url;
+							$font_srcs[]                 = $font_url;
 						}
 
 						// Add each variant as one font face.

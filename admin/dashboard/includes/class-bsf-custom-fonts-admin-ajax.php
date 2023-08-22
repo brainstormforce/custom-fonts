@@ -65,7 +65,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			'bcf_add_new_google_font',
 			'bcf_delete_font',
 			'bcf_edit_font',
-			'bcf_preloading'
+			'bcf_preloading',
 		);
 
 		foreach ( $ajax_events as $key => $event ) {
