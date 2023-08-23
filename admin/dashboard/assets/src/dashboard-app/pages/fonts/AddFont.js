@@ -22,7 +22,7 @@ const AddFont = () => {
 
 	return (
 		<div>
-			<div  id = "add-font-container" className="grid grid-cols-12">
+			<div id="add-font-container" className="grid grid-cols-12">
 				<style id={`bcf-fonts-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 				<div className="col-span-3 tablet:col-span-5 mobile:col-span-12 px-6 bg-white md:min-h-screen lg:px-[2em]">
 					{/* Here will be Nav Section */}
