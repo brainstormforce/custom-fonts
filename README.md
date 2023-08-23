@@ -3,8 +3,8 @@
 **Donate link:** https://www.paypal.me/BrainstormForce  
 **Tags:** typography, fonts, custom fonts, Google Fonts, performance, privacy, full site editing, adobe fonts, GDPR  
 **Requires at least:** 5.0  
-**Tested up to:** 6.2.2  
-**Stable tag:** 2.0.2  
+**Tested up to:** 6.3  
+**Stable tag:** 2.1.0  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -24,6 +24,8 @@ Take control of your website's typography without compromising performance, priv
 Custom Fonts enables you to upload your own custom fonts or choose from a vast collection of Google Fonts, all hosted directly on your own web server.
 
 By hosting fonts locally, you can significantly improve your website's performance. As the fonts load directly from your server, it reduces external requests, significantly reducing page load times.
+
+[Try it out on a free dummy site](https://bsf.io/custom-fonts-demo)
 
 ## UPLOAD YOUR CUSTOM FONTS OR CHOOSE FROM GOOGLE FONTS 🎨 ##
 
