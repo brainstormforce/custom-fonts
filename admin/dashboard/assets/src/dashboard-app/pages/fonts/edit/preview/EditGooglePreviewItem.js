@@ -252,8 +252,7 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 		let varWt;
 		if (e.target.dataset.font_weight) {
 			varWt = e.target.dataset.font_weight.toString();
-		}
-		else {
+		} else {
 			return;
 		}
 
