@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
 import { useSelector } from 'react-redux';
-import apiFetch from '@wordpress/api-fetch';
 import { editFontToDB, deleteFontFromDB, addFontToDB } from "../../../utils/useApis";
 import { Snackbar } from "@wordpress/components";
 import Custom_Fonts_Icons from "@Common/svg-icons";
@@ -80,12 +79,9 @@ const GoogleFont = () => {
 	const googleFontData = useSelector( ( state ) => state.googleFont );
 	const isDbUpdateRequired = useSelector( ( state ) => state.isDbUpdateRequired);
 	const editType = useSelector( ( state ) => state.editType);
-	const fontsData = useSelector((state) => state.fonts);
-
 	const googleFonts = bsf_custom_fonts_admin.googleFonts;
 	const dispatch = useDispatch();
 	const [gFont, setGFont] = useState('');
-	const [ addingFont, setAddingFont ] = useState( false );
 	const [fontId, setFontId] = useState(null);
 	const [showMessage, setShowMessage] = useState('');
 
@@ -109,7 +105,7 @@ const GoogleFont = () => {
 
 		if (fId) setFontId(fId);
 		setShowMessage(message);
-		setTimeout(() => setShowMessage(''), 5000);	
+		setTimeout(() => setShowMessage(''), 5000);
 	}
 
 	useEffect(() => {
@@ -190,10 +186,9 @@ const GoogleFont = () => {
 						</div>
 					</div>
 				}
-				{showMessage.length > 0 ? <div className={showMessage.length > 0 ? `snack-bar-${showMessage.toLowerCase().includes('added') || showMessage.toLowerCase().includes('updated') ? 'added' : 'removed'}` : ''}>
+				{ showMessage.length > 0 ? <div className={showMessage.length > 0 ? `snack-bar-${showMessage.toLowerCase().includes('added') || showMessage.toLowerCase().includes('updated') ? 'added' : 'removed'}` : ''}>
 					<Snackbar>{showMessage}</Snackbar>
-				</div>
-					: null}
+				</div> : null }
 			</div>
 		</div>
 	);

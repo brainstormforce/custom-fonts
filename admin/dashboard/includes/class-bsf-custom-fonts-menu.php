@@ -208,11 +208,13 @@ class BSF_Custom_Fonts_Menu {
 			'add_font_nonce'      => wp_create_nonce( 'add_font_nonce' ),
 			'edit_font_nonce'     => wp_create_nonce( 'edit_font_nonce' ),
 			'delete_font_nonce'   => wp_create_nonce( 'delete_font_nonce' ),
+			'preload_font_nonce'  => wp_create_nonce( 'preload_font_nonce' ),
 			'googleFonts'         => BCF_Custom_Font_Families::get_google_fonts(),
 			'existingGoogleFonts' => BCF_Custom_Font_Families::get_existing_google_fonts(),
 			'fontPostCount'       => wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE )->publish,
 			'googleFontAPI'       => 'https://fonts.googleapis.com/css?family',
 			'fontWeightList'      => BCF_Custom_Font_Families::get_font_weight_list(),
+			'preloading'          => get_option( 'bcf_preloading_fonts', false ),
 		);
 
 		$this->settings_app_scripts( apply_filters( 'bsf_custom_fonts_dashboard_admin_localize', $localize ) );

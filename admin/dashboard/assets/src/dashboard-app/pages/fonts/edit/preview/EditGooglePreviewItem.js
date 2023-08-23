@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addFontToDB, deleteFontFromDB, editFontToDB } from "../../../../../utils/useApis";
 import Custom_Fonts_Icons from "@Common/svg-icons";
 
-
 const EditGFontVariation = (
 	{
 		id,
@@ -199,7 +198,7 @@ const EditGooglePreviewItem = ( { fontId, fontName, onFontUpdated } ) => {
 		if(isDbUpdateRequired && editFontData){
 			if(fontId) editFontData.variations.length !== 0 ? editFontToDB(dispatch, fontId, editFontData, fontUpdated.bind(this, 'edit')) : deleteFontFromDB(dispatch, fontId, fontUpdated.bind(this, 'delete') );
 		}
-		
+
 	}, [isDbUpdateRequired])
 
 	const fontUpdated = (action) => {

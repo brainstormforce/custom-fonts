@@ -79,7 +79,6 @@ const EditFont = ( props ) => {
 										 <span style={{ marginLeft: "-2px" }}>{Custom_Fonts_Icons['checkmarkIcon']}</span>
 									</button>
 								</div>
-
 							<div className="grid grid-cols-12 sm:max-h-[60vh] overflow-auto">
 								<style id={`bcf-font-${font}-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 								<div id="gfont-edit-variation-data" hidden={true}></div>
