@@ -76,7 +76,7 @@ const EditFont = ( props ) => {
 										onClick={onCancelClick}
 										ref={cancelButtonRef}
 									>
-										{Custom_Fonts_Icons['checkmarkIcon']}
+										 <span style={{ marginLeft: "-2px" }}>{Custom_Fonts_Icons['checkmarkIcon']}</span>
 									</button>
 								</div>
 
