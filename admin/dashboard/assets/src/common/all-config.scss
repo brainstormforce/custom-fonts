@@ -69,10 +69,10 @@ button.bcf-save-font[disabled] {
 .bsf-cf-menu-page-wrapper {
     font-family: 'Inter';
     font-style: normal;
-
+    $white: #ffffff;
     .snack-bar-saved {
         .components-snackbar {
-            background-color: #ffffff;
+            background-color: white;
             color: #3C434A;
             font-size: 12px;
             border-left: 5px solid #00A32A;

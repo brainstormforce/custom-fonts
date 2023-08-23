@@ -63,8 +63,8 @@ const AddFont = () => {
 					{/* Here will be Font Preview Section */}
 					<div className="pb-3 flex justify-between items-center tablet:block">
 						<div className="text-base font-medium text-secondary">
-							{ activeType === "local" ? localFont.font_name ? localFont.font_name : __('Font Preview', 'custom-fonts') : null }
-							{ activeType === "google" ?  googleFontState.font_name ? googleFontState.font_name : __('Font Preview', 'custom-fonts') : null }
+							{"local" === activeType ? (localFont.font_name ? localFont.font_name : __('Font Preview', 'custom-fonts')) : null}
+							{"google" === activeType ? (googleFontState.font_name ? googleFontState.font_name : __('Font Preview', 'custom-fonts')) : null}
 						</div>
 						<div className="w-[314px]">
 							<RangeControl
