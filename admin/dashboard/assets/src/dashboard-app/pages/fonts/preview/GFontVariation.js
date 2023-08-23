@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const GFontVariation = (props) => {
 	const { weight, font, isInGoogleState, disable } = props;
@@ -173,41 +174,10 @@ const GFontVariation = (props) => {
 							data-font_weight={weight}
 							onClick={addWeight}
 						>
-							{addTitle === "Removing..." ? (
-								<svg
-									className="animate-spin -mr-1 ml-3 h-5 w-5 text-white"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-								>
-									<circle
-										className="opacity-25"
-										cx="12"
-										cy="12"
-										r="10"
-										stroke="rgb(230 80 84)"
-										strokeWidth="4"
-									></circle>
-									<path
-										className="opacity-75"
-										fill="#3858E9"
-										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-									></path>
-								</svg>
-							) : (
-								<svg
-									width="16"
-									height="17"
-									viewBox="0 0 16 17"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-									data-font_weight={weight}
-								>
-									<path
-										d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM8.80078 5.30005H7.20078V7.70005H4.80078V9.30005H7.20078V11.7H8.80078V9.30005H11.2008V7.70005H8.80078V5.30005Z"
-										fill={disable ? "grey" : "#007CBA"}
-									/>
-								</svg>
+							{addTitle === "Removing..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+								<span data-font_weight={weight}>
+									{Custom_Fonts_Icons['iconsquare']}
+								</span>
 							)}
 							<span className="ml-2" data-font_weight={weight}>
 								{addTitle}
@@ -240,41 +210,10 @@ const GFontVariation = (props) => {
 							data-font_weight={weight}
 							onClick={removeWeight}
 						>
-							{removeTitle === "Adding..." ? (
-								<svg
-									className="animate-spin -mr-1 ml-3 h-5 w-5 text-white"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-								>
-									<circle
-										className="opacity-25"
-										cx="12"
-										cy="12"
-										r="10"
-										stroke="#3858E9"
-										strokeWidth="4"
-									></circle>
-									<path
-										className="opacity-75"
-										fill="#3858E9"
-										d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-									></path>
-								</svg>
-							) : (
-								<svg
-									width="16"
-									height="17"
-									viewBox="0 0 16 17"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-									data-font_weight={weight}
-								>
-									<path
-										d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM4.80078 7.70005V9.30005H11.2008V7.70005H4.80078Z"
-										fill={disable ? "grey" : "rgb(230 80 84 / 1)"}
-									/>
-								</svg>
+							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+								<span data-font_weight={weight}>
+									{Custom_Fonts_Icons['iconsquare2']}
+								</span>
 							)}
 
 							<span className="ml-2" data-font_weight={weight}>

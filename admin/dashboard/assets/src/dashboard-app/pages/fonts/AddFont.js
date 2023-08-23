@@ -7,6 +7,7 @@ import GooglePreviewItem from "./preview/GooglePreviewItem";
 import LocalPreviewItem from "./preview/LocalPreviewItem";
 import { __ } from "@wordpress/i18n";
 import { useSelector } from "react-redux";
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
@@ -21,27 +22,16 @@ const AddFont = () => {
 
 	return (
 		<div>
-			<div className="grid grid-cols-12">
+			<div id="add-font-container" className="grid grid-cols-12">
 				<style id={`bcf-fonts-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 				<div className="col-span-3 tablet:col-span-5 mobile:col-span-12 px-6 bg-white md:min-h-screen lg:px-[2em]">
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
 						<Link
-							onClick={() => window.location = `${ bsf_custom_fonts_admin.app_base_url }`}
+							onClick={() => window.location = `${bsf_custom_fonts_admin.app_base_url}`}
 							className="mr-4 cursor-pointer py-3 px-0 focus:shadow-none focus:outline-none"
 						>
-							<svg
-								width="15"
-								height="15"
-								viewBox="0 0 8 12"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M7.2002 9.99985L3.2002 5.99985L7.20019 1.99985L6.40019 0.399853L0.800195 5.99985L6.4002 11.5999L7.2002 9.99985Z"
-									fill="#7E7E7E"
-								/>
-							</svg>
+							{Custom_Fonts_Icons['arrowbacksave']}
 						</Link>
 						<div
 							onClick={() => toggleType("local")}

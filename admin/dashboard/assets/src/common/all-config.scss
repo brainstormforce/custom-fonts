@@ -296,6 +296,40 @@ input:checked + .settings-toggle-bg {
     width: 16px;
     height: 16px;
     fill: #007CBA; /* Change to your desired color */
+  }
+  
+  #add-font-container .border-b-primary, #add-font-container .border-b-2:hover {
+    border-bottom-color: #3858E9;
+  }
+
+
+  .disabled-svg {
+    fill: gray;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  svg.animate-spin.text-white {
+    color:white;
+}
+
+.opacity-25{
+    opacity: 0.25;
+}
+
+.opacity-75{
+    opacity: 0.75;
 }
 .loading-icon {
 	width: 16px;
@@ -309,6 +343,4 @@ input:checked + .settings-toggle-bg {
 #add-font-container .border-b-primary, #add-font-container .border-b-2:hover {
 	border-bottom-color: #3858E9;
 }
-.disabled-svg {
-	fill: gray;
-}
+
