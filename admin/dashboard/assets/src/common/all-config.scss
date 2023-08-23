@@ -301,3 +301,28 @@ span.font-filename {
   .disabled-svg {
     fill: gray;
   }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(50deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  svg.animate-spin.text-white {
+    color:white;
+}
+
+.opacity-25{
+    opacity: 0.25;
+}
+
+.opacity-75{
+    opacity: 0.75;
+}

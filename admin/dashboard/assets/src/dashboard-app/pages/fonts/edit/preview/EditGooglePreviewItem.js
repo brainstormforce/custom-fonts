@@ -168,7 +168,7 @@ const EditGFontVariation = (
 							data-font_weight={weight}
 							onClick={(e) => { setAddTitle("Removing..."); removeWeight(e) }}
 						>
-							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner4']) : (
+							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
 								<span data-font_weight={weight}>
 									{Custom_Fonts_Icons['iconsquare2']}
 								</span>

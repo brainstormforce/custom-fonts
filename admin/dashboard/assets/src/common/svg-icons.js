@@ -195,17 +195,19 @@ const Custom_Fonts_Icons = {
     'loadingSpinner3': el(
         'svg',
         {
-            className: 'animate-spin -mr-1 ml-3 h-5 w-5 text-white',
+            className: 'animate-spin text-white',
             xmlns: 'http://www.w3.org/2000/svg',
             fill: 'none',
             viewBox: '0 0 24 24',
+            width: '20px',
+            height: '20px',
         },
         el('circle', {
             className: 'opacity-25',
             cx: 12,
             cy: 12,
             r: 10,
-            stroke: 'rgb(230 80 84)',
+            stroke: 'rgb(73 72 245)',
             strokeWidth: 4,
         }),
         el('path', {

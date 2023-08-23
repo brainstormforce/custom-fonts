@@ -210,7 +210,7 @@ const GFontVariation = (props) => {
 							data-font_weight={weight}
 							onClick={removeWeight}
 						>
-							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner4']) : (
+							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
 								<span data-font_weight={weight}>
 									{Custom_Fonts_Icons['iconsquare2']}
 								</span>
