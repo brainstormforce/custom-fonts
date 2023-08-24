@@ -80,7 +80,7 @@ const EditGoogleFont = ({fontId, fontName, fontUpdateAction, setFontUpdateAction
 	useEffect( () => {
 		setTimeout(() => {
 			setFontUpdateAction('');
-		}, 1000)
+		}, 3000)
 	}, [fontUpdateAction])
 
 	let editingFontData = {};
