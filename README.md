@@ -151,6 +151,7 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 ## Changelog ##
 ### 2.1.0 ###
 - New: Introducing new 'Fonts Preload' option, to preload custom fonts.
+- New: Introducing an option to update existing font name.
 - Improvement: Autosave functionality for adding, updating fonts.
 - Improvement: Code refactored and optimization.
 - Fix: Custom local fonts not working in FSE site editors.
