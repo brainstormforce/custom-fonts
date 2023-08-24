@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { __ } from "@wordpress/i18n";
-import apiFetch from '@wordpress/api-fetch';
 import { useSelector } from 'react-redux';
+import { Snackbar } from "@wordpress/components";
 
 const EditGoogleVariationItem = ({
 	id,
@@ -61,12 +61,14 @@ const EditGoogleVariationItem = ({
 	);
 };
 
-const EditGoogleFont = ({fontId, fontName}) => {
+const EditGoogleFont = ({fontId, fontName, fontUpdateAction, setFontUpdateAction}) => {
 	const restAllData = useSelector( ( state ) => state.fonts );
 	const editFontId = parseInt( fontId );
+	const [showMessage, setShowMessage] = useState('');
+	const editType = useSelector( ( state ) => state.editType);
 
 	let toBeEditFont = {};
-	let variations = null;
+	let variations = [];
 	restAllData.forEach(function(individualFont) {
 		if ( editFontId === individualFont.id && undefined !== bsf_custom_fonts_admin.googleFonts[individualFont.title] ) {
 			const gFontData = bsf_custom_fonts_admin.googleFonts[individualFont.title];
@@ -75,41 +77,16 @@ const EditGoogleFont = ({fontId, fontName}) => {
 		}
 	});
 
+	useEffect( () => {
+		setTimeout(() => {
+			setFontUpdateAction('');
+		}, 3000)
+	}, [fontUpdateAction])
+
 	let editingFontData = {};
 	if ( undefined === toBeEditFont['fonts-data'] || ! toBeEditFont['fonts-data'].length ) {
 		editingFontData = toBeEditFont['fonts-data'];
 	}
-
-	const [ isLoading, setLoading ] = useState( false );
-
-	const updatingNewFontPost = ( e ) => {
-		e.preventDefault();
-
-		setLoading( 'loading' );
-		const formData = new window.FormData();
-		const editFontStringifiedData = document.getElementById('gfont-edit-variation-data').innerHTML;
-
-		formData.append( 'action', 'bcf_edit_font' );
-		formData.append( 'security', bsf_custom_fonts_admin.edit_font_nonce );
-		formData.append( 'font_type', 'google' );
-		formData.append( 'font_id', fontId );
-		formData.append( 'font_data', editFontStringifiedData );
-
-		apiFetch( {
-			url: bsf_custom_fonts_admin.ajax_url,
-			method: 'POST',
-			body: formData,
-		} ).then( (response) => {
-			if ( response.success ) {
-				setTimeout( () => {
-					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
-				}, 500 );
-			}
-			setLoading( false );
-		} );
-	};
-
-	let variationCount = 0;
 
 	return (
 		<div>
@@ -134,24 +111,11 @@ const EditGoogleFont = ({fontId, fontName}) => {
 							</div>
 						</div>
 					</div>
-
-					<div className="my-5">
-						<button
-							type="button"
-							className="bcf-save-font inline-flex components-button is-primary mb-5"
-							onClick={ updatingNewFontPost }
-							disabled={'loading' === isLoading ? true : false}
-						>
-							{__( 'Save Font', 'custom-fonts' )}
-							{ 'loading' === isLoading && (
-								<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-									<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-									<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-								</svg>
-							) }
-						</button>
-					</div>
 				</div>
+
+				{fontUpdateAction.length > 0 ? <div className={fontUpdateAction === 'edit' && editType === 'add' ? 'snack-bar-added' : 'snack-bar-removed'}>
+					<Snackbar>{fontUpdateAction === 'edit' ? editType === 'add' ? __('Variation Added Successfully!', 'custom-fonts') : __('Variation Removed Successfully!', 'custom-fonts') : __('Font Removed Successfully!', 'custom-fonts')}</Snackbar>
+				</div> : null}
 			</div>
 		</div>
 	);

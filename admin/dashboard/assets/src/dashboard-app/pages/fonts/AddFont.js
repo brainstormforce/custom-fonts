@@ -6,6 +6,8 @@ import { RangeControl } from "@wordpress/components";
 import GooglePreviewItem from "./preview/GooglePreviewItem";
 import LocalPreviewItem from "./preview/LocalPreviewItem";
 import { __ } from "@wordpress/i18n";
+import { useSelector } from "react-redux";
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
@@ -15,33 +17,22 @@ const AddFont = () => {
 		setActiveType(value);
 	};
 
+	const localFont = useSelector( ( state ) => state.localFont ) || '';
+	const googleFontState = useSelector( ( state ) => state.googleFont ) || '';
+
 	return (
 		<div>
-			<div className="grid grid-cols-12">
+			<div id="add-font-container" className="grid grid-cols-12">
 				<style id={`bcf-fonts-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 				<div className="col-span-3 tablet:col-span-5 mobile:col-span-12 px-6 bg-white md:min-h-screen lg:px-[2em]">
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
-						<Link
-							to={{
-								pathname: "themes.php",
-								search: `?page=bsf-custom-fonts`,
-							}}
+						<span
+							onClick={() => window.location = `${bsf_custom_fonts_admin.app_base_url}`}
 							className="mr-4 cursor-pointer py-3 px-0 focus:shadow-none focus:outline-none"
 						>
-							<svg
-								width="15"
-								height="15"
-								viewBox="0 0 8 12"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<path
-									d="M7.2002 9.99985L3.2002 5.99985L7.20019 1.99985L6.40019 0.399853L0.800195 5.99985L6.4002 11.5999L7.2002 9.99985Z"
-									fill="#7E7E7E"
-								/>
-							</svg>
-						</Link>
+							{Custom_Fonts_Icons['arrowbacksave']}
+						</span>
 						<div
 							onClick={() => toggleType("local")}
 							className={`text-base font-medium leading-8 hover:text-heading cursor-pointer px-4 py-4 border-b-2 border-white hover:border-b-primary ${
@@ -72,7 +63,8 @@ const AddFont = () => {
 					{/* Here will be Font Preview Section */}
 					<div className="pb-3 flex justify-between items-center tablet:block">
 						<div className="text-base font-medium text-secondary">
-							{__('Font Preview', 'custom-fonts')}
+							{"local" === activeType ? (localFont.font_name ? localFont.font_name : __('Font Preview', 'custom-fonts')) : null}
+							{"google" === activeType ? (googleFontState.font_name ? googleFontState.font_name : __('Font Preview', 'custom-fonts')) : null}
 						</div>
 						<div className="w-[314px]">
 							<RangeControl

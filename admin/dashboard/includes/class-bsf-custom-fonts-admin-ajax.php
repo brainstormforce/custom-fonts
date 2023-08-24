@@ -65,6 +65,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			'bcf_add_new_google_font',
 			'bcf_delete_font',
 			'bcf_edit_font',
+			'bcf_preloading',
 		);
 
 		foreach ( $ajax_events as $key => $event ) {
@@ -206,7 +207,8 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		 * Send the response.
 		 */
 		$response_data = array(
-			'message' => __( 'Successfully created the Font!', 'custom-fonts' ),
+			'message' => __( 'Successfully created the Font! ', 'custom-fonts' ),
+			'fontId'  => $font_post_id,
 		);
 		wp_send_json_success( $response_data );
 	}
@@ -302,6 +304,35 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		$response_data = array(
 			'message' => __( 'Successfully deleted the Font!', 'custom-fonts' ),
+		);
+		wp_send_json_success( $response_data );
+	}
+
+	/**
+	 * Preloading the fonts.
+	 *
+	 * @since x.x.x
+	 */
+	public function bcf_preloading() {
+		$response_data = array( 'message' => $this->get_error_msg( 'permission' ) );
+
+		if ( ! current_user_can( 'edit_theme_options' ) ) {
+			wp_send_json_error( $response_data );
+		}
+
+		/**
+		 * Nonce verification
+		 */
+		if ( ! check_ajax_referer( 'preload_font_nonce', 'security', false ) ) {
+			$response_data = array( 'message' => $this->get_error_msg( 'nonce' ) );
+			wp_send_json_error( $response_data );
+		}
+
+		$checked = isset( $_POST['isPreloading'] ) && 'true' === $_POST['isPreloading'] ? true : false;
+		update_option( 'bcf_preloading_fonts', $checked );
+
+		$response_data = array(
+			'message' => __( 'Switched preloading fonts!', 'custom-fonts' ),
 		);
 		wp_send_json_success( $response_data );
 	}

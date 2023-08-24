@@ -6,6 +6,10 @@ import EditGoogleFont from "./EditGoogleFont";
 import { RangeControl } from "@wordpress/components";
 import EditGooglePreviewItem from "./preview/EditGooglePreviewItem";
 import EditLocalPreviewItem from "./preview/EditLocalPreviewItem";
+import globalDataStore from '@Admin/store/globalDataStore';
+import setInitialState  from '@Utils/setInitialState';
+import Custom_Fonts_Icons from "@Common/svg-icons";
+
 
 const EditFont = ( props ) => {
 	const {
@@ -18,15 +22,21 @@ const EditFont = ( props ) => {
 
 	const [ open, setOpen ] = useState( openPopup );
 	const [ previewSize, setPreviewSize ] = useState( '20' );
+	const [fontUpdateAction, setFontUpdateAction] = useState('');
 	const cancelButtonRef = useRef( null );
 
 	const onCancelClick = () => {
 		setOpenPopup( ! openPopup );
+		setInitialState( globalDataStore );
 	};
 
 	useEffect( () => {
 		setOpen( openPopup );
 	}, [ openPopup ] );
+
+	const onFontUpdated = (action) => {
+		setFontUpdateAction(action);
+	}
 
 	return (
 		<Transition.Root show={ open } as={ Fragment }>
@@ -63,20 +73,19 @@ const EditFont = ( props ) => {
 								<button
 									type="button"
 									className="mt-3 inline-flex justify-center border shadow-none border-slate-200 padding-[5px] bg-[#F6F7F7] text-base font-medium text-slate-800 focus:bg-[#F6F7F7] hover:bg-[#F6F7F7] focus:outline-none sm:mt-0 sm:text-xs bold border-none w-[20px] h-[20px] p-[3px] rounded-full shadow-md"
-									onClick={ onCancelClick }
-									ref={ cancelButtonRef }
-								>
-									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="12" aria-hidden="true" focusable="false" className='mr-[2px]'><path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path></svg>
-								</button>
-							</div>
-
+										onClick={onCancelClick}
+										ref={cancelButtonRef}
+									>
+										 <span style={{ marginLeft: "-2px" }}>{Custom_Fonts_Icons['checkmarkIcon']}</span>
+									</button>
+								</div>
 							<div className="grid grid-cols-12 sm:max-h-[60vh] overflow-auto">
 								<style id={`bcf-font-${font}-preview-size-css`}> {`:root { --bsf-custom-font-size: ${previewSize}px }`} </style>
 								<div id="gfont-edit-variation-data" hidden={true}></div>
 								<div className="col-span-4 bg-white px-4 pt-5 pb-4 lg:p-[2em] sm:p-6">
 									<div>
 										{fontType === "local" && <EditLocalFont fontId={font} fontName={fontName} />}
-										{fontType === "google" && <EditGoogleFont fontId={font} fontName={fontName} />}
+										{fontType === "google" && <EditGoogleFont fontId={font} fontName={fontName} fontUpdateAction={fontUpdateAction} setFontUpdateAction={setFontUpdateAction} />}
 									</div>
 								</div>
 								<div className="col-span-8 bg-[#F6F7F7] px-4 pt-5 pb-4 lg:p-[2em] sm:p-6">
@@ -98,7 +107,7 @@ const EditFont = ( props ) => {
 									<div className="py-5 divide-y">
 										<div>
 											{fontType === "local" && <EditLocalPreviewItem fontId={font} fontName={fontName} />}
-											{fontType === "google" && <EditGooglePreviewItem fontId={font} fontName={fontName} />}
+											{fontType === "google" && <EditGooglePreviewItem fontId={font} fontName={fontName} onFontUpdated={onFontUpdated}/>}
 										</div>
 									</div>
 								</div>

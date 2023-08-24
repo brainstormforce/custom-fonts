@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { __ } from "@wordpress/i18n";
 import apiFetch from '@wordpress/api-fetch';
 import { useSelector, useDispatch } from 'react-redux';
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const EditLocalVariationItem = ({
 	id,
@@ -85,38 +86,14 @@ const EditLocalVariationItem = ({
 						{ fontFileName.length >= 1 ? __( 'Font files chosen', 'custom-fonts' ) : __('No file chosen', 'custom-fonts') }
 					</h2>
 					<div className="flex items-center justify-end gap-x-4 font-triggers">
-						<svg
-							onClick={() => setToggleView(true)}
-							width="12"
-							height="8"
-							viewBox="0 0 12 8"
-							className="arrow-icon h-[40px]"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M2.00039 0.800049L6.00039 4.80005L10.0004 0.800049L11.6004 1.60005L6.00039 7.20005L0.400391 1.60005L2.00039 0.800049Z"
-								fill="#7E7E7E"
-							/>
-						</svg>
+						<span onClick={() => setToggleView(true)}>
+							{Custom_Fonts_Icons['arrowIcon2']}
+						</span>
 
 						{localDataLength > 1 && (
-							<svg
-								width="16"
-								height="16"
-								viewBox="0 0 16 16"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								className="cursor-pointer remove-icon h-[40px]"
-								onClick={() =>
-									handleVariationRemove(variation.id)
-								}
-							>
-								<path
-									d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-									fill="rgb(230 80 84 / 1)"
-								/>
-							</svg>
+							<span onClick={() => handleVariationRemove(variation.id)}>
+								{Custom_Fonts_Icons['localremove']}
+							</span>
 						)}
 					</div>
 				</div>
@@ -134,41 +111,17 @@ const EditLocalVariationItem = ({
 							>
 								{ __( "Choose File", 'custom-fonts' ) }
 							</button>
-							<span className="font-filename"> { fontFileName.length >= 1 ? __( 'Font files:', 'custom-fonts' ) : __( 'No file chosen', 'custom-fonts' ) } </span>
-							<div className="font-triggers">
-								<svg
-									onClick={() => setToggleView(false)}
-									width="12"
-									height="8"
-									viewBox="0 0 12 8"
-									className="arrow-icon h-[40px]"
-									fill="none"
-									xmlns="http://www.w3.org/2000/svg"
-								>
-									<path
-										d="M2.00039 7.19995L6.00039 3.19995L10.0004 7.19995L11.6004 6.39995L6.00039 0.799951L0.400391 6.39995L2.00039 7.19995Z"
-										fill="#7E7E7E"
-									/>
-								</svg>
-								{localDataLength > 1 && (
-									<svg
-										width="16"
-										height="16"
-										viewBox="0 0 16 16"
-										fill="none"
-										xmlns="http://www.w3.org/2000/svg"
-										className="cursor-pointer remove-icon h-[40px]"
-										onClick={() =>
-											handleVariationRemove(variation.id)
-										}
-									>
-										<path
-											d="M8.00078 0.800049C4.00078 0.800049 0.800781 4.00005 0.800781 8.00005C0.800781 12 4.00078 15.2 8.00078 15.2C12.0008 15.2 15.2008 12 15.2008 8.00005C15.2008 4.00005 12.0008 0.800049 8.00078 0.800049ZM8.00078 13.6C4.88078 13.6 2.40078 11.12 2.40078 8.00005C2.40078 4.88005 4.88078 2.40005 8.00078 2.40005C11.1208 2.40005 13.6008 4.88005 13.6008 8.00005C13.6008 11.12 11.1208 13.6 8.00078 13.6ZM4.80078 7.20005V8.80005H11.2008V7.20005H4.80078Z"
-											fill="rgb(230 80 84 / 1)"
-										/>
-									</svg>
-								)}
-							</div>
+								<span className="font-filename"> {fontFileName.length >= 1 ? __('Font files:', 'custom-fonts') : __('No file chosen', 'custom-fonts')} </span>
+								<div className="font-triggers">
+									<span onClick={() => setToggleView(false)}>
+										{Custom_Fonts_Icons['deopdownarrow2']}
+									</span>
+									{localDataLength > 1 && (
+										<span onClick={() => handleVariationRemove(variation.id)}>
+											{Custom_Fonts_Icons['localremove']}
+										</span>
+									)}
+								</div>
 						</div>
 						{
 							( Array.isArray( fontFileName ) && fontFileName.length >= 1 ) && (
@@ -372,6 +325,8 @@ const EditLocalFont = ({fontId}) => {
 				<p className="mb-5 text-xl font-semibold">
 					{__( 'Edit Font', 'custom-fonts' )}
 				</p>
+				<input className="w-full" type="text" onChange={(e) => handleInputChange(e,"font_name")} value={editFontData.font_name}></input>
+				<p>&nbsp;</p>
 				<div className="mb-5">
 					<div
 						onClick={toggleAdvanceTab}
@@ -381,25 +336,9 @@ const EditLocalFont = ({fontId}) => {
 							className="text-sm text-heading"
 							htmlFor=""
 						>
-							{__( 'Advanced Options', 'custom-fonts' )}
+							{__('Advanced Options', 'custom-fonts')}
 						</label>
-						<svg
-							width="6"
-							height="8"
-							viewBox="0 0 6 8"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-							className={
-								advanceTab
-									? "rotate-90"
-									: "" + "transition-transform duration-300"
-							}
-						>
-							<path
-								d="M0.400391 0.800049L5.20039 4.02405L0.400391 7.20005L0.400391 0.800049Z"
-								fill="#007CBA"
-							/>
-						</svg>
+						{Custom_Fonts_Icons['smallarrow']}
 					</div>
 					{advanceTab && (
 						<div
@@ -481,37 +420,22 @@ const EditLocalFont = ({fontId}) => {
 					onClick={addVariationOption}
 				>
 					<div className="text-sm text-primary">
-						{__( 'Add Font Variation', 'custom-fonts' )}
+						{__('Add Font Variation', 'custom-fonts')}
 					</div>
 					<div>
-						<svg
-							width="16"
-							height="16"
-							viewBox="0 0 16 16"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M7.9998 0.800049C3.9998 0.800049 0.799805 4.00005 0.799805 8.00005C0.799805 12 3.9998 15.2 7.9998 15.2C11.9998 15.2 15.1998 12 15.1998 8.00005C15.1998 4.00005 11.9998 0.800049 7.9998 0.800049ZM7.9998 13.6C4.8798 13.6 2.3998 11.12 2.3998 8.00005C2.3998 4.88005 4.8798 2.40005 7.9998 2.40005C11.1198 2.40005 13.5998 4.88005 13.5998 8.00005C13.5998 11.12 11.1198 13.6 7.9998 13.6ZM8.7998 4.80005H7.1998V7.20005H4.7998V8.80005H7.1998V11.2H8.7998V8.80005H11.1998V7.20005H8.7998V4.80005Z"
-								fill="#007CBA"
-							/>
-						</svg>
+						{Custom_Fonts_Icons["plusicon2"]}
 					</div>
 				</div>
 
 				<button
 					type="button"
 					className="bcf-save-font inline-flex components-button is-primary mb-5"
-					onClick={ updatingNewFontPost }
+					onClick={updatingNewFontPost}
 					disabled={'loading' === isLoading ? true : false}
 				>
-					{__( 'Save Font', 'custom-fonts' )}
-					{ 'loading' === isLoading && (
-						<svg className="animate-spin -mr-1 ml-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-							<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-							<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-						</svg>
-					) }
+					{__('Save Font', 'custom-fonts')}
+					{'loading' === isLoading && Custom_Fonts_Icons['loadingSpinner']}
+
 				</button>
 			</div>
 		</div>

@@ -5,6 +5,7 @@ import GFontVariation from './GFontVariation';
 
 const GooglePreviewItem = () => {
 	const googleFontState = useSelector( ( state ) => state.googleFont );
+	const isDbUpdateRequired = useSelector( ( state ) => state.isDbUpdateRequired);
 
 	if ( undefined === googleFontState ) {
 		return;
@@ -45,7 +46,7 @@ const GooglePreviewItem = () => {
 			<div key={i} className="google-fonts-preview-wrapper">
 				<style id={`bcf-google-font-${i}-css`}> {'.preview-font-name {display: none;}'} </style>
 				<link rel='stylesheet' id={`bcf-google-font-${i}-link`} href={getGoogleFontLink(googleFont, variations[key], i)} media='all' />
-				<GFontVariation font={googleFont} weight={variations[key]} isInGoogleState={checkWeightPresentInState(variations[key])} key={key} />
+				<GFontVariation disable={isDbUpdateRequired} font={googleFont} weight={variations[key]} isInGoogleState={checkWeightPresentInState(variations[key])} key={key} />
 			</div>
 		))
 	);

@@ -125,11 +125,6 @@ class Custom_Fonts_API_Init extends WP_REST_Controller {
 			'posts_per_page' => -1,
 		);
 
-		$search_query = sanitize_text_field( $request->get_param( 'q' ) );
-		if ( isset( $search_query ) && ! empty( $search_query ) && is_string( $search_query ) ) {
-			$args['s'] = $search_query;
-		}
-
 		$bsf_fonts_data        = array();
 		$query_posts           = new WP_Query( $args );
 		$bsf_custom_font_posts = wp_count_posts( BSF_CUSTOM_FONTS_POST_TYPE );
@@ -161,6 +156,7 @@ class Custom_Fonts_API_Init extends WP_REST_Controller {
 				'active_fonts_count' => isset( $bsf_custom_font_posts->publish ) ? intval( $bsf_custom_font_posts->publish ) : 0,
 				'trash_fonts_count'  => isset( $bsf_custom_font_posts->trash ) ? intval( $bsf_custom_font_posts->trash ) : 0,
 				'draft_fonts_count'  => isset( $bsf_custom_font_posts->draft ) ? intval( $bsf_custom_font_posts->draft ) : 0,
+				'optionPreload'      => get_option( 'bcf_preloading_fonts', false ),
 			)
 		);
 

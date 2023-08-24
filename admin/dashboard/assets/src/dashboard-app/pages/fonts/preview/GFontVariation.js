@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { __ } from "@wordpress/i18n";
+import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const GFontVariation = (props) => {
-	const { weight, font, isInGoogleState } = props;
+	const { weight, font, isInGoogleState, disable } = props;
 	const googleFont = useSelector( ( state ) => state.googleFont );
 	const dispatch = useDispatch();
+	const [removeTitle, setRemoveTitle] = useState("Remove");
+	const [addTitle, setAddTitle] = useState("Add");
+
+	useEffect(() => {
+		if (!disable) {
+			setRemoveTitle("Remove");
+			setAddTitle("Add");
+		}
+	}, [disable]);
 
 	const getFontWeightTitle = ( weight ) => {
 		if ( undefined === weight ) {
@@ -55,6 +65,7 @@ const GFontVariation = (props) => {
 	const addWeight = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
+		setRemoveTitle("Adding...");
 
 		const varWt = e.target.dataset.font_weight;
 		const variations = googleFont.variations;
@@ -66,31 +77,41 @@ const GFontVariation = (props) => {
 			id: variations.length+1,
 			font_file: '',
 			font_style: style,
-			font_weight: varWt
-		} );
-		dispatch( { type: 'SET_GOOGLE_FONT', payload: {
-			"font_name": googleFont.font_name,
-			"font_fallback": googleFont.font_fallback,
-			"font_display": googleFont.font_display,
-			"variations": variations
-		} } );
-	}
+      font_weight: varWt,
+    });
+    dispatch({
+      type: "SET_GOOGLE_FONT",
+      payload: {
+        font_name: googleFont.font_name,
+        font_fallback: googleFont.font_fallback,
+        font_display: googleFont.font_display,
+        variations: variations,
+      },
+    });
+    dispatch({ type: "IS_DB_UPDATE_REQUIRED", payload: {isDbUpdateRequired: true, editType: 'add' }});
+  };
 
 	const removeWeight = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
+		setAddTitle("Removing...");
 
 		const updatedVariations = googleFont.variations.filter(
 			(variation) => variation.font_weight !== weight
 		);
 
-		dispatch( { type: 'SET_GOOGLE_FONT', payload: {
-			"font_name": googleFont.font_name ? googleFont.font_name : '',
-			"font_fallback": googleFont.font_fallback ? googleFont.font_fallback : '',
-			"font_display": googleFont.font_display ? googleFont.font_display : '',
-			"variations": updatedVariations
-		} } );
-	}
+    dispatch({
+      type: "SET_GOOGLE_FONT",
+      payload: {
+        font_name: googleFont.font_name ? googleFont.font_name : "",
+        font_fallback: googleFont.font_fallback ? googleFont.font_fallback : "",
+        font_display: googleFont.font_display ? googleFont.font_display : "",
+        variations: updatedVariations,
+      },
+    });
+
+    dispatch({ type: "IS_DB_UPDATE_REQUIRED", payload: { isDbUpdateRequired: true, editType: 'remove' }});
+  };
 
 	const getRenderFontWeight = (weight) => {
 		if ( undefined === weight ) {
@@ -127,43 +148,79 @@ const GFontVariation = (props) => {
 					</div>
 				</div>
 				<div>
-					{ ( ! isInGoogleState ) &&
-						<button className="flex items-center components-button is-secondary" data-font_weight={weight} onClick={addWeight}>
-							<svg
-								width="16"
-								height="17"
-								viewBox="0 0 16 17"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								data-font_weight={weight}
-							>
-								<path
-									d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM8.80078 5.30005H7.20078V7.70005H4.80078V9.30005H7.20078V11.7H8.80078V9.30005H11.2008V7.70005H8.80078V5.30005Z"
-									fill="#007CBA"
-								/>
-							</svg>
-							<span className="ml-2" data-font_weight={weight}>{__('Add', 'custom-fonts')}</span>
+					{!isInGoogleState && (
+						<button
+							disabled={disable}
+							style={
+								disable
+									? addTitle === "Removing..."
+										? {
+											color: "#3858E9",  // by removing time
+											borderColor: "#3858E9",
+											boxShadow: "inset 0 0 0 1px",
+										}
+										: {
+											color: "grey",
+											borderColor: "grey",
+											boxShadow: "inset 0 0 0 1px",
+										}
+									: { boxShadow: "inset 0 0 0 1px" }
+							}
+							className={
+								addTitle === "Removing..."
+									? "flex text-danger items-center components-button is-secondary border border-danger"
+									: "flex items-center components-button is-secondary"
+							}
+							data-font_weight={weight}
+							onClick={addWeight}
+						>
+							{addTitle === "Removing..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+								<span data-font_weight={weight}>
+									{Custom_Fonts_Icons['iconsquare']}
+								</span>
+							)}
+							<span className="ml-2" data-font_weight={weight}>
+								{addTitle}
+							</span>
 						</button>
-					}
-					{ isInGoogleState &&
-						<button className="flex text-danger items-center components-button is-secondary border border-danger" data-font_weight={weight} onClick={removeWeight}>
-							<svg
-								width="16"
-								height="17"
-								viewBox="0 0 16 17"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-								data-font_weight={weight}
-							>
-								<path
-									d="M8.00078 1.30005C4.00078 1.30005 0.800781 4.50005 0.800781 8.50005C0.800781 12.5 4.00078 15.7 8.00078 15.7C12.0008 15.7 15.2008 12.5 15.2008 8.50005C15.2008 4.50005 12.0008 1.30005 8.00078 1.30005ZM8.00078 14.1C4.88078 14.1 2.40078 11.62 2.40078 8.50005C2.40078 5.38005 4.88078 2.90005 8.00078 2.90005C11.1208 2.90005 13.6008 5.38005 13.6008 8.50005C13.6008 11.62 11.1208 14.1 8.00078 14.1ZM4.80078 7.70005V9.30005H11.2008V7.70005H4.80078Z"
-									fill="rgb(230 80 84 / 1)"
-								/>
-							</svg>
+					)}
+					{isInGoogleState && (
+						<button
+							disabled={disable}
+							style={
+								disable
+									? removeTitle === "Adding..."
+										? {
+											color: "#3858E9",
+											borderColor: "#3858E9", // Updated border color
+											boxShadow: "inset 0 0 0 1px",
+										}
+										: {
+											color: "grey",
+											borderColor: "grey",
+											boxShadow: "inset 0 0 0 1px",
+										}
+									: { boxShadow: "inset 0 0 0 1px" }
+							}
+							className={
+								removeTitle === "Adding..."
+									? "flex items-center components-button is-secondary"
+									: "flex text-danger items-center components-button is-secondary border border-danger"
+							}
+							data-font_weight={weight}
+							onClick={removeWeight}
+						>
+							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+								<span data-font_weight={weight}>
+									{Custom_Fonts_Icons['iconsquare2']}
+								</span>
+							)}
 
-							<span className="ml-2" data-font_weight={weight}>{__('Remove', 'custom-fonts')}</span>
+							<span className="ml-2" data-font_weight={weight}>
+								{removeTitle}
+							</span>
 						</button>
-					}
+					)}
 				</div>
 			</div>
 		</div>

@@ -15,6 +15,7 @@ const initialState = wp.hooks.applyFilters( 'custom_fonts_dashboard/datastore', 
 		draft_fonts_count : '',
 		fonts_count : '',
 		fonts_limit_over : false,
+		optionPreload: false,
 	}
 );
 
