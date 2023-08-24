@@ -27,12 +27,12 @@ const AddFont = () => {
 				<div className="col-span-3 tablet:col-span-5 mobile:col-span-12 px-6 bg-white md:min-h-screen lg:px-[2em]">
 					{/* Here will be Nav Section */}
 					<div className="flex items-center mb-5 border-b border-light">
-						<Link
+						<span
 							onClick={() => window.location = `${bsf_custom_fonts_admin.app_base_url}`}
 							className="mr-4 cursor-pointer py-3 px-0 focus:shadow-none focus:outline-none"
 						>
 							{Custom_Fonts_Icons['arrowbacksave']}
-						</Link>
+						</span>
 						<div
 							onClick={() => toggleType("local")}
 							className={`text-base font-medium leading-8 hover:text-heading cursor-pointer px-4 py-4 border-b-2 border-white hover:border-b-primary ${
