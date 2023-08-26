@@ -110,13 +110,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					<!-- Repeater Content -->
 					<div class="item-content">
 						<div class="form-group">
-						<div class="weight-wrapper">
-							<?php
-							$this->add_new_taxonomy_repeater_data();
-							wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' );
-							?>
+							<div class="weight-wrapper">
+								<?php
+								$this->add_new_taxonomy_repeater_data();
+								wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' );
+								?>
+							</div>
 						</div>
-					  </div>
 					</div>
 					<!-- Repeater Remove Btn -->
 					<div class="repeater-remove-btn">
