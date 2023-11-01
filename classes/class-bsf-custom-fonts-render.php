@@ -279,22 +279,19 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		public function add_style() {
 			$font_styles = '';
 			$query_posts = $this->get_existing_font_posts();
-
+		
 			if ( $query_posts ) {
 				foreach ( $query_posts as $key => $post_id ) {
 					$font_styles .= get_post_meta( $post_id, 'fonts-face', true );
 				}
 				wp_reset_postdata();
 			}
-
+		
 			if ( ! empty( $font_styles ) ) {
-				?>
-					<style type="text/css" id="cst_font_data">
-						<?php echo wp_strip_all_tags( $font_styles ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					</style>
-				<?php
+				// enqueue a CSS file instead of outputting the styles directly
+				wp_add_inline_style( 'theme-style', wp_strip_all_tags( $font_styles ) );
 			}
-		}
+		}		
 
 		/**
 		 * Enqueue Styles for frontend for preloading.
