@@ -3,7 +3,7 @@ Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: typography, fonts, custom fonts, Google Fonts, performance, privacy, full site editing, adobe fonts, GDPR
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.4
 Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -142,10 +142,12 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 == Screenshots ==
 
-1. Upload and manage your own custom font files.
-2. Choose from a vast collection of Google Fonts and host them locally.
-3. Customize typography settings and apply them to your website.
-4. Seamless integration with WordPress Full Site Editing Themes.
+1. Add a new font through the Custom Fonts page.
+2. Configure a local font by adding its title and font files.
+3. Upload and select a local font file.
+4. Preview the locally uploaded font.
+5. Set up a Google font from an extensive collection available.
+6. View a list of all uploaded fonts.
 
 
 == Changelog ==
