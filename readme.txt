@@ -142,10 +142,12 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 == Screenshots ==
 
-1. Upload and manage your own custom font files.
-2. Choose from a vast collection of Google Fonts and host them locally.
-3. Customize typography settings and apply them to your website.
-4. Seamless integration with WordPress Full Site Editing Themes.
+1. Add new font from Custom Fonts page.
+2. Setup local font with title & font files.
+3. Upload & choose local font file.
+4. Preview of uploaded local font.
+5. Setup Google font from a vast collection of Google fonts.
+6. List of all uploaded fonts.
 
 
 == Changelog ==
