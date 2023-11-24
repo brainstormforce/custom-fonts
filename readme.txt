@@ -142,12 +142,12 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 == Screenshots ==
 
-1. Add new font from Custom Fonts page.
-2. Setup local font with title & font files.
-3. Upload & choose local font file.
-4. Preview of uploaded local font.
-5. Setup Google font from a vast collection of Google fonts.
-6. List of all uploaded fonts.
+1. Add a new font through the Custom Fonts page.
+2. Configure a local font by adding its title and font files.
+3. Upload and select a local font file.
+4. Preview the locally uploaded font.
+5. Set up a Google font from an extensive collection available.
+6. View a list of all uploaded fonts.
 
 
 == Changelog ==
