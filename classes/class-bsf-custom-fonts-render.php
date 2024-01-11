@@ -145,6 +145,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 		/**
 		 * Registeed & enqueues custom inline styles.
+		 *
 		 * @since x.x.x
 		 */
 		public function custom_fonts_frontend_styles() {
@@ -158,6 +159,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 		/**
 		 * Collected the font styles.
+		 *
 		 * @since x.x.x
 		 * @return string The inline styles.
 		 */
