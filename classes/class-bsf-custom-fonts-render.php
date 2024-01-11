@@ -139,22 +139,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
 			// Astra filter before creating google fonts URL.
 			add_filter( 'astra_google_fonts_selected', array( $this, 'remove_custom_font_google_url' ) );
-			// Hook the enqueue style method to the 'wp_enqueue_scripts' action.
-			add_action( 'wp_enqueue_scripts', array( $this, 'my_custom_fonts_enqueue_style' ) );
-		}
-
-		/**
-		 * Registeed & enqueues custom inline styles.
-		 *
-		 * @since x.x.x
-		 */
-		public function custom_fonts_frontend_styles() {
-			wp_register_style( 'custom-font-plugin-styles', false, array(), BSF_CUSTOM_FONTS_VER );
-			wp_enqueue_style( 'custom-font-plugin-styles' );
-
-			$font_styles = $this->get_font_styles();
-
-			wp_add_inline_style( 'custom-font-plugin-styles', $font_styles );
 		}
 
 		/**
