@@ -147,7 +147,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * Registeed & enqueues custom inline styles.
 		 * @since x.x.x
 		 */
-		public function my_custom_fonts_enqueue_style() {
+		public function custom_fonts_frontend_styles() {
 			wp_register_style( 'custom-font-plugin-styles', false, array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_style( 'custom-font-plugin-styles' );
 
