@@ -322,9 +322,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			}
 
 			if ( ! empty( $font_styles ) ) {
-				wp_register_style( 'my-plugin-style', false, array(), BSF_CUSTOM_FONTS_VER );
-				wp_enqueue_style( 'my-plugin-style' );
-				wp_add_inline_style( 'my-plugin-style', wp_strip_all_tags( $font_styles ) );
+				wp_register_style( 'cf-frontend-style', false, array(), BSF_CUSTOM_FONTS_VER );
+				wp_enqueue_style( 'cf-frontend-style' );
+				wp_add_inline_style( 'cf-frontend-style', wp_strip_all_tags( $font_styles ) );
 			}
 		}
 
