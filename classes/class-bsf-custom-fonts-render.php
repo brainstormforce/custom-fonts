@@ -147,7 +147,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * Registeed & enqueues custom inline styles.
 		 */
 		public function my_custom_fonts_enqueue_style() {
-			wp_register_style( 'custom-font-plugin-styles', false );
+			wp_register_style( 'custom-font-plugin-styles', false, array(), BSF_CUSTOM_FONTS_VER );
 			wp_enqueue_style( 'custom-font-plugin-styles' );
 
 			$font_styles = $this->get_font_styles();
@@ -321,7 +321,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			}
 
 			if ( ! empty( $font_styles ) ) {
-				wp_register_style( 'my-plugin-style', false );
+				wp_register_style( 'my-plugin-style', false, array(), BSF_CUSTOM_FONTS_VER );
 				wp_enqueue_style( 'my-plugin-style' );
 				wp_add_inline_style( 'my-plugin-style', wp_strip_all_tags( $font_styles ) );
 			}
