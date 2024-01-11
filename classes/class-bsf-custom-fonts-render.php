@@ -139,6 +139,39 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
 			// Astra filter before creating google fonts URL.
 			add_filter( 'astra_google_fonts_selected', array( $this, 'remove_custom_font_google_url' ) );
+			// Hook the enqueue style method to the 'wp_enqueue_scripts' action.
+			add_action( 'wp_enqueue_scripts', array( $this, 'my_custom_fonts_enqueue_style' ) );
+		}
+
+		/**
+		 * Registeed & enqueues custom inline styles.
+		 */
+		public function my_custom_fonts_enqueue_style() {
+			wp_register_style( 'custom-font-plugin-styles', false );
+			wp_enqueue_style( 'custom-font-plugin-styles' );
+
+			$font_styles = $this->get_font_styles();
+
+			wp_add_inline_style( 'custom-font-plugin-styles', $font_styles );
+		}
+
+		/**
+		 * Collected the font styles.
+		 *
+		 * @return string The inline styles.
+		 */
+		private function get_font_styles() {
+			$font_styles = '';
+			$query_posts = $this->get_existing_font_posts();
+
+			if ( $query_posts ) {
+				foreach ( $query_posts as $key => $post_id ) {
+					$font_styles .= get_post_meta( $post_id, 'fonts-face', true );
+				}
+				wp_reset_postdata();
+			}
+
+			return $font_styles;
 		}
 
 		/**
@@ -288,11 +321,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			}
 
 			if ( ! empty( $font_styles ) ) {
-				?>
-					<style type="text/css" id="cst_font_data">
-						<?php echo wp_strip_all_tags( $font_styles ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					</style>
-				<?php
+				wp_register_style( 'my-plugin-style', false );
+				wp_enqueue_style( 'my-plugin-style' );
+				wp_add_inline_style( 'my-plugin-style', wp_strip_all_tags( $font_styles ) );
 			}
 		}
 
