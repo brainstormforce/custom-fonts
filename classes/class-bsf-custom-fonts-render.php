@@ -142,26 +142,6 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		}
 
 		/**
-		 * Collected the font styles.
-		 *
-		 * @since x.x.x
-		 * @return string The inline styles.
-		 */
-		private function get_font_styles() {
-			$font_styles = '';
-			$query_posts = $this->get_existing_font_posts();
-
-			if ( $query_posts ) {
-				foreach ( $query_posts as $key => $post_id ) {
-					$font_styles .= get_post_meta( $post_id, 'fonts-face', true );
-				}
-				wp_reset_postdata();
-			}
-
-			return $font_styles;
-		}
-
-		/**
 		 * Get existing site setup fonts.
 		 *
 		 * @return mixed
