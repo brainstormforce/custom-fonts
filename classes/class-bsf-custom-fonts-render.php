@@ -158,7 +158,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 		/**
 		 * Collected the font styles.
-		 *
+		 * @since x.x.x
 		 * @return string The inline styles.
 		 */
 		private function get_font_styles() {
