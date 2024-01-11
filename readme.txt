@@ -152,7 +152,7 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 == Changelog ==
 = 2.1.2 =
-- Fix: "Fix: Resolve PHP Warning 'Cannot modify header information' during post content editing in Gutenberg.
+- Fix: Resolve PHP Warning 'Cannot modify header information' during post content editing in Gutenberg.
 
 = 2.1.1 =
 - Improvement: Compatibility with WordPress 6.4.
