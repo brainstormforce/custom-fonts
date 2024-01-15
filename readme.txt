@@ -153,7 +153,7 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 == Changelog ==
 = 2.1.2 =
 - Fix: Resolve PHP Warning 'Cannot modify header information' during post content editing in Gutenberg.
-- Fix: Thrive product created layout's changes not saved due to Custom font's plugin conflicts.
+- Fix: Thrive product created layout's changes not saved due to Custom fonts plugin conflicts.
 
 = 2.1.1 =
 - Improvement: Compatibility with WordPress 6.4.
