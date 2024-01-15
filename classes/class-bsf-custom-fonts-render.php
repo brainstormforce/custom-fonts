@@ -132,7 +132,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'fl_builder_font_families_system', array( $this, 'bb_custom_fonts' ) );
 
 			// Add font files style.
-			if ( is_plugin_active( 'thrive-apprentice/thrive-apprentice.php' ) || is_plugin_active( 'thrive-product-manager/thrive-product-manager.php' ) ) {
+			if ( class_exists( 'Thrive_Product_Manager' ) || class_exists( 'TVA_Const' ) ) {
 				add_action( 'wp_head', array( $this, 'add_style' ) );
 			} else {
 				add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
