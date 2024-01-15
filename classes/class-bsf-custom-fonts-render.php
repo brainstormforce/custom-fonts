@@ -132,8 +132,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'fl_builder_font_families_system', array( $this, 'bb_custom_fonts' ) );
 
 			// Add font files style.
-			add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
-			add_action( 'init', array( $this, 'add_block_assets_style' ) );
+			// Add font files style.
+			if ( is_plugin_active( 'thrive-apprentice/thrive-apprentice.php' ) || is_plugin_active( 'thrive-product-manager/thrive-product-manager.php' ) ) {
+				add_action( 'wp_head', array( $this, 'add_style' ) );
+			} else {
+				add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
+			}           add_action( 'init', array( $this, 'add_block_assets_style' ) );
 
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
