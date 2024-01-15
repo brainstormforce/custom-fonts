@@ -106,6 +106,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		}
 
 		/**
+		 * Check if either 'Thrive_Product_Manager' or 'TVA_Const' classes exist.
+		 *
+		 * @return bool
+		 */
+		public static function is_thrive_or_tva_active() {
+			return class_exists( 'Thrive_Product_Manager' ) || class_exists( 'TVA_Const' );
+		}
+
+		/**
 		 * Constructor.
 		 *
 		 * @since  1.0.0
@@ -279,7 +288,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		public function add_style() {
 
-			if ( class_exists( 'Thrive_Product_Manager' ) || class_exists( 'TVA_Const' ) ) {
+			if ( self::is_thrive_or_tva_active() ) {
 
 				$font_styles = '';
 				$query_posts = $this->get_existing_font_posts();
@@ -306,7 +315,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 */
 		public function preload_styles() {
 
-			if ( class_exists( 'Thrive_Product_Manager' ) || class_exists( 'TVA_Const' ) ) {
+			if ( self::is_thrive_or_tva_active() ) {
 				return;
 			}
 
