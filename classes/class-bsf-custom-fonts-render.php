@@ -131,12 +131,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'fl_theme_system_fonts', array( $this, 'bb_custom_fonts' ) );
 			add_filter( 'fl_builder_font_families_system', array( $this, 'bb_custom_fonts' ) );
 
-			// Add font files style.
-			if ( class_exists( 'Thrive_Product_Manager' ) || class_exists( 'TVA_Const' ) ) {
-				add_action( 'wp_head', array( $this, 'add_style' ) );
-			} else {
-				add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
-			}
+			// Add font file styles.
+			add_action( 'wp_head', array( $this, 'add_style' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
 
 			add_action( 'init', array( $this, 'add_block_assets_style' ) );
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
@@ -281,20 +278,24 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 1.0.4
 		 */
 		public function add_style() {
-			$font_styles = '';
-			$query_posts = $this->get_existing_font_posts();
 
-			if ( $query_posts ) {
-				foreach ( $query_posts as $key => $post_id ) {
-					$font_styles .= get_post_meta( $post_id, 'fonts-face', true );
+			if ( class_exists( 'Thrive_Product_Manager' ) || class_exists( 'TVA_Const' ) ) {
+
+				$font_styles = '';
+				$query_posts = $this->get_existing_font_posts();
+
+				if ( $query_posts ) {
+					foreach ( $query_posts as $key => $post_id ) {
+						$font_styles .= get_post_meta( $post_id, 'fonts-face', true );
+					}
+					wp_reset_postdata();
 				}
-				wp_reset_postdata();
-			}
 
-			if ( ! empty( $font_styles ) ) {
-				wp_register_style( 'cf-frontend-style', false, array(), BSF_CUSTOM_FONTS_VER );
-				wp_enqueue_style( 'cf-frontend-style' );
-				wp_add_inline_style( 'cf-frontend-style', wp_strip_all_tags( $font_styles ) );
+				if ( ! empty( $font_styles ) ) {
+					wp_register_style( 'cf-frontend-style', false, array(), BSF_CUSTOM_FONTS_VER );
+					wp_enqueue_style( 'cf-frontend-style' );
+					wp_add_inline_style( 'cf-frontend-style', wp_strip_all_tags( $font_styles ) );
+				}
 			}
 		}
 
@@ -304,6 +305,11 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since x.x.x
 		 */
 		public function preload_styles() {
+
+			if ( class_exists( 'Thrive_Product_Manager' ) || class_exists( 'TVA_Const' ) ) {
+				return;
+			}
+
 			$font_urls = get_option( 'bcf_font_urls', array() );
 
 			if ( true === (bool) get_option( 'bcf_preloading_fonts', false ) && ! empty( $font_urls ) ) {
