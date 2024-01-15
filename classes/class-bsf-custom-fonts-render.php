@@ -137,8 +137,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				add_action( 'wp_head', array( $this, 'add_style' ) );
 			} else {
 				add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
-			}           add_action( 'init', array( $this, 'add_block_assets_style' ) );
+			}
 
+			add_action( 'init', array( $this, 'add_block_assets_style' ) );
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
 			// Astra filter before creating google fonts URL.
