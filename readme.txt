@@ -152,6 +152,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 == Changelog ==
 = 2.1.1 =
+- Fix: Thrive product created layout's changes not saved due to Custom font's plugin conflicts.
+
+= 2.1.1 =
 - Improvement: Compatibility with WordPress 6.4.
 
 = 2.1.0 =
