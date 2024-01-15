@@ -132,9 +132,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'fl_builder_font_families_system', array( $this, 'bb_custom_fonts' ) );
 
 			// Add font files style.
-			add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
-			add_action( 'init', array( $this, 'add_block_assets_style' ) );
+			if ( is_plugin_active( 'thrive-apprentice/thrive-apprentice.php' ) || is_plugin_active( 'thrive-product-manager/thrive-product-manager.php' ) ) {
+				add_action( 'wp_head', array( $this, 'add_style' ) );
+			} else {
+				add_action( 'wp_enqueue_scripts', array( $this, 'preload_styles' ), 1 );
+			}
 
+			add_action( 'init', array( $this, 'add_block_assets_style' ) );
 			add_filter( 'elementor/fonts/groups', array( $this, 'elementor_group' ) );
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
 			// Astra filter before creating google fonts URL.
@@ -288,11 +292,9 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			}
 
 			if ( ! empty( $font_styles ) ) {
-				?>
-					<style type="text/css" id="cst_font_data">
-						<?php echo wp_strip_all_tags( $font_styles ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-					</style>
-				<?php
+				wp_register_style( 'cf-frontend-style', false, array(), BSF_CUSTOM_FONTS_VER );
+				wp_enqueue_style( 'cf-frontend-style' );
+				wp_add_inline_style( 'cf-frontend-style', wp_strip_all_tags( $font_styles ) );
 			}
 		}
 
