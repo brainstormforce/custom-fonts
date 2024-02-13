@@ -7,13 +7,13 @@ const GFontVariation = (props) => {
 	const { weight, font, isInGoogleState, disable } = props;
 	const googleFont = useSelector( ( state ) => state.googleFont );
 	const dispatch = useDispatch();
-	const [removeTitle, setRemoveTitle] = useState("Remove");
-	const [addTitle, setAddTitle] = useState("Add");
+	const [removeTitle, setRemoveTitle] = useState( __( 'Remove', 'custom-fonts' ) );
+	const [addTitle, setAddTitle] = useState( __( 'Add', 'custom-fonts' ) );
 
 	useEffect(() => {
 		if (!disable) {
-			setRemoveTitle("Remove");
-			setAddTitle("Add");
+			setRemoveTitle( __( 'Remove', 'custom-fonts' ) );
+			setAddTitle( __( 'Add', 'custom-fonts' ) );
 		}
 	}, [disable]);
 
@@ -65,7 +65,7 @@ const GFontVariation = (props) => {
 	const addWeight = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		setRemoveTitle("Adding...");
+		setRemoveTitle( __( 'Adding...', 'custom-fonts' ) );
 
 		const varWt = e.target.dataset.font_weight;
 		const variations = googleFont.variations;
@@ -94,7 +94,7 @@ const GFontVariation = (props) => {
 	const removeWeight = (e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		setAddTitle("Removing...");
+		setAddTitle( __( 'Removing...', 'custom-fonts' ) );
 
 		const updatedVariations = googleFont.variations.filter(
 			(variation) => variation.font_weight !== weight
@@ -153,7 +153,7 @@ const GFontVariation = (props) => {
 							disabled={disable}
 							style={
 								disable
-									? addTitle === "Removing..."
+									? addTitle === __( 'Removing...', 'custom-fonts' )
 										? {
 											color: "#3858E9",  // by removing time
 											borderColor: "#3858E9",
@@ -167,14 +167,14 @@ const GFontVariation = (props) => {
 									: { boxShadow: "inset 0 0 0 1px" }
 							}
 							className={
-								addTitle === "Removing..."
+								addTitle === __( 'Removing...', 'custom-fonts' )
 									? "flex text-danger items-center components-button is-secondary border border-danger"
 									: "flex items-center components-button is-secondary"
 							}
 							data-font_weight={weight}
 							onClick={addWeight}
 						>
-							{addTitle === "Removing..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+							{addTitle === __( 'Removing...', 'custom-fonts' ) ? (Custom_Fonts_Icons['loadingSpinner3']) : (
 								<span data-font_weight={weight}>
 									{Custom_Fonts_Icons['iconsquare']}
 								</span>
@@ -189,7 +189,7 @@ const GFontVariation = (props) => {
 							disabled={disable}
 							style={
 								disable
-									? removeTitle === "Adding..."
+									? removeTitle === __( 'Adding...', 'custom-fonts' )
 										? {
 											color: "#3858E9",
 											borderColor: "#3858E9", // Updated border color
@@ -203,14 +203,14 @@ const GFontVariation = (props) => {
 									: { boxShadow: "inset 0 0 0 1px" }
 							}
 							className={
-								removeTitle === "Adding..."
+								removeTitle === __( 'Adding...', 'custom-fonts' )
 									? "flex items-center components-button is-secondary"
 									: "flex text-danger items-center components-button is-secondary border border-danger"
 							}
 							data-font_weight={weight}
 							onClick={removeWeight}
 						>
-							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+							{removeTitle === __( 'Adding...', 'custom-fonts' ) ? (Custom_Fonts_Icons['loadingSpinner3']) : (
 								<span data-font_weight={weight}>
 									{Custom_Fonts_Icons['iconsquare2']}
 								</span>
