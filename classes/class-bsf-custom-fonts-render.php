@@ -240,7 +240,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			if ( ! empty( $fonts ) ) {
 				foreach ( $fonts as $post_id ) {
 					$font_family_name = get_the_title( $post_id );
-					// Check if $font_family_name is a non-empty string before adding it to the array
+					// Check if $font_family_name is a non-empty string before adding it to the array.
 					if ( is_string( $font_family_name ) && ! empty( $font_family_name ) ) {
 						$custom_fonts[ $font_family_name ] = array(
 							'fallback' => 'Verdana, Arial, sans-serif',
