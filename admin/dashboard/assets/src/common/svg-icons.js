@@ -163,12 +163,12 @@ const Custom_Fonts_Icons = {
             width: 20,
             height: 12,
             focusable: false,
-            className: 'mr-[2px] checkmark-icon',
+            className: 'mr-[2px]',
         },
         el('path', {
             d: 'M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z',
         })
-    ),       
+    ),
     'loadingSpinner2': el(
         'svg',
         {
