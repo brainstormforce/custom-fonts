@@ -228,7 +228,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		}
 
 		/**
-		 * Add Custom Font list to BB theme and BB Page Builder
+		 * Incorporate a feature allowing users to integrate custom fonts into both the BB theme and BB Page Builder.
 		 *
 		 * @since  1.0.4
 		 * @param array $bb_fonts font families added by bb.
