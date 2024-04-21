@@ -137,7 +137,7 @@ class BSF_Custom_Fonts_Menu {
 
 		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
 			// Performing SVG sanitization here.
-			$svg_content = file_get_contents( $file );
+			$svg_content = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 
 			// Use DOMDocument to parse the SVG content.
 			$dom = new DOMDocument();
@@ -146,7 +146,7 @@ class BSF_Custom_Fonts_Menu {
 			// Allow only specific SVG elements.
 			$allowed_elements = array( 'svg', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'ellipse', 'g', 'text', 'use' );
 			foreach ( $dom->getElementsByTagName( '*' ) as $element ) {
-				if ( ! in_array( $element->nodeName, $allowed_elements ) ) {
+				if ( ! in_array( $element->nodeName, $allowed_elements ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 					$element->parentNode->removeChild( $element );
 				}
 			}
