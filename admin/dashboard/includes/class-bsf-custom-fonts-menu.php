@@ -136,14 +136,14 @@ class BSF_Custom_Fonts_Menu {
 		}
 
 		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
-			// Performing SVG sanitization here
+			// Performing SVG sanitization here.
 			$svg_content = file_get_contents( $file );
 
-			// Use DOMDocument to parse the SVG content
+			// Use DOMDocument to parse the SVG content.
 			$dom = new DOMDocument();
 			$dom->loadXML( $svg_content );
 
-			// Allow only specific SVG elements
+			// Allow only specific SVG elements.
 			$allowed_elements = array( 'svg', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'ellipse', 'g', 'text', 'use' );
 			foreach ( $dom->getElementsByTagName( '*' ) as $element ) {
 				if ( ! in_array( $element->nodeName, $allowed_elements ) ) {
@@ -151,13 +151,13 @@ class BSF_Custom_Fonts_Menu {
 				}
 			}
 
-			// Serialized this DOMDocument to a string
+			// Serialized this DOMDocument to a string.
 			$sanitized_svg_content = $dom->saveXML();
 
-			// Updated the file contents with the sanitized SVG content
+			// Updated the file contents with the sanitized SVG content.
 			file_put_contents( $file, $sanitized_svg_content );
 
-			// Update mime type and extension
+			// Update mime type and extension.
 			$defaults['type'] = 'image/svg+xml';
 			$defaults['ext']  = 'svg';
 		}
