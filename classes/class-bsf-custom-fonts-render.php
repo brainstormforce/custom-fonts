@@ -330,8 +330,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				$font_type = get_post_meta( $post_id, 'font-type', true );
 				if ( 'google' !== $font_type ) {
 					$custom_fonts_weights = array();
-					if ( ! empty( $font_data['variations'] ) ) {
-						foreach ( $font_data['variations'] as $var_key => $var_data ) {
+					if ( ! empty( esc_html($font_data['variations']) ) ) {
+						foreach ( esc_html($font_data['variations']) as $var_key => $var_data ) {
 							if ( ! empty( $var_data['font_weight'] ) ) {
 								array_push( $custom_fonts_weights, $var_data['font_weight'] );
 							}
@@ -363,8 +363,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				$font_type = get_post_meta( $post_id, 'font-type', true );
 				if ( 'google' !== $font_type ) {
 					$custom_fonts_weights = array( 'Default' );
-					if ( ! empty( $font_data['variations'] ) ) {
-						foreach ( $font_data['variations'] as $var_key => $var_data ) {
+					if ( ! empty( esc_html($font_data['variations']) ) ) {
+						foreach ( esc_html($font_data['variations']) as $var_key => $var_data ) {
 							array_push( $custom_fonts_weights, $var_data['font_weight'] );
 						}
 					}

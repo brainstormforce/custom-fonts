@@ -150,8 +150,8 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$font_slug      = $this->get_font_slug( $font_family );
 				$font_data      = get_post_meta( $id, 'fonts-data', true );
 
-				if ( ! empty( $font_data['variations'] ) ) {
-					foreach ( $font_data['variations'] as $variation ) {
+				if ( ! empty( esc_html($font_data['variations']) ) ) {
+					foreach ( esc_html($font_data['variations']) as $variation ) {
 						$font_weight = ! empty( $variation['font_weight'] ) ? $variation['font_weight'] : '';
 						$font_style  = ! empty( $variation['font_style'] ) ? $variation['font_style'] : 'normal';
 
@@ -296,7 +296,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 			if ( ! is_null( $font_id ) && 'local' === get_post_meta( $font_id, 'font-type', true ) ) {
 				$font_data  = get_post_meta( $font_id, 'fonts-data', true );
 				$fonts_link = '';
-				foreach ( $font_data['variations'] as $key => $var_arr ) {
+				foreach ( esc_html($font_data['variations']) as $key => $var_arr ) {
 					if ( ! empty( $var_arr['font_weight'] ) && $font_weight === $var_arr['font_weight'] && ! empty( $var_arr['font_url'][0] ) ) {
 						$fonts_link = $var_arr['font_url'][0];
 						break;
