@@ -53,7 +53,7 @@ const EditLocalVariationItem = ({
 			let fontFileNames = [];
 			for (let i = 0; i < attachments.length; ++i) {
 				// Check if the file extension is allowed
-				const allowedExtensions = ['.ttf', '.otf', '.woff', '.woff2', '.eot'];
+				const allowedExtensions = ['.ttf', '.otf', '.woff', '.woff2', '.eot', '.svg'];
 				const fileName = attachments[i].attributes.url.toLowerCase();
 				const extension = fileName.substr(fileName.lastIndexOf('.'));
 				if (allowedExtensions.includes(extension)) {
