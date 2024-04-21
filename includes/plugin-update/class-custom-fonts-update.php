@@ -191,7 +191,7 @@ class Custom_Fonts_Update {
 
 					// Create post object.
 					$new_font_post = array(
-						'post_title'  => ! empty( esc_html($font_data['font_name']) ) ? esc_html($font_data['font_name']) : 'untitled',
+						'post_title'  => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
 						'post_status' => 'publish',
 						'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
 					);

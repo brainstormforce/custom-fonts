@@ -111,7 +111,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		}
 
 		$font_data       = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
-		$font_variations = ! empty( esc_html($font_data['variations']) ) ? esc_html($font_data['variations']) : array();
+		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
 		$font_type       = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
 
 		if ( empty( $font_variations ) ) {
@@ -121,7 +121,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		// Create post object.
 		$new_font_post = array(
-			'post_title'  => ! empty( esc_html($font_data['font_name']) ) ? esc_html($font_data['font_name']) : 'untitled',
+			'post_title'  => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
 			'post_status' => 'publish',
 			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
 		);
@@ -180,7 +180,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 
 		// Create post object.
 		$new_font_post = array(
-			'post_title'  => ! empty( esc_html($font_data['font_name']) ) ? esc_html($font_data['font_name']) : 'untitled',
+			'post_title'  => ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : 'untitled',
 			'post_status' => 'publish',
 			'post_type'   => BSF_CUSTOM_FONTS_POST_TYPE,
 		);
@@ -235,7 +235,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		}
 
 		$font_data       = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
-		$font_variations = ! empty( esc_html($font_data['variations']) ) ? esc_html($font_data['variations']) : array();
+		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
 		$font_type       = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
 		$font_id         = ! empty( $_POST['font_id'] ) ? absint( $_POST['font_id'] ) : false;
 

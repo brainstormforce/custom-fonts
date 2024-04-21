@@ -219,7 +219,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					$font_data = get_post_meta( $post_id, 'fonts-data', true );
 					$font_type = get_post_meta( $post_id, 'font-type', true );
 					if ( 'google' !== $font_type ) {
-						$fonts[ esc_html( $font_data['font_name'] ) ] = self::$font_base;
+						$fonts[ $font_data['font_name'] ] = self::$font_base;
 					}
 				}
 			}
@@ -240,7 +240,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			if ( ! empty( $fonts ) ) {
 				foreach ( $fonts as $key => $post_id ) {
 					$font_family_name                  = get_the_title( $post_id );
-					$custom_fonts[ esc_html( $font_family_name ) ] = array(
+					$custom_fonts[ $font_family_name ] = array(
 						'fallback' => 'Verdana, Arial, sans-serif',
 						'weights'  => array( '100', '200', '300', '400', '500', '600', '700', '800', '900' ),
 					);
@@ -330,15 +330,15 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				$font_type = get_post_meta( $post_id, 'font-type', true );
 				if ( 'google' !== $font_type ) {
 					$custom_fonts_weights = array();
-					if ( ! empty( esc_html($font_data['variations']) ) ) {
-						foreach ( esc_html($font_data['variations']) as $var_key => $var_data ) {
+					if ( ! empty( $font_data['variations'] ) ) {
+						foreach ( $font_data['variations'] as $var_key => $var_data ) {
 							if ( ! empty( $var_data['font_weight'] ) ) {
 								array_push( $custom_fonts_weights, $var_data['font_weight'] );
 							}
 						}
 					}
-					$fonts_arr[ esc_html( $font_data['font_name'] ) ] = array(
-						'fallback' => esc_html( $font_data['font_fallback'] ) ? esc_html( $font_data['font_fallback'] ) : 'Helvetica, Arial, sans-serif',
+					$fonts_arr[ $font_data['font_name'] ] = array(
+						'fallback' => $font_data['font_fallback'] ? $font_data['font_fallback'] : 'Helvetica, Arial, sans-serif',
 						'weights'  => $custom_fonts_weights,
 					);
 				}
@@ -363,12 +363,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				$font_type = get_post_meta( $post_id, 'font-type', true );
 				if ( 'google' !== $font_type ) {
 					$custom_fonts_weights = array( 'Default' );
-					if ( ! empty( esc_html($font_data['variations']) ) ) {
-						foreach ( esc_html($font_data['variations']) as $var_key => $var_data ) {
+					if ( ! empty( $font_data['variations'] ) ) {
+						foreach ( $font_data['variations'] as $var_key => $var_data ) {
 							array_push( $custom_fonts_weights, $var_data['font_weight'] );
 						}
 					}
-					$fonts_arr[ esc_html( $font_data['font_name'] ) ] = array(
+					$fonts_arr[ $font_data['font_name'] ] = array(
 						'weight' => $custom_fonts_weights,
 					);
 				}

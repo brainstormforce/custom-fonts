@@ -280,8 +280,8 @@ function bcf_prepare_gfont_face_css( $font_family, $font_data, $variation_data )
 	$font_face .= "\tfont-family: '" . $font_family . "';" . PHP_EOL;
 	$font_face .= ! empty( $variation_data['font_style'] ) ? "\tfont-style: " . $variation_data['font_style'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $variation_data['font_weight'] ) ? "\tfont-weight: " . $variation_data['font_weight'] . ';' . PHP_EOL : '';
-	$font_face .= ! empty( esc_html($font_data['font_display']) ) ? "\tfont-display: " . esc_html($font_data['font_display']) . ';' . PHP_EOL : '';
-	$font_face .= ! empty( esc_html($font_data['font_fallback']) ) ? "\tfont-fallback: " . esc_html($font_data['font_fallback']) . ';' . PHP_EOL : '';
+	$font_face .= ! empty( $font_data['font_display'] ) ? "\tfont-display: " . $font_data['font_display'] . ';' . PHP_EOL : '';
+	$font_face .= ! empty( $font_data['font_fallback'] ) ? "\tfont-fallback: " . $font_data['font_fallback'] . ';' . PHP_EOL : '';
 
 	if ( empty( $font_urls ) ) {
 		$font_face .= '}';
@@ -308,8 +308,8 @@ function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data )
 	$font_face  = '@font-face {' . PHP_EOL;
 	$font_face .= "\tfont-family: '" . $font_family . "';" . PHP_EOL;
 	$font_face .= ! empty( $variation_data['font_weight'] ) ? "\tfont-weight: " . $variation_data['font_weight'] . ';' . PHP_EOL : '';
-	$font_face .= ! empty( esc_html($font_data['font_display']) ) ? "\tfont-display: " . esc_html($font_data['font_display']) . ';' . PHP_EOL : '';
-	$font_face .= ! empty( esc_html($font_data['font_fallback']) ) ? "\tfont-fallback: " . esc_html($font_data['font_fallback']) . ';' . PHP_EOL : '';
+	$font_face .= ! empty( $font_data['font_display'] ) ? "\tfont-display: " . $font_data['font_display'] . ';' . PHP_EOL : '';
+	$font_face .= ! empty( $font_data['font_fallback'] ) ? "\tfont-fallback: " . $font_data['font_fallback'] . ';' . PHP_EOL : '';
 
 	$variation_urls = $variation_data['font_url'];
 	if ( empty( $variation_urls ) ) {
@@ -371,7 +371,7 @@ function bcf_get_font_face_css( $post_id, $font_data = array(), $force_update = 
 
 	$font_face = '';
 	if ( true === $is_google_font ) {
-		$font_family = ! empty( esc_html($font_data['font_name']) ) ? esc_html($font_data['font_name']) : '';
+		$font_family = ! empty( $font_data['font_name'] ) ? $font_data['font_name'] : '';
 	} else {
 		$font_family = get_the_title( $post_id );
 	}
@@ -383,7 +383,7 @@ function bcf_get_font_face_css( $post_id, $font_data = array(), $force_update = 
 		return '';
 	}
 
-	foreach ( esc_html($font_data['variations']) as $key => $variation_data ) {
+	foreach ( $font_data['variations'] as $key => $variation_data ) {
 		if ( true === $is_google_font ) {
 			$font_face .= bcf_prepare_gfont_face_css( $font_family, $font_data, $variation_data ) . PHP_EOL;
 		} else {
