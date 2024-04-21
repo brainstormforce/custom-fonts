@@ -106,6 +106,7 @@ class BSF_Custom_Fonts_Menu {
 		$mimes['woff']  = 'application/x-font-woff';
 		$mimes['woff2'] = 'application/x-font-woff2';
 		$mimes['ttf']   = 'application/x-font-ttf';
+		// Allow SVG with additional sanitization
 		$mimes['svg']   = 'image/svg+xml';
 		$mimes['eot']   = 'application/vnd.ms-fontobject';
 		$mimes['otf']   = 'font/otf';
@@ -132,6 +133,33 @@ class BSF_Custom_Fonts_Menu {
 		if ( 'otf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
 			$defaults['type'] = 'application/x-font-otf';
 			$defaults['ext']  = 'otf';
+		}
+
+		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+			// Performing SVG sanitization here
+			$svg_content = file_get_contents( $file );
+			
+			// Use DOMDocument to parse the SVG content
+			$dom = new DOMDocument();
+			$dom->loadXML($svg_content);
+		
+			// Allow only specific SVG elements
+			$allowed_elements = array('svg', 'path', 'circle', 'rect', 'line', 'polyline', 'polygon', 'ellipse', 'g', 'text', 'use');
+			foreach ($dom->getElementsByTagName('*') as $element) {
+				if (!in_array($element->nodeName, $allowed_elements)) {
+					$element->parentNode->removeChild($element);
+				}
+			}
+		
+			// Serialized this DOMDocument to a string
+			$sanitized_svg_content = $dom->saveXML();
+		
+			// Updated the file contents with the sanitized SVG content
+			file_put_contents( $file, $sanitized_svg_content );
+		
+			// Update mime type and extension
+			$defaults['type'] = 'image/svg+xml';
+			$defaults['ext']  = 'svg';
 		}
 
 		return $defaults;

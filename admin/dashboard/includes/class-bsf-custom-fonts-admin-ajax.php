@@ -111,7 +111,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		}
 
 		$font_data       = isset( $_POST['font_data'] ) ? bcf_sanitize_text_field_recursive( json_decode( stripslashes( $_POST['font_data'] ), true ) ) : array();
-		$font_variations = ! empty( $font_data['variations'] ) ? $font_data['variations'] : array();
+		$font_variations = ! empty( esc_html($font_data['variations']) ) ? $font_data['variations'] : array();
 		$font_type       = ! empty( $_POST['font_type'] ) ? sanitize_text_field( $_POST['font_type'] ) : 'local';
 
 		if ( empty( $font_variations ) ) {
