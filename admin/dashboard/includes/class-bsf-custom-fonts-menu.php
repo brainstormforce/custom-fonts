@@ -106,7 +106,7 @@ class BSF_Custom_Fonts_Menu {
 		$mimes['woff']  = 'application/x-font-woff';
 		$mimes['woff2'] = 'application/x-font-woff2';
 		$mimes['ttf']   = 'application/x-font-ttf';
-		// Allow SVG with additional sanitization
+		// Allow SVG with additional sanitization.
 		$mimes['svg'] = 'image/svg+xml';
 		$mimes['eot'] = 'application/vnd.ms-fontobject';
 		$mimes['otf'] = 'font/otf';
