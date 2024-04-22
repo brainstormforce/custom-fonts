@@ -116,7 +116,7 @@ class BSF_Custom_Fonts_Menu {
 
 	/**
 	 * Sanitizes SVG Code string.
-	 * 
+	 *
 	 * @param string $original_content SVG code to sanitize.
 	 * @return string
 	 * @since x.x.x
