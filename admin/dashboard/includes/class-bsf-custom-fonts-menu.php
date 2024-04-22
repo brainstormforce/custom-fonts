@@ -257,18 +257,22 @@ class BSF_Custom_Fonts_Menu {
 		$is_encoded = false;
 
 		$needle = "\x1f\x8b\x08";
+		// phpcs:disable PHPCompatibility.ParameterValues.NewIconvMbstringCharsetDefault.NotSet
 		if ( function_exists( 'mb_strpos' ) ) {
 			$is_encoded = 0 === mb_strpos( $original_content, $needle );
 		} else {
 			$is_encoded = 0 === strpos( $original_content, $needle );
 		}
+		// phpcs:enable PHPCompatibility.ParameterValues.NewIconvMbstringCharsetDefault.NotSet
 
+		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
 		if ( $is_encoded ) {
 			$original_content = gzdecode( $original_content );
 			if ( $original_content === false ) {
 				return '';
 			}
 		}
+		// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
 
 		// Strip php tags.
 		$content = preg_replace( '/<\?(=|php)(.+?)\?>/i', '', $original_content );
