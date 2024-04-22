@@ -337,8 +337,8 @@ class BSF_Custom_Fonts_Menu {
 		for ( $index = $elements->length - 1; $index >= 0; $index-- ) {
 			$current_element = $elements->item( $index );
 			if ( ! in_array( strtolower( $current_element->tagName ), $allowed_tags ) ) {
-				// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				$current_element->parentNode->removeChild( $current_element );
+				// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				continue;
 			}
 
@@ -369,10 +369,12 @@ class BSF_Custom_Fonts_Menu {
 			}
 
 			// Strip use tag with external references.
+			// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			if ( strtolower( $current_element->tagName ) === 'use' ) {
 				$xlink_href = $current_element->getAttributeNS( 'http://www.w3.org/1999/xlink', 'href' );
 				if ( $current_element->parentNode && $xlink_href && strpos( $xlink_href, '#' ) !== 0 ) {
 					$current_element->parentNode->removeChild( $current_element );
+					// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				}
 			}
 		}
