@@ -151,7 +151,7 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 ## Changelog ##
-### 2.1.4 ###
+### 2.1.5 ###
 - Improved codebase for improved security.
 
 ### 2.1.4 ###
