@@ -60,7 +60,12 @@ const EditLocalVariationItem = ({
 					fontFileNames.push(attachments[i].attributes.url);
 				} else {
 					// Reject the file upload and display an error message
-					alert('Invalid file type. Only .ttf, .otf, .woff, .woff2 files are allowed.');
+					alert(
+						__(
+							'Invalid file type. Only .ttf, .otf, .woff, .woff2, .svg files are allowed.',
+							'custom-fonts'
+						)
+					);
 					return;
 				}
 			}
