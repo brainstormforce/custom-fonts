@@ -64,7 +64,6 @@ const EditLocalVariationItem = ({
 					return;
 				}
 			}
-	
 			setFontFileName( fontFileNames );
 			handleVariationChange(
 				event,
