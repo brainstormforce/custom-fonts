@@ -59,7 +59,6 @@ const LocalVariationItem = ({
 					return;
 				}
 			}
-	
 			setFontFileName( fontFileNames );
 			handleVariationChange(
 				event,
