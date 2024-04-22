@@ -72,7 +72,6 @@ const EditLocalVariationItem = ({
 				fontFileNames
 			);
 		});
-	
 		// Finally, open the modal on click
 		frame.open();
 	};
