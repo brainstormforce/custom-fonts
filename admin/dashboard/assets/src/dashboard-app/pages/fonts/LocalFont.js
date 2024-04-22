@@ -67,7 +67,6 @@ const LocalVariationItem = ({
 				fontFileNames
 			);
 		});
-	
 		// Finally, open the modal on click
 		frame.open();
 	};
