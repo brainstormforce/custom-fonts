@@ -404,12 +404,12 @@ class BSF_Custom_Fonts_Menu {
 		}
 
 		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
-			// Perform SVG sanitization using the sanitize_svg function
-			$svg_content           = file_get_contents( $file );
+			// Perform SVG sanitization using the sanitize_svg function.
+			$svg_content           = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 			$sanitized_svg_content = $this->sanitize_svg( $svg_content );
 			file_put_contents( $file, $sanitized_svg_content );
 
-			// Update mime type and extension
+			// Update mime type and extension.
 			$defaults['type'] = 'image/svg+xml';
 			$defaults['ext']  = 'svg';
 		}
