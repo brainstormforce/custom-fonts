@@ -309,8 +309,10 @@ class BSF_Custom_Fonts_Menu {
 
 		// Create DOMDocument instance.
 		$dom                      = new DOMDocument();
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$dom->formatOutput        = false;
 		$dom->preserveWhiteSpace  = false;
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$dom->strictErrorChecking = false;
 
 		$open_svg = ! ! $content ? $dom->loadXML( $content ) : false;
@@ -319,8 +321,10 @@ class BSF_Custom_Fonts_Menu {
 		}
 
 		// Strip Doctype.
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		foreach ( $dom->childNodes as $child ) {
 			if ( XML_DOCUMENT_TYPE_NODE === $child->nodeType && ! ! $child->parentNode ) {
+			// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				$child->parentNode->removeChild( $child );
 			}
 		}
@@ -369,12 +373,15 @@ class BSF_Custom_Fonts_Menu {
 			}
 		}
 
-		// Export sanitized SVG to string.
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$sanitized = $dom->saveXML( $dom->documentElement, LIBXML_NOEMPTYTAG );
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 
 		// Restore defaults.
 		if ( $php_version_under_eight && isset( $libxml_disable_entity_loader ) ) {
+			// phpcs:disable Generic.PHP.DeprecatedFunctions.Deprecated
 			libxml_disable_entity_loader( $libxml_disable_entity_loader );
+			// phpcs:enable Generic.PHP.DeprecatedFunctions.Deprecated
 		}
 		libxml_use_internal_errors( $libxml_use_internal_errors );
 
@@ -407,7 +414,9 @@ class BSF_Custom_Fonts_Menu {
 			// Perform SVG sanitization using the sanitize_svg function.
 			$svg_content           = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 			$sanitized_svg_content = $this->sanitize_svg( $svg_content );
+			// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
 			file_put_contents( $file, $sanitized_svg_content );
+			// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
 
 			// Update mime type and extension.
 			$defaults['type'] = 'image/svg+xml';
