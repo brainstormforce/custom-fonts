@@ -106,12 +106,298 @@ class BSF_Custom_Fonts_Menu {
 		$mimes['woff']  = 'application/x-font-woff';
 		$mimes['woff2'] = 'application/x-font-woff2';
 		$mimes['ttf']   = 'application/x-font-ttf';
-		$mimes['svg']   = 'image/svg+xml';
-		$mimes['eot']   = 'application/vnd.ms-fontobject';
-		$mimes['otf']   = 'font/otf';
+		// Allow SVG with additional sanitization.
+		$mimes['svg'] = 'image/svg+xml';
+		$mimes['eot'] = 'application/vnd.ms-fontobject';
+		$mimes['otf'] = 'font/otf';
 
 		return $mimes;
 	}
+
+	/**
+	 * Sanitizes SVG Code string.
+	 *
+	 * @param string $original_content SVG code to sanitize.
+	 * @return string
+	 * @since x.x.x
+	 * */
+	public function sanitize_svg( $original_content ) {
+
+		if ( ! $original_content ) {
+			return '';
+		}
+
+		// Define allowed tags and attributes.
+		$allowed_tags = array(
+			'a',
+			'circle',
+			'clippath',
+			'defs',
+			'style',
+			'desc',
+			'ellipse',
+			'fegaussianblur',
+			'filter',
+			'foreignobject',
+			'g',
+			'image',
+			'line',
+			'lineargradient',
+			'marker',
+			'mask',
+			'metadata',
+			'path',
+			'pattern',
+			'polygon',
+			'polyline',
+			'radialgradient',
+			'rect',
+			'stop',
+			'svg',
+			'switch',
+			'symbol',
+			'text',
+			'textpath',
+			'title',
+			'tspan',
+			'use',
+		);
+
+		$allowed_attributes = array(
+			'class',
+			'clip-path',
+			'clip-rule',
+			'fill',
+			'fill-opacity',
+			'fill-rule',
+			'filter',
+			'id',
+			'mask',
+			'opacity',
+			'stroke',
+			'stroke-dasharray',
+			'stroke-dashoffset',
+			'stroke-linecap',
+			'stroke-linejoin',
+			'stroke-miterlimit',
+			'stroke-opacity',
+			'stroke-width',
+			'style',
+			'systemlanguage',
+			'transform',
+			'href',
+			'xlink:href',
+			'xlink:title',
+			'cx',
+			'cy',
+			'r',
+			'requiredfeatures',
+			'clippathunits',
+			'type',
+			'rx',
+			'ry',
+			'color-interpolation-filters',
+			'stddeviation',
+			'filterres',
+			'filterunits',
+			'height',
+			'primitiveunits',
+			'width',
+			'x',
+			'y',
+			'font-size',
+			'display',
+			'font-family',
+			'font-style',
+			'font-weight',
+			'text-anchor',
+			'marker-end',
+			'marker-mid',
+			'marker-start',
+			'x1',
+			'x2',
+			'y1',
+			'y2',
+			'gradienttransform',
+			'gradientunits',
+			'spreadmethod',
+			'markerheight',
+			'markerunits',
+			'markerwidth',
+			'orient',
+			'preserveaspectratio',
+			'refx',
+			'refy',
+			'viewbox',
+			'maskcontentunits',
+			'maskunits',
+			'd',
+			'patterncontentunits',
+			'patterntransform',
+			'patternunits',
+			'points',
+			'fx',
+			'fy',
+			'offset',
+			'stop-color',
+			'stop-opacity',
+			'xmlns',
+			'xmlns:se',
+			'xmlns:xlink',
+			'xml:space',
+			'method',
+			'spacing',
+			'startoffset',
+			'dx',
+			'dy',
+			'rotate',
+			'textlength',
+		);
+
+		$is_encoded = false;
+
+		$needle = "\x1f\x8b\x08";
+		// phpcs:disable PHPCompatibility.ParameterValues.NewIconvMbstringCharsetDefault.NotSet
+		if ( function_exists( 'mb_strpos' ) ) {
+			$is_encoded = 0 === mb_strpos( $original_content, $needle );
+		} else {
+			$is_encoded = 0 === strpos( $original_content, $needle );
+		}
+		// phpcs:enable PHPCompatibility.ParameterValues.NewIconvMbstringCharsetDefault.NotSet
+
+		// phpcs:disable WordPress.PHP.YodaConditions.NotYoda
+		if ( $is_encoded ) {
+			$original_content = gzdecode( $original_content );
+			if ( $original_content === false ) {
+				return '';
+			}
+		}
+		// phpcs:enable WordPress.PHP.YodaConditions.NotYoda
+
+		// Strip php tags.
+		$content = preg_replace( '/<\?(=|php)(.+?)\?>/i', '', $original_content );
+		$content = preg_replace( '/<\?(.*)\?>/Us', '', $content );
+		$content = preg_replace( '/<\%(.*)\%>/Us', '', $content );
+
+		if ( ( false !== strpos( $content, '<?' ) ) || ( false !== strpos( $content, '<%' ) ) ) {
+			return '';
+		}
+
+		// Strip comments.
+		$content = preg_replace( '/<!--(.*)-->/Us', '', $content );
+		$content = preg_replace( '/\/\*(.*)\*\//Us', '', $content );
+
+		if ( ( false !== strpos( $content, '<!--' ) ) || ( false !== strpos( $content, '/*' ) ) ) {
+			return '';
+		}
+
+		// Strip line breaks.
+		$content = preg_replace( '/\r|\n/', '', $content );
+
+		// Find the start and end tags so we can cut out miscellaneous garbage.
+		$start = strpos( $content, '<svg' );
+		$end   = strrpos( $content, '</svg>' );
+		if ( false === $start || false === $end ) {
+			return '';
+		}
+
+		$content = substr( $content, $start, ( $end - $start + 6 ) );
+
+		// If the server's PHP version is 8 or up, make sure to disable the ability to load external entities.
+		$php_version_under_eight = version_compare( PHP_VERSION, '8.0.0', '<' );
+		if ( $php_version_under_eight ) {
+			// phpcs:disable Generic.PHP.DeprecatedFunctions.Deprecated
+			$libxml_disable_entity_loader = libxml_disable_entity_loader( true );
+			// phpcs:enable Generic.PHP.DeprecatedFunctions.Deprecated
+		}
+		// Suppress the errors.
+		$libxml_use_internal_errors = libxml_use_internal_errors( true );
+
+		// Create DOMDocument instance.
+		$dom = new DOMDocument();
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		$dom->formatOutput        = false;
+		$dom->preserveWhiteSpace  = false;
+		$dom->strictErrorChecking = false;
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+
+		$open_svg = ! ! $content ? $dom->loadXML( $content ) : false;
+		if ( ! $open_svg ) {
+			return '';
+		}
+
+		// Strip Doctype.
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		foreach ( $dom->childNodes as $child ) {
+			if ( XML_DOCUMENT_TYPE_NODE === $child->nodeType && ! ! $child->parentNode ) {
+				$child->parentNode->removeChild( $child );
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			}
+		}
+
+		// Sanitize elements.
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		$elements = $dom->getElementsByTagName( '*' );
+		for ( $index = $elements->length - 1; $index >= 0; $index-- ) {
+			$current_element = $elements->item( $index );
+			if ( ! in_array( strtolower( $current_element->tagName ), $allowed_tags ) ) {
+				$current_element->parentNode->removeChild( $current_element );
+				// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				continue;
+			}
+
+			// Validate allowed attributes.
+			for ( $i = $current_element->attributes->length - 1; $i >= 0; $i-- ) {
+				$attr_name           = $current_element->attributes->item( $i )->name;
+				$attr_name_lowercase = strtolower( $attr_name );
+				if ( ! in_array( $attr_name_lowercase, $allowed_attributes ) &&
+					! preg_match( '/^aria-/', $attr_name_lowercase ) &&
+					! preg_match( '/^data-/', $attr_name_lowercase ) ) {
+					$current_element->removeAttribute( $attr_name );
+					continue;
+				}
+
+				$attr_value = $current_element->attributes->item( $i )->value;
+				if ( ! empty( $attr_value ) &&
+					( preg_match( '/^((https?|ftp|file):)?\/\//i', $attr_value ) ||
+					preg_match( '/base64|data|(?:java)?script|alert\(|window\.|document/i', $attr_value ) ) ) {
+					$current_element->removeAttribute( $attr_name );
+					continue;
+				}
+			}
+
+			// Strip xlink:href.
+			$xlink_href = $current_element->getAttributeNS( 'http://www.w3.org/1999/xlink', 'href' );
+			if ( $xlink_href && strpos( $xlink_href, '#' ) !== 0 ) {
+				$current_element->removeAttributeNS( 'http://www.w3.org/1999/xlink', 'href' );
+			}
+
+			// Strip use tag with external references.
+			// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+			if ( strtolower( $current_element->tagName ) === 'use' ) {
+				$xlink_href = $current_element->getAttributeNS( 'http://www.w3.org/1999/xlink', 'href' );
+				if ( $current_element->parentNode && $xlink_href && strpos( $xlink_href, '#' ) !== 0 ) {
+					$current_element->parentNode->removeChild( $current_element );
+					// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				}
+			}
+		}
+
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+		$sanitized = $dom->saveXML( $dom->documentElement, LIBXML_NOEMPTYTAG );
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+
+		// Restore defaults.
+		if ( $php_version_under_eight && isset( $libxml_disable_entity_loader ) ) {
+			// phpcs:disable Generic.PHP.DeprecatedFunctions.Deprecated
+			libxml_disable_entity_loader( $libxml_disable_entity_loader );
+			// phpcs:enable Generic.PHP.DeprecatedFunctions.Deprecated
+		}
+		libxml_use_internal_errors( $libxml_use_internal_errors );
+
+		return $sanitized;
+	}
+
 
 	/**
 	 * Correct the mime types and extension for the font types.
@@ -132,6 +418,19 @@ class BSF_Custom_Fonts_Menu {
 		if ( 'otf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
 			$defaults['type'] = 'application/x-font-otf';
 			$defaults['ext']  = 'otf';
+		}
+
+		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+			// Perform SVG sanitization using the sanitize_svg function.
+			$svg_content           = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+			$sanitized_svg_content = $this->sanitize_svg( $svg_content );
+			// phpcs:disable WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
+			file_put_contents( $file, $sanitized_svg_content );
+			// phpcs:enable WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents
+
+			// Update mime type and extension.
+			$defaults['type'] = 'image/svg+xml';
+			$defaults['ext']  = 'svg';
 		}
 
 		return $defaults;
