@@ -302,18 +302,20 @@ class BSF_Custom_Fonts_Menu {
 		// If the server's PHP version is 8 or up, make sure to disable the ability to load external entities.
 		$php_version_under_eight = version_compare( PHP_VERSION, '8.0.0', '<' );
 		if ( $php_version_under_eight ) {
+			// phpcs:disable Generic.PHP.DeprecatedFunctions.Deprecated
 			$libxml_disable_entity_loader = libxml_disable_entity_loader( true );
+			// phpcs:enable Generic.PHP.DeprecatedFunctions.Deprecated
 		}
 		// Suppress the errors.
 		$libxml_use_internal_errors = libxml_use_internal_errors( true );
 
 		// Create DOMDocument instance.
-		$dom                      = new DOMDocument();
+		$dom = new DOMDocument();
 		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$dom->formatOutput        = false;
 		$dom->preserveWhiteSpace  = false;
-		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$dom->strictErrorChecking = false;
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 
 		$open_svg = ! ! $content ? $dom->loadXML( $content ) : false;
 		if ( ! $open_svg ) {
@@ -324,16 +326,18 @@ class BSF_Custom_Fonts_Menu {
 		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		foreach ( $dom->childNodes as $child ) {
 			if ( XML_DOCUMENT_TYPE_NODE === $child->nodeType && ! ! $child->parentNode ) {
-			// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				$child->parentNode->removeChild( $child );
+		// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			}
 		}
 
 		// Sanitize elements.
+		// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 		$elements = $dom->getElementsByTagName( '*' );
 		for ( $index = $elements->length - 1; $index >= 0; $index-- ) {
 			$current_element = $elements->item( $index );
 			if ( ! in_array( strtolower( $current_element->tagName ), $allowed_tags ) ) {
+				// phpcs:enable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				$current_element->parentNode->removeChild( $current_element );
 				continue;
 			}
