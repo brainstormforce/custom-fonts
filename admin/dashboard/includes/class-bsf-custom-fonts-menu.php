@@ -121,7 +121,7 @@ class BSF_Custom_Fonts_Menu {
 	 * @return string
 	 * @since x.x.x
 	 * */
-	public static function sanitize_svg( $original_content ) {
+	public function sanitize_svg( $original_content ) {
 
 		if ( ! $original_content ) {
 			return '';
