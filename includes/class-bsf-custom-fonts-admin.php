@@ -101,37 +101,38 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->add_new_taxonomy_default_data();
 			?>
 			<input type="hidden" name="repeater-field-count" value="1">
-			<?php
-			echo '
 			<div id="repeater">
-                <!-- Repeater Heading -->
+				<!-- Repeater Heading -->
 
-                <div class="clearfix"></div>
-                <!-- Repeater Items -->
-                <div id="item-0" class="cf-bsf-items" data-group="font-weight-type">
-                    <!-- Repeater Content -->
-                    <div class="item-content">
+				<div class="clearfix"></div>
+				<!-- Repeater Items -->
+				<div id="item-0" class="cf-bsf-items" data-group="font-weight-type">
+					<!-- Repeater Content -->
+					<div class="item-content">
 						<div class="form-group">
-						<div class="weight-wrapper">';
-							$this->add_new_taxonomy_repeater_data();
-							wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' );
-							echo '</div>
-					  </div>
-                    </div>
-                    <!-- Repeater Remove Btn -->
-                    <div class="repeater-remove-btn">
-                        <div class="button button-primary disabled remove-btn">
-                            Remove
+							<div class="weight-wrapper">
+								<?php
+								$this->add_new_taxonomy_repeater_data();
+								wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' );
+								?>
+							</div>
 						</div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
+					</div>
+					<!-- Repeater Remove Btn -->
+					<div class="repeater-remove-btn">
+						<div class="button button-primary disabled remove-btn">
+							<?php esc_html_e( 'Remove', 'custom-fonts' ); ?>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
 			<div class="cf-addbutton-wrapper">
 				<div class="button button-primary repeater-add-btn">
-					Add Font Variation
+					<?php esc_html_e( 'Add Font Variation', 'custom-fonts' ); ?>
 				</div>
-			</div>';
+			</div>
+			<?php
 		}
 
 		/**
@@ -197,24 +198,26 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 			$this->edit_new_taxonomy_default_data( $term );
 			?>
 			<tr>
-			<th></th>
-			<td>
-			<div id="repeater">
-				<!-- Repeater Heading -->
-				<div class="clearfix"></div>
-				<!-- Repeater Items -->
-			<?php foreach ( $data as $key => $value ) { ?>
-				<?php $this->edit_taxonomy_repeater_data( $key, $value ); ?>
-			<?php	} ?>
-			<input type="hidden" name="repeater-field-count" value="<?php echo esc_attr( self::$edit_repeater_field_count ); ?>">
-			<?php wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' ); ?>
-			</div>
-			<div class="cf-addbutton-wrapper">
-					<div class="button button-primary edit-repeater-add-btn">
-						Add Font Variation
+				<th></th>
+				<td>
+					<div id="repeater">
+						<!-- Repeater Heading -->
+						<div class="clearfix"></div>
+						<!-- Repeater Items -->
+						<?php
+						foreach ( $data as $key => $value ) {
+							$this->edit_taxonomy_repeater_data( $key, $value );
+						}
+						?>
+						<input type="hidden" name="repeater-field-count" value="<?php echo esc_attr( self::$edit_repeater_field_count ); ?>">
+						<?php wp_nonce_field( basename( __FILE__ ), 'bsf_custom_font_nonce' ); ?>
 					</div>
-				</div>
-			</td>
+					<div class="cf-addbutton-wrapper">
+						<div class="button button-primary edit-repeater-add-btn">
+							<?php esc_html_e( 'Add Font Variation', 'custom-fonts' ); ?>
+						</div>
+					</div>
+				</td>
 			</tr>
 			<?php
 
@@ -299,7 +302,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					<!-- Repeater Remove Btn -->
 					<div class="repeater-remove-btn">
 						<div class="button button-primary remove-btn <?php echo esc_attr( 1 < self::$edit_repeater_field_count ? '' : 'disabled' ); ?>">
-							Remove
+							<?php esc_html_e( 'Remove', 'custom-fonts' ); ?>
 						</div>
 					</div>
 					<div class="clearfix"></div>
@@ -447,13 +450,13 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Admin' ) ) :
 					</label>
 				</th>
 				<td>
-				<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" />
-					<?php
-					foreach ( $select_fields as $key => $value ) {
-						?>
-						<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $saved_val ); ?>><?php echo esc_html( $value ); ?></option>;
-					<?php } ?>
-				</select>
+					<select type="select" id="font-<?php echo esc_attr( $id ); ?>" class="bsf-custom-font-select-field <?php echo esc_attr( $id ); ?>" name="<?php echo esc_attr( Bsf_Custom_Fonts_Taxonomy::$register_taxonomy_slug ); ?>[<?php echo esc_attr( $id ); ?>]" />
+						<?php
+						foreach ( $select_fields as $key => $value ) {
+							?>
+							<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, $saved_val ); ?>><?php echo esc_html( $value ); ?></option>;
+						<?php } ?>
+					</select>
 					<p><?php echo esc_html( $description ); ?></p>
 				</td>
 			</tr>
