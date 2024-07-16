@@ -16,13 +16,13 @@ const EditGFontVariation = (
 	}
 ) => {
 
-	const [removeTitle, setRemoveTitle] = useState("Remove");
-	const [addTitle, setAddTitle] = useState("Add");
+	const [removeTitle, setRemoveTitle] = useState( __( 'Remove', 'custom-fonts' ) );
+	const [addTitle, setAddTitle] = useState( __( 'Add', 'custom-fonts' ) );
 
 	useEffect(() => {
 		if (!disable) {
-		  setRemoveTitle("Remove");
-		  setAddTitle("Add");
+		  setRemoveTitle( __( 'Remove', 'custom-fonts' ) );
+		  setAddTitle( __( 'Add', 'custom-fonts' ) );
 		}
 	  }, [disable]);
 
@@ -129,9 +129,9 @@ const EditGFontVariation = (
 									: "flex items-center components-button is-secondary"
 							}
 							data-font_weight={weight}
-							onClick={(e) => { setRemoveTitle("Adding..."); addWeight(e) }}
+							onClick={(e) => { setRemoveTitle( __( 'Adding...', 'custom-fonts' ) ); addWeight(e) }}
 						>
-							{addTitle === "Removing..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+							{addTitle === __( 'Removing...', 'custom-fonts' ) ? (Custom_Fonts_Icons['loadingSpinner3']) : (
 								<span data-font_weight={weight}>
 									{Custom_Fonts_Icons['iconsquare']}
 								</span>
@@ -146,7 +146,7 @@ const EditGFontVariation = (
               disabled={disable}
               style={
                 disable
-                  ? removeTitle === "Adding..."
+                  ? removeTitle === __( 'Adding...', 'custom-fonts' )
                     ? {
                         color: "#3858E9",
                         borderColor: "#3858E9",
@@ -160,14 +160,14 @@ const EditGFontVariation = (
 									: { boxShadow: "inset 0 0 0 1px" }
 							}
 							className={
-								removeTitle === "Adding..."
+								removeTitle === __( 'Adding...', 'custom-fonts' )
 									? "flex items-center components-button is-secondary"
 									: "flex text-danger items-center components-button is-secondary border border-danger"
 							}
 							data-font_weight={weight}
-							onClick={(e) => { setAddTitle("Removing..."); removeWeight(e) }}
+							onClick={(e) => { setAddTitle( __( 'Removing...', 'custom-fonts' ) ); removeWeight(e) }}
 						>
-							{removeTitle === "Adding..." ? (Custom_Fonts_Icons['loadingSpinner3']) : (
+							{removeTitle === __( 'Adding...', 'custom-fonts' ) ? (Custom_Fonts_Icons['loadingSpinner3']) : (
 								<span data-font_weight={weight}>
 									{Custom_Fonts_Icons['iconsquare2']}
 								</span>
