@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: typography, fonts, custom fonts, Google Fonts, performance, privacy, full site editing, adobe fonts, GDPR
 Requires at least: 5.0
 Tested up to: 6.6
-Stable tag: 2.1.5
+Stable tag: 2.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 == Changelog ==
+= 2.1.6 =
+- Improvement: Few string from admin dashboard app doesn't have text domain support. (Props - https://github.com/pedro-mendonca)
+
 = 2.1.5 =
 - Improved codebase for improved security.
 

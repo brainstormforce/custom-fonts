@@ -1,42 +1,55 @@
-# Copyright (C) 2023 Brainstorm Force
-# This file is distributed under the same license as the Custom Fonts package.
+# Copyright (C) 2024 Brainstorm Force
+# This file is distributed under the same license as the Custom Fonts plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Fonts 2.0.2\n"
+"Project-Id-Version: Custom Fonts 2.1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/custom-fonts\n"
-"POT-Creation-Date: 2023-07-11 06:59:59+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-Country: United States\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"X-Poedit-Basepath: ../\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-Bookmarks: \n"
-"X-Textdomain-Support: yes\n"
-"X-Generator: grunt-wp-i18n 1.0.3\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-07-16T04:07:20+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.10.0\n"
+"X-Domain: custom-fonts\n"
 
-#: admin/bsf-analytics/class-bsf-analytics.php:216
+#. Plugin Name of the plugin
+#: custom-fonts.php
+msgid "Custom Fonts"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: custom-fonts.php
+msgid "http://www.wpastra.com/"
+msgstr ""
+
+#. Description of the plugin
+#: custom-fonts.php
+msgid "Upload your own custom font or choose from a vast collection of Google fonts, all hosted directly on your server. Enjoy improved performance, enhanced privacy, and full site editing theme support. Take control of your website's typography without compromising performance, privacy or compliance!"
+msgstr ""
+
+#. Author of the plugin
+#: custom-fonts.php
+msgid "Brainstorm Force"
+msgstr ""
+
+#. Author URI of the plugin
+#: custom-fonts.php
+msgid "http://www.brainstormforce.com"
+msgstr ""
+
 #. translators: %s product name
-msgid ""
-"Want to help make <strong>%1s</strong> even more awesome? Allow us to "
-"collect non-sensitive diagnostic data and usage information. "
+#: admin/bsf-analytics/class-bsf-analytics.php:216
+msgid "Want to help make <strong>%1s</strong> even more awesome? Allow us to collect non-sensitive diagnostic data and usage information. "
 msgstr ""
 
 #: admin/bsf-analytics/class-bsf-analytics.php:219
 msgid "This will be applicable for all sites from the network."
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:243
 #. translators: %s usage doc link
+#: admin/bsf-analytics/class-bsf-analytics.php:243
 msgid " Know More."
 msgstr ""
 
@@ -52,8 +65,8 @@ msgstr ""
 msgid "Usage Tracking"
 msgstr ""
 
-#: admin/bsf-analytics/class-bsf-analytics.php:408
 #. translators: %s Product title
+#: admin/bsf-analytics/class-bsf-analytics.php:408
 msgid "Allow %s products to track non-sensitive usage tracking data."
 msgstr ""
 
@@ -117,32 +130,43 @@ msgstr ""
 msgid "No post data found!"
 msgstr ""
 
-#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:146
-#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:209
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:147
 msgid "Successfully created the Font!"
 msgstr ""
 
-#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:259
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:210
+msgid "Successfully created the Font! "
+msgstr ""
+
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:261
 msgid "Successfully updated the Font!"
 msgstr ""
 
-#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:304
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:306
 msgid "Successfully deleted the Font!"
 msgstr ""
 
-#: admin/dashboard/includes/class-bsf-custom-fonts-menu.php:278
+#: admin/dashboard/includes/class-bsf-custom-fonts-admin-ajax.php:335
+msgid "Switched preloading fonts!"
+msgstr ""
+
+#: admin/dashboard/includes/class-bsf-custom-fonts-menu.php:88
+#: includes/class-bsf-custom-fonts-taxonomy.php:83
+msgctxt "Menu title"
+msgid "Custom Fonts"
+msgstr ""
+
 #. translators: 1: Custom Fonts, 2: Plugin rating link
-msgid ""
-"Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your "
-"support!"
+#: admin/dashboard/includes/class-bsf-custom-fonts-menu.php:579
+msgid "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!"
 msgstr ""
 
 #: classes/class-bsf-custom-fonts-render.php:176
 msgid "Custom"
 msgstr ""
 
-#: classes/class-bsf-custom-fonts-render.php:426
 #. translators: 1: Astra theme from wordpress.org
+#: classes/class-bsf-custom-fonts-render.php:444
 msgid "Custom Fonts Plugin requires minimum 1.0.16 version of the Astra Theme."
 msgstr ""
 
@@ -154,152 +178,176 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/class-bcf-google-fonts-compatibility.php:672
+#: includes/class-bcf-google-fonts-compatibility.php:686
 msgid "There was some error in deleting the font."
 msgstr ""
 
-#: includes/class-bcf-google-fonts-compatibility.php:697
+#: includes/class-bcf-google-fonts-compatibility.php:711
 msgid "Successfully deleted font."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:143
-#: includes/class-bsf-custom-fonts-admin.php:231
+#: includes/class-bsf-custom-fonts-admin.php:124
+#: includes/class-bsf-custom-fonts-admin.php:305
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Remove"
+msgstr ""
+
+#: includes/class-bsf-custom-fonts-admin.php:132
+#: includes/class-bsf-custom-fonts-admin.php:217
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Add Font Variation"
+msgstr ""
+
+#: includes/class-bsf-custom-fonts-admin.php:144
+#: includes/class-bsf-custom-fonts-admin.php:234
 msgid "Font Fallback"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:143
-#: includes/class-bsf-custom-fonts-admin.php:231
+#: includes/class-bsf-custom-fonts-admin.php:144
+#: includes/class-bsf-custom-fonts-admin.php:234
 msgid "Add the font's fallback names with comma(,) separator.  eg. Arial, Serif"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:147
-#: includes/class-bsf-custom-fonts-admin.php:235
+#: includes/class-bsf-custom-fonts-admin.php:148
+#: includes/class-bsf-custom-fonts-admin.php:238
 msgid "Font Display"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:148
-#: includes/class-bsf-custom-fonts-admin.php:236
+#: includes/class-bsf-custom-fonts-admin.php:149
+#: includes/class-bsf-custom-fonts-admin.php:239
 msgid "Select font-display property for this font"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:167
-#: includes/class-bsf-custom-fonts-admin.php:266
+#: includes/class-bsf-custom-fonts-admin.php:168
+#: includes/class-bsf-custom-fonts-admin.php:269
 msgid "Font weight"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:168
-#: includes/class-bsf-custom-fonts-admin.php:267
+#: includes/class-bsf-custom-fonts-admin.php:169
+#: includes/class-bsf-custom-fonts-admin.php:270
 msgid "Select font-weight property for this font"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:170
-#: includes/class-bsf-custom-fonts-admin.php:269
+#: includes/class-bsf-custom-fonts-admin.php:171
+#: includes/class-bsf-custom-fonts-admin.php:272
 msgid "Thin 100"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:171
-#: includes/class-bsf-custom-fonts-admin.php:270
+#: includes/class-bsf-custom-fonts-admin.php:172
+#: includes/class-bsf-custom-fonts-admin.php:273
 msgid "Extra-Light 200"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:172
-#: includes/class-bsf-custom-fonts-admin.php:271
+#: includes/class-bsf-custom-fonts-admin.php:173
+#: includes/class-bsf-custom-fonts-admin.php:274
 msgid "Light 300"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:173
-#: includes/class-bsf-custom-fonts-admin.php:272
+#: includes/class-bsf-custom-fonts-admin.php:174
+#: includes/class-bsf-custom-fonts-admin.php:275
 msgid "Normal 400"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:174
-#: includes/class-bsf-custom-fonts-admin.php:273
+#: includes/class-bsf-custom-fonts-admin.php:175
+#: includes/class-bsf-custom-fonts-admin.php:276
 msgid "Medium 500"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:175
-#: includes/class-bsf-custom-fonts-admin.php:274
+#: includes/class-bsf-custom-fonts-admin.php:176
+#: includes/class-bsf-custom-fonts-admin.php:277
 msgid "Semi-Bold 600"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:176
-#: includes/class-bsf-custom-fonts-admin.php:275
+#: includes/class-bsf-custom-fonts-admin.php:177
+#: includes/class-bsf-custom-fonts-admin.php:278
 msgid "Bold 700"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:177
-#: includes/class-bsf-custom-fonts-admin.php:276
+#: includes/class-bsf-custom-fonts-admin.php:178
+#: includes/class-bsf-custom-fonts-admin.php:279
 msgid "Extra-Bold 800"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:178
-#: includes/class-bsf-custom-fonts-admin.php:277
+#: includes/class-bsf-custom-fonts-admin.php:179
+#: includes/class-bsf-custom-fonts-admin.php:280
 msgid "Ultra-Bold 900"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:181
-#: includes/class-bsf-custom-fonts-admin.php:284
+#: includes/class-bsf-custom-fonts-admin.php:182
+#: includes/class-bsf-custom-fonts-admin.php:287
 msgid "Font .woff2"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:181
-#: includes/class-bsf-custom-fonts-admin.php:284
+#: includes/class-bsf-custom-fonts-admin.php:182
+#: includes/class-bsf-custom-fonts-admin.php:287
 msgid "Upload the font's woff2 file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:182
-#: includes/class-bsf-custom-fonts-admin.php:286
+#: includes/class-bsf-custom-fonts-admin.php:183
+#: includes/class-bsf-custom-fonts-admin.php:289
 msgid "Font .woff"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:182
-#: includes/class-bsf-custom-fonts-admin.php:286
+#: includes/class-bsf-custom-fonts-admin.php:183
+#: includes/class-bsf-custom-fonts-admin.php:289
 msgid "Upload the font's woff file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:183
-#: includes/class-bsf-custom-fonts-admin.php:288
+#: includes/class-bsf-custom-fonts-admin.php:184
+#: includes/class-bsf-custom-fonts-admin.php:291
 msgid "Font .ttf"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:183
-#: includes/class-bsf-custom-fonts-admin.php:288
+#: includes/class-bsf-custom-fonts-admin.php:184
+#: includes/class-bsf-custom-fonts-admin.php:291
 msgid "Upload the font's ttf file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:184
-#: includes/class-bsf-custom-fonts-admin.php:290
+#: includes/class-bsf-custom-fonts-admin.php:185
+#: includes/class-bsf-custom-fonts-admin.php:293
 msgid "Font .eot"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:184
-#: includes/class-bsf-custom-fonts-admin.php:290
+#: includes/class-bsf-custom-fonts-admin.php:185
+#: includes/class-bsf-custom-fonts-admin.php:293
 msgid "Upload the font's eot file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:185
-#: includes/class-bsf-custom-fonts-admin.php:292
+#: includes/class-bsf-custom-fonts-admin.php:186
+#: includes/class-bsf-custom-fonts-admin.php:295
 msgid "Font .svg"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:185
-#: includes/class-bsf-custom-fonts-admin.php:292
+#: includes/class-bsf-custom-fonts-admin.php:186
+#: includes/class-bsf-custom-fonts-admin.php:295
 msgid "Upload the font's svg file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:186
-#: includes/class-bsf-custom-fonts-admin.php:294
+#: includes/class-bsf-custom-fonts-admin.php:187
+#: includes/class-bsf-custom-fonts-admin.php:297
 msgid "Font .otf"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:186
-#: includes/class-bsf-custom-fonts-admin.php:294
+#: includes/class-bsf-custom-fonts-admin.php:187
+#: includes/class-bsf-custom-fonts-admin.php:297
 msgid "Upload the font's otf file or enter the URL."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-admin.php:348
-#: includes/class-bsf-custom-fonts-admin.php:508
+#: includes/class-bsf-custom-fonts-admin.php:351
+#: includes/class-bsf-custom-fonts-admin.php:511
 msgid "Upload"
+msgstr ""
+
+#: includes/class-bsf-custom-fonts-posttype.php:83
+msgctxt "font general name"
+msgid "Custom Fonts"
+msgstr ""
+
+#: includes/class-bsf-custom-fonts-posttype.php:84
+msgctxt "font singular name"
+msgid "Font"
 msgstr ""
 
 #: includes/class-bsf-custom-fonts-posttype.php:85
@@ -313,6 +361,7 @@ msgstr ""
 
 #: includes/class-bsf-custom-fonts-posttype.php:87
 #: includes/class-bsf-custom-fonts-taxonomy.php:90
+#: admin/dashboard/assets/build/dashboard-app.js:1
 msgid "Edit Font"
 msgstr ""
 
@@ -339,6 +388,11 @@ msgstr ""
 msgid "Font"
 msgstr ""
 
+#: includes/class-bsf-custom-fonts-taxonomy.php:85
+msgctxt "Admin menu name"
+msgid "Custom Fonts"
+msgstr ""
+
 #: includes/class-bsf-custom-fonts-taxonomy.php:86
 msgid "Search Fonts"
 msgstr ""
@@ -352,6 +406,7 @@ msgid "Parent Font:"
 msgstr ""
 
 #: includes/class-bsf-custom-fonts-taxonomy.php:92
+#: admin/dashboard/assets/build/dashboard-app.js:2
 msgid "Add New Font"
 msgstr ""
 
@@ -363,11 +418,12 @@ msgstr ""
 msgid "← Go to Fonts"
 msgstr ""
 
-#: includes/class-custom-fonts-api-init.php:180
+#: includes/class-custom-fonts-api-init.php:176
 msgid "Sorry, you cannot list resources."
 msgstr ""
 
-#: includes/white-label.php:18 includes/white-label.php:23
+#: includes/white-label.php:18
+#: includes/white-label.php:23
 msgid "Custom Fonts Branding"
 msgstr ""
 
@@ -383,48 +439,294 @@ msgstr ""
 msgid "WordPress Nonce not validated."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Select or Upload Font"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Use Font"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Invalid file type. Only .ttf, .otf, .woff, .woff2, .svg files are allowed."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Choose File"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+msgid "Font files:"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "No file chosen"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "File "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Supported file types: "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Style:"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Normal"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Italic"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Oblique"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Weight:"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font files chosen"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Advanced Options"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Fallback:"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Separate font names with comma(,). eg."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Display:"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "auto"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "block"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "swap"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "fallback"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "optional"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Make sure to provide valid details."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Save Font"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Thin "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Extra Light "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Light "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Regular "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Medium "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Semi Bold "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Bold "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Extra Bold "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Ultra-Bold "
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Selected Variant"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Variation Added Successfully!"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Variation Removed Successfully!"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Removed Successfully!"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Add"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "How vexingly quick daft zebras jump!"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Adding..."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Removing..."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Preview"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:1
+msgid "variants"
+msgstr ""
+
+#. translators: %s: Font name.
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Remove \"%s\" font?"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Cancel"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Edit"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Find your fonts here"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Once you have add fonts, come back here to find them again easily."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Global Settings"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Preload Fonts"
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Preloading your font file will speeds up your website."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgctxt "Page title"
 msgid "Custom Fonts"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "http://www.wpastra.com/"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Chosen files:"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid ""
-"Upload your own custom font or choose from a vast collection of Google "
-"fonts, all hosted directly on your server. Enjoy improved performance, "
-"enhanced privacy, and full site editing theme support. Take control of your "
-"website's typography without compromising performance, privacy or "
-"compliance!"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Name"
 msgstr ""
 
-#. Author of the plugin/theme
-msgid "Brainstorm Force"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font Added Successfully!"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "http://www.brainstormforce.com"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Select Font"
 msgstr ""
 
-#: admin/dashboard/includes/class-bsf-custom-fonts-menu.php:88
-#: includes/class-bsf-custom-fonts-taxonomy.php:83
-msgctxt "Menu title"
-msgid "Custom Fonts"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Select a font family..."
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-posttype.php:83
-msgctxt "font general name"
-msgid "Custom Fonts"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Local Fonts"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-posttype.php:84
-msgctxt "font singular name"
-msgid "Font"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Google Fonts"
 msgstr ""
 
-#: includes/class-bsf-custom-fonts-taxonomy.php:85
-msgctxt "Admin menu name"
-msgid "Custom Fonts"
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font preview will appear here. Please select a font file."
+msgstr ""
+
+#: admin/dashboard/assets/build/dashboard-app.js:2
+msgid "Font preview will appear here. Please select a font."
 msgstr ""

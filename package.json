@@ -1,6 +1,6 @@
 {
   "name": "custom-fonts",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "main": "Gruntfile.js",
   "author": "Brainstorm Force",
   "workspaces": [
@@ -24,7 +24,8 @@
   "scripts": {
     "build": "cd admin/dashboard && npm install && wp-scripts build && cd ../..",
     "build-package": "npm run build && grunt rtl",
-    "release": "rm -rf custom-fonts && npm run build-package && grunt release"
+    "makepot": "wp i18n make-pot . --skip-audit --exclude='.dev,.github,.wordpress-org,docs,src,node_modules,vendor,wordpress' languages/custom-fonts.pot",
+    "release": "rm -rf custom-fonts && npm run build-package && npm run makepot && grunt release"
   },
   "dependencies": {
     "request": "^2.88.2"
