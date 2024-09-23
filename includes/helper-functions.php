@@ -307,6 +307,7 @@ function bcf_prepare_lfont_face_css( $font_family, $font_data, $variation_data )
 	$src        = array();
 	$font_face  = '@font-face {' . PHP_EOL;
 	$font_face .= "\tfont-family: '" . $font_family . "';" . PHP_EOL;
+	$font_face .= ! empty( $variation_data['font_style'] ) ? "\tfont-style: " . $variation_data['font_style'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $variation_data['font_weight'] ) ? "\tfont-weight: " . $variation_data['font_weight'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $font_data['font_display'] ) ? "\tfont-display: " . $font_data['font_display'] . ';' . PHP_EOL : '';
 	$font_face .= ! empty( $font_data['font_fallback'] ) ? "\tfont-fallback: " . $font_data['font_fallback'] . ';' . PHP_EOL : '';
