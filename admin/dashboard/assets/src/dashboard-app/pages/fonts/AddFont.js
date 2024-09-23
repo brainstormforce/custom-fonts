@@ -11,7 +11,7 @@ import Custom_Fonts_Icons from "@Common/svg-icons";
 
 const AddFont = () => {
 	const [activeType, setActiveType] = useState("local");
-	const [previewSize, updatePreviewSize] = useState("30");
+	const [previewSize, updatePreviewSize] = useState("35");
 
 	const toggleType = (value) => {
 		setActiveType(value);
