@@ -22,11 +22,11 @@ const LocalPreviewItem = () => {
 			varsLength = variations.length,
 			counter = 0;
 
-		variations.map((variation) => {
-			if ( '' === variation.font_url ) {
-				counter = counter + 1;
-			}
-		});
+			variations.forEach((variation) => {
+				if ( '' === variation.font_url ) {
+					counter = counter + 1;
+				}
+			});			
 
 		if ( varsLength === counter ) {
 			previewNameToggleCSS = `.preview-font-name {display: block;}`;
@@ -59,13 +59,13 @@ const LocalPreviewItem = () => {
 		let defaultFont = `@font-face {\r\n\tfont-family: '${fontName}';`;
 		let srcFont = '';
 
-		variations.map((variation) => {
+		variations.forEach((variation) => {
 			let fontUrl = variation.font_url,
 				weight = variation.font_weight,
 				style = '' === variation.font_style ? 'normal' : variation.font_style,
-				src = '';
+				src = '';	
 			if ( Array.isArray( fontUrl ) ) {
-				fontUrl.map((url, index) => {
+				fontUrl.forEach((url, index) => {
 					src += ' url(\'' + url + '\') ';
 					src += getSrcFormat( url );
 					if ( index !== fontUrl.length - 1 ) {
@@ -78,7 +78,7 @@ const LocalPreviewItem = () => {
 			}
 			srcFont += `${defaultFont}\r\n\tfont-style: ${style};\r\n\tfont-weight: ${weight};\r\n\tsrc: ${src};\r\n}\r\n`;
 		});
-
+		
 		return srcFont;
 	}
 

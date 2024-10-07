@@ -16,18 +16,26 @@ const Settings = () => {
 		formData.append( 'security', bsf_custom_fonts_admin.preload_font_nonce );
 		formData.append( 'isPreloading', ! isChecked );
 
-		apiFetch( {
+		apiFetch({
 			url: bsf_custom_fonts_admin.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( (response) => {
-			if ( response.success ) {
+		})
+		.then((response) => {
+			if (response.success) {
 				dispatch({
 					type: 'UPDATE_PRELOADING',
-					payload: ! isChecked,
+					payload: !isChecked,
 				});
 			}
-		} );
+		})
+		.catch((error) => {
+			console.error('Error during API request:', error);
+			dispatch({
+				type: 'API_REQUEST_FAILED',
+				payload: error.message || 'An error occurred. Please try again.',
+			});
+		});		
 	};
 
 	const classNames = (...classes) => {
