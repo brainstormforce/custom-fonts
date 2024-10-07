@@ -19,13 +19,18 @@ export const editFontToDB = (dispatch, fontId, googleFontData, cb) => {
         url: bsf_custom_fonts_admin.ajax_url,
         method: 'POST',
         body: formData,
-    } ).then( (response) => {
-        if ( response.success ) {
-                //dispatch that banner
-                dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
-                if(cb) cb(response.data.fontId);
+    })
+    .then((response) => {
+        if (response.success) {
+            // Dispatch that banner
+            dispatch({ type: 'IS_DB_UPDATE_REQUIRED', payload: { isDbUpdateRequired: false, editType: '' } });
+            if (cb) cb(response.data.fontId);
         }
-    } );
+    })
+    .catch((error) => {
+        console.error('Error during API request:', error);
+        // You can also dispatch an error action here if needed
+    });
 }
 
 /**
@@ -41,16 +46,21 @@ export const deleteFontFromDB = (dispatch, fontId, cb) => {
     formData.append( 'security', bsf_custom_fonts_admin.delete_font_nonce );
     formData.append( 'font_id', fontId );
 
-    apiFetch( {
+    apiFetch({
         url: bsf_custom_fonts_admin.ajax_url,
         method: 'POST',
         body: formData,
-    } ).then( (response) => {
-        if ( response.success ) {
-            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
-            if(cb) cb(response.data.fontId);
+    })
+    .then((response) => {
+        if (response.success) {
+            dispatch({ type: 'IS_DB_UPDATE_REQUIRED', payload: { isDbUpdateRequired: false, editType: '' } });
+            if (cb) cb(response.data.fontId);
         }
-    } );
+    })
+    .catch((error) => {
+        console.error('Error during API request:', error);
+    });
+    
 }
 
 /**
@@ -67,14 +77,22 @@ export const addFontToDB = ( dispatch, googleFontData, cb ) => {
     formData.append( 'font_type', 'google' );
     formData.append( 'font_data', JSON.stringify( googleFontData ) );
 
-    apiFetch( {
+    apiFetch({
         url: bsf_custom_fonts_admin.ajax_url,
         method: 'POST',
         body: formData,
-    } ).then( (response) => {
-        if ( response.success ) {
-            dispatch( { type: 'IS_DB_UPDATE_REQUIRED', payload: {isDbUpdateRequired: false, editType:''} } );
-            if(cb) cb(response.data.fontId);
+    }).then((response) => {
+        if (response.success) {
+            dispatch({ type: 'IS_DB_UPDATE_REQUIRED', payload: { isDbUpdateRequired: false, editType: '' } });
+            if (cb) cb(response.data.fontId);
         }
-    } );
+    })
+    .catch((error) => {
+        console.error('Error during API fetch:', error);
+        dispatch({
+            type: 'API_FETCH_ERROR',
+            payload: { message: 'Failed to update database. Please try again.', error: error.message },
+        });
+    });
+    
 };

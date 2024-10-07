@@ -318,18 +318,24 @@ const EditLocalFont = ({fontId}) => {
 		formData.append( 'font_id', fontId );
 		formData.append( 'font_data', JSON.stringify( editFontData ) );
 
-		apiFetch( {
+		apiFetch({
 			url: bsf_custom_fonts_admin.ajax_url,
 			method: 'POST',
 			body: formData,
-		} ).then( (response) => {
-			if ( response.success ) {
-				setTimeout( () => {
-					window.location = `${ bsf_custom_fonts_admin.app_base_url }`;
-				}, 500 );
+		})
+		.then((response) => {
+			if (response.success) {
+				setTimeout(() => {
+					window.location = `${bsf_custom_fonts_admin.app_base_url}`;
+				}, 500);
 			}
-			setLoading( false );
-		} );
+			setLoading(false);
+		})
+		.catch((error) => {
+			console.error('Error during API request:', error);
+			setLoading(false);
+		});
+		
 	};
 
 	return (

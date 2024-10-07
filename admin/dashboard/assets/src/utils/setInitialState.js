@@ -17,7 +17,14 @@ const setInitialState = ( store ) => {
 		};
 
 		store.dispatch( {type: 'UPDATE_INITIAL_STATE', payload: initialState} );
-	} );
+	} )
+	.catch((error) => {
+		console.error('Error fetching data:', error);
+		store.dispatch({
+			type: 'FETCH_SETTINGS_FAILED',
+			payload: error.message || 'Failed to fetch settings. Please try again.',
+		});
+	});
 };
 
 export default setInitialState;
