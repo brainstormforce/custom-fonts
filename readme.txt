@@ -151,6 +151,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 == Changelog ==
+= 2.1.8
+- Custom fonts plugin tested with WordPress 6.7 version.
+
 = 2.1.7
 - Fix: Custom font variation getting place even after selecting the other weight and style. (Props - https://github.com/alexist-ong)
 
