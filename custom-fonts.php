@@ -6,7 +6,7 @@
  * Author:          Brainstorm Force
  * Author URI:      http://www.brainstormforce.com
  * Text Domain:     custom-fonts
- * Version:         2.1.7
+ * Version:         2.1.8
  *
  * @package         Bsf_Custom_Fonts
  */
