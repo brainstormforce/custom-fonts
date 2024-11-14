@@ -25,7 +25,7 @@ define( 'BSF_CUSTOM_FONTS_FILE', __FILE__ );
 define( 'BSF_CUSTOM_FONTS_BASE', plugin_basename( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_DIR', plugin_dir_path( BSF_CUSTOM_FONTS_FILE ) );
 define( 'BSF_CUSTOM_FONTS_URI', plugins_url( '/', BSF_CUSTOM_FONTS_FILE ) );
-define( 'BSF_CUSTOM_FONTS_VER', '2.1.7' );
+define( 'BSF_CUSTOM_FONTS_VER', '2.1.8' );
 define( 'BSF_CUSTOM_FONTS_POST_TYPE', 'bsf_custom_fonts' );
 define( 'BSF_CUSTOM_FONTS_ADMIN_PAGE', 'bsf-custom-fonts' );
 
