@@ -1,46 +1,25 @@
-name: Deploy to SVN on Tag
-
+name: Deploy to WordPress.org
 on:
   push:
     tags:
-      - '*'
-
+    - "*"
 jobs:
-  deploy:
+  tag:
+    name: New tag
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
+    - uses: actions/checkout@master
 
-      - name: Setup SVN credentials
-        run: |
-          echo "::add-mask::$SVN_USERNAME"
-          echo "::add-mask::$SVN_PASSWORD"
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14.x
 
-      - name: Checkout SVN repository
-        run: |
-          svn checkout --depth=immediates https://plugins.svn.wordpress.org/custom-fonts svn-custom-fonts
-          cd svn-custom-fonts
-          svn update trunk tags
+    - name: Build Assets
+      run: npm install && npm run build-package
 
-      - name: Copy files to SVN trunk
-        run: |
-          rsync -av --delete --exclude=".git" --exclude=".github" --exclude=".gitignore" --exclude="node_modules" \
-          --exclude="tests" --exclude="README.md" --exclude="package-lock.json" --exclude="package.json" ./ ./svn-custom-fonts/trunk/
-
-      - name: Add new tag in SVN
-        env:
-          VERSION: ${{ github.ref_name }}
-        run: |
-          cd svn-custom-fonts
-          svn copy trunk tags/$VERSION
-          svn update tags/$VERSION
-
-      - name: Commit changes to SVN
-        run: |
-          cd svn-custom-fonts
-          svn add --force .
-          svn commit --username ${{ secrets.SVN_USERNAME }} --password ${{ secrets.SVN_PASSWORD }} -m "Deploying version ${{ github.ref_name }}"
+    - name: WordPress Plugin Deploy
+      uses: Nikschavan/action-wordpress-plugin-deploy@develop
+      env:
+        SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+        SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
