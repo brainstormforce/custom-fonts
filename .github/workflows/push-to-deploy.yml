@@ -23,3 +23,6 @@ jobs:
       env:
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+
+    - name: SVN Update
+      run: svn update --set-depth=infinity
