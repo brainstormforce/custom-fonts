@@ -1,7 +1,7 @@
 # Custom Fonts - Host Your Fonts Locally #
 **Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
 **Donate link:** https://www.paypal.me/BrainstormForce  
-**Tags:** typography, fonts, custom fonts, Google Fonts, performance, privacy, full site editing, adobe fonts, GDPR  
+**Tags:** fonts, custom fonts, Google Fonts, performance, full site editing
 **Requires at least:** 5.0  
 **Tested up to:** 6.7  
 **Stable tag:** 2.1.8  
