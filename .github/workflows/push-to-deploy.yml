@@ -33,7 +33,7 @@ jobs:
 
       - name: Add new tag in SVN
         env:
-          VERSION: ${{ github.ref_name }}  # Use tag name directly from GitHub reference
+          VERSION: ${{ github.ref_name }}
         run: |
           cd svn-custom-fonts
           svn copy trunk tags/$VERSION
