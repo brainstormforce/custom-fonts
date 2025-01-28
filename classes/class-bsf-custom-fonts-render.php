@@ -139,6 +139,90 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			add_filter( 'elementor/fonts/additional_fonts', array( $this, 'add_elementor_fonts' ) );
 			// Astra filter before creating google fonts URL.
 			add_filter( 'astra_google_fonts_selected', array( $this, 'remove_custom_font_google_url' ) );
+			// Compatibility introduce for google local font should work as a inline.
+			add_filter( 'wp_enqueue_scripts', array( $this, 'load_local_google_fonts' ) );
+
+		}
+
+		/**
+		 * Inline font support for google fonts.
+		 *
+		 * @return mixed
+		 * @since 2.1.11
+		 */
+		public function load_local_google_fonts() {
+			$upload_dir = WP_CONTENT_DIR . '/bcf-fonts';
+			$css_file   = WP_CONTENT_DIR . '/bcf-fonts/local-fonts.css';
+
+			if ( ! is_dir( $upload_dir ) ) {
+				return;
+			}
+
+			$font_face_css = '';
+
+			$font_folders = array_diff( scandir( $upload_dir ), array( '.', '..' ) );
+
+			foreach ( $font_folders as $folder ) {
+				$font_folder_path = $upload_dir . '/' . $folder;
+
+				if ( is_dir( $font_folder_path ) ) {
+					$font_files = glob( $font_folder_path . '/*.{woff2,woff,ttf,otf,eot,svg}', GLOB_BRACE );
+
+					$font_variations = array();
+
+					foreach ( $font_files as $font_file ) {
+						$font_url = content_url( '/bcf-fonts/' . $folder . '/' . basename( $font_file ) );
+
+						preg_match( '/(.*)-([0-9a-z]+)-(\w+)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches );
+
+						if ( count( $matches ) ) {
+							$font_name   = trim( $matches[1] );
+							$font_weight = $matches[2];
+							$font_style  = $matches[3];
+							$file_format = $matches[4];
+
+							$font_variations[ "$font_name-$font_weight-$font_style" ][ $file_format ] = $font_url;
+						}
+					}
+
+					foreach ( $font_variations as $key => $formats ) {
+						list($font_name, $font_weight, $font_style) = explode( '-', $key );
+
+						$src = array();
+						if ( ! empty( $formats['woff2'] ) ) {
+							$src[] = "url('{$formats['woff2']}') format('woff2')";
+						}
+						if ( ! empty( $formats['woff'] ) ) {
+							$src[] = "url('{$formats['woff']}') format('woff')";
+						}
+						if ( ! empty( $formats['ttf'] ) ) {
+							$src[] = "url('{$formats['ttf']}') format('truetype')";
+						}
+						if ( ! empty( $formats['otf'] ) ) {
+							$src[] = "url('{$formats['otf']}') format('opentype')";
+						}
+						if ( ! empty( $formats['eot'] ) ) {
+							$src[] = "url('{$formats['eot']}') format('embedded-opentype')";
+						}
+						if ( ! empty( $formats['svg'] ) ) {
+							$src[] = "url('{$formats['svg']}') format('svg')";
+						}
+
+						$font_face_css .= "
+						@font-face {
+							font-family: '{$font_name}';
+							src: " . implode( ', ', $src ) . ";
+							font-weight: {$font_weight};
+							font-style: {$font_style};
+						}
+						";
+					}
+				}
+			}
+
+			file_put_contents( $css_file, $font_face_css );
+
+			wp_enqueue_style( 'local-google-fonts', content_url( '/bcf-fonts/local-fonts.css' ), array(), null );
 		}
 
 		/**
