@@ -162,7 +162,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				require_once ABSPATH . 'wp-admin/includes/file.php'; // PHPCS:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
 			}
 
-			WP_Filesystem(); // Initialize the filesystem
+			WP_Filesystem(); // Initialize the filesystem.
 
 			$upload_dir = WP_CONTENT_DIR . '/bcf-fonts';
 			$css_file   = WP_CONTENT_DIR . '/bcf-fonts/local-fonts.css';
@@ -233,9 +233,10 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 			}
 
-			// Use WP_Filesystem to write to file instead of file_put_contents
+			// Use WP_Filesystem to write to file instead of file_put_contents.
 			$wp_filesystem->put_contents( $css_file, $font_face_css, FS_CHMOD_FILE );
 
+			// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 			wp_enqueue_style( 'local-google-fonts', content_url( '/bcf-fonts/local-fonts.css' ), array(), null );
 		}
 
