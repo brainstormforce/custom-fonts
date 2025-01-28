@@ -154,6 +154,16 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		 * @since 2.1.11
 		 */
 		public function load_local_google_fonts() {
+			// We are using WP_Filesystem for managing google fonts files which is necessary for the proper functionality of the plugin.
+			global $wp_filesystem;
+
+			// If the filesystem has not been instantiated yet, do it here.
+			if ( ! function_exists( 'WP_Filesystem' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php'; // PHPCS:ignore WPThemeReview.CoreFunctionality.FileInclude.FileIncludeFound
+			}
+
+			WP_Filesystem(); // Initialize the filesystem
+
 			$upload_dir = WP_CONTENT_DIR . '/bcf-fonts';
 			$css_file   = WP_CONTENT_DIR . '/bcf-fonts/local-fonts.css';
 
@@ -223,7 +233,8 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 				}
 			}
 
-			file_put_contents( $css_file, $font_face_css );
+			// Use WP_Filesystem to write to file instead of file_put_contents
+			$wp_filesystem->put_contents( $css_file, $font_face_css, FS_CHMOD_FILE );
 
 			wp_enqueue_style( 'local-google-fonts', content_url( '/bcf-fonts/local-fonts.css' ), array(), null );
 		}
