@@ -145,9 +145,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 		}
 
 		/**
-		 * Inline font support for google fonts.
+		 * Generate and enqueue a local CSS file for self-hosted Google Fonts.
 		 *
-		 * @return mixed
+		 * This function scans the `/bcf-fonts/` directory inside `wp-content/` for locally stored Google Fonts.
+		 * It dynamically creates an `@font-face` CSS file (`local-fonts.css`) that defines font-face rules
+		 * for all detected font files. The generated CSS is then enqueued for use on the site.
+		 *
 		 * @since 2.1.11
 		 */
 		public function load_local_google_fonts() {
