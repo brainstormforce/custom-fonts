@@ -75,6 +75,7 @@ if ( is_admin() ) {
 // BSF Analytics library.
 if ( ! class_exists( 'BSF_Analytics_Loader' ) ) {
 	require_once BSF_CUSTOM_FONTS_DIR . 'admin/bsf-analytics/class-bsf-analytics-loader.php';
+	require_once BSF_CUSTOM_FONTS_DIR . 'includes/rest-api/class-bsf-analytics-compatibility.php';
 }
 
 $bsf_analytics = BSF_Analytics_Loader::get_instance();
