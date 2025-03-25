@@ -58,7 +58,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 
 			$this->set_actions();
 
-			add_action( 'rest_api_init', array( $this, 'bcf_register_rest_settings' ) );
+			add_action( 'rest_api_init', array( $this, 'bsf_register_rest_settings' ) );
 
 			$this->includes();
 		}
@@ -341,9 +341,9 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		/**
 		 * Register REST API for tracking status.
 		 *
-		 * @since x.x.x
+		 * @since 2.1.12
 		 */
-		public function bcf_register_rest_settings() {
+		public function bsf_register_rest_settings() {
 			register_rest_route(
 				'custom-fonts/v1',
 				'/get-tracking-status',
@@ -372,7 +372,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		/**
 		 * Get current tracking status.
 		 *
-		 * @since x.x.x
+		 * @since 2.1.12
 		 */
 		public function get_tracking_status() {
 			$option_name = 'bsf_analytics_optin';
@@ -410,7 +410,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		/**
 		 * Updateing tracking status.
 		 *
-		 * @since x.x.x
+		 * @since 2.1.12
 		 */
 		public function update_tracking_status( WP_REST_Request $request ) {
 			$params = $request->get_params();
