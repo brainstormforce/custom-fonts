@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: fonts, custom fonts, Google Fonts, performance, full site editing
 Requires at least: 5.0
 Tested up to: 6.7
-Stable tag: 2.1.11
+Stable tag: 2.1.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 == Changelog ==
+= 2.1.12
+- Improved Usage Tracking option with a new toggle switch design while keeping all existing features.
+
 = 2.1.11
 - Added logic to generate and enqueue a local CSS file for downloaded Google Fonts, ensuring they load in both the editor and frontend to support inline font styles.
 

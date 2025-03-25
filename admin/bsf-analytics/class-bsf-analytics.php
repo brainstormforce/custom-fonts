@@ -58,7 +58,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 
 			$this->set_actions();
 
-			add_action( 'admin_init', array( $this, 'register_usage_tracking_setting' ) );
+			add_action( 'rest_api_init', array( $this, 'bcf_register_rest_settings' ) );
 
 			$this->includes();
 		}
@@ -337,86 +337,121 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 			require_once __DIR__ . '/class-bsf-analytics-stats.php';
 		}
 
+
 		/**
-		 * Register usage tracking option in General settings page.
+		 * Register REST API for tracking status.
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 */
-		public function register_usage_tracking_setting() {
+		public function bcf_register_rest_settings() {
+			register_rest_route(
+				'custom-fonts/v1',
+				'/get-tracking-status',
+				array(
+					'methods'             => 'GET',
+					'callback'            => array( $this, 'get_tracking_status' ),
+					'permission_callback' => function () {
+						return current_user_can( 'manage_options' );
+					},
+				)
+			);
 
-			foreach ( $this->entities as $key => $data ) {
+			register_rest_route(
+				'custom-fonts/v1',
+				'/update-tracking-status',
+				array(
+					'methods'             => 'POST',
+					'callback'            => array( $this, 'update_tracking_status' ),
+					'permission_callback' => function () {
+						return current_user_can( 'manage_options' );
+					},
+				)
+			);
+		}
 
-				if ( ! apply_filters( $key . '_tracking_enabled', true ) || $this->is_white_label_enabled( $key ) ) {
-					return;
-				}
+		/**
+		 * Get current tracking status.
+		 *
+		 * @since x.x.x
+		 */
+		public function get_tracking_status() {
+			$option_name = 'bsf_analytics_optin';
+			$key         = 'bsf_analytics';
 
-				$usage_doc_link = isset( $data['usage_doc_link'] ) ? $data['usage_doc_link'] : $this->usage_doc_link;
-				$author         = isset( $data['author'] ) ? $data['author'] : 'Brainstorm Force';
+			// Collecting entity data.
+			$entity_data = $this->entities[ $key ] ?? array();
 
-				register_setting(
-					'general',             // Options group.
-					$key . '_analytics_optin',      // Option name/database.
-					array( 'sanitize_callback' => array( $this, 'sanitize_option' ) ) // sanitize callback function.
-				);
-
-				add_settings_field(
-					$key . '-analytics-optin',       // Field ID.
-					__( 'Usage Tracking', 'custom-fonts' ),       // Field title.
-					array( $this, 'render_settings_field_html' ), // Field callback function.
-					'general',
-					'default',                   // Settings page slug.
+			// Added check if tracking is allowed or not.
+			if ( $this->is_white_label_enabled( $key ) ||
+				! apply_filters( $key . '_tracking_enabled', true ) ) {
+				return new WP_REST_Response(
 					array(
-						'type'           => 'checkbox',
-						'title'          => $author,
-						'name'           => $key . '_analytics_optin',
-						'label_for'      => $key . '-analytics-optin',
-						'id'             => $key . '-analytics-optin',
-						'usage_doc_link' => $usage_doc_link,
-					)
+						'status'         => 'disabled',
+						'value'          => 'no',
+						'author'         => $entity_data['author'] ?? 'Brainstorm Force',
+						'usage_doc_link' => $entity_data['usage_doc_link'] ?? $this->usage_doc_link,
+					),
+					200
 				);
 			}
+
+			return new WP_REST_Response(
+				array(
+					'status'         => 'active',
+					'value'          => get_site_option( $option_name, 'no' ),
+					'is_multisite'   => is_multisite(),
+					'author'         => $entity_data['author'] ?? 'Brainstorm Force',
+					'usage_doc_link' => $entity_data['usage_doc_link'] ?? $this->usage_doc_link,
+				),
+				200
+			);
 		}
 
 		/**
-		 * Sanitize Callback Function
+		 * Updateing tracking status.
 		 *
-		 * @param bool $input Option value.
-		 * @since 1.0.0
+		 * @since x.x.x
 		 */
-		public function sanitize_option( $input ) {
+		public function update_tracking_status( WP_REST_Request $request ) {
+			$params = $request->get_params();
+			$status = isset( $params['status'] ) ? ( $params['status'] ? 'yes' : 'no' ) : 'no';
 
-			if ( ! $input || 'no' === $input ) {
-				return 'no';
+			// Verifying the white label status.
+			if ( $this->is_white_label_enabled( 'bsf_analytics' ) ) {
+				return new WP_REST_Response(
+					array(
+						'success'        => false,
+						'message'        => __( 'Tracking disabled by white label settings', 'custom-fonts' ),
+						'is_white_label' => true,
+					),
+					403
+				);
 			}
 
-			return 'yes';
-		}
+			// Verifying tracking filter.
+			if ( ! apply_filters( 'bsf_analytics_tracking_enabled', true ) ) {
+				return new WP_REST_Response(
+					array(
+						'success'            => false,
+						'message'            => __( 'Tracking disabled by filter', 'custom-fonts' ),
+						'is_filter_disabled' => true,
+					),
+					403
+				);
+			}
 
-		/**
-		 * Print settings field HTML.
-		 *
-		 * @param array $args arguments to field.
-		 * @since 1.0.0
-		 */
-		public function render_settings_field_html( $args ) {
-			?>
-			<fieldset>
-			<label for="<?php echo esc_attr( $args['label_for'] ); ?>">
-				<input id="<?php echo esc_attr( $args['id'] ); ?>" type="checkbox" value="1" name="<?php echo esc_attr( $args['name'] ); ?>" <?php checked( get_site_option( $args['name'], 'no' ), 'yes' ); ?>>
-				<?php
-				/* translators: %s Product title */
-				echo esc_html( sprintf( __( 'Allow %s products to track non-sensitive usage tracking data.', 'custom-fonts' ), $args['title'] ) );// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+			$option_name = 'bsf_analytics_optin';
+			update_site_option( $option_name, $status );
 
-				if ( is_multisite() ) {
-					esc_html_e( ' This will be applicable for all sites from the network.', 'custom-fonts' );
-				}
-				?>
-			</label>
-			<?php
-			echo wp_kses_post( sprintf( '<a href="%1s" target="_blank" rel="noreferrer noopener">%2s</a>', esc_url( $args['usage_doc_link'] ), __( 'Learn More.', 'custom-fonts' ) ) );
-			?>
-			</fieldset>
-			<?php
+			return new WP_REST_Response(
+				array(
+					'success'      => true,
+					'message'      => __( 'Tracking status updated successfully.', 'custom-fonts' ),
+					'is_multisite' => is_multisite(),
+					'new_status'   => $status,
+				),
+				200
+			);
 		}
 
 		/**
