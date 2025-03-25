@@ -15,8 +15,8 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 
 	/**
 	 * BSF analytics
-     *
-     * @since 2.1.12
+	 *
+	 * @since 2.1.12
 	 */
 	class CF_BSF_Analytics_Compatibility {
 
@@ -32,24 +32,24 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 			add_action( 'rest_api_init', array( $this, 'bsf_register_rest_settings' ) );
 		}
 
-        public function is_tracking_enabled() {
-            $is_tracking_enabled = get_site_option( 'bsf_analytics_optin' ) === 'yes' ? true : false;
-            $is_tracking_enabled = $this->is_white_label_enabled() ? false : $is_tracking_enabled;
-            $is_tracking_enabled = apply_filters( 'bsf_tracking_enabled', $is_tracking_enabled );
+		public function is_tracking_enabled() {
+			$is_tracking_enabled = get_site_option( 'bsf_analytics_optin' ) === 'yes' ? true : false;
+			$is_tracking_enabled = $this->is_white_label_enabled() ? false : $is_tracking_enabled;
+			$is_tracking_enabled = apply_filters( 'bsf_tracking_enabled', $is_tracking_enabled );
 
-            return new WP_REST_Response(
+			return new WP_REST_Response(
 				array(
 					'success'        => true,
-                    'status'         => $is_tracking_enabled,
-                    'is_multisite'   => is_multisite(),
-                    'is_white_label' => $this->is_white_label_enabled(),
-                    'usage_doc_link' => 'https://store.brainstormforce.com/usage-tracking/?utm_source=wp_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking'
+					'status'         => $is_tracking_enabled,
+					'is_multisite'   => is_multisite(),
+					'is_white_label' => $this->is_white_label_enabled(),
+					'usage_doc_link' => 'https://store.brainstormforce.com/usage-tracking/?utm_source=wp_dashboard&utm_medium=general_settings&utm_campaign=usage_tracking',
 				),
 				200
 			);
-        }
+		}
 
-        /**
+		/**
 		 * Check if WHITE label is enabled for BSF products.
 		 *
 		 * @param string $source source of analytics.
@@ -115,14 +115,14 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 					array(
 						'success'        => false,
 						'message'        => __( 'Tracking disabled by white label settings', 'custom-fonts' ),
-                        'is_multisite'   => is_multisite(),
+						'is_multisite'   => is_multisite(),
 						'is_white_label' => true,
 					),
 					403
 				);
 			}
 
-            $params       = $request->get_params();
+			$params       = $request->get_params();
 			$optin_status = isset( $params['status'] ) ? ( $params['status'] ? 'yes' : 'no' ) : 'no';
 			$option_name  = 'bsf_analytics_optin';
 			update_site_option( $option_name, $optin_status );
@@ -140,5 +140,5 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 
 	}
 
-    new CF_BSF_Analytics_Compatibility();
+	new CF_BSF_Analytics_Compatibility();
 }
