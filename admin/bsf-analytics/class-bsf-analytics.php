@@ -59,6 +59,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 			$this->set_actions();
 
 			add_action( 'admin_init', array( $this, 'register_usage_tracking_setting' ) );
+			add_action( 'init', array( $this, 'bcf_register_rest_settings' ) );
 
 			$this->includes();
 		}
@@ -393,6 +394,24 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 		}
 
 		/**
+ * Register REST API settings.
+ */
+function bcf_register_rest_settings() {
+	register_setting(
+		'general',
+		'bsf_analytics_optin',
+		array(
+			'type'              => 'string',
+			'description'       => __( 'Usage Tracking Setting', 'custom-fonts' ),
+			'show_in_rest'      => true,
+			'default'           => '0',
+		)
+	);
+
+}
+
+
+		/**
 		 * Print settings field HTML.
 		 *
 		 * @param array $args arguments to field.
@@ -405,7 +424,7 @@ if ( ! class_exists( 'BSF_Analytics' ) ) {
 				<input id="<?php echo esc_attr( $args['id'] ); ?>" type="checkbox" value="1" name="<?php echo esc_attr( $args['name'] ); ?>" <?php checked( get_site_option( $args['name'], 'no' ), 'yes' ); ?>>
 				<?php
 				/* translators: %s Product title */
-				echo esc_html( sprintf( __( 'Allow %s products to track non-sensitive usage tracking data.', 'custom-fonts' ), $args['title'] ) );// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
+				echo esc_html( sprintf( __( 'Allow %s products to track non-sensitive yogesh usage tracking data.', 'custom-fonts' ), $args['title'] ) );// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 
 				if ( is_multisite() ) {
 					esc_html_e( ' This will be applicable for all sites from the network.', 'custom-fonts' );
