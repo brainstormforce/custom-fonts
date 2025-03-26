@@ -23,9 +23,6 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 		/**
 		 * Setup actions, load files.
 		 *
-		 * @param array  $args entity data for analytics.
-		 * @param string $analytics_path directory path to analytics library.
-		 * @param float  $analytics_version analytics library version.
 		 * @since 2.1.12
 		 */
 		public function __construct() {
