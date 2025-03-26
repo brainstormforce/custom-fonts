@@ -32,6 +32,12 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 			add_action( 'rest_api_init', array( $this, 'bsf_register_rest_settings' ) );
 		}
 
+		/**
+		 * Check if tracking is enabled.
+		 *
+		 * @return WP_REST_Response REST response with tracking status.
+		 * @since 2.1.12
+		 */
 		public function is_tracking_enabled() {
 			$is_tracking_enabled = get_site_option( 'bsf_analytics_optin' ) === 'yes' ? true : false;
 			$is_tracking_enabled = $this->is_white_label_enabled() ? false : $is_tracking_enabled;
@@ -52,8 +58,7 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 		/**
 		 * Check if WHITE label is enabled for BSF products.
 		 *
-		 * @param string $source source of analytics.
-		 * @return bool
+		 * @return bool True if enabled, false otherwise.
 		 * @since 2.1.12
 		 */
 		public function is_white_label_enabled() {
@@ -106,6 +111,8 @@ if ( ! class_exists( 'CF_BSF_Analytics_Compatibility' ) ) {
 		/**
 		 * Updating tracking status.
 		 *
+		 * @param WP_REST_Request $request Request object.
+		 * @return WP_REST_Response REST response indicating success or failure.
 		 * @since 2.1.12
 		 */
 		public function update_tracking_status( WP_REST_Request $request ) {
