@@ -4,7 +4,7 @@
 **Tags:** fonts, custom fonts, Google Fonts, performance, full site editing
 **Requires at least:** 5.0  
 **Tested up to:** 6.8  
-**Stable tag:** 2.1.12  
+**Stable tag:** 2.1.13  
 **License:** GPLv2 or later  
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
