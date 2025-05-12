@@ -119,7 +119,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 			// Delete custom fonts action.
 			add_action( 'delete_term', array( $this, 'delete_custom_fonts_fallback_astra' ), 10, 5 );
 
-			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
+			add_action( 'init', array( $this, 'load_textdomain' ) );
 
 			// add Custom Font list into Astra customizer.
 			add_filter( 'astra_system_fonts', array( $this, 'add_custom_fonts_astra_customizer' ) );
