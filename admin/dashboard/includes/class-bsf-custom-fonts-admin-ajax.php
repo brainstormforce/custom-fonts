@@ -54,7 +54,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	 */
 	public function __construct() {
 		add_action( 'init', array( $this, 'initialize_errors' ) );
-	
+
 		$ajax_events = array(
 			'bcf_add_new_local_font',
 			'bcf_add_new_google_font',
@@ -67,7 +67,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			add_action( 'wp_ajax_' . $event, array( $this, $event ) );
 		}
 	}
-	
+
 	/**
 	 * Initialize errors
 	 *
@@ -81,7 +81,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 			'invalid'    => __( 'No post data found!', 'custom-fonts' ),
 		);
 	}
-	
+
 	/**
 	 * Get ajax error message.
 	 *
