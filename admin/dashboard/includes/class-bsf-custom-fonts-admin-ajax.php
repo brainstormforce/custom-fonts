@@ -53,12 +53,7 @@ class BSF_Custom_Fonts_Admin_Ajax {
 	 * @since 4.0.0
 	 */
 	public function __construct() {
-		$this->errors = array(
-			'permission' => __( 'Sorry, you are not allowed to do this operation.', 'custom-fonts' ),
-			'nonce'      => __( 'Nonce validation failed', 'custom-fonts' ),
-			'default'    => __( 'Sorry, something went wrong.', 'custom-fonts' ),
-			'invalid'    => __( 'No post data found!', 'custom-fonts' ),
-		);
+		add_action( 'init', array( $this, 'initialize_errors' ) );
 
 		$ajax_events = array(
 			'bcf_add_new_local_font',
@@ -71,6 +66,20 @@ class BSF_Custom_Fonts_Admin_Ajax {
 		foreach ( $ajax_events as $key => $event ) {
 			add_action( 'wp_ajax_' . $event, array( $this, $event ) );
 		}
+	}
+
+	/**
+	 * Initialize errors
+	 *
+	 * @since 2.1.14
+	 */
+	public function initialize_errors() {
+		$this->errors = array(
+			'permission' => __( 'Sorry, you are not allowed to do this operation.', 'custom-fonts' ),
+			'nonce'      => __( 'Nonce validation failed', 'custom-fonts' ),
+			'default'    => __( 'Sorry, something went wrong.', 'custom-fonts' ),
+			'invalid'    => __( 'No post data found!', 'custom-fonts' ),
+		);
 	}
 
 	/**

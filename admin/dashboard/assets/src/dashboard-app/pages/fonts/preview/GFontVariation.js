@@ -175,9 +175,9 @@ const GFontVariation = (props) => {
 							onClick={addWeight}
 						>
 							{addTitle === __( 'Removing...', 'custom-fonts' ) ? (Custom_Fonts_Icons['loadingSpinner3']) : (
-								<span data-font_weight={weight}>
-									{Custom_Fonts_Icons['iconsquare']}
-								</span>
+								<span data-font_weight={weight} style={{ pointerEvents: 'none' }}>
+								{Custom_Fonts_Icons['iconsquare']} 
+							  </span>
 							)}
 							<span className="ml-2" data-font_weight={weight}>
 								{addTitle}
@@ -211,7 +211,7 @@ const GFontVariation = (props) => {
 							onClick={removeWeight}
 						>
 							{removeTitle === __( 'Adding...', 'custom-fonts' ) ? (Custom_Fonts_Icons['loadingSpinner3']) : (
-								<span data-font_weight={weight}>
+								<span data-font_weight={weight} style={{ pointerEvents: 'none' }}>
 									{Custom_Fonts_Icons['iconsquare2']}
 								</span>
 							)}
