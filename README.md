@@ -103,7 +103,7 @@ When mentioning Custom Fonts, please use the following format:
 - [Presto Player](https://prestoplayer.com/) - Best video player plugin for WordPress.
 - [SureCart](https://surecart.com/) - A powerful eCommerce platform designed to grow your business by effortlessly selling online.
 - [SureMembers](https://suremembers.com/) - Fastest and easiest way to protect content on your website and build memberships.
-- [SureTriggers](https://suretriggers.com/) - Connects your favorite tools so you can automate workflows and streamline your business processes.
+- [OttoKit](https://ottokit.com/) - Connects your favorite tools so you can automate workflows and streamline your business processes.
 - [SureWriter](https://www.surewriter.com/) - AI writing tool to make your web design journey faster.
 
 
