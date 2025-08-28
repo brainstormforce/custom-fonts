@@ -186,7 +186,18 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					foreach ( $font_files as $font_file ) {
 						$font_url = content_url( '/bcf-fonts/' . $folder . '/' . basename( $font_file ) );
 
-						preg_match( '/(.*)-([0-9a-z]+)-(\w+)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches );
+						preg_match( '/(.+?)-(\d{3,4})-(normal|italic)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches );
+						
+						// Handle edge case where font name already contains weight/style keywords
+						if (!$matches && preg_match( '/(.+)-(\d{3,4})-(.+)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches )) {
+							// Additional processing for complex font names
+							$potential_style = $matches[3];
+							if (strpos($potential_style, 'italic') !== false) {
+								$matches[3] = 'italic';
+							} else {
+								$matches[3] = 'normal';
+							}
+						}
 
 						if ( count( $matches ) ) {
 							$font_name   = trim( $matches[1] );
@@ -194,12 +205,26 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 							$font_style  = $matches[3];
 							$file_format = $matches[4];
 
-							$font_variations[ "$font_name-$font_weight-$font_style" ][ $file_format ] = $font_url;
+							// Create unique key using md5 to avoid explode issues with hyphens
+							$variation_key = md5( "$font_name-$font_weight-$font_style" );
+							$font_variations[ $variation_key ] = array(
+								'name' => $font_name,
+								'weight' => $font_weight, 
+								'style' => $font_style,
+								'formats' => isset( $font_variations[ $variation_key ]['formats'] ) ? $font_variations[ $variation_key ]['formats'] : array()
+							);
+							$font_variations[ $variation_key ]['formats'][ $file_format ] = $font_url;
 						}
 					}
 
-					foreach ( $font_variations as $key => $formats ) {
-						list($font_name, $font_weight, $font_style) = explode( '-', $key );
+					foreach ( $font_variations as $variation ) {
+						$font_name = $variation['name'];
+						$font_weight = $variation['weight'];
+						$font_style = $variation['style'];
+						$formats = $variation['formats'];
+
+						// Convert font-name-slug back to proper Font Name for CSS
+						$display_font_name = ucwords( str_replace( '-', ' ', $font_name ) );
 
 						$src = array();
 						if ( ! empty( $formats['woff2'] ) ) {
@@ -223,7 +248,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 						$font_face_css .= "
 						@font-face {
-							font-family: '{$font_name}';
+							font-family: '{$display_font_name}';
 							src: " . implode( ', ', $src ) . ";
 							font-weight: {$font_weight};
 							font-style: {$font_style};

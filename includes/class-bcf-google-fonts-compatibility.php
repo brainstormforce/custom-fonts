@@ -291,7 +291,9 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since 2.0.0
 		 */
 		public function get_fonts_file_url( $font_family, $font_weight, $font_style, $font_id = null, $for_theme_json = false ) {
-			$font_family_key = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
+			$font_family_key = strtolower( str_replace( ' ', '-', $font_family ) );
+			// Remove any non-alphanumeric characters except hyphens to create a valid key
+			$font_family_key = preg_replace( '/[^a-z0-9\-]/', '', $font_family_key );
 
 			if ( ! is_null( $font_id ) && 'local' === get_post_meta( $font_id, 'font-type', true ) ) {
 				$font_data  = get_post_meta( $font_id, 'fonts-data', true );
@@ -546,8 +548,11 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				$font_family = 'unknown';
 				if ( isset( $matched_font_families[0] ) && isset( $matched_font_families[0][0] ) ) {
 					$font_family = rtrim( ltrim( $matched_font_families[0][0], 'font-family:' ), ';' );
-					$font_family = trim( str_replace( array( "'", ';' ), '', $font_family ) );
-					$font_family = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
+					$font_family = trim( str_replace( array( "'", '"', ';' ), '', $font_family ) );
+					// Create a safe key without breaking multi-word font names
+					$font_family = strtolower( str_replace( ' ', '-', $font_family ) );
+					// Remove any non-alphanumeric characters except hyphens to create a valid key
+					$font_family = preg_replace( '/[^a-z0-9\-]/', '', $font_family );
 				}
 
 				// Make sure the font-family is set in our array.
