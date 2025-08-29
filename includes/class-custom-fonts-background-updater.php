@@ -142,6 +142,8 @@ if ( ! class_exists( 'Custom_Fonts_Background_Updater' ) ) {
 			do_action( 'custom_fonts_update_initiated', self::$background_updater );
 
 			if ( true === $this->is_new_install() ) {
+				// Set new install flag for new users to use new features.
+				$this->set_new_install_defaults();
 				self::update_db_version();
 				return;
 			}
@@ -169,8 +171,10 @@ if ( ! class_exists( 'Custom_Fonts_Background_Updater' ) ) {
 		 */
 		public function is_new_install() {
 			$saved_version = get_option( $this->db_version_key, false );
+			$old_saved_version = get_option( '_custom_fonts_db_version', false );
 
-			if ( false === $saved_version ) {
+			// Check both old and new version keys to detect truly new installs.
+			if ( false === $saved_version && false === $old_saved_version ) {
 				return true;
 			}
 
@@ -369,6 +373,21 @@ if ( ! class_exists( 'Custom_Fonts_Background_Updater' ) ) {
 			if ( isset( $settings[ $key ] ) ) {
 				unset( $settings[ $key ] );
 				update_option( $this->settings_key, $settings );
+			}
+		}
+
+		/**
+		 * Set defaults for new installations.
+		 *
+		 * @since 2.2.1
+		 */
+		private function set_new_install_defaults() {
+			$plugin_options = get_option( 'custom_fonts_settings', array() );
+
+			// New users get new features enabled.
+			if ( ! isset( $plugin_options['font-key-compat'] ) ) {
+				$plugin_options['font-key-compat'] = false;
+				update_option( 'custom_fonts_settings', $plugin_options );
 			}
 		}
 	}

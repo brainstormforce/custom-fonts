@@ -79,6 +79,9 @@ class Custom_Fonts_Update {
 			$this->v_2_0_2();
 		}
 
+		// Set backward compatibility flag for existing users.
+		$this->set_backward_compatibility_flag();
+
 		$this->update_db_version();
 
 		do_action( 'custom_fonts_update_after' );
@@ -241,6 +244,22 @@ class Custom_Fonts_Update {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Set backward compatibility flag for existing users.
+	 *
+	 * @since 2.2.1
+	 * @return void
+	 */
+	private function set_backward_compatibility_flag() {
+		$plugin_options = get_option( 'custom_fonts_settings', array() );
+
+		// Existing users should use old method for backward compatibility.
+		if ( ! isset( $plugin_options['font-key-compat'] ) ) {
+			$plugin_options['font-key-compat'] = true;
+			update_option( 'custom_fonts_settings', $plugin_options );
+		}
 	}
 
 	/**
