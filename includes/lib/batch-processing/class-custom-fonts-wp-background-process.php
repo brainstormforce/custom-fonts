@@ -10,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Include the async request class if not already loaded.
+if ( ! class_exists( 'Custom_Fonts_WP_Async_Request' ) ) {
+	require_once BSF_CUSTOM_FONTS_DIR . 'includes/lib/batch-processing/class-custom-fonts-wp-async-request.php';
+}
+
 if ( ! class_exists( 'Custom_Fonts_WP_Background_Process' ) ) {
 
 	/**
@@ -476,6 +481,11 @@ if ( ! class_exists( 'Custom_Fonts_WP_Background_Process' ) ) {
 		 *
 		 * @return mixed
 		 */
-		abstract protected function task( $item );
+		protected function task( $item ) {
+			if ( is_callable( $item ) ) {
+				call_user_func( $item );
+			}
+			return false;
+		}
 	}
 }

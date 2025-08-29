@@ -36,6 +36,9 @@ if ( ! class_exists( 'Custom_Fonts_Background_Updater' ) ) {
 			'2.2.0'  => array(
 				'custom_fonts_background_updater_2_2_0',
 			),
+			'2.2.1'  => array(
+				'custom_fonts_background_updater_2_2_1',
+			),
 		);
 
 		/**
@@ -67,8 +70,8 @@ if ( ! class_exists( 'Custom_Fonts_Background_Updater' ) ) {
 			$this->include_background_processing();
 
 			// Initialize background updater.
-			if ( class_exists( 'Custom_Fonts_WP_Background_Process' ) ) {
-				self::$background_updater = new Custom_Fonts_WP_Background_Process();
+			if ( class_exists( 'Custom_Fonts_Theme_Background_Process' ) ) {
+				self::$background_updater = new Custom_Fonts_Theme_Background_Process();
 			}
 		}
 
@@ -76,9 +79,14 @@ if ( ! class_exists( 'Custom_Fonts_Background_Updater' ) ) {
 		 * Include background processing library.
 		 */
 		private function include_background_processing() {
-			if ( ! class_exists( 'Custom_Fonts_WP_Background_Process' ) ) {
+			if ( ! class_exists( 'Custom_Fonts_WP_Async_Request' ) ) {
 				require_once BSF_CUSTOM_FONTS_DIR . 'includes/lib/batch-processing/class-custom-fonts-wp-async-request.php';
+			}
+			if ( ! class_exists( 'Custom_Fonts_WP_Background_Process' ) ) {
 				require_once BSF_CUSTOM_FONTS_DIR . 'includes/lib/batch-processing/class-custom-fonts-wp-background-process.php';
+			}
+			if ( ! class_exists( 'Custom_Fonts_Theme_Background_Process' ) ) {
+				require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-wp-background-process.php';
 			}
 		}
 

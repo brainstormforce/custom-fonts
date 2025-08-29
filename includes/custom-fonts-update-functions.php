@@ -127,15 +127,29 @@ function custom_fonts_update_option( $key, $value ) {
 }
 
 /**
- * Helper function to delete Custom Fonts plugin option.
+ * Background updater function for plugin v2.2.1
  *
- * @since 2.2.0
- * @param string $key Option key.
+ * @since 2.2.1
+ * @return void
  */
-function custom_fonts_delete_option( $key ) {
-	$settings = get_option( 'custom_fonts_settings', array() );
-	if ( isset( $settings[ $key ] ) ) {
-		unset( $settings[ $key ] );
-		update_option( 'custom_fonts_settings', $settings );
+function custom_fonts_background_updater_2_2_1() {
+	$plugin_options = get_option( 'custom_fonts_settings', array() );
+
+	// Set font key sanitization backward compatibility flag for NEW installs only.
+	if ( ! isset( $plugin_options['font-key-compat'] ) ) {
+		$plugin_options['font-key-compat'] = false;
+		update_option( 'custom_fonts_settings', $plugin_options );
 	}
 }
+
+/**
+ * Check if the font key backward compatibility is enabled.
+ *
+ * @return bool true|false.
+ * @since 2.2.1
+ */
+function custom_fonts_font_key_compatibility() {
+	$plugin_settings = get_option( 'custom_fonts_settings', array() );
+	return apply_filters( 'custom_fonts_get_option_font-key-compat', isset( $plugin_settings['font-key-compat'] ) ? $plugin_settings['font-key-compat'] : true );
+}
+

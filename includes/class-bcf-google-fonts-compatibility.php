@@ -291,7 +291,15 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since 2.0.0
 		 */
 		public function get_fonts_file_url( $font_family, $font_weight, $font_style, $font_id = null, $for_theme_json = false ) {
-			$font_family_key = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
+			// Use backward compatible font key method or new method based on compatibility flag.
+			if ( function_exists( 'custom_fonts_font_key_compatibility' ) && custom_fonts_font_key_compatibility() ) {
+				// Use old sanitization method for backward compatibility.
+				$font_family_key = sanitize_key( strtolower( str_replace( ' ', '-', $font_family ) ) );
+			} else {
+				// Use new sanitization method.
+				$font_family_key = strtolower( str_replace( ' ', '-', $font_family ) );
+				$font_family_key = preg_replace( '/[^a-z0-9\-]/', '', $font_family_key );
+			}
 
 			if ( ! is_null( $font_id ) && 'local' === get_post_meta( $font_id, 'font-type', true ) ) {
 				$font_data  = get_post_meta( $font_id, 'fonts-data', true );

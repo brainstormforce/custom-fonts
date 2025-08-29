@@ -186,7 +186,24 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					foreach ( $font_files as $font_file ) {
 						$font_url = content_url( '/bcf-fonts/' . $folder . '/' . basename( $font_file ) );
 
-						preg_match( '/(.*)-([0-9a-z]+)-(\w+)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches );
+						// Use backward compatible regex pattern or new pattern based on compatibility flag.
+						if ( function_exists( 'custom_fonts_font_key_compatibility' ) && custom_fonts_font_key_compatibility() ) {
+							// Use old regex pattern for backward compatibility.
+							preg_match( '/(.*)-([0-9a-z]+)-(\w+)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches );
+						} else {
+							// Use new regex pattern for improved parsing.
+							preg_match( '/(.+?)-(\d{3,4})-(normal|italic)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches );
+							
+							// Handle edge case where font name already contains weight/style keywords.
+							if ( ! $matches && preg_match( '/(.+)-(\d{3,4})-(.+)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches ) ) {
+								$potential_style = $matches[3];
+								if ( strpos( $potential_style, 'italic' ) !== false ) {
+									$matches[3] = 'italic';
+								} else {
+									$matches[3] = 'normal';
+								}
+							}
+						}
 
 						if ( count( $matches ) ) {
 							$font_name   = trim( $matches[1] );
@@ -194,12 +211,23 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 							$font_style  = $matches[3];
 							$file_format = $matches[4];
 
+							// Always use old method - keep it simple.
 							$font_variations[ "$font_name-$font_weight-$font_style" ][ $file_format ] = $font_url;
 						}
 					}
 
 					foreach ( $font_variations as $key => $formats ) {
+						// Extract from string key.
 						list($font_name, $font_weight, $font_style) = explode( '-', $key );
+						
+						// Use backward compatible display name or new method based on compatibility flag.
+						if ( function_exists( 'custom_fonts_font_key_compatibility' ) && custom_fonts_font_key_compatibility() ) {
+							// Old method: Use font name as-is.
+							$display_font_name = $font_name;
+						} else {
+							// New method: Convert font-name-slug back to proper Font Name for CSS.
+							$display_font_name = ucwords( str_replace( '-', ' ', $font_name ) );
+						}
 
 						$src = array();
 						if ( ! empty( $formats['woff2'] ) ) {
@@ -223,7 +251,7 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 
 						$font_face_css .= "
 						@font-face {
-							font-family: '{$font_name}';
+							font-family: '{$display_font_name}';
 							src: " . implode( ', ', $src ) . ";
 							font-weight: {$font_weight};
 							font-style: {$font_style};
