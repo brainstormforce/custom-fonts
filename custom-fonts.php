@@ -45,6 +45,13 @@ require_once BSF_CUSTOM_FONTS_DIR . '/includes/helper-functions.php';
 require_once BSF_CUSTOM_FONTS_DIR . 'includes/plugin-update/class-custom-fonts-update.php';
 
 /**
+ * Custom Fonts Enhanced Background Updater.
+ */
+require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-background-updater.php';
+require_once BSF_CUSTOM_FONTS_DIR . 'includes/custom-fonts-update-functions.php';
+require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-wp-background-process.php';
+
+/**
  * Rest API support.
  */
 require_once BSF_CUSTOM_FONTS_DIR . 'includes/class-custom-fonts-api-init.php';
@@ -90,3 +97,8 @@ $bsf_analytics->set_entity(
 		),
 	)
 );
+
+/**
+ * Initialize Custom Fonts Enhanced Background Updater.
+ */
+new Custom_Fonts_Background_Updater();
