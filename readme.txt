@@ -3,8 +3,8 @@ Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: fonts, custom fonts, Google Fonts, performance, full site editing
 Requires at least: 5.0
-Tested up to: 6.8
-Stable tag: 2.1.15
+Tested up to: 6.9
+Stable tag: 2.1.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 == Changelog ==
+= 2.1.16
+- Custom fonts plugin tested with WordPress 6.9 version.
+
 - 2.1.15
 - Updated plugin with few extra information for clarity.
 
