@@ -159,11 +159,10 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 						// Convert paths to URLs.
 						foreach ( $final_font_files as $remote => $local ) {
-							$font_url                    = str_replace(
-								$this->get_base_path(),
-								$this->get_base_url(),
-								$local
-							);
+							$relative_path               = str_replace( $this->get_base_path(), '', $local );
+							$path_parts                  = explode( '/', trim( $relative_path, '/' ) );
+							$encoded_path                = implode( '/', array_map( 'rawurlencode', $path_parts ) );
+							$font_url                    = trailingslashit( $this->get_base_url() ) . $encoded_path;
 							$final_font_files[ $remote ] = $font_url;
 							$font_srcs[]                 = $font_url;
 						}
@@ -221,11 +220,10 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 				// Convert paths to URLs.
 				foreach ( $final_font_files as $remote => $local ) {
-					$final_font_files[ $remote ] = str_replace(
-						$this->get_base_path(),
-						$this->get_base_url(),
-						$local
-					);
+					$relative_path               = str_replace( $this->get_base_path(), '', $local );
+					$path_parts                  = explode( '/', trim( $relative_path, '/' ) );
+					$encoded_path                = implode( '/', array_map( 'rawurlencode', $path_parts ) );
+					$final_font_files[ $remote ] = trailingslashit( $this->get_base_url() ) . $encoded_path;
 				}
 
 				if ( ! empty( $final_font_files ) ) {
