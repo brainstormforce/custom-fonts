@@ -184,12 +184,12 @@ if ( ! class_exists( 'Bsf_Custom_Fonts_Render' ) ) :
 					$font_variations = array();
 
 					foreach ( $font_files as $font_file ) {
-						$font_url = content_url( '/bcf-fonts/' . $folder . '/' . basename( $font_file ) );
+						$font_url = content_url( '/bcf-fonts/' . rawurlencode( $folder ) . '/' . rawurlencode( basename( $font_file ) ) );
 
-						preg_match( '/(.*)-([0-9a-z]+)-(\w+)\d*\.(woff2|woff|ttf|otf|eot|svg)/', basename( $font_file ), $matches );
+						preg_match( '/^(.+)-(\d+)-([a-z]+)\d*\.(woff2|woff|ttf|otf|eot|svg)$/i', basename( $font_file ), $matches );
 
 						if ( count( $matches ) ) {
-							$font_name   = trim( $matches[1] );
+							$font_name   = $folder;
 							$font_weight = $matches[2];
 							$font_style  = $matches[3];
 							$file_format = $matches[4];
