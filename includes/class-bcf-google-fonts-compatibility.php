@@ -95,6 +95,13 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				return;
 			}
 
+			// Security: Verify nonce for destructive operations to prevent CSRF attacks.
+			// If nonce is missing or invalid, redirect with a valid nonce.
+			if ( ! isset( $_GET['bcf_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['bcf_nonce'] ) ), 'bcf_google_fonts_rebuild' ) ) {
+				add_action( 'admin_init', array( $this, 'redirect_with_nonce' ), 1 );
+				return;
+			}
+
 			$bcf_filesystem    = bcf_filesystem();
 			$fonts_folder_path = $this->get_fonts_folder();
 
@@ -104,6 +111,35 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 
 			self::delete_all_theme_font_family();
 			add_action( 'admin_init', array( $this, 'update_fse_theme_json' ) );
+		}
+
+		/**
+		 * Redirect to the same page with a valid nonce for CSRF protection.
+		 *
+		 * @return void
+		 * @since 2.1.17
+		 */
+		public function redirect_with_nonce() {
+			// Double-check we're on the correct page and have permissions.
+			if ( empty( $_GET['page'] ) || BSF_CUSTOM_FONTS_ADMIN_PAGE !== $_GET['page'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				return;
+			}
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			// Build the redirect URL with the nonce.
+			$redirect_url = add_query_arg(
+				array(
+					'page'      => BSF_CUSTOM_FONTS_ADMIN_PAGE,
+					'bcf_nonce' => wp_create_nonce( 'bcf_google_fonts_rebuild' ),
+				),
+				admin_url( 'themes.php' )
+			);
+
+			wp_safe_redirect( $redirect_url );
+			exit;
 		}
 
 		/**
