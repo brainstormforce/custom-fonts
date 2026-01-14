@@ -90,6 +90,11 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 				return;
 			}
 
+			// Security: Ensure we're in admin area and user has proper capabilities before performing destructive operations.
+			if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			$bcf_filesystem    = bcf_filesystem();
 			$fonts_folder_path = $this->get_fonts_folder();
 
