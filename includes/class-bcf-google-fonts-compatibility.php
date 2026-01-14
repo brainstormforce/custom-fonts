@@ -91,7 +91,7 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 			}
 
 			// Security: Ensure we're in admin area and user has proper capabilities before performing destructive operations.
-			if ( ! is_admin() || ! current_user_can( 'manage_options' ) ) {
+			if ( ! is_admin() || ! function_exists( 'wp_get_current_user' ) || ! current_user_can( 'manage_options' ) ) {
 				return;
 			}
 
