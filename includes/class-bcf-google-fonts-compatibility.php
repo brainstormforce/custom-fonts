@@ -86,22 +86,40 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since 2.0.0
 		 */
 		public function __construct() {
+			// Hook into admin_init to ensure all WordPress core functions are loaded.
+			add_action( 'admin_init', array( $this, 'maybe_rebuild_fonts' ), 10 );
+		}
+
+		/**
+		 * Handle font rebuild operation with proper security checks.
+		 * This runs on admin_init to ensure all WordPress core functions are available.
+		 *
+		 * @return void
+		 * @since 2.1.17
+		 */
+		public function maybe_rebuild_fonts() {
+			// Only proceed if we're on the custom fonts admin page with rebuild action.
 			if ( empty( $_GET['page'] ) || BSF_CUSTOM_FONTS_ADMIN_PAGE !== $_GET['page'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				return;
 			}
 
-			// Security: Ensure we're in admin area and user has proper capabilities before performing destructive operations.
-			if ( ! is_admin() || ! function_exists( 'wp_get_current_user' ) || ! current_user_can( 'manage_options' ) ) {
+			// Check if this is a rebuild request (has the bcf_rebuild_fonts parameter).
+			if ( ! isset( $_GET['bcf_rebuild_fonts'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				return;
+			}
+
+			// Security: Ensure user has proper capabilities before performing destructive operations.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have permission to perform this action.', 'custom-fonts' ), 403 );
 			}
 
 			// Security: Verify nonce for destructive operations to prevent CSRF attacks.
-			// If nonce is missing or invalid, redirect with a valid nonce.
+			// The admin must manually click a link with a valid nonce - no auto-redirect.
 			if ( ! isset( $_GET['bcf_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['bcf_nonce'] ) ), 'bcf_google_fonts_rebuild' ) ) {
-				add_action( 'admin_init', array( $this, 'redirect_with_nonce' ), 1 );
-				return;
+				wp_die( esc_html__( 'Security check failed. Please try again.', 'custom-fonts' ), 403 );
 			}
 
+			// All security checks passed - proceed with destructive operations.
 			$bcf_filesystem    = bcf_filesystem();
 			$fonts_folder_path = $this->get_fonts_folder();
 
@@ -110,36 +128,37 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 			}
 
 			self::delete_all_theme_font_family();
-			add_action( 'admin_init', array( $this, 'update_fse_theme_json' ) );
-		}
+			$this->update_fse_theme_json();
 
-		/**
-		 * Redirect to the same page with a valid nonce for CSRF protection.
-		 *
-		 * @return void
-		 * @since 2.1.17
-		 */
-		public function redirect_with_nonce() {
-			// Double-check we're on the correct page and have permissions.
-			if ( empty( $_GET['page'] ) || BSF_CUSTOM_FONTS_ADMIN_PAGE !== $_GET['page'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-				return;
-			}
-
-			if ( ! current_user_can( 'manage_options' ) ) {
-				return;
-			}
-
-			// Build the redirect URL with the nonce.
+			// Redirect back to the fonts page without the rebuild parameters.
 			$redirect_url = add_query_arg(
 				array(
-					'page'      => BSF_CUSTOM_FONTS_ADMIN_PAGE,
-					'bcf_nonce' => wp_create_nonce( 'bcf_google_fonts_rebuild' ),
+					'page'           => BSF_CUSTOM_FONTS_ADMIN_PAGE,
+					'fonts_rebuilt'  => '1',
 				),
 				admin_url( 'themes.php' )
 			);
 
 			wp_safe_redirect( $redirect_url );
 			exit;
+		}
+
+		/**
+		 * Get the URL for rebuilding fonts with proper nonce.
+		 * This URL should be displayed to the admin who must manually click it.
+		 *
+		 * @return string The rebuild fonts URL with nonce.
+		 * @since 2.1.17
+		 */
+		public static function get_rebuild_fonts_url() {
+			return add_query_arg(
+				array(
+					'page'              => BSF_CUSTOM_FONTS_ADMIN_PAGE,
+					'bcf_rebuild_fonts' => '1',
+					'bcf_nonce'         => wp_create_nonce( 'bcf_google_fonts_rebuild' ),
+				),
+				admin_url( 'themes.php' )
+			);
 		}
 
 		/**
