@@ -86,8 +86,31 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 		 * @since 2.0.0
 		 */
 		public function __construct() {
+			add_action( 'admin_init', array( $this, 'maybe_rebuild_fonts' ), 10 );
+		}
+
+		/**
+		 * Handle font rebuild operation with security checks.
+		 *
+		 * @return void
+		 * @since 2.1.17
+		 */
+		public function maybe_rebuild_fonts() {
 			if ( empty( $_GET['page'] ) || BSF_CUSTOM_FONTS_ADMIN_PAGE !== $_GET['page'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				return;
+			}
+
+			if ( ! isset( $_GET['bcf_rebuild_fonts'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				return;
+			}
+
+			// Security: Capability and nonce checks.
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have permission to perform this action.', 'custom-fonts' ), 403 );
+			}
+
+			if ( ! isset( $_GET['bcf_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['bcf_nonce'] ) ), 'bcf_google_fonts_rebuild' ) ) {
+				wp_die( esc_html__( 'Security check failed. Please try again.', 'custom-fonts' ), 403 );
 			}
 
 			$bcf_filesystem    = bcf_filesystem();
@@ -98,7 +121,18 @@ if ( ! class_exists( 'BCF_Google_Fonts_Compatibility' ) ) {
 			}
 
 			self::delete_all_theme_font_family();
-			add_action( 'admin_init', array( $this, 'update_fse_theme_json' ) );
+			$this->update_fse_theme_json();
+
+			$redirect_url = add_query_arg(
+				array(
+					'page'          => BSF_CUSTOM_FONTS_ADMIN_PAGE,
+					'fonts_rebuilt' => '1',
+				),
+				admin_url( 'themes.php' )
+			);
+
+			wp_safe_redirect( $redirect_url );
+			exit;
 		}
 
 		/**

@@ -1,6 +1,6 @@
 {
   "name": "custom-fonts",
-  "version": "2.1.16",
+  "version": "2.1.17",
   "main": "Gruntfile.js",
   "author": "Brainstorm Force",
   "workspaces": [

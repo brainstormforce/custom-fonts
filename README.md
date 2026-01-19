@@ -1,12 +1,12 @@
 # Custom Fonts - Host Your Fonts Locally #
-**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
-**Donate link:** https://www.paypal.me/BrainstormForce  
+**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)
+**Donate link:** https://www.paypal.me/BrainstormForce
 **Tags:** fonts, custom fonts, Google Fonts, performance, full site editing
-**Requires at least:** 5.0  
-**Tested up to:** 6.9  
-**Stable tag:** 2.1.16  
-**License:** GPLv2 or later  
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
+**Requires at least:** 5.0
+**Tested up to:** 6.9
+**Stable tag:** 2.1.17
+**License:** GPLv2 or later
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
 Custom Fonts is a powerful WordPress plugin that allows you to upload your own custom fonts or choose from a vast collection of Google Fonts, all hosted directly on your server.
 
@@ -151,6 +151,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 ## Changelog ##
+### 2.1.17 ###
+- Improved codebase for improved security.
+
 ### 2.1.16 ###
 - Custom fonts plugin tested with WordPress 6.9 version.
 
@@ -174,7 +177,7 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 - Resolved issue where plugin was not properly deploying on wp.org
 
 ### 2.1.9 ###
-- Updated short description and tags inside readme file. 
+- Updated short description and tags inside readme file.
 
 ### 2.1.8 ###
 - Custom fonts plugin tested with WordPress 6.7 version.
