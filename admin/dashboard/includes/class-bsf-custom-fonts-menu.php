@@ -410,14 +410,31 @@ class BSF_Custom_Fonts_Menu {
 	 * @return Array File data array containing 'ext', 'type', and
 	 */
 	public function update_mime_types( $defaults, $file, $filename ) {
-		if ( 'ttf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+		$ext = pathinfo( $filename, PATHINFO_EXTENSION );
+
+		if ( 'woff2' === $ext ) {
+			$defaults['type'] = 'application/x-font-woff2';
+			$defaults['ext']  = 'woff2';
+		}
+
+		if ( 'woff' === $ext ) {
+			$defaults['type'] = 'application/x-font-woff';
+			$defaults['ext']  = 'woff';
+		}
+
+		if ( 'ttf' === $ext ) {
 			$defaults['type'] = 'application/x-font-ttf';
 			$defaults['ext']  = 'ttf';
 		}
 
-		if ( 'otf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+		if ( 'otf' === $ext ) {
 			$defaults['type'] = 'application/x-font-otf';
 			$defaults['ext']  = 'otf';
+		}
+
+		if ( 'eot' === $ext ) {
+			$defaults['type'] = 'application/vnd.ms-fontobject';
+			$defaults['ext']  = 'eot';
 		}
 
 		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
