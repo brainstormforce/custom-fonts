@@ -4,7 +4,7 @@
 **Tags:** fonts, custom fonts, Google Fonts, performance, full site editing
 **Requires at least:** 5.0
 **Tested up to:** 6.9
-**Stable tag:** 2.1.17
+**Stable tag:** 2.1.18
 **License:** GPLv2 or later
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 ## Changelog ##
+### 2.1.18 ###
+- Improvement: Enhanced font upload handling to allow .woff and .woff2 files via the Media Library and Custom Fonts, aligning with supported font formats and WordPress restrictions.
+
 ### 2.1.17 ###
 - Improved codebase for improved security. (Props to Wordfence)
 
