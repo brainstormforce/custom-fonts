@@ -31,3 +31,7 @@ node_modules
 *.zip
 .github
 .wordpress-org
+
+.claude
+CLAUDE.md
+internal-docs

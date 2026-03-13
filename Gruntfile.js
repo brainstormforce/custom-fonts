@@ -114,6 +114,9 @@ module.exports = function( grunt ) {
 					'!phpcs.xml',
 					'!phpcs.xml.dist',
 					'!admin/dashboard/assets/src/**',
+					'!CLAUDE.md',
+					'!.claude/**',
+					'!internal-docs/**',
 				],
 				dest: 'custom-fonts/'
 			}
