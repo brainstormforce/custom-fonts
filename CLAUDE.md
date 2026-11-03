@@ -4,7 +4,7 @@
 
 Custom Fonts is a WordPress plugin by Brainstorm Force. Upload custom fonts or host Google fonts locally for performance, privacy, and full site editing support.
 
-- **Version:** 2.1.17
+- **Version:** 2.1.18
 - **Text Domain:** custom-fonts
 - **Main File:** custom-fonts.php
 - **Requires:** WordPress, PHP 5.6+

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: fonts, custom fonts, Google Fonts, performance, full site editing
 Requires at least: 5.0
 Tested up to: 7.1
-Stable tag: 2.1.17
+Stable tag: 2.1.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,6 +151,9 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 
 == Changelog ==
+= 2.1.18 =
+- Security Fix: Hardened SVG upload sanitization. (Props to humans)
+
 = 2.1.17 =
 - Improved codebase for improved security. (Props to Wordfence)
 

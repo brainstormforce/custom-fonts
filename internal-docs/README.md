@@ -7,7 +7,7 @@
 | Key | Value |
 |-----|-------|
 | **Plugin Name** | Custom Fonts |
-| **Version** | 2.1.17 |
+| **Version** | 2.1.18 |
 | **Text Domain** | custom-fonts |
 | **Main File** | `custom-fonts.php` |
 | **PHP Files** | 23 |
