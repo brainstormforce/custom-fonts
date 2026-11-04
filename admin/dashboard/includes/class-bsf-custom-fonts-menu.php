@@ -410,17 +410,20 @@ class BSF_Custom_Fonts_Menu {
 	 * @return Array File data array containing 'ext', 'type', and
 	 */
 	public function update_mime_types( $defaults, $file, $filename ) {
-		if ( 'ttf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+		// Lowercase the extension: core accepts uploads case-insensitively (.SVG, .SvG).
+		$extension = strtolower( pathinfo( $filename, PATHINFO_EXTENSION ) );
+
+		if ( 'ttf' === $extension ) {
 			$defaults['type'] = 'application/x-font-ttf';
 			$defaults['ext']  = 'ttf';
 		}
 
-		if ( 'otf' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+		if ( 'otf' === $extension ) {
 			$defaults['type'] = 'application/x-font-otf';
 			$defaults['ext']  = 'otf';
 		}
 
-		if ( 'svg' === pathinfo( $filename, PATHINFO_EXTENSION ) ) {
+		if ( 'svg' === $extension ) {
 			// Perform SVG sanitization using the sanitize_svg function.
 			$svg_content           = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 			$sanitized_svg_content = $this->sanitize_svg( $svg_content );
