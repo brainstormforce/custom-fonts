@@ -1,0 +1,95 @@
+name: Tag & Release
+
+on:
+  push:
+    branches:
+      - master
+
+# Never cancel an in-progress tagging run; queue subsequent pushes instead.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  tag-release:
+    name: Tag & Release on version change
+    if: github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get plugin version
+        id: version
+        run: |
+          VERSION=$(sed -nE 's/^[[:space:]]*\*?[[:space:]]*Version:[[:space:]]*([0-9][0-9a-zA-Z.-]*).*/\1/p' custom-fonts.php | head -1)
+          if [ -z "$VERSION" ]; then
+            echo "::error::Could not parse the Version header from custom-fonts.php"
+            exit 1
+          fi
+          echo "Detected plugin version: $VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Check if version changed
+        id: tag
+        run: |
+          TAG="v${{ steps.version.outputs.version }}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if git rev-parse -q --verify "refs/tags/$TAG" > /dev/null; then
+            echo "Tag $TAG already exists — version unchanged, skipping release."
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Tag $TAG does not exist — new version detected."
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extract changelog for this version
+        if: steps.tag.outputs.exists == 'false'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          # Grab the block under the "= X.Y.Z =" heading in readme.txt up to the
+          # next version heading. Strip \r first in case the file has CRLF endings.
+          awk -v ver="$VERSION" '
+            { sub(/\r$/, "") }
+            /^=[[:space:]]/ {
+              hv = $0
+              gsub(/^=[[:space:]]*/, "", hv)
+              gsub(/[[:space:]]*=.*$/, "", hv)
+              if (found) exit
+              if (hv == ver) { found = 1; next }
+            }
+            found { print }
+          ' readme.txt | sed -e '/./,$!d' > changelog_block.txt
+
+          {
+            echo "## Changelog"
+            echo ""
+            if [ -s changelog_block.txt ]; then
+              cat changelog_block.txt
+            else
+              echo "::warning::No changelog entries found for version $VERSION in readme.txt" >&2
+              echo "_No changelog entries found for this version — see [readme.txt](https://github.com/${{ github.repository }}/blob/master/readme.txt)._"
+            fi
+          } > release_notes.md
+
+          echo "Release notes:"
+          cat release_notes.md
+
+      - name: Create tag & release
+        if: steps.tag.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          name: ${{ steps.tag.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          body_path: release_notes.md
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
