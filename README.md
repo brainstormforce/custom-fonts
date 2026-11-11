@@ -152,7 +152,7 @@ Yes, Custom Fonts is completely free to use, without any limitation.
 
 ## Changelog ##
 ### 2.1.18 ###
-- Security Fix: Hardened SVG upload sanitization. (Props to humans)
+- Security Fix: Hardened SVG upload sanitization. (Props to Respect)
 
 ### 2.1.17 ###
 - Improved codebase for improved security. (Props to Wordfence)
